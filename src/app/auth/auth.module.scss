@@ -1,0 +1,25 @@
+@use '../../styles/essentials';
+@use '../../styles/typography';
+
+@import '../../styles/essentials';
+@import '../../styles/typography';
+
+.wraper {
+    min-height: 100dvh;
+    background-color: #000;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .container {
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        gap: 3.6rem;
+        justify-content: center;
+
+        width: 100%;
+        max-width: 200rem;
+    }
+}

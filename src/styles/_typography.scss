@@ -1,0 +1,75 @@
+// Font Sizes
+$xxs: 1.3rem;
+$xs: 1.5rem;
+$s: 1.6rem;
+$r: 1.7rem;
+$l: 2rem;
+$xl: 2.4rem;
+$xxl: 3rem;
+$display: 7rem;
+
+
+// Letter Spacing
+$triml: -0.1rem;
+$trimr: -0.02rem;
+$none: 0rem;
+$trims: -0.01rem;
+
+$nyghtserif: 'NyghtSerif-Dark';
+$burnerregular: 'Mluvka-Bold';
+$burnermedium: 'Mluvka-Medium';
+$burnersemibold: 'Mluvka-SemiBold';
+$burnerbold: 'Mluvka-Bold';
+$burnerextrabold: 'Mluvka-ExtraBold';
+
+@mixin font($font-family, $font-size, $trim) {
+    font-family: $font-family;
+    font-size: $font-size;
+    letter-spacing: $trim;
+}
+
+
+// display
+
+.displays{
+    @include font($burnerbold, $xs, $none);
+    color: hsl(0, 0%, 98%);
+    font-weight: 700;
+}
+
+
+// label
+.labels{
+    @include font($burnermedium, $xxs, $none);
+    color: hsl(0, 0%, 50%);
+    font-weight: 500;
+}
+
+// Titles
+
+.titlexxl{
+    @include font($burnerextrabold, $xxl, $trims);
+    color: hsl(0, 0%, 98%);
+}
+
+.titlexl{
+    @include font($burnerextrabold, $xl, $trims);
+    color: hsl(0, 0%, 98%);
+}
+
+.titlel{
+    @include font($burnerextrabold, $l, $trims);
+    color: hsl(0, 0%, 98%);
+}
+
+.titler{
+    @include font($burnerbold, $r, $none);
+    color: hsl(0, 0%, 98%);
+}
+
+.titles{
+    @include font($burnerbold, $s, $none);
+    color: hsl(0, 0%, 98%);
+}
+
+// Titles

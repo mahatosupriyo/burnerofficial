@@ -1,0 +1,73 @@
+@use './typography';
+@import './typography';
+
+@mixin smooth {
+    transition: all 0.2s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+}
+
+@mixin protectmedia{
+    user-select: none;
+    pointer-events: none;
+}
+
+$corner: 0.8rem;
+
+
+@mixin tooltip{
+    display: flex;
+    align-items: center;
+    position: relative;
+    justify-content: flex-start;
+    &:hover .tooltip {
+        opacity: 1;
+        transform: translate(0%, 100%);
+    }
+    
+    .tooltip {
+        position: absolute;
+        bottom: 0;
+        padding-top: 0.4rem;
+        opacity: 0;
+        user-select: none;
+        pointer-events: none;
+        @include smooth();
+        transform: translate(0%, 95%);
+    }
+}
+
+
+.logoutbtn {
+    padding: 1.6rem 1.6rem;
+    @include font($burnerbold, $xs, $none);
+    color: hsl(0, 100%, 98%);
+    background-color: transparent;
+    border: 0.2rem solid hsl(0, 0%, 20%);
+    border-radius: $corner;
+
+    @include smooth;
+
+    user-select: none;
+    cursor: pointer;
+
+    &:hover {
+        background-color: hsl(0, 0%, 10%);
+    }
+}
+
+
+.btn {
+    padding: 1.4rem 1.6rem;
+    @include font($burnerbold, $s, $none);
+    color: hsl(0, 0%, 10%);
+    background-color: hsl(0, 0%, 90%);
+    border-radius: $corner;
+
+    @include smooth;
+
+    user-select: none;
+    cursor: pointer;
+
+    &:hover {
+        background-color: hsl(0, 0%, 70%);
+    }
+}

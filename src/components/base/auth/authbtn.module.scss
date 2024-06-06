@@ -1,0 +1,44 @@
+@use '../../../styles/essentials';
+@use '../../../styles/typography';
+
+@import '../../../styles/essentials';
+@import '../../../styles/typography';
+
+
+.provider {
+    position: relative;
+    @include font($burnerbold, $s, $none);
+
+    color: hsl(0, 0%, 98%);
+    background-color: hsl(0, 0%, 8%);
+    border: 0.16rem solid #3B3B3B;
+    padding: 2rem 1.7rem;
+    width: 100%;
+    border-radius: 10rem;
+
+    user-select: none;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @include smooth();
+
+    &:hover {
+        background-color: hsl(0, 0%, 10%);
+    }
+}
+
+.providerlogo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    height: 100%;
+    margin: 0rem 2rem;
+}

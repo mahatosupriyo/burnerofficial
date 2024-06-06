@@ -1,0 +1,63 @@
+@use '../../../styles/essentials';
+@use '../../../styles/typography';
+
+@import '../../../styles/essentials';
+@import '../../../styles/typography';
+
+
+.banner {
+    display: flex;
+    width: 100%;
+    position: relative;
+
+    .playlistdetails {
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+        justify-content: flex-end;
+        gap: 1.4rem;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        padding: 4rem;
+
+        z-index: 100;
+
+        .playlistname {
+            @include font($burnerextrabold, $xxl, $trimr);
+            color: hsl(0, 0%, 90%);
+            font-size: 4rem;
+        }
+
+        .chapters{
+            @include font($burnermedium, $xxs, $none);
+            color: hsl(0, 0%, 50%);
+        }
+    }
+
+    .playlistbanner {
+        z-index: 90;
+        display: flex;
+        width: 100%;
+        max-height: 40rem;
+        object-fit: cover;
+        position: relative;
+        user-select: none;
+        pointer-events: none;
+
+
+    }
+
+    &::before {
+        position: absolute;
+        content: '';
+        height: 100%;
+        width: 100%;
+        z-index: 100;
+        // background-color: hsla(0, 0%, 0%, 0.2);
+        background: linear-gradient(90deg, #121212 0%, rgba(0, 0, 0, 0.2) 100%);
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+}

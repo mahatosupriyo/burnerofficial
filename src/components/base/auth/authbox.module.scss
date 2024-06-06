@@ -1,0 +1,34 @@
+@use '../../../styles/essentials';
+@use '../../../styles/typography';
+
+@import '../../../styles/essentials';
+@import '../../../styles/typography';
+
+
+.authbox {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4rem;
+
+    padding: 6rem 4rem;
+    
+    width: 100%;
+    max-width: 40rem;
+
+    .providerbox {
+        width: 100%;
+        
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.4rem;
+    }
+
+    .policy{
+        @include font($burnerregular, $xxs, $none);
+        color: hsl(0, 0%, 40%);
+        font-weight: 400;
+        line-height: 150%;
+    }
+}

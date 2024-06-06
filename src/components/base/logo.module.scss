@@ -1,0 +1,10 @@
+@use '../../styles/essentials';
+@use '../../styles/typography';
+
+@import '../../styles/essentials';
+@import '../../styles/typography';
+
+.Logo {
+    transition: 0.2s ease-in-out;
+    @include tooltip();
+}

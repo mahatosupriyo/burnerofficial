@@ -1,95 +1,56 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+"use client"
+
+import NavBar from "@/components/navbar/navbar";
+import styles from "./home.module.scss"
+import ProfileBadge from "@/components/atoms/badge/badge";
+
 
 export default function Home() {
+
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
+    <>
+      <div className={styles.wraper}>
+        <NavBar />
+        <div className={styles.container}>
+
+
+          <div className={styles.wraprelease}>
+            <div className={styles.releasehead}>
+              <h4 className={styles.displayr}>June 2024</h4>
+              <h1 className={styles.displaymega}>relases</h1>
+            </div>
+          </div>
+
+          <div className={styles.floatcontainer}>
+            <ProfileBadge
+              avatar="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQforSqRztdqhlKNeETQJssJWQM2Yezo7kcmBrf9HrdLHqr_WW-9hnk8ugVarLeJ_14woA&usqp=CAU"
+              name="Darshan Raval"
+              creator="Artist"
+              href="/"
+              verified={false}
             />
-          </a>
+
+            <ProfileBadge
+              avatar="https://media.licdn.com/dms/image/D4D03AQGeNzdp3-Y95g/profile-displayphoto-shrink_200_200/0/1695730364777?e=2147483647&v=beta&t=UtBxXGkCb8sBCZLH63kFqTjX2oL05v4JbtZJOTMHvm0"
+              name="Supriyo Mahato"
+              creator="UX"
+              href="/"
+              verified={true}
+            />
+
+
+            <ProfileBadge
+              avatar="https://upload.wikimedia.org/wikipedia/commons/5/52/Kartik_Aaryan_in_2022.jpg"
+              name="Kartik Aaryan"
+              creator="Artist"
+              href="/"
+              verified={false}
+            />
+          </div>
+
+
         </div>
       </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+    </>
   );
 }
