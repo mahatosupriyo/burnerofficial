@@ -65,14 +65,6 @@ const BrowserLayout = () => {
             banner='https://www.shazam.com/mkimage/image/thumb/Music124/v4/af/69/79/af697907-7447-e35b-5446-40d3cb3e1f64/8903431684981_cover.jpg/375x375bb.webp'
         />
 
-
-        <ChapterCard
-            href='/'
-            label='Jeeja'
-            sublabel='Series'
-            banner='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-XX6kErny5klNgFTaQ3kvaQ-NpHyzWjWqHQ&s'
-        />
-
         <ChapterCard
             href='/'
             label='Saajan ve'
