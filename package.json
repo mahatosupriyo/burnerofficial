@@ -9,14 +9,20 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@studio-freight/react-lenis": "^0.0.47",
     "framer-motion": "^11.1.7",
+    "gsap": "^3.12.5",
     "i": "^0.3.7",
+    "lottie-web": "^5.12.2",
+    "lucide-react": "^0.441.0",
     "next": "14.2.3",
     "npm": "^10.7.0",
     "react": "^18",
     "react-dom": "^18",
+    "react-lottie": "^1.2.4",
     "sass": "^1.76.0",
-    "scss": "^0.2.4"
+    "scss": "^0.2.4",
+    "swiper": "^11.1.4"
   },
   "devDependencies": {
     "@types/node": "^20",

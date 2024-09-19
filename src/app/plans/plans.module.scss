@@ -1,0 +1,134 @@
+@use '../../styles/essentials';
+@use '../../styles/typography';
+
+@import '../../styles/essentials';
+@import '../../styles/typography';
+
+.wraper {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: hsl(0, 0%, 7%);
+    width: 100%;
+
+    .container {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
+        max-width: 200rem;
+        position: relative;
+
+        background-color: #5F0CE5;
+
+        .nav {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 3rem;
+        }
+
+        .hero {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            max-width: 100rem;
+            min-height: 100vh;
+
+            gap: 4rem;
+            padding: 18rem 2rem;
+
+            @media only screen and (max-width: 60rem) {
+                gap: 4rem;
+            }
+
+            .subhead {
+                font-size: 1.3rem;
+                text-transform: uppercase;
+                letter-spacing: 0.1rem;
+                font-weight: 500;
+                opacity: 0.6;
+            }
+
+            .headingtext {
+                letter-spacing: -0.2rem;
+                color: hsl(0, 0%, 98%);
+                text-align: center;
+                font-size: 14rem;
+                line-height: 90%;
+
+                font-weight: 900;
+
+                color: #ffe4e4;
+
+                @media only screen and (max-width: 60rem) {
+                    font-size: 4rem;
+                    letter-spacing: -0.01rem;
+                    line-height: 90%;
+                }
+            }
+
+            .quote {
+                font-family: Lora;
+                font-size: 1.6rem;
+                font-weight: 400;
+                opacity: 0.6;
+                line-height: 140%;
+                text-align: center;
+            }
+        }
+
+        .mission {
+            width: 100%;
+            background-color: #fff;
+            display: flex;
+            padding: 10rem 4rem;
+            align-items: center;
+            flex-direction: column;
+            gap: 6rem;
+
+            .headingtext {
+                font-size: 3rem;
+                line-height: 100%;
+                font-weight: 600;
+
+                letter-spacing: -0.04rem;
+                color: hsl(0, 100%, 7%);
+                text-align: center;
+            }
+        }
+
+        .plans {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 4rem;
+            background-color: hsl(0, 0%, 96%);
+            width: 100%;
+            gap: 2rem;
+
+            .headingtext {
+                font-size: 1.6rem;
+                color: hsl(0, 0, 42%);
+                font-weight: 500;
+            }
+
+            .methods {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 2rem;
+
+            }
+        }
+    }
+}

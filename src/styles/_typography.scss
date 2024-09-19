@@ -49,7 +49,10 @@ $burnerextrabold: 'Mluvka-ExtraBold';
 
 .titlexxl{
     @include font($burnerextrabold, $xxl, $trims);
-    color: hsl(0, 0%, 98%);
+    font-family: Involve;
+    text-transform: lowercase;
+    font-weight: 700;
+    color: hsl(0, 0%, 90%);
 }
 
 .titlexl{

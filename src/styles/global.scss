@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+@import url("https://use.typekit.net/aqs6zch.css");
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gabarito:wght@400..900&display=swap');
+@import url("https://use.typekit.net/aqs6zch.css");
+
 * {
     margin: 0;
     padding: 0;
@@ -5,58 +11,70 @@
     outline: none;
     box-sizing: border-box;
     -webkit-tap-highlight-color: transparent;
+    font-family: Gabarito;         
 }
 
 html {
     font-size: 62.5%;
 }
 
-a{
+a {
     text-decoration: none;
 }
 
 ::-webkit-scrollbar {
-    display: none;
+    width: 0.9rem;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: hsla(0, 0%, 50%, 0.5);
+    transition: 0.2s ease-in-out;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: hsl(0, 0%, 40%);
 }
 
 ::selection {
-    background-color: hsl(141, 76%, 48%);
-    color: hsl(0, 0%, 0%);
-    
+    // background-color: #1dd75e;
+    // color: hsl(0, 0%, 0%);
+
+    color: #B4D8F8;
+    background-color: hsl(205, 90%, 48%, 40%);
 }
 
-body{
+body {
     background-color: hsl(0, 0%, 0%);
     background-color: hsl(0, 0, 10%);
 
     color: hsl(0, 0%, 100%);
 }
 
-// Burner Fonts
-
 @font-face {
-    font-family: Mluvka-ExtraBold;
-    src: url(/fonts/Mluvka-ExtraBold.woff) format("woff");
+    font-family: Involve Bold;
+    src: url(/fonts/Involve-Bold.woff) format("woff");
 }
 
 @font-face {
-    font-family: Mluvka-Bold;
-    src: url(/fonts/Mluvka-Bold.woff) format("woff");
+    font-family: Involve;
+    src: url(/fonts/Involve-Bold.woff) format("woff");
 }
 
 @font-face {
-    font-family: Mluvka-SemiBold;
-    src: url(/fonts/Mluvka-SemiBold.woff) format("woff");
+    font-family: Involve;
+    src: url(/fonts/Involve-SemiBold.woff) format("woff");
 }
 
 @font-face {
-    font-family: Mluvka-Medium;
-    src: url(/fonts/Mluvka-Medium.woff) format("woff");
+    font-family: Involve;
+    src: url(/fonts/Involve-Medium.woff) format("woff");
 }
 
 @font-face {
-    font-family: Mluvka-Regular;
-    src: url(/fonts/Mluvka-Regular.woff) format("woff");
+    font-family: Involve;
+    src: url(/fonts/Involve-Regular.woff) format("woff");
 }
-
-// Burner Fonts

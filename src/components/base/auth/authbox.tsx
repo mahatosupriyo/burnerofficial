@@ -7,9 +7,9 @@ const AuthBox = () => {
     return (
         <>
             <div className={styles.authbox}>
-                <Logo height='22'fill='#fafafa' />
+                <Logo width='120'fill='#fafafa' />
 
-                <h2 className={styles.titlexxl}>
+                <h2 className={styles.titlemain}>
                     Sign up to
                     <br />
                     experience

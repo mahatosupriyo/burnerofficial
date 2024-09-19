@@ -7,14 +7,18 @@
 
 .provider {
     position: relative;
-    @include font($burnerbold, $s, $none);
+    
+    font-family: Gabarito;
+    // text-transform: lowercase;
+    font-weight: 600;
 
     color: hsl(0, 0%, 98%);
-    background-color: hsl(0, 0%, 8%);
+    background-color: hsl(0, 0%, 12%);
     border: 0.16rem solid #3B3B3B;
     padding: 2rem 1.7rem;
     width: 100%;
     border-radius: 10rem;
+    font-size: 1.66rem;
 
     user-select: none;
     cursor: pointer;
@@ -22,11 +26,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 1rem;
 
     @include smooth();
 
     &:hover {
-        background-color: hsl(0, 0%, 10%);
+        background-color: hsl(0, 0%, 14%);
     }
 }
 
