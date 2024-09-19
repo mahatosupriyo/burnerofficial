@@ -10,7 +10,7 @@
 
     display: flex;
     flex-direction: column;
-    overflow: hidden;
+    // overflow: hidden;
 
 
     @media only screen and (max-width: 80rem) {
@@ -49,6 +49,7 @@
 
         font-weight: 600;
         padding-bottom: 1.6rem;
+        z-index: 300;
 
         @media only screen and (max-width: 80rem) {
             height: 100%;

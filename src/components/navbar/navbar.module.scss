@@ -18,10 +18,6 @@
     flex-direction: column;
     height: 8rem;
 
-    // position: fixed;
-    // top: 0;
-    // left: 0;
-
     @include smooth;
 
     .nav {
@@ -47,7 +43,6 @@
             flex-direction: row;
 
             .uploadbtn{
-                // padding: 0.64rem;
                 height: 5.2rem;
                 width: 5.2rem;
                 background: none;
@@ -88,23 +83,6 @@
     
                 &:hover {
                     opacity: 0.8;
-                }
-    
-    
-                &::before {
-                    content: '';
-    
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-    
-                    height: 100%;
-                    width: 100%;
-                    border-radius: 10rem;
-    
-    
-                    z-index: 100;
-                    background-color: hsla(0, 0%, 10%, 0.1);
                 }
     
                 .avatar {

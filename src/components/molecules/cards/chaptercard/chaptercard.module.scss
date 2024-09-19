@@ -14,9 +14,10 @@
     padding: 1.2rem 1rem;
     @include smooth;
     cursor: pointer;
-    
+    // transform: translateY(-2rem);
     // border-radius: 0.6rem;
     background: none;
+    z-index: 500;
     &:hover {
         background-color: hsl(0, 0%, 20%);
     }

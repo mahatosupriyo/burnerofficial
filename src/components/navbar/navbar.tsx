@@ -1,41 +1,16 @@
 "use client"
 import React, { useEffect, useState } from 'react';
 import styles from './navbar.module.scss';
-import Logo from '@/components/base/logo';
 import Link from 'next/link';
 import { motion } from 'framer-motion'
+import Logo from '../base/logo';
 
 const NavBar = () => {
 
     return (
         <div className={styles.navwraper}>
             <div className={styles.nav}>
-                <Link
-                    href="/"
-                    style={{ textDecoration: 'none' }}
-                >
-                    {/* <svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 0 697 272" fill="none">
-                        <path d="M0 0H697V272H0V0Z" fill="#555" />
-                        <path d="M26 25H235V135.5L130.5 246H26V25Z" fill="white" />
-                        <path d="M244 25H342.5C403.527 25 453 74.4725 453 135.5C453 196.527 403.527 246 342.5 246H244V25Z" fill="white" />
-                        <path d="M671 25V147.5C671 205.214 624.214 252 566.5 252C508.786 252 462 205.214 462 147.5V25H671Z" fill="white" />
-                    </svg> */}
-
-                    <svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 0 792 310" fill="none">
-                        <path d="M0 0H792V309.073H0V0Z" fill="url(#paint0_linear_2718_65)" />
-                        <path d="M29.5437 28.4064H267.03V153.967L148.287 279.528H29.5437V28.4064Z" fill="white" />
-                        <path d="M277.257 28.4064H389.182C458.528 28.4064 514.743 84.6219 514.743 153.967C514.743 223.313 458.528 279.528 389.182 279.528H277.257V28.4064Z" fill="white" />
-                        <path d="M762.456 28.4064V167.603C762.456 233.183 709.293 286.346 643.713 286.346C578.133 286.346 524.97 233.183 524.97 167.603V28.4064H762.456Z" fill="white" />
-                        <defs>
-                            <linearGradient id="paint0_linear_2718_65" x1="-143" y1="235.5" x2="927.5" y2="72.5" gradientUnits="userSpaceOnUse">
-                                <stop stop-color="#AFA7A1" />
-                                <stop offset="0.34243" stop-color="#FE4200" />
-                                <stop offset="0.806666" stop-color="#FF805B" />
-                                <stop offset="1" stop-color="#98B7C0" />
-                            </linearGradient>
-                        </defs>
-                    </svg>
-                </Link>
+                <Logo width='66' />
 
                 <div className={styles.rightwraper}>
 
