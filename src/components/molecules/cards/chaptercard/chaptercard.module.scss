@@ -58,6 +58,7 @@
             font-size: 1.32rem;
             font-weight: 600;
             color: hsl(0, 0, 50%);
+            text-transform: lowercase;
 
             @media only screen and (max-width: 80rem) {
                 display: none;

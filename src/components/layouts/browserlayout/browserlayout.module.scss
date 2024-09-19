@@ -1,10 +1,8 @@
 .browserwraper {
-    // border-radius: 1rem;
-    padding: 1rem 0rem 0rem 0.9rem;
     background-color: hsl(0, 0, 7%);
 
     height: 100%;
-    width: 24%;
+    width: 22%;
 
     position: relative;
 
@@ -18,13 +16,16 @@
     }
 
     .chaptercontainer {
+        padding: 0rem 0rem 4rem 0.9rem;
+        background-color: hsl(0, 0, 7%);
+
         display: flex;
         align-items: flex-start;
         flex-direction: column;
         gap: 0.3rem;
 
         height: 100%;
-        max-height: calc(100dvh - 22.1rem);
+        max-height: calc(100dvh - 21rem);
 
         overflow-y: auto;
         padding-bottom: 2rem;
@@ -36,7 +37,9 @@
     }
 
     .toplayer {
-        padding: 1rem;
+        // border-bottom: 0.1rem solid hsl(0, 0%, 18%);
+
+        padding: 2rem 1rem 1rem 1.9rem;
         height: 11rem;
 
         display: flex;
@@ -63,12 +66,19 @@
 
         .sectionlabel {
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
             gap: 0.5rem;
             letter-spacing: -0.02rem;
 
             @media only screen and (max-width: 80rem) {
                 display: none;
+            }
+
+            .gradient {
+                background: var(--ln, linear-gradient(87deg, #AFA7A1 -15.71%, #FE4200 28.99%, #FF805B 89.6%, #98B7C0 114.83%));
+                background-clip: text;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
             }
 
         }
