@@ -1,8 +1,6 @@
 .faqContainer {
     width: 100%;
     max-width: 70rem;
-    margin: 0 auto;
-    border-radius: 0.8rem;
     overflow: hidden;
     border-top: 0.01rem solid #e2e8f0;
     border-left: 0.01rem solid #e2e8f0;
@@ -31,6 +29,7 @@
     transition: background-color 0.2s ease;
     user-select: none;
 
+
     border-bottom: 0.01rem solid #e2e8f0;
 }
 
@@ -45,7 +44,6 @@
     line-height: 160%;
     color: hsl(0, 0%, 43%);
     background-color: hsl(0, 0%, 97%);
-    // border-top: 0.01rem solid #e2e8f0;
 }
 
 .chevron {
@@ -56,18 +54,4 @@
 
 .faqItem[data-state="open"] .chevron {
     transform: rotate(180deg);
-}
-
-@media (max-width: 640px) {
-    .faqContainer {
-        padding: 0.5rem;
-    }
-
-    .faqQuestion {
-        padding: 0.75rem;
-    }
-
-    .faqAnswer {
-        padding: 0.75rem;
-    }
 }

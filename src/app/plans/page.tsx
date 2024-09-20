@@ -3,6 +3,7 @@ import React from 'react'
 import styles from './plans.module.scss'
 import FAQ from '@/components/atoms/FAQ/faq'
 import Footer from '@/components/footer/footer'
+import Logo from '@/components/base/logo'
 
 const BurnerPlans = () => {
 
@@ -30,7 +31,7 @@ const BurnerPlans = () => {
             <div className={styles.wraper}>
                 <div className={styles.container}>
                     <nav className={styles.nav}>
-                        <h2 style={{ fontSize: '2.4rem', fontWeight: 900, color: '#ffe4e4', userSelect: 'none' }}>edu burner</h2>
+                        <Logo width='100' fill='#fafafa' />
                     </nav>
 
                     <section className={styles.hero}>
@@ -38,10 +39,6 @@ const BurnerPlans = () => {
                         <h1 className={styles.headingtext}>
                             UNLEASH YOUR DESIGN SUPER POWERS WITH BURNER PRO
                         </h1>
-
-                        <p className={styles.quote}>
-                            " every person is born creative, they only lack the spark to unleash them. "
-                        </p>
                     </section>
 
                     <section className={styles.plans}>
@@ -184,16 +181,14 @@ const BurnerPlans = () => {
 
                     <section className={styles.mission}>
                         <h1 className={styles.headingtext}>
-                            Questions?
-                            <br />
-                            we've got answers.
+                            FAQs
                         </h1>
 
                         <FAQ data={faqData} />
 
                     </section>
                 </div>
-                <Footer/>
+                <Footer />
             </div>
         </SmoothScrolling>
     )

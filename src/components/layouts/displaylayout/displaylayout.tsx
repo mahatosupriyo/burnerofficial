@@ -1,91 +1,55 @@
 "use client"
 import React from 'react'
-import Link from 'next/link'
-import { motion } from 'framer-motion'
 import styles from './displaylayout.module.scss'
 
 const DisplayLayout = () => {
     return (
         <div className={styles.displaycontainer}>
             <section className={styles.displaywraper}>
-                <div className={styles.toplayer}>
-                    <Link href="/" className={styles.backbutton}>
-                        <svg xmlns="http://www.w3.org/2000/svg" height="28" viewBox="0 0 107 107" fill="none">
-                            <path fill-rule="evenodd" clip-rule="evenodd" d="M64.2 70.7217L48.9466 54.7883L64.1028 38.7578L60.1195 34.7744L40.6885 54.6912L60.0223 74.8994L64.2 70.7217Z" fill="white" />
-                        </svg>
-                    </Link>
 
+                <div className={styles.header}>
                     <div className={styles.titlewraper}>
-                        <h1 className={styles.pageheading}>Settings</h1>
-                    </div>
-                </div>
-                <div>
-                    <button className={styles.avatar}>
-                        <img
-                            src="https://middaycdn.s.llnwi.net/Radiocity-images/images/uploads/darshan%20raval%20india%20tour_d.jpg"
-                            className={styles.avatarimg}
-                        />
-                    </button>
-                </div>
+                        <div className={styles.topicwraper}>
+                            <p className={styles.subhead}>series</p>
+                            <h1 className={styles.seriestitle}>Era of glassmorphism as an art</h1>
+                        </div>
+                        <div className={styles.bottomwraper}>
+                            <svg className={styles.tool} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 44" fill="none">
+                                <path d="M22 15.3333C20.2319 15.3333 18.5362 16.0357 17.286 17.286C16.0357 18.5362 15.3333 20.2319 15.3333 22C15.3333 23.7681 16.0357 25.4638 17.286 26.714C18.5362 27.9643 20.2319 28.6667 22 28.6667C23.7681 28.6667 25.4638 27.9643 26.714 26.714C27.9643 25.4638 28.6667 23.7681 28.6667 22C28.6667 20.2319 27.9643 18.5362 26.714 17.286C25.4638 16.0357 23.7681 15.3333 22 15.3333ZM22 15.3333H15.3333M22 15.3333C23.7681 15.3333 25.4638 14.631 26.714 13.3807C27.9643 12.1305 28.6667 10.4348 28.6667 8.66667C28.6667 6.89856 27.9643 5.20286 26.714 3.95262C25.4638 2.70238 23.7681 2 22 2H15.3333M8.66667 28.6667C6.89856 28.6667 5.20286 29.369 3.95262 30.6193C2.70238 31.8695 2 33.5652 2 35.3333C2 37.1014 2.70238 38.7971 3.95262 40.0474C5.20286 41.2976 6.89856 42 8.66667 42C10.4348 42 12.1305 41.2976 13.3807 40.0474C14.631 38.7971 15.3333 37.1014 15.3333 35.3333V28.6667M8.66667 28.6667H15.3333M8.66667 28.6667C6.89856 28.6667 5.20286 27.9643 3.95262 26.714C2.70238 25.4638 2 23.7681 2 22C2 20.2319 2.70238 18.5362 3.95262 17.286C5.20286 16.0357 6.89856 15.3333 8.66667 15.3333M15.3333 28.6667V15.3333M15.3333 2V15.3333M15.3333 2H8.66667C6.89856 2 5.20286 2.70238 3.95262 3.95262C2.70238 5.20286 2 6.89856 2 8.66667C2 10.4348 2.70238 12.1305 3.95262 13.3807C5.20286 14.631 6.89856 15.3333 8.66667 15.3333M15.3333 15.3333H8.66667" stroke-width="2.45614" />
+                            </svg>
+                            <span className={styles.separator}></span>
+                            <div className={styles.creator}>
+                                <div className={styles.creatorbadge}>
+                                    <img
+                                        className={styles.creatorpic}
+                                        src="https://middaycdn.s.llnwi.net/Radiocity-images/images/uploads/darshan%20raval%20india%20tour_d.jpg"
+                                        draggable="false"
+                                    />
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="16" className={styles.verifiedicon} viewBox="0 0 11 11" fill="none">
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M3.05346 1.339C3.71631 1.43656 4.38809 1.22756 4.86442 0.775667C5.05314 0.597111 5.25579 0.5 5.4668 0.5C5.63706 0.5 5.80188 0.563222 5.95833 0.681444C5.99768 0.711222 6.03644 0.744444 6.07463 0.781C6.55026 1.22667 7.21763 1.43133 7.87514 1.333C8.14023 1.30033 8.36528 1.33567 8.53671 1.45489C8.70744 1.57367 8.81179 1.76622 8.85473 2.01689C8.96267 2.65056 9.37795 3.19767 9.97406 3.49167C10.2098 3.60833 10.3689 3.76289 10.4341 3.95489C10.4993 4.147 10.4655 4.36156 10.3463 4.58856C10.0445 5.16189 10.0446 5.83811 10.3464 6.41144C10.4655 6.63844 10.4993 6.853 10.4341 7.04511C10.3689 7.23711 10.2098 7.39167 9.97406 7.50833C9.37795 7.80233 8.96267 8.34944 8.85485 8.98311C8.81179 9.23378 8.70744 9.42633 8.53671 9.54511C8.3661 9.66378 8.14256 9.69933 7.88013 9.661C7.21729 9.56345 6.5455 9.77244 6.06917 10.2243C5.88045 10.4029 5.6778 10.5 5.4668 10.5C5.25579 10.5 5.05314 10.4029 4.86442 10.2242C4.38809 9.77233 3.71631 9.56345 3.05346 9.661C2.79104 9.69933 2.5675 9.66378 2.39688 9.54511C2.22615 9.42633 2.12181 9.23378 2.07886 8.98311C1.97092 8.34944 1.55564 7.80233 0.959535 7.50833C0.723807 7.39167 0.564682 7.23711 0.499454 7.04511C0.434341 6.853 0.468116 6.63844 0.587315 6.41144C0.889083 5.83811 0.888967 5.16189 0.587199 4.58856C0.468116 4.36156 0.434341 4.147 0.499454 3.95489C0.564682 3.76289 0.723807 3.60833 0.959535 3.49167C1.55564 3.19767 1.97092 2.65056 2.07875 2.01689C2.12181 1.76622 2.22615 1.57367 2.39688 1.45489C2.5675 1.33622 2.79104 1.30067 3.05346 1.339ZM6.30013 6.88213C6.28284 6.89868 5.74379 6.72469 5.7265 6.70814C5.56633 6.5548 3.99567 4.923 3.83551 4.76978C3.81821 4.75322 5.90076 6.86557 5.88346 6.88213C5.7566 7.00357 5.28097 7.45891 5.15411 7.58035C5.13682 7.59691 3.0263 5.51133 3.0436 5.52789C3.27004 5.74467 4.65632 7.07178 4.88276 7.28856C4.90005 7.30511 4.92802 7.30511 4.94532 7.28856C5.24418 7.00245 7.59113 4.75578 7.89 4.46956C7.90729 4.453 7.90729 4.42622 7.89 4.40967C7.76314 4.28822 7.28751 3.83289 7.16065 3.71144C7.14335 3.69489 8.47019 4.80479 8.4529 4.82135C8.20406 5.05946 6.54897 6.64402 6.30013 6.88213Z" fill="white" />
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M3.05346 1.339C3.71631 1.43656 4.38809 1.22756 4.86442 0.775667C5.05314 0.597111 5.25579 0.5 5.4668 0.5C5.63706 0.5 5.80188 0.563222 5.95833 0.681444C5.99768 0.711222 6.03644 0.744444 6.07463 0.781C6.55026 1.22667 7.21763 1.43133 7.87514 1.333C8.14023 1.30033 8.36528 1.33567 8.53671 1.45489C8.70744 1.57367 8.81179 1.76622 8.85473 2.01689C8.96267 2.65056 9.37795 3.19767 9.97406 3.49167C10.2098 3.60833 10.3689 3.76289 10.4341 3.95489C10.4993 4.147 10.4655 4.36156 10.3463 4.58856C10.0445 5.16189 10.0446 5.83811 10.3464 6.41144C10.4655 6.63844 10.4993 6.853 10.4341 7.04511C10.3689 7.23711 10.2098 7.39167 9.97406 7.50833C9.37795 7.80233 8.96267 8.34944 8.85485 8.98311C8.81179 9.23378 8.70744 9.42633 8.53671 9.54511C8.3661 9.66378 8.14256 9.69933 7.88013 9.661C7.21729 9.56345 6.5455 9.77244 6.06917 10.2243C5.88045 10.4029 5.6778 10.5 5.4668 10.5C5.25579 10.5 5.05314 10.4029 4.86442 10.2242C4.38809 9.77233 3.71631 9.56345 3.05346 9.661C2.79104 9.69933 2.5675 9.66378 2.39688 9.54511C2.22615 9.42633 2.12181 9.23378 2.07886 8.98311C1.97092 8.34944 1.55564 7.80233 0.959535 7.50833C0.723807 7.39167 0.564682 7.23711 0.499454 7.04511C0.434341 6.853 0.468116 6.63844 0.587315 6.41144C0.889083 5.83811 0.888967 5.16189 0.587199 4.58856C0.468116 4.36156 0.434341 4.147 0.499454 3.95489C0.564682 3.76289 0.723807 3.60833 0.959535 3.49167C1.55564 3.19767 1.97092 2.65056 2.07875 2.01689C2.12181 1.76622 2.22615 1.57367 2.39688 1.45489C2.5675 1.33622 2.79104 1.30067 3.05346 1.339ZM4.94532 5.77222C4.92802 5.78878 4.90005 5.78878 4.88276 5.77222C4.72259 5.61889 3.99567 4.923 3.83551 4.76978C3.81821 4.75322 3.79024 4.75322 3.77295 4.76978C3.64609 4.89122 3.17045 5.34656 3.0436 5.468C3.0263 5.48456 3.0263 5.51133 3.0436 5.52789C3.27004 5.74467 4.65632 7.07178 4.88276 7.28856C4.90005 7.30511 4.92802 7.30511 4.94532 7.28856C5.24418 7.00245 7.59113 4.75578 7.89 4.46956C7.90729 4.453 7.90729 4.42622 7.89 4.40967C7.76314 4.28822 7.28751 3.83289 7.16065 3.71144C7.14335 3.69489 7.11538 3.69489 7.09809 3.71144C6.84924 3.94956 5.19416 5.53411 4.94532 5.77222Z" fill="#0075FF" />
+                                    </svg>
 
+                                </div>
 
-                <div className={styles.wraperforms}>
-                    <div className={styles.form}>
-                        <label className={styles.label}>
-                            Name
-                            <input type="text" spellCheck="false" autoComplete='false' className={styles.inputbar} defaultValue={'Darshan Raval'} />
-                        </label>
-                        <div className={styles.bottomlayer}>
-                            <p className={styles.instruction}>
-                                you can update name two times in a month *
-                            </p>
-                            <motion.button
-                                whileHover={{ scale: 1.01 }}
-                                whileTap={{ scale: 1, opacity: 0.6 }}
-                                className={styles.submitbtn}>
-                                Save
-                            </motion.button>
+                                <div className={styles.creatordetails}>
+                                    <h3 className={styles.headtxt}>
+                                        Instructed by
+                                    </h3>
+                                    <h4 className={styles.subheadtxt}>
+                                        supriyomahato
+                                    </h4>
+                                </div>
+                            </div>
                         </div>
 
                     </div>
+                    <img
+                        className={styles.banner}
+                        draggable="false"
+                        src='https://resources.tidal.com/images/0a34410d/65fc/40cc/afe7/8d13996b30cf/640x640.jpg'
+                    />
 
-                    <div className={styles.form}>
-                        <label className={styles.label}>
-                            Username
-                            <input type="text" spellCheck="false" autoComplete='false' className={styles.inputbar} defaultValue={'darshanravaldz'} />
-                        </label>
-                        <div className={styles.bottomlayer}>
-                            <p className={styles.instruction}>
-                                you can update username two times in a month *
-                            </p>
-                            <motion.button
-                                whileHover={{ scale: 1.01 }}
-                                whileTap={{ scale: 1, opacity: 0.6 }}
-                                className={styles.submitbtn}>
-                                Save
-                            </motion.button>
-                        </div>
-
-                    </div>
-
-                    <div className={styles.form}>
-                        <label className={styles.label}>
-                            Contact no.
-                            <input type="tel" spellCheck="false" autoComplete='false' className={styles.inputbar} defaultValue={'7929008384'} />
-                        </label>
-                        <div className={styles.bottomlayer}>
-                            <p className={styles.instruction}>
-                                you can update phone no two times in a day *
-                            </p>
-                            <motion.button
-                                whileHover={{ scale: 1.01 }}
-                                whileTap={{ scale: 1, opacity: 0.6 }}
-                                className={styles.submitbtn}>
-                                Save
-                            </motion.button>
-                        </div>
-
-                    </div>
                 </div>
 
             </section>

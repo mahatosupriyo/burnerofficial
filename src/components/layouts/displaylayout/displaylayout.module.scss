@@ -1,177 +1,153 @@
 @use '../../../styles/essentials';
 @import '../../../styles/essentials';
 
-.displaycontainer{
+.displaycontainer {
     width: 100%;
     height: 100%;
     overflow: hidden;
-    // border-radius: 1rem;
 
     .displaywraper {
-        padding: 1rem 1rem 0rem 1rem;
         width: 85%;
         width: 100%;
         height: 100%;
-        min-height: calc(100dvh - 10rem);
-        max-height: calc(100dvh - 10rem);
+        min-height: calc(100dvh - 9.4rem);
+        max-height: calc(100dvh - 9.4rem);
         overflow-y: scroll;
-    
-        // background: linear-gradient(180deg, #646464 0%, #121212 34%);
-        background-color: hsl(0, 0, 10%);
-    
-        padding: 4rem 4rem;
+
+        background-color: hsl(0, 0, 16%);
+
         display: flex;
         flex-direction: column;
         gap: 3.6rem;
         padding-bottom: 10rem;
-    
-        .toplayer {
-            display: flex;
-            height: 100%;
-            // max-height: 11rem;
-            align-items: flex-start;
-            gap: 3rem;
-            justify-content: flex-end;
-            flex-direction: column;
-    
-            font-family: Gabarito;
-            font-size: 2.16rem;
-            line-height: 100%;
-    
-            font-weight: 600;
-            padding-bottom: 1.6rem;
-    
 
-            
-            .backbutton {
-                padding: 0.2rem;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                border-radius: 10rem;
-                @include smooth;
-                transform: translateX(-1rem);
-    
-                &:hover {
-                    background-color: hsl(0, 0, 24%);
-                }
-            }
-    
+        .header {
+            padding: 4rem 4rem;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            gap: 2rem;
+
+            background-color: hsla(27, 28%, 77%, 0.23);
+
             .titlewraper {
                 display: flex;
                 flex-direction: column;
-                gap: 1rem;
-    
-                .pageheading {
-                    font-size: 2.4rem;
-                    font-weight: 600;
-                }
-            }
-    
-    
-        }
-    
-        .avatar {
-            display: flex;
-            align-items: flex-start;
-            justify-content: flex-start;
-            overflow: hidden;
-            height: 19rem;
-            background: none;
-    
-            .avatarimg {
-                border-radius: 200rem;
-                height: 19rem;
-                aspect-ratio: 1/1;
-                object-fit: cover;
-                user-select: none;
-                pointer-events: none;
-            }
-        }
-    
-        .wraperforms {
-            display: flex;
-            flex-direction: column;
-            gap: 3rem;
-            max-width: 60rem;
-    
-            .form {
-                display: flex;
-                flex-direction: column;
-                align-items: flex-end;
-                justify-content: flex-end;
-                width: 100%;
-                gap: 1rem;
-    
-                .bottomlayer {
-                    width: 100%;
-                    display: flex;
-                    flex-direction: row;
-                    justify-content: space-between;
-                    gap: 1rem;
-                    align-items: center;
-    
-                    .instruction {
-                        display: flex;
-                        font-size: 1.3rem;
-                        color: hsl(0, 0%, 40%);
-                    }
-    
-                    .submitbtn {
-                        cursor: pointer;
-                        font-size: 1.4rem;
-                        color: hsl(0, 0, 10%);
-                        user-select: none;
-                        background-color: hsl(0, 0, 98%);
-                        // background-color: #24A0ED;
-                        font-weight: 600;
-                        padding: 1.3rem 1.6rem;
-                        // border-radius: 10rem;
-                        line-height: 100%;
-                    }
-                }
-    
-    
-                .label {
-                    font-size: 1.3rem;
-                    font-weight: 700;
-                    color: hsl(0, 0, 60%);
+                justify-content: space-between;
+                gap: 0.6rem;
+
+                .topicwraper {
                     display: flex;
                     flex-direction: column;
-                    gap: 0.8rem;
-                    width: 100%;
-    
-                    .inputbar {
-                        width: 100%;
-                        background: none;
-                        padding: 1.2rem;
-                        // background-color: hsl(0, 0, 20%);
-                        // border-radius: 0.6rem;
-                        border: 0.2rem solid hsl(0, 0, 20%);
-    
-                        color: hsl(0, 0, 98%);
-                        font-size: 1.55rem;
-                        font-weight: 500;
+                    gap: 1.6rem;
+
+                    .seriestitle {
+                        font-size: 2.8rem;
                         line-height: 100%;
-    
+                        font-weight: 600;
+                        color: hsl(0, 9, 98%);
+                    }
+
+                    .subhead {
+                        font-size: 1.6rem;
+                        font-weight: 600;
+                        text-transform: lowercase;
+
+                        background: var(--ln, linear-gradient(87deg, #AFA7A1 -15.71%, #FE4200 28.99%, #FF805B 89.6%, #98B7C0 114.83%));
+                        background-clip: text;
+                        -webkit-background-clip: text;
+                        -webkit-text-fill-color: transparent;
+                    }
+                }
+
+                .bottomwraper {
+                    display: flex;
+                    flex-direction: row;
+                    gap: 1.6rem;
+                    align-items: center;
+
+                    .tool {
+                        height: 3rem;
+                        stroke: hsl(0, 0, 90%);
+                    }
+
+                    .separator{
+                        height: 1.6rem;
+                        width: 0.14rem;
+                        border-radius: 10rem;
+                        background-color: hsl(0, 0, 100%, 0.3);
+                    }
+
+                    .creator {
                         display: flex;
-                        align-items: flex-start;
-                        justify-content: center;
+                        flex-direction: row;
+                        align-items: center;
+                        gap: 1rem;
+                        padding: 0rem 0rem;
+
+                        .creatorbadge{
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            position: relative;
+                            .creatorpic {
+                                display: flex;
+                                border-radius: 10rem;
+                                overflow: hidden;
+                                height: 4rem;
+                                width: 4rem;
+                                aspect-ratio: 1/1;
+                                object-position: center;
+                                object-fit: cover;
+                                user-select: none;
+                                pointer-events: none;
+                            }
     
-                        @include smooth;
-    
-                        &:hover {
-                            border: 0.2rem solid hsl(0, 0, 32%);
+                            .verifiedicon{
+                                position: absolute;
+                                bottom: 0;
+                                right: 0;
+                                // background-color: #fff;
+                                transform: translate(0.2rem, 0.2rem);
+                            }
                         }
-    
-                        &:focus {
-                            border: 0.2rem solid hsl(0, 0, 60%);
+
+                        .creatordetails {
+                            display: flex;
+                            flex-direction: column;
+
+                            .headtxt {
+                                font-size: 1.6rem;
+                                font-weight: 500;
+                            }
+
+                            .subheadtxt {
+                                font-size: 1.6rem;
+                                font-weight: 400;
+                                color: hsl(0, 0, 100%);
+                                opacity: 0.5;
+                                display: flex;
+                                flex-direction: row;
+                                align-items: center;
+                                gap: 0.4rem;
+                            }
                         }
                     }
                 }
-    
+
+
+            }
+
+            .banner {
+                user-select: none;
+                pointer-events: none;
+
+                aspect-ratio: 1/1;
+                object-fit: cover;
+                object-position: center;
+                width: 100%;
+                max-width: 29.58rem;
             }
         }
     }
 }
-

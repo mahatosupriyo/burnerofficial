@@ -21,6 +21,7 @@
         position: relative;
 
         background-color: #5F0CE5;
+        // background-color: hsl(0, 0%, 15%);
 
         .nav {
             position: absolute;
@@ -50,21 +51,24 @@
             }
 
             .subhead {
+                font-family: Involve Bold;
+
                 font-size: 1.3rem;
                 text-transform: uppercase;
                 letter-spacing: 0.1rem;
-                font-weight: 500;
+                font-weight: 700;
                 opacity: 0.6;
             }
 
             .headingtext {
+                font-family: Involve Bold;
                 letter-spacing: -0.2rem;
-                color: hsl(0, 0%, 98%);
+                color: hsl(0, 100%, 96%);
                 text-align: center;
-                font-size: 14rem;
+                font-size: 12rem;
                 line-height: 90%;
 
-                font-weight: 900;
+                font-weight: 700;
 
                 color: #ffe4e4;
 
@@ -73,15 +77,6 @@
                     letter-spacing: -0.01rem;
                     line-height: 90%;
                 }
-            }
-
-            .quote {
-                font-family: Lora;
-                font-size: 1.6rem;
-                font-weight: 400;
-                opacity: 0.6;
-                line-height: 140%;
-                text-align: center;
             }
         }
 
@@ -95,11 +90,12 @@
             gap: 6rem;
 
             .headingtext {
-                font-size: 3rem;
+                font-family: Involve Bold;
+                font-size: 7rem;
                 line-height: 100%;
-                font-weight: 600;
+                font-weight: 700;
 
-                letter-spacing: -0.04rem;
+                letter-spacing: -0.1rem;
                 color: hsl(0, 100%, 7%);
                 text-align: center;
             }
@@ -116,9 +112,11 @@
             gap: 2rem;
 
             .headingtext {
-                font-size: 1.6rem;
+                font-family: Involve Bold;
+
+                font-size: 1.5rem;
                 color: hsl(0, 0, 42%);
-                font-weight: 500;
+                font-weight: 700;
             }
 
             .methods {
