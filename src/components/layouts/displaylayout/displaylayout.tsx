@@ -1,5 +1,6 @@
 "use client"
 import React from 'react'
+import { motion } from 'framer-motion'
 import styles from './displaylayout.module.scss'
 
 const DisplayLayout = () => {
@@ -11,7 +12,7 @@ const DisplayLayout = () => {
                     <div className={styles.titlewraper}>
                         <div className={styles.topicwraper}>
                             <p className={styles.subhead}>series</p>
-                            <h1 className={styles.seriestitle}>Era of glassmorphism as an art</h1>
+                            <h1 className={styles.seriestitle}>Era of glassmorphism</h1>
                             <p className={styles.startingdate}>Starting this week</p>
                         </div>
                         <div className={styles.bottomwraper}>
@@ -53,60 +54,85 @@ const DisplayLayout = () => {
                     />
                 </div>
 
-                <div className={styles.playlistwraper}>
+                <div className={styles.datawraper}>
+
+                    <div className={styles.playlistwraper}>
 
 
-                <div className={styles.playlistindex}>
-                        <p className={styles.index}>Ep.</p>
-                        <div className={styles.subwraper}>
-                            <div className={styles.chapterwraper} style={{width: '100%',maxWidth: '20rem'}}>
+                        <motion.div
+                            whileTap={{ opacity: 0.7 }}
+                            className={styles.playlist}
+                        >
+                            <p className={styles.index}>1</p>
+                            <div className={styles.subwraper}>
+                                <div className={styles.chapterwraper}>
+                                    <img
+                                        src="https://resources.tidal.com/images/0a34410d/65fc/40cc/afe7/8d13996b30cf/640x640.jpg"
+                                        className={styles.chapterbanner}
+                                    />
 
+                                    <motion.button
+                                        whileHover={{ scale: 1.2 }}
+                                        transition={{ delay: 0.1 }}
+                                        className={styles.playbtn}
+                                        whileTap={{ scale: 1 }}
+                                    >
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="38" className={styles.playbtnicon} viewBox="0 0 145 145" >
+                                            <path d="M145 72.5C145 112.541 112.541 145 72.5 145C32.4594 145 0 112.541 0 72.5C0 32.4594 32.4594 0 72.5 0C112.541 0 145 32.4594 145 72.5Z" fill="#1DD860" />
+                                            <path d="M51 93.8844C51 100.12 57.7664 104.034 63.0959 100.916L98.9503 80.0365C104.35 76.9187 104.35 69.0883 98.9503 65.9739L63.0959 45.0946C57.6963 41.9767 51 45.8932 51 52.126V93.8844Z" fill="#fff" />
+                                        </svg>
+                                    </motion.button>
+
+                                </div>
+                                <div className={styles.chapterdetails}>
+                                    <h4 className={styles.chaptertitle}>Saajan ve</h4>
+                                    <p className={styles.chaptersubtitle}>Episode 1</p>
+                                </div>
                             </div>
-                            <div className={styles.chapterdetails}>
-                                <h4 className={styles.indextitle}>Label</h4>
+                        </motion.div>
+
+
+                        <motion.div
+                            whileTap={{ opacity: 0.7 }}
+                            className={styles.playlist}
+                        >
+                            <p className={styles.index}>2</p>
+                            <div className={styles.subwraper}>
+                                <div className={styles.chapterwraper}>
+                                    <img
+                                        draggable="false"
+                                        src="https://images.genius.com/4fb3f027cdc6001ef833d8cccde44ed4.554x554x1.jpg"
+                                        className={styles.chapterbanner}
+                                    />
+
+                                    <motion.button
+                                        className={styles.playbtn}
+                                        whileHover={{ scale: 1.2 }}
+                                        transition={{ delay: 0.1 }}
+                                        whileTap={{ scale: 1 }}
+                                    >
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="38" className={styles.playbtnicon} viewBox="0 0 145 145" >
+                                            <path d="M145 72.5C145 112.541 112.541 145 72.5 145C32.4594 145 0 112.541 0 72.5C0 32.4594 32.4594 0 72.5 0C112.541 0 145 32.4594 145 72.5Z" fill="#1DD860" />
+                                            <path d="M51 93.8844C51 100.12 57.7664 104.034 63.0959 100.916L98.9503 80.0365C104.35 76.9187 104.35 69.0883 98.9503 65.9739L63.0959 45.0946C57.6963 41.9767 51 45.8932 51 52.126V93.8844Z" fill="#fff" />
+                                        </svg>
+                                    </motion.button>
+                                </div>
+                                <div className={styles.chapterdetails}>
+                                    <h4 className={styles.chaptertitle}>Baarishon mein</h4>
+                                    <p className={styles.chaptersubtitle}>Episode 2</p>
+                                </div>
                             </div>
-                        </div>
+                        </motion.div>
+
+
 
                     </div>
-                    
-                <div className={styles.playlist}>
-                        <p className={styles.index}>1</p>
-                        <div className={styles.subwraper}>
-                            <div className={styles.chapterwraper}>
-                                <img
-                                    src="https://resources.tidal.com/images/0a34410d/65fc/40cc/afe7/8d13996b30cf/640x640.jpg"
-                                    className={styles.chapterbanner}
-                                />
-                            </div>
-                            <div className={styles.chapterdetails}>
-                                <h4 className={styles.chaptertitle}>Saajan ve</h4>
-                                <p className={styles.chaptersubtitle}>Episode 1</p>
-                            </div>
-                        </div>
+
+                    <div className={styles.chapterdetailswraper}>
 
                     </div>
-
-
-                    <div className={styles.playlist}>
-                        <p className={styles.index}>2</p>
-                        <div className={styles.subwraper}>
-                            <div className={styles.chapterwraper}>
-                                <img
-                                    draggable="false"
-                                    src="https://images.genius.com/4fb3f027cdc6001ef833d8cccde44ed4.554x554x1.jpg"
-                                    className={styles.chapterbanner}
-                                />
-                            </div>
-                            <div className={styles.chapterdetails}>
-                                <h4 className={styles.chaptertitle}>Baarishon mein</h4>
-                                <p className={styles.chaptersubtitle}>Episode 2</p>
-                            </div>
-                        </div>
-                    </div>
-
-
-
                 </div>
+
 
             </section>
         </div>

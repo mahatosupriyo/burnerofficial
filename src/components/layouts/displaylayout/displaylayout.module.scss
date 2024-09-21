@@ -169,176 +169,240 @@
             }
         }
 
-        .playlistwraper {
+        .datawraper {
             display: flex;
-            flex-direction: column;
-            max-width: 80rem;
+            flex-direction: row;
+            align-items: flex-start;
+            justify-content: space-between;
 
             padding: 1rem 4rem;
+            gap: 1rem;
 
-
-            .playlistindex {
+            .playlistwraper {
                 display: flex;
-                align-items: flex-start;
-                flex-direction: row;
-                padding: 1.6rem 2rem;
-                @include smooth;
-                cursor: pointer;
-                border-bottom: 0.03rem solid hsl(0, 0, 18%);
+                flex-direction: column;
+                // max-width: 80rem;
+                width: 100%;
 
-                .index {
-                    width: 100%;
-                    max-width: 3.2rem;
-                    font-size: 1.3rem;
-                    display: flex;
-                    font-weight: 400;
-                    opacity: 0.5;
-                }
 
-                .subwraper {
+
+                .playlistindex {
                     display: flex;
-                    flex-direction: row;
                     align-items: flex-start;
-                    gap: 1.6rem;
-                    width: 100%;
+                    flex-direction: row;
+                    padding: 1.6rem 2rem;
+                    @include smooth;
+                    cursor: pointer;
+                    border-bottom: 0.03rem solid hsl(0, 0, 18%);
 
-                    .chapterwraper {
+
+                    display: none;
+
+                    .index {
+                        width: 100%;
+                        max-width: 3.2rem;
+                        font-size: 1.3rem;
                         display: flex;
-                        align-items: center;
-                        justify-content: center;
-
-                        .chapterbanner {
-                            display: flex;
-                            width: 100%;
-                            max-width: 20rem;
-                            object-fit: cover;
-                            object-position: top;
-                            aspect-ratio: 16/9;
-                            @include protectmedia;
-                        }
+                        font-weight: 400;
+                        opacity: 0.5;
+                        user-select: none;
                     }
 
-                    .chapterdetails {
+                    .subwraper {
                         display: flex;
-                        flex-direction: column;
-                        gap: 0.4rem;
-
+                        flex-direction: row;
+                        align-items: flex-start;
+                        gap: 1.6rem;
                         width: 100%;
-                        max-width: 40rem;
 
-                        .chaptertitle {
-                            font-size: 1.6rem;
-                            font-weight: 600;
-                        }
-
-                        .indextitle {
-                            width: 100%;
-                            font-size: 1.3rem;
+                        .chapterwraper {
                             display: flex;
-                            font-weight: 400;
-                            opacity: 0.5;
-                        }
-
-                        .chaptersubtitle {
-                            font-size: 1.6rem;
-                            font-weight: 400;
-                            color: hsl(0, 0, 100%);
-                            opacity: 0.5;
-                            display: flex;
-                            flex-direction: row;
                             align-items: center;
+                            justify-content: center;
+
+                            .chapterbanner {
+                                display: flex;
+                                width: 100%;
+                                max-width: 20rem;
+                                object-fit: cover;
+                                object-position: top;
+                                aspect-ratio: 16/9;
+                                @include protectmedia;
+                            }
+                        }
+
+                        .chapterdetails {
+                            display: flex;
+                            flex-direction: column;
                             gap: 0.4rem;
 
-                            // display: none;
+                            width: 100%;
+                            max-width: 40rem;
+
+
+                            .chaptertitle {
+                                font-size: 1.6rem;
+                                font-weight: 600;
+                                user-select: none;
+
+                            }
+
+                            .indextitle {
+                                width: 100%;
+                                font-size: 1.3rem;
+                                display: flex;
+                                font-weight: 400;
+                                opacity: 0.5;
+                                user-select: none;
+
+                            }
+
+                            .chaptersubtitle {
+                                font-size: 1.6rem;
+                                font-weight: 400;
+                                color: hsl(0, 0, 100%);
+                                opacity: 0.5;
+                                display: flex;
+                                flex-direction: row;
+                                align-items: center;
+                                gap: 0.4rem;
+                                user-select: none;
+
+                                // display: none;
+                            }
                         }
                     }
+
                 }
+
+                .playlist {
+                    display: flex;
+                    align-items: flex-start;
+                    flex-direction: row;
+                    padding: 1.2rem 2rem;
+                    @include smooth;
+                    cursor: pointer;
+                    overflow: hidden;
+
+                    &:hover {
+                        background-color: hsl(0, 0, 18%);
+
+                        .subwraper {
+                            .chapterwraper {
+                                .chapterbanner {
+                                    opacity: 0.8;
+                                }
+
+                                .playbtn {
+                                    transform: translateY(0);
+                                    opacity: 1;
+                                }
+                            }
+                        }
+                    }
+
+
+
+                    .index {
+                        width: 100%;
+                        max-width: 3.2rem;
+                        font-size: 1.3rem;
+                        display: flex;
+                        font-weight: 400;
+                        opacity: 0.6;
+                        user-select: none;
+                    }
+
+                    .subwraper {
+                        display: flex;
+                        flex-direction: row;
+                        align-items: flex-start;
+                        gap: 1.6rem;
+                        width: 100%;
+
+                        .chapterwraper {
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            position: relative;
+
+                            .chapterbanner {
+                                display: flex;
+                                width: 100%;
+                                max-width: 20rem;
+                                object-fit: cover;
+                                object-position: top;
+                                aspect-ratio: 16/9;
+                                @include protectmedia;
+                                @include smooth;
+                            }
+
+                            .playbtn {
+                                position: absolute;
+                                right: 0;
+                                bottom: 0;
+                                display: inline-flex;
+                                border-radius: 100rem;
+                                margin: 1rem;
+                                @include smooth;
+                                transform: translateY(1rem);
+                                opacity: 0;
+                                cursor: pointer;
+                            }
+                        }
+
+                        .chapterdetails {
+                            display: flex;
+                            flex-direction: column;
+                            gap: 0.4rem;
+
+                            width: 100%;
+                            max-width: 40rem;
+
+                            .chaptertitle {
+                                font-size: 1.6rem;
+                                font-weight: 600;
+                                user-select: none;
+                            }
+
+                            .indextitle {
+                                width: 100%;
+                                font-size: 1.3rem;
+                                display: flex;
+                                font-weight: 400;
+                                opacity: 0.6;
+                                user-select: none;
+                            }
+
+                            .chaptersubtitle {
+                                font-size: 1.6rem;
+                                font-weight: 400;
+                                color: hsl(0, 0, 100%);
+                                opacity: 0.5;
+                                user-select: none;
+                                display: flex;
+                                flex-direction: row;
+                                align-items: center;
+                                gap: 0.4rem;
+
+                                // display: none;
+                            }
+                        }
+                    }
+
+                }
+
 
             }
 
-            .playlist {
-                display: flex;
-                align-items: flex-start;
-                flex-direction: row;
-                padding: 1.2rem 2rem;
-                @include smooth;
-                cursor: pointer;
-
-                &:hover {
-                    background-color: hsl(0, 0, 18%);
-                }
-
-                .index {
-                    width: 100%;
-                    max-width: 3.2rem;
-                    font-size: 1.3rem;
-                    display: flex;
-                    font-weight: 400;
-                    opacity: 0.6;
-                }
-
-                .subwraper {
-                    display: flex;
-                    flex-direction: row;
-                    align-items: flex-start;
-                    gap: 1.6rem;
-                    width: 100%;
-
-                    .chapterwraper {
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-
-                        .chapterbanner {
-                            display: flex;
-                            width: 100%;
-                            max-width: 20rem;
-                            object-fit: cover;
-                            object-position: top;
-                            aspect-ratio: 16/9;
-                            @include protectmedia;
-                        }
-                    }
-
-                    .chapterdetails {
-                        display: flex;
-                        flex-direction: column;
-                        gap: 0.4rem;
-
-                        width: 100%;
-                        max-width: 40rem;
-
-                        .chaptertitle {
-                            font-size: 1.6rem;
-                            font-weight: 600;
-                        }
-
-                        .indextitle {
-                            width: 100%;
-                            font-size: 1.3rem;
-                            display: flex;
-                            font-weight: 400;
-                            opacity: 0.6;
-                        }
-
-                        .chaptersubtitle {
-                            font-size: 1.6rem;
-                            font-weight: 400;
-                            color: hsl(0, 0, 100%);
-                            opacity: 0.5;
-                            display: flex;
-                            flex-direction: row;
-                            align-items: center;
-                            gap: 0.4rem;
-
-                            // display: none;
-                        }
-                    }
-                }
-
+            .chapterdetailswraper {
+                width: 100%;
+                max-width: 30rem;
+                padding: 0rem 4rem;
+                height: 40rem;
+                background: linear-gradient(87deg, #AFA7A1 -15.71%, #FE4200 28.99%, #FF805B 89.6%, #98B7C0 114.83%);
             }
-
-
         }
+
     }
 }
