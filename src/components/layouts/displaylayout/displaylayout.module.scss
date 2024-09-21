@@ -14,7 +14,7 @@
         max-height: calc(100dvh - 9.4rem);
         overflow-y: scroll;
 
-        background-color: hsl(0, 0, 16%);
+        background-color: hsl(0, 0, 14%);
 
         display: flex;
         flex-direction: column;
@@ -28,7 +28,18 @@
             justify-content: space-between;
             gap: 2rem;
 
-            background-color: hsla(27, 28%, 77%, 0.23);
+            background-color: hsla(27, 28%, 77%, 0.16);
+            position: relative;
+
+            &::after {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                content: '';
+                width: 100%;
+                background: var(--ln, linear-gradient(87deg, #AFA7A1 -15.71%, #FE4200 28.99%, #FF805B 89.6%, #98B7C0 114.83%));
+                height: 0.26rem;
+            }
 
             .titlewraper {
                 display: flex;
@@ -42,10 +53,18 @@
                     gap: 1.6rem;
 
                     .seriestitle {
-                        font-size: 2.8rem;
+                        font-size: 2.7rem;
                         line-height: 100%;
                         font-weight: 600;
                         color: hsl(0, 9, 98%);
+                    }
+
+                    .startingdate {
+                        font-size: 1.48rem;
+                        line-height: 100%;
+                        font-weight: 400;
+                        opacity: 0.6;
+                        padding: 0.6rem 0rem;
                     }
 
                     .subhead {
@@ -63,15 +82,15 @@
                 .bottomwraper {
                     display: flex;
                     flex-direction: row;
-                    gap: 1.6rem;
+                    gap: 1.4rem;
                     align-items: center;
 
                     .tool {
-                        height: 3rem;
+                        height: 3.2rem;
                         stroke: hsl(0, 0, 90%);
                     }
 
-                    .separator{
+                    .separator {
                         height: 1.6rem;
                         width: 0.14rem;
                         border-radius: 10rem;
@@ -85,11 +104,12 @@
                         gap: 1rem;
                         padding: 0rem 0rem;
 
-                        .creatorbadge{
+                        .creatorbadge {
                             display: flex;
                             align-items: center;
                             justify-content: center;
                             position: relative;
+
                             .creatorpic {
                                 display: flex;
                                 border-radius: 10rem;
@@ -102,13 +122,12 @@
                                 user-select: none;
                                 pointer-events: none;
                             }
-    
-                            .verifiedicon{
+
+                            .verifiedicon {
                                 position: absolute;
                                 bottom: 0;
                                 right: 0;
-                                // background-color: #fff;
-                                transform: translate(0.2rem, 0.2rem);
+                                transform: translate(0.16rem, 0.16rem);
                             }
                         }
 
@@ -148,6 +167,178 @@
                 width: 100%;
                 max-width: 29.58rem;
             }
+        }
+
+        .playlistwraper {
+            display: flex;
+            flex-direction: column;
+            max-width: 80rem;
+
+            padding: 1rem 4rem;
+
+
+            .playlistindex {
+                display: flex;
+                align-items: flex-start;
+                flex-direction: row;
+                padding: 1.6rem 2rem;
+                @include smooth;
+                cursor: pointer;
+                border-bottom: 0.03rem solid hsl(0, 0, 18%);
+
+                .index {
+                    width: 100%;
+                    max-width: 3.2rem;
+                    font-size: 1.3rem;
+                    display: flex;
+                    font-weight: 400;
+                    opacity: 0.5;
+                }
+
+                .subwraper {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: flex-start;
+                    gap: 1.6rem;
+                    width: 100%;
+
+                    .chapterwraper {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+
+                        .chapterbanner {
+                            display: flex;
+                            width: 100%;
+                            max-width: 20rem;
+                            object-fit: cover;
+                            object-position: top;
+                            aspect-ratio: 16/9;
+                            @include protectmedia;
+                        }
+                    }
+
+                    .chapterdetails {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 0.4rem;
+
+                        width: 100%;
+                        max-width: 40rem;
+
+                        .chaptertitle {
+                            font-size: 1.6rem;
+                            font-weight: 600;
+                        }
+
+                        .indextitle {
+                            width: 100%;
+                            font-size: 1.3rem;
+                            display: flex;
+                            font-weight: 400;
+                            opacity: 0.5;
+                        }
+
+                        .chaptersubtitle {
+                            font-size: 1.6rem;
+                            font-weight: 400;
+                            color: hsl(0, 0, 100%);
+                            opacity: 0.5;
+                            display: flex;
+                            flex-direction: row;
+                            align-items: center;
+                            gap: 0.4rem;
+
+                            // display: none;
+                        }
+                    }
+                }
+
+            }
+
+            .playlist {
+                display: flex;
+                align-items: flex-start;
+                flex-direction: row;
+                padding: 1.2rem 2rem;
+                @include smooth;
+                cursor: pointer;
+
+                &:hover {
+                    background-color: hsl(0, 0, 18%);
+                }
+
+                .index {
+                    width: 100%;
+                    max-width: 3.2rem;
+                    font-size: 1.3rem;
+                    display: flex;
+                    font-weight: 400;
+                    opacity: 0.6;
+                }
+
+                .subwraper {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: flex-start;
+                    gap: 1.6rem;
+                    width: 100%;
+
+                    .chapterwraper {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+
+                        .chapterbanner {
+                            display: flex;
+                            width: 100%;
+                            max-width: 20rem;
+                            object-fit: cover;
+                            object-position: top;
+                            aspect-ratio: 16/9;
+                            @include protectmedia;
+                        }
+                    }
+
+                    .chapterdetails {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 0.4rem;
+
+                        width: 100%;
+                        max-width: 40rem;
+
+                        .chaptertitle {
+                            font-size: 1.6rem;
+                            font-weight: 600;
+                        }
+
+                        .indextitle {
+                            width: 100%;
+                            font-size: 1.3rem;
+                            display: flex;
+                            font-weight: 400;
+                            opacity: 0.6;
+                        }
+
+                        .chaptersubtitle {
+                            font-size: 1.6rem;
+                            font-weight: 400;
+                            color: hsl(0, 0, 100%);
+                            opacity: 0.5;
+                            display: flex;
+                            flex-direction: row;
+                            align-items: center;
+                            gap: 0.4rem;
+
+                            // display: none;
+                        }
+                    }
+                }
+
+            }
+
+
         }
     }
 }
