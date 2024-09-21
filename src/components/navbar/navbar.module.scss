@@ -36,13 +36,43 @@
             padding: 1.8rem 1.2rem;
         }
 
-        .rightwraper{
+        .leftwraper {
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+
+            &:hover {
+                .back {
+                    transform: translateX(-1rem);
+                    opacity: 0.6;
+                }
+            }
+
+            .back {
+                display: flex;
+                align-items: center;
+                flex-direction: row;
+                gap: 0.3rem;
+                font-size: 1.36rem;
+                font-weight: 500;
+                padding: 1rem;
+                text-decoration: none;
+                @include smooth;
+
+                .backicon {
+                    fill: hsl(0, 0, 90%);
+                    height: 3rem;
+                }
+            }
+        }
+
+        .rightwraper {
             display: flex;
             align-items: center;
             gap: 0.6rem;
             flex-direction: row;
 
-            .uploadbtn{
+            .uploadbtn {
                 height: 5.2rem;
                 width: 5.2rem;
                 background: none;
@@ -54,37 +84,40 @@
 
                 background-color: hsl(0, 0, 11%);
                 @include smooth;
-                &:hover{
+
+                &:hover {
                     background-color: hsl(0, 0, 16%);
 
                 }
-                .uploadicon{
+
+                .uploadicon {
                     height: 3rem;
                     width: 3rem;
 
                     fill: hsl(0, 0, 60%);
                 }
             }
+
             .avatarbtn {
                 display: inline-flex;
                 align-items: center;
                 justify-content: center;
-    
+
                 background: none;
                 background-color: none;
                 cursor: pointer;
-    
+
                 border-radius: 10rem;
                 position: relative;
                 @include smooth;
-    
+
                 z-index: 90;
-    
-    
+
+
                 &:hover {
                     opacity: 0.8;
                 }
-    
+
                 .avatar {
                     @include protectmedia;
                     height: 5rem;
@@ -94,7 +127,7 @@
                     object-position: center;
                 }
             }
-    
+
         }
 
 
@@ -107,8 +140,8 @@
             background: none;
             cursor: pointer;
 
-            &:hover{
-                .morelogo{
+            &:hover {
+                .morelogo {
                     fill: hsl(0, 0, 60%);
                 }
             }

@@ -10,7 +10,16 @@ const NavBar = () => {
     return (
         <div className={styles.navwraper}>
             <div className={styles.nav}>
-                <Logo width='66' />
+                <div className={styles.leftwraper}>
+                    <Logo width='66' />
+
+                    <Link href="/" className={styles.back}>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 107 107" className={styles.backicon}>
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M64.2 70.7217L48.9466 54.7883L64.1028 38.7578L60.1195 34.7744L40.6885 54.6912L60.0223 74.8994L64.2 70.7217Z"/>
+                        </svg>
+                    </Link>
+                </div>
+
 
                 <div className={styles.rightwraper}>
 
