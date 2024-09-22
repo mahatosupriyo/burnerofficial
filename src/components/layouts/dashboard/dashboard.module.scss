@@ -1,0 +1,62 @@
+@use '../../../styles/essentials';
+@import '../../../styles/essentials';
+
+.displaycontainer {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+
+    .displaywraper {
+        width: 85%;
+        width: 100%;
+        height: 100%;
+        min-height: calc(100dvh - 9.4rem);
+        max-height: calc(100dvh - 9.4rem);
+        overflow-y: scroll;
+
+        background-color: hsl(0, 0, 14%);
+
+        display: flex;
+        flex-direction: column;
+        gap: 3.6rem;
+        padding-bottom: 10rem;
+
+        .header {
+            width: 100%;
+            display: flex;
+            align-items: flex-start;
+            // justify-content: center;
+            gap: 1.2rem;
+            padding: 5rem;
+            padding: 4rem;
+            flex-direction: column;
+
+            .chapterwraper {
+                transform: translateX(-1rem);
+                overflow: hidden;
+                display: flex;
+                flex-direction: row;
+                align-items: flex-start;
+            }
+
+            .headingtxt {
+                text-decoration: none;
+                font-size: 2rem;
+                color: #fff;
+                font-weight: 600;
+
+                background: linear-gradient(87deg, #AFA7A1 -15.71%, #FE4200 28.99%, #FF805B 89.6%, #98B7C0 114.83%);
+                background-clip: text;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+
+            .subheadingtxt {
+                font-size: 1.68;
+                font-weight: 400;
+                opacity: 0.6;
+            }
+        }
+
+    }
+}

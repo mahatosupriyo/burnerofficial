@@ -1,7 +1,7 @@
 import React from 'react'
-import styles from './home.module.scss'
+import styles from './series.module.scss'
 import NavBar from '@/components/navbar/navbar'
-import Dashboard from '@/components/layouts/dashboard/dashboard'
+import DisplayLayout from '@/components/layouts/displaylayout/displaylayout'
 
 const Home = () => {
 
@@ -9,7 +9,7 @@ const Home = () => {
         <div className={styles.wraper}>
             <NavBar />
             <div className={styles.container}>
-                <Dashboard/>
+                <DisplayLayout />
             </div>
         </div>
     )

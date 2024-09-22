@@ -53,22 +53,22 @@
                     gap: 1.6rem;
 
                     .seriestitle {
-                        font-size: 3rem;
+                        font-size: 4rem;
                         line-height: 100%;
                         font-weight: 600;
                         color: hsl(0, 9, 98%);
                     }
 
                     .startingdate {
-                        font-size: 1.48rem;
+                        font-size: 1.52rem;
                         line-height: 100%;
-                        font-weight: 400;
+                        font-weight: 500;
                         opacity: 0.6;
                         padding: 0.6rem 0rem;
                     }
 
                     .subhead {
-                        font-size: 1.8rem;
+                        font-size: 2rem;
                         font-weight: 600;
                         text-transform: lowercase;
 
@@ -179,17 +179,14 @@
             gap: 4rem;
 
 
-            @media only screen and (max-width: 66rem){
+            @media only screen and (max-width: 66rem) {
                 flex-direction: column;
             }
 
             .playlistwraper {
                 display: flex;
                 flex-direction: column;
-                // max-width: 80rem;
                 width: 100%;
-
-
 
                 .playlistindex {
                     display: flex;
@@ -325,6 +322,7 @@
                         align-items: flex-start;
                         gap: 1.6rem;
                         width: 100%;
+                        height: 100%;
 
                         .chapterwraper {
                             display: flex;
@@ -336,6 +334,7 @@
                                 display: flex;
                                 width: 100%;
                                 max-width: 20rem;
+                                max-width: 26rem;
                                 object-fit: cover;
                                 object-position: top;
                                 aspect-ratio: 16/9;
@@ -360,24 +359,31 @@
                         .chapterdetails {
                             display: flex;
                             flex-direction: column;
-                            gap: 0.4rem;
+                            gap: 4rem;
+                            justify-content: space-between;
+                            height: 100%;
+                            align-items: flex-start;
 
-                            width: 100%;
-                            max-width: 40rem;
-
-                            .chaptertitle {
-                                font-size: 1.6rem;
-                                font-weight: 600;
-                                user-select: none;
-                            }
-
-                            .indextitle {
-                                width: 100%;
-                                font-size: 1.3rem;
+                            .detailsubwraper {
                                 display: flex;
-                                font-weight: 400;
-                                opacity: 0.6;
-                                user-select: none;
+                                flex-direction: column;
+                                gap: 0.4rem;
+
+
+                                .chaptertitle {
+                                    font-size: 1.6rem;
+                                    font-weight: 600;
+                                    user-select: none;
+                                }
+
+                                .indextitle {
+                                    width: 100%;
+                                    font-size: 1.3rem;
+                                    display: flex;
+                                    font-weight: 400;
+                                    opacity: 0.6;
+                                    user-select: none;
+                                }
                             }
 
                             .chaptersubtitle {
@@ -414,7 +420,7 @@
                 gap: 4rem;
 
                 background: linear-gradient(87deg, #AFA7A1 -15.71%, #FE4200 28.99%, #FF805B 89.6%, #98B7C0 114.83%);
-            
+
                 font-size: 2.6rem;
                 font-weight: 600;
             }

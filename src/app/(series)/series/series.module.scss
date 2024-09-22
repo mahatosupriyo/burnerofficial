@@ -1,0 +1,24 @@
+@use '../../../styles/essentials';
+@use '../../../styles/typography';
+
+@import '../../../styles/essentials';
+@import '../../../styles/typography';
+
+.wraper {
+    background-color: hsl(0, 0%, 0%);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    .container {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 0rem 1.2rem 1rem 1.2rem;
+        max-width: 200rem;
+        gap: 0.9rem;
+    }
+}
