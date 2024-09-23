@@ -1,17 +1,27 @@
+@use '../../styles/essentials';
+@import '../../styles/essentials';
+
+$gap: 2rem;
+
+.feedwraper {
+  width: 100%;
+  position: relative;
+}
+
 .masonryGrid {
   display: flex;
-  margin-left: -8px; 
+  margin-left: -$gap;
   width: auto;
 }
 
 .masonryGridColumn {
-  padding-left: 8px; 
+  padding-left: $gap;
   background-clip: padding-box;
 }
 
 /* Style for each grid item */
 .gridItem {
-  margin-bottom: 8px;
+  margin-bottom: 2.8rem;
   overflow: hidden;
   transition: transform 0.2s ease-in-out;
 
@@ -21,5 +31,102 @@
     display: block;
     user-select: none;
     pointer-events: none;
+    border-radius: 1.6rem;
+  }
+
+  .creator {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.7rem;
+
+    user-select: none;
+    cursor: pointer;
+    @include smooth;
+    padding-top: 1.4rem;
+
+
+    &:hover {
+      opacity: 0.8;
+    }
+
+    .creatorname {
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+      gap: 0.3rem;
+      line-height: 100%;
+      font-size: 1.66rem;
+      font-weight: 500;
+      color: hsl(0, 0, 90%);
+    }
+
+    .avatar {
+      height: 3rem;
+      width: 3rem;
+      aspect-ratio: 1/1;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 100rem;
+    }
+  }
+}
+
+.subscriptionwarning {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20rem 0rem 0rem 0rem;
+  gap: 0.8rem;
+
+  position: absolute;
+  bottom: 0;
+  left: 0;
+
+  background: linear-gradient(180deg, rgba(13, 13, 13, 0.00) 0%, #0D0D0D 30.49%, #0D0D0D 100%);
+
+
+  .headingtxt {
+    z-index: 100;
+    font-size: 2.2rem;
+    font-weight: 600;
+    color: hsl(0, 0, 90%);
+
+    .inspiration {
+      background: linear-gradient(87deg, #AFA7A1 -15.71%, #FE4200 28.99%, #FF805B 89.6%, #98B7C0 114.83%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  }
+
+  .subheadingtxt {
+    z-index: 100;
+
+    font-size: 1.66rem;
+    font-weight: 400;
+    color: hsl(0, 0, 50%);
+  }
+
+  .btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    z-index: 100;
+
+    margin: 1.6rem 0rem;
+    padding: 1.56rem 1.66rem;
+    border-radius: 100rem;
+
+    font-size: 1.42rem;
+    font-size: 1.54rem;
+    font-weight: 600;
+    cursor: pointer;
+
+    background-color: #fff;
+
   }
 }

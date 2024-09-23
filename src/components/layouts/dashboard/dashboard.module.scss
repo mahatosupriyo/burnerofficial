@@ -15,6 +15,7 @@
         overflow-y: scroll;
 
         background-color: hsl(0, 0, 14%);
+        background-color: hsl(0, 0, 5%);
 
         display: flex;
         flex-direction: column;
@@ -31,14 +32,6 @@
             padding: 4rem;
             flex-direction: column;
 
-            .chapterwraper {
-                transform: translateX(-1rem);
-                overflow: hidden;
-                display: flex;
-                flex-direction: row;
-                align-items: flex-start;
-            }
-
             .headingtxt {
                 text-decoration: none;
                 font-size: 2rem;
@@ -51,11 +44,8 @@
                 -webkit-text-fill-color: transparent;
             }
 
-            .subheadingtxt {
-                font-size: 1.68;
-                font-weight: 400;
-                opacity: 0.6;
-            }
+            
+
         }
 
     }
