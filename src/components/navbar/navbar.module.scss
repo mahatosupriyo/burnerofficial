@@ -40,10 +40,10 @@
             display: flex;
             border-radius: 100rem;
             background-color: hsl(0, 0, 16%);
-            font-size: 1.66rem;
+            font-size: 1.7rem;
             padding: 1.4rem 1.6rem;
             align-items: center;
-            gap: 0.6rem;
+            gap: 1rem;
             width: 100%;
             max-width: 34rem;
             flex-direction: row;
@@ -52,6 +52,7 @@
             line-height: 100%;
             line-height: auto;
             cursor: pointer;
+            user-select: none;
 
             @include smooth;
 

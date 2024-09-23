@@ -1,8 +1,7 @@
 "use client"
 import React from 'react'
 import styles from './dashboard.module.scss'
-import Link from 'next/link'
-import ChapterCard from '@/components/molecules/cards/chaptercard/chaptercard'
+import Feed from '@/components/atoms/feed'
 
 const Dashboard = () => {
     return (
@@ -11,6 +10,7 @@ const Dashboard = () => {
 
                 <div className={styles.header}>
                     <h1 className={styles.headingtxt}>inspiration</h1>
+                    <Feed/>
                 </div>
 
             </section>

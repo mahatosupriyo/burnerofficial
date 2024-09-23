@@ -1,0 +1,25 @@
+.masonryGrid {
+  display: flex;
+  margin-left: -8px; 
+  width: auto;
+}
+
+.masonryGridColumn {
+  padding-left: 8px; 
+  background-clip: padding-box;
+}
+
+/* Style for each grid item */
+.gridItem {
+  margin-bottom: 8px;
+  overflow: hidden;
+  transition: transform 0.2s ease-in-out;
+
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+    user-select: none;
+    pointer-events: none;
+  }
+}
