@@ -38,41 +38,6 @@
             gap: 2.4rem;
         }
 
-        .searchbox {
-            display: flex;
-            border-radius: 100rem;
-            background-color: hsl(0, 0, 16%);
-            font-size: 1.7rem;
-            padding: 1.4rem 1.6rem;
-            align-items: center;
-            gap: 1rem;
-            width: 100%;
-            max-width: 34rem;
-            flex-direction: row;
-            color: hsl(0, 0, 56%);
-            font-weight: 500;
-            line-height: 100%;
-            line-height: auto;
-            cursor: pointer;
-            user-select: none;
-
-            @include smooth;
-
-            &:hover {
-                background-color: hsl(0, 0, 14%);
-
-                .searchicon {
-                    fill: hsl(0, 0, 80%);
-                }
-            }
-
-            .searchicon {
-                height: 2.4rem;
-                fill: hsl(0, 0, 56%);
-                @include smooth;
-            }
-        }
-
         .leftwraper {
             display: flex;
             align-items: center;

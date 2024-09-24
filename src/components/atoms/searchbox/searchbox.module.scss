@@ -1,0 +1,168 @@
+@use '../../../styles/essentials';
+@use '../../../styles/typography';
+
+@import '../../../styles/essentials';
+@import '../../../styles/typography';
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    // height: 100px;
+    padding: 1.4rem;
+    background-color: hsl(0%, 0%, 8%);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    z-index: 9999;
+    min-height: 70rem;
+}
+
+.searchbox {
+    display: flex;
+    border-radius: 100rem;
+    background-color: hsl(0, 0, 16%);
+    font-size: 1.7rem;
+    padding: 1.4rem 1.6rem;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    max-width: 34rem;
+    flex-direction: row;
+    color: hsl(0, 0, 56%);
+    font-weight: 500;
+    line-height: 100%;
+    line-height: auto;
+    cursor: pointer;
+    user-select: none;
+
+    @include smooth;
+
+    &:hover {
+        background-color: hsl(0, 0, 14%);
+
+        .searchicon {
+            fill: hsl(0, 0, 80%);
+        }
+    }
+
+    .searchicon {
+        height: 2.4rem;
+        fill: hsl(0, 0, 56%);
+        @include smooth;
+    }
+}
+
+
+
+
+// new
+
+/* Styles for the button */
+
+/* Background overlay that dims the rest of the page */
+.backgroundOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: hsla(0, 0%, 0%, 0.9);
+    /* You can adjust the color and opacity here */
+    z-index: 999;
+
+    /* Lower than the overlay container */
+
+}
+
+/* Container for the overlay */
+.overlayContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    // max-width: 60rem;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    // align-items: center;
+    max-height: 70rem;
+
+
+    z-index: 1000;
+}
+
+/* The actual content of the overlay */
+.overlayContent {
+    width: 100%;
+    max-width: 70rem;
+    padding: 1.6rem;
+    background-color: hsl(0, 0%, 10%);
+    border-radius: 10px;
+    // box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    // justify-content: center;
+    z-index: 1001;
+    /* Higher than everything else */
+
+    .searchinput {
+        width: 100%;
+        max-width: 100%;
+
+        display: flex;
+        border-radius: 100rem;
+        background-color: hsl(0, 0, 16%);
+        padding: 0rem 1.6rem;
+        align-items: center;
+        gap: 1rem;
+        width: 100%;
+        // max-width: 34rem;
+        flex-direction: row;
+
+        cursor: pointer;
+        user-select: none;
+
+        overflow: hidden;
+        @include smooth;
+
+        &:hover {
+            background-color: hsl(0, 0, 14%);
+
+            .searchicon {
+                fill: hsl(0, 0, 80%);
+            }
+        }
+
+        .inputarea {
+            height: 100%;
+            width: 100%;
+
+            padding: 1.6rem 0rem;
+            font-size: 1.7rem;
+            color: hsl(0, 0, 90%);
+            line-height: 100%;
+            font-weight: 500;
+            overflow: hidden;
+
+            background: none;
+            &::placeholder {
+                font-size: 1.7rem;
+                color: hsl(0, 0, 56%);
+                line-height: 100%;
+                font-weight: 500;
+            }
+        }
+
+        .searchicon {
+            height: 2.4rem;
+            fill: hsl(0, 0, 56%);
+            @include smooth;
+        }
+    }
+}
