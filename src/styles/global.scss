@@ -16,7 +16,6 @@
 
 html {
     font-size: 62.5%;
-    // font-size: 54.5%;
 }
 
 a {
@@ -25,20 +24,21 @@ a {
 
 ::-webkit-scrollbar {
     width: 0.9rem;
+    display: none;
 }
 
-::-webkit-scrollbar-track {
-    background: transparent;
-}
+// ::-webkit-scrollbar-track {
+//     background: transparent;
+// }
 
-::-webkit-scrollbar-thumb {
-    background: hsla(0, 0%, 50%, 0.5);
-    transition: 0.2s ease-in-out;
-}
+// ::-webkit-scrollbar-thumb {
+//     background: hsla(0, 0%, 50%, 0.5);
+//     transition: 0.2s ease-in-out;
+// }
 
-::-webkit-scrollbar-thumb:hover {
-    background: hsl(0, 0%, 40%);
-}
+// ::-webkit-scrollbar-thumb:hover {
+//     background: hsl(0, 0%, 40%);
+// }
 
 ::selection {
     // background-color: #1dd75e;
