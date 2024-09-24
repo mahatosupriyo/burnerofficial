@@ -31,6 +31,16 @@
             background-color: hsla(27, 28%, 77%, 0.16);
             position: relative;
 
+
+            @media only screen and (max-width: 70rem) {
+                padding: 4rem 1.6rem;
+            }
+
+            @media only screen and (max-width: 60rem) {
+                flex-direction: column-reverse;
+                gap: 4rem;
+            }
+
             &::after {
                 position: absolute;
                 bottom: 0;
@@ -46,6 +56,10 @@
                 flex-direction: column;
                 justify-content: space-between;
                 gap: 0.6rem;
+
+                @media only screen and (max-width: 70rem){
+                    gap: 4rem;
+                }
 
                 .topicwraper {
                     display: flex;
@@ -166,6 +180,10 @@
                 object-position: center;
                 width: 100%;
                 max-width: 29.58rem;
+
+                @media only screen and (max-width: 60rem) {
+                    max-width: 100%;
+                }
             }
         }
 
@@ -178,8 +196,12 @@
             padding: 1rem 4rem;
             gap: 4rem;
 
+            @media only screen and (max-width: 70rem){
+                padding: 1rem 1rem;
+            }
 
-            @media only screen and (max-width: 66rem) {
+
+            @media only screen and (max-width: 56rem) {
                 flex-direction: column;
             }
 
@@ -188,95 +210,6 @@
                 flex-direction: column;
                 width: 100%;
 
-                .playlistindex {
-                    display: flex;
-                    align-items: flex-start;
-                    flex-direction: row;
-                    padding: 1.6rem 2rem;
-                    @include smooth;
-                    cursor: pointer;
-                    border-bottom: 0.03rem solid hsl(0, 0, 18%);
-
-
-                    display: none;
-
-                    .index {
-                        width: 100%;
-                        max-width: 3.2rem;
-                        font-size: 1.3rem;
-                        display: flex;
-                        font-weight: 400;
-                        opacity: 0.5;
-                        user-select: none;
-                    }
-
-                    .subwraper {
-                        display: flex;
-                        flex-direction: row;
-                        align-items: flex-start;
-                        gap: 1.6rem;
-                        width: 100%;
-
-                        .chapterwraper {
-                            display: flex;
-                            align-items: center;
-                            justify-content: center;
-
-                            .chapterbanner {
-                                display: flex;
-                                width: 100%;
-                                max-width: 20rem;
-                                object-fit: cover;
-                                object-position: top;
-                                aspect-ratio: 16/9;
-                                @include protectmedia;
-                            }
-                        }
-
-                        .chapterdetails {
-                            display: flex;
-                            flex-direction: column;
-                            gap: 0.4rem;
-
-                            width: 100%;
-                            max-width: 40rem;
-
-
-
-                            .chaptertitle {
-                                font-size: 1.6rem;
-                                font-weight: 600;
-                                user-select: none;
-
-                            }
-
-                            .indextitle {
-                                width: 100%;
-                                font-size: 1.3rem;
-                                display: flex;
-                                font-weight: 400;
-                                opacity: 0.5;
-                                user-select: none;
-
-                            }
-
-                            .chaptersubtitle {
-                                font-size: 1.6rem;
-                                font-weight: 400;
-                                color: hsl(0, 0, 100%);
-                                opacity: 0.5;
-                                display: flex;
-                                flex-direction: row;
-                                align-items: center;
-                                gap: 0.4rem;
-                                user-select: none;
-
-                                // display: none;
-                            }
-                        }
-                    }
-
-                }
 
                 .playlist {
                     display: flex;
@@ -286,6 +219,10 @@
                     @include smooth;
                     cursor: pointer;
                     overflow: hidden;
+
+                    @media only screen and (max-width: 70rem){
+                        padding: 1rem;
+                    }
 
                     &:hover {
                         background-color: hsl(0, 0, 18%);
@@ -305,7 +242,6 @@
                     }
 
 
-
                     .index {
                         width: 100%;
                         max-width: 3.2rem;
@@ -323,6 +259,11 @@
                         gap: 1.6rem;
                         width: 100%;
                         height: 100%;
+
+                        @media only screen and (max-width: 70rem){
+                            flex-direction: column;
+                            gap: 1rem;
+                        }
 
                         .chapterwraper {
                             display: flex;

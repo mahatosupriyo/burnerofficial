@@ -28,9 +28,13 @@
             align-items: flex-start;
             // justify-content: center;
             gap: 3rem;
-            padding: 5rem;
             padding: 4rem;
             flex-direction: column;
+
+            @media only screen and (max-width: 70rem){
+                padding: 3rem 0.6rem;
+                align-items: center;
+            }
 
             .headingtxt {
                 text-decoration: none;

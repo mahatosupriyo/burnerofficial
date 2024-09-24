@@ -55,8 +55,6 @@ const DisplayLayout = () => {
                 <div className={styles.datawraper}>
 
                     <div className={styles.playlistwraper}>
-
-
                         <motion.div
                             whileTap={{ opacity: 0.7 }}
                             className={styles.playlist}
