@@ -1,6 +1,6 @@
 "use client"
 import styles from './feed.module.scss'
-import {motion} from 'framer-motion'
+import { motion } from 'framer-motion'
 import Masonry from 'react-masonry-css'
 
 const dummyImages = [
@@ -20,8 +20,8 @@ const dummyImages = [
 
 const breakpointColumnsObj = {
   default: 4, // 4 columns by default
-  1100: 3,    // 3 columns when the screen width is 1100px
-  700: 2,     // 2 columns when the screen width is 700px
+  1100: 2,    // 3 columns when the screen width is 1100px
+  700: 1,     // 2 columns when the screen width is 700px
   500: 1      // 1 column when the screen width is 500px
 };
 
@@ -59,11 +59,11 @@ const Feed = () => {
           Keep scrolling with new <span className={styles.inspiration}>inspiration</span>.
         </h2>
         <p className={styles.subheadingtxt}>
-          Enjoy fresh new inspirations every day with Burner Pro.
+          fresh new inspirations every day with Burner Pro.
         </p>
-        <motion.button 
-        className={styles.btn}
-        whileTap={{opacity: 0.6}}
+        <motion.button
+          className={styles.btn}
+          whileTap={{ opacity: 0.6 }}
         >
           Subscribe to Pro
         </motion.button>
