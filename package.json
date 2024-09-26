@@ -13,13 +13,13 @@
     "framer-motion": "^11.1.7",
     "gsap": "^3.12.5",
     "i": "^0.3.7",
+    "lottie-react": "^2.4.0",
     "lottie-web": "^5.12.2",
     "lucide-react": "^0.441.0",
     "next": "14.2.3",
     "npm": "^10.7.0",
     "react": "^18",
     "react-dom": "^18",
-    "react-lottie": "^1.2.4",
     "react-masonry-css": "^1.0.16",
     "react-use": "^17.5.1",
     "sass": "^1.76.0",
@@ -30,6 +30,7 @@
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@types/react-lottie": "^1.2.10",
     "typescript": "^5"
   }
 }
