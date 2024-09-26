@@ -81,8 +81,8 @@
 /* The actual content of the overlay */
 .overlayContent {
     width: 100%;
-    max-width: 70rem;
-    padding: 0rem 1.6rem;
+    max-width: 76rem;
+    padding: 0rem 0rem 0rem 1.6rem;
     background-color: hsl(0, 0%, 10%);
     border-radius: 10px;
     box-shadow: 0rem 0.4rem 2rem rgba(0, 0, 0, 0.3);
@@ -99,7 +99,8 @@
     .drops {
         width: 100%;
         display: flex;
-        padding: 0rem 2.2rem;
+        padding: 0rem 0.7rem;
+        padding-right: 1.4rem;
         padding-bottom: 2rem;
         height: 100%;
         max-height: 50rem;
@@ -114,24 +115,33 @@
         align-items: flex-start;
         gap: 1.8rem;
 
+        @media only screen and (max-width: 80rem){
+            padding-right: 2.6rem;
+        }
+
         .dropswraper {
             width: 100%;
             display: flex;
             align-items: flex-start;
             flex-direction: column;
-            gap: 2rem;
+            gap: 1rem;
 
             .drop {
+                text-decoration: none;
                 display: flex;
                 flex-direction: row;
                 align-items: flex-start;
-                gap: 1.2rem;
+                gap: 1.3rem;
                 width: 100%;
                 height: 100%;
-                padding: 1rem;
+                padding: 1.6rem 1rem;
                 @include smooth;
                 cursor: pointer;
 
+                .index{
+                    min-width: 1.3rem;
+                    color: hsl(0, 0, 30%);
+                }
                 &:hover {
                     background-color: hsl(0, 0, 14%);
                 }
@@ -160,15 +170,10 @@
                         }
 
                         .subheading {
-                            color: hsl(0, 0, 50%);
+                            color: hsl(0, 0, 40%);
                             font-size: 1.36rem;
                             text-align: left;
                             font-weight: 500;
-
-                            background: var(--ln, linear-gradient(87deg, #AFA7A1 -15.71%, #FE4200 28.99%, #FF805B 89.6%, #98B7C0 114.83%));
-                            background-clip: text;
-                            -webkit-background-clip: text;
-                            -webkit-text-fill-color: transparent;
                         }
                     }
 
@@ -188,19 +193,6 @@
                             justify-content: center;
                             position: relative;
 
-                            .creatorpic {
-                                display: flex;
-                                border-radius: 10rem;
-                                overflow: hidden;
-                                height: 3.2rem;
-                                width: 3.2rem;
-                                aspect-ratio: 1/1;
-                                object-position: center;
-                                object-fit: cover;
-                                user-select: none;
-                                pointer-events: none;
-                            }
-
                             .verifiedicon {
                                 position: absolute;
                                 bottom: 0;
@@ -218,13 +210,13 @@
                             .headtxt {
                                 font-size: 1.36rem;
                                 font-weight: 500;
+                                color: hsl(0, 0, 40%);
                             }
 
                             .subheadtxt {
                                 font-size: 1.5rem;
                                 font-weight: 500;
                                 color: hsl(0, 0, 60%);
-                                // opacity: 0.5;
                                 display: flex;
                                 flex-direction: row;
                                 align-items: center;
@@ -239,6 +231,7 @@
                     aspect-ratio: 1/1;
                     object-fit: cover;
                     max-height: 16rem;
+                    @include protectmedia;
                 }
             }
 
@@ -321,9 +314,9 @@
 
     .searchinput {
         width: 100%;
-        max-width: 100%;
+        // max-width: 100%;
 
-        margin: 1.6rem;
+        margin: 1.6rem 3.2rem 1.6rem 1.6rem;
 
         display: flex;
         border-radius: 100rem;
@@ -331,8 +324,6 @@
         padding: 0rem 1.6rem;
         align-items: center;
         gap: 1rem;
-        width: 100%;
-        // max-width: 34rem;
         flex-direction: row;
 
         cursor: pointer;

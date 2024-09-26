@@ -111,13 +111,13 @@ const SearchBox = () => {
                                 </div>
 
                                 <div className={styles.drops}>
-                                    DROPs
 
                                     <div className={styles.dropswraper}>
                                         {dummyImages.map((image, index) => (
-                                            <div key={index} className={styles.drop}>
-                                                <p>{index + 1}</p>
+                                            <Link draggable="false" href="/series" key={index} className={styles.drop}>
+                                                <p className={styles.index}>{index + 1}</p>
                                                 <img
+                                                    draggable="false"
                                                     src={image}
                                                     className={styles.seriesbanner}
                                                 />
@@ -143,7 +143,7 @@ const SearchBox = () => {
                                                     </div>
 
                                                 </div>
-                                            </div>
+                                            </Link>
                                         ))}
                                     </div>
 
