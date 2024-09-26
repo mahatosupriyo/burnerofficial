@@ -26,7 +26,7 @@ $gap: 1.6rem;
 
 /* Style for each grid item */
 .gridItem {
-  margin-bottom: 2.8rem;
+  margin-bottom: $gap;
   overflow: hidden;
   transition: transform 0.2s ease-in-out;
   position: relative;
@@ -209,45 +209,86 @@ $gap: 1.6rem;
     // border-radius: 1rem;
     margin: 2rem;
 
-    .creator {
+    .creatorwraper {
       display: flex;
       flex-direction: row;
+      width: 100%;
+      justify-content: space-between;
       align-items: center;
-      gap: 1rem;
-      padding: 1rem 0rem;
+      padding: 0.6rem 0rem;
+      flex-wrap: wrap;
 
-      .avatar {
-        height: 3.8rem;
-        width: 3.8rem;
-        border-radius: 100rem;
-        object-fit: cover;
-        object-position: center;
-        user-select: none;
-        pointer-events: none;
-      }
-
-      .creationdetails{
+      .creator {
         display: flex;
-        flex-direction: column;
-        gap: 0.1rem;
+        flex-direction: row;
+        align-items: center;
+        gap: 1rem;
+        padding: 1rem 0rem;
+
+        .avatar {
+          height: 4rem;
+          width: 4rem;
+          border-radius: 100rem;
+          object-fit: cover;
+          object-position: center;
+          user-select: none;
+          pointer-events: none;
+        }
+
+        .creationdetails {
+          display: flex;
+          flex-direction: column;
+          gap: 0rem;
 
 
-        .subheading{
-          font-size: 1.36rem;
-          color: hsl(0, 0, 50%);
-          font-weight: 400;
+          .subheading {
+            font-size: 1.6rem;
+            color: hsl(0, 0, 50%);
+            font-weight: 400;
+          }
+
+          .username {
+            font-size: 1.6rem;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+          }
         }
-        .username{
-          font-size: 1.6rem;
-          font-weight: 500;
-          display: inline-flex;
-          align-items: center;
-          gap: 0.3rem;
-        }
+
       }
 
+      .making {
+        font-size: 1.6rem;
+        font-weight: 500;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        line-height: 100%;
+        color: #FF805B;
+        padding: 2rem 0rem;
+        cursor: pointer;
+        overflow: hidden;
+        
+        @include smooth;
 
+        &:hover {
+          opacity: 0.6;
+          color: hsl(14, 100%, 66%);
+
+          .playicon {
+            transform: translateX(1rem);
+            opacity: 0;
+          }
+        }
+
+        .playicon {
+          @include smooth;
+        }
+      }
     }
+
+
 
     .selectedImage {
       object-fit: contain;
