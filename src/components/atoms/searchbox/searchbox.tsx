@@ -148,35 +148,6 @@ const SearchBox = () => {
                                     </div>
 
                                 </div>
-
-                                <div className={styles.bottomlayer}>
-                                    <div className={styles.quicklinks}>
-                                        <Link className={styles.quicklink} href="/">
-                                            trends
-                                        </Link>
-
-                                        <Link className={styles.quicklink} href="/">
-                                            freebies
-                                        </Link>
-
-                                        <Link className={styles.quicklink} href="/">
-                                            modern fonts
-                                        </Link>
-
-                                        <Link className={styles.quicklink} href="/">
-                                            checklist
-                                        </Link>
-                                    </div>
-                                    <div className={styles.searchfooter}>
-                                        <div className={styles.links}>
-                                            <a className={styles.linkchip} target='_blank' href="/company/terms">Terms</a>
-                                            <a className={styles.linkchip} target='_blank' href="/company/cancellation">Refunds</a>
-                                            <a className={styles.linkchip} target='_blank' href="/company/delivery">Shipping</a>
-                                        </div>
-                                    </div>
-                                </div>
-
-
                             </div>
                         </motion.div>
                     </>
