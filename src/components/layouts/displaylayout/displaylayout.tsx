@@ -24,7 +24,7 @@ const DisplayLayout = () => {
                                 <div className={styles.creatorbadge}>
                                     <img
                                         className={styles.creatorpic}
-                                        src="https://middaycdn.s.llnwi.net/Radiocity-images/images/uploads/darshan%20raval%20india%20tour_d.jpg"
+                                        src="https://images.unsplash.com/photo-1726609939114-78ca262451e9?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxMzZ8fHxlbnwwfHx8fHw%3D"
                                         draggable="false"
                                     />
                                     <svg xmlns="http://www.w3.org/2000/svg" height="14" className={styles.verifiedicon} viewBox="0 0 45 43" fill="none">
@@ -48,7 +48,7 @@ const DisplayLayout = () => {
                     <img
                         className={styles.banner}
                         draggable="false"
-                        src='https://resources.tidal.com/images/0a34410d/65fc/40cc/afe7/8d13996b30cf/640x640.jpg'
+                        src='https://images.unsplash.com/photo-1726609939114-78ca262451e9?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxMzZ8fHxlbnwwfHx8fHw%3D'
                     />
                 </div>
 
