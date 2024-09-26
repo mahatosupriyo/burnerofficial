@@ -9,7 +9,6 @@ const Dashboard = () => {
             <section className={styles.displaywraper}>
 
                 <div className={styles.header}>
-                    <h1 className={styles.headingtxt}>inspiration</h1>
                     <Feed/>
                 </div>
 
