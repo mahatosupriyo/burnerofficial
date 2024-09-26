@@ -87,7 +87,7 @@ const Feed = () => {
             <motion.div
               className={styles.backgroundOverlay}
               initial={{ opacity: 0 }}
-              animate={{ opacity: 0.8 }}
+              animate={{ opacity: 0.5 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
             />
@@ -130,7 +130,7 @@ const Feed = () => {
                       <path fill-rule="evenodd" clip-rule="evenodd" d="M118.332 79.836L60 125.668V34L118.332 79.836ZM104.844 79.836L68.332 108.52V51.149L104.844 79.836Z" />
                       <path d="M104.844 79.836L68.332 108.52V51.149L104.844 79.836Z"  />
                     </svg>
-                    Behind scenes
+                    Behind the scenes
 
                   </div>
                 </div>
