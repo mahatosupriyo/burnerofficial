@@ -20,6 +20,12 @@
         max-width: 200rem;
         gap: 0.9rem;
 
+        .highpriority{
+            color: hsl(0, 0, 40%);
+            font-size: 1.46rem;
+            font-weight: 500;
+        }
+
         .mainwraper {
             min-height: 70vh;
             display: flex;

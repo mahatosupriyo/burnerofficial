@@ -18,6 +18,9 @@ const SuccessPage = () => {
                         we're processing your payment.
                     </p>
                 </div>
+                <p className={styles.highpriority}>
+                    You can close the page. Don't worry, we'll let you know.
+                </p>
             </div>
         </div>
     )

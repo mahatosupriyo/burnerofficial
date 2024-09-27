@@ -72,9 +72,12 @@
 
         .rightwraper {
             display: flex;
-            align-items: center;
+            align-items: flex-end;
+            justify-content: flex-end;
             gap: 0.6rem;
             flex-direction: row;
+            width: 100%;
+            max-width: 8rem;
 
             .uploadbtn {
                 height: 5.2rem;
@@ -122,40 +125,46 @@
                     opacity: 0.8;
                 }
 
-                .avatar {
-                    @include protectmedia;
-                    height: 5rem;
-                    width: 5rem;
-                    border-radius: 10rem;
-                    object-fit: cover;
-                    object-position: center;
+                .settingslink{
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    text-decoration: none;
+
+                    .avatar {
+                        @include protectmedia;
+                        height: 5rem;
+                        width: 5rem;
+                        border-radius: 10rem;
+                        object-fit: cover;
+                        object-position: center;
+                    }
                 }
+
             }
 
         }
 
 
-        .morebtn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0.4rem;
-            box-sizing: content-box;
-            background: none;
-            cursor: pointer;
+    }
+}
 
-            &:hover {
-                .morelogo {
-                    fill: hsl(0, 0, 60%);
-                }
-            }
+.btn {
+    display: flex;
+    flex-wrap: nowrap;
+    background-color: hsl(0, 0, 90%);
+    color: hsl(0, 0, 10%);
+    font-size: 1.56rem;
+    border-radius: 10rem;
+    font-weight: 600;
+    text-wrap: nowrap;
+    padding: 1.7rem 2rem;
 
-            .morelogo {
-                @include smooth;
-                fill: #fff;
-            }
-        }
+    @include smooth;
+    user-select: none;
+    cursor: pointer;
 
-
+    &:hover {
+        background-color: hsl(0, 0, 70%);
     }
 }

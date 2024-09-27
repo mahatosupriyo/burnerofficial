@@ -1,11 +1,20 @@
+"use client"
 import React from 'react';
 import styles from './authbtn.module.scss';
+import { signIn } from 'next-auth/react';
 
 interface AuthBtnsProps {
     provider: 'google' | 'github';
 }
 
 const AuthBtn: React.FC<AuthBtnsProps> = ({ provider }) => {
+    const handleSignIn = async (providerName: string) => {
+        try {
+            await signIn(providerName, { callbackUrl: '/' });
+        } catch (error) {
+            console.error('Failed to sign in:', error);
+        }
+    };
     return (
         <>
             {provider === 'google' && (
@@ -21,7 +30,7 @@ const AuthBtn: React.FC<AuthBtnsProps> = ({ provider }) => {
             )}
 
             {provider === 'github' && (
-                <button className={styles.provider}>
+                <button onClick={() => handleSignIn('github')} className={styles.provider}>
                     <svg xmlns="http://www.w3.org/2000/svg" className={styles.providerlogo} width="26" height="26" viewBox="0 0 143 143" fill="none">
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M71.5 2C31.9963 2 0 33.9963 0 73.5C0 105.139 20.4669 131.862 48.8881 141.336C52.4631 141.961 53.8038 139.816 53.8038 137.939C53.8038 136.241 53.7144 130.611 53.7144 124.623C35.75 127.929 31.1025 120.243 29.6725 116.221C28.8681 114.166 25.3825 107.82 22.3438 106.122C19.8413 104.781 16.2663 101.474 22.2544 101.385C27.885 101.296 31.9069 106.569 33.2475 108.714C39.6825 119.528 49.9606 116.489 54.0719 114.613C54.6975 109.965 56.5744 106.837 58.63 105.049C42.7213 103.262 26.0975 97.095 26.0975 69.7463C26.0975 61.9706 28.8681 55.5356 33.4263 50.5306C32.7113 48.7431 30.2088 41.4144 34.1413 31.5831C34.1413 31.5831 40.1294 29.7063 53.8038 38.9119C59.5238 37.3031 65.6013 36.4987 71.6788 36.4987C77.7563 36.4987 83.8338 37.3031 89.5538 38.9119C103.228 29.6169 109.216 31.5831 109.216 31.5831C113.149 41.4144 110.646 48.7431 109.931 50.5306C114.489 55.5356 117.26 61.8813 117.26 69.7463C117.26 97.1844 100.547 103.262 84.6381 105.049C87.23 107.284 89.4644 111.574 89.4644 118.277C89.4644 127.84 89.375 135.526 89.375 137.939C89.375 139.816 90.7156 142.051 94.2906 141.336C122.533 131.862 143 105.049 143 73.5C143 33.9963 111.004 2 71.5 2Z" fill="white" />
                     </svg>

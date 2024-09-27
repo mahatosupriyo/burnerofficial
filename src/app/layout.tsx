@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "../styles/global.scss";
 import Head from "next/head";
+import { SessionProvider } from "next-auth/react"
 
 export const metadata: Metadata = {
   title: "Edu Burner",
@@ -9,17 +10,16 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: {
+  children: React.ReactNode
+}) {
   return (
     <html lang="en">
-      <Head>
-        <link rel="stylesheet" href="https://use.typekit.net/aqs6zch.css"></link>
-      </Head>
       <body>
-        {children}
+        <SessionProvider>
+          <main>{children}</main>
+        </SessionProvider>
       </body>
     </html>
-  );
+  )
 }

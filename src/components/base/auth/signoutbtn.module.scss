@@ -1,0 +1,19 @@
+@use '../../../styles/essentials';
+@import '../../../styles/essentials';
+
+.signoutbtn {
+    padding: 1.8rem 2rem;
+
+    background-color: hsl(0, 52%, 53%);
+    border-radius: 6rem;
+    font-weight: 600;
+    font-size: 1.56rem;
+    cursor: pointer;
+    line-height: 100%;
+    color: hsl(0, 52%, 98%);
+    @include smooth;
+
+    &:hover {
+        background-color: hsl(0, 52%, 40%);
+    }
+}
