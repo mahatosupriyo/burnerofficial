@@ -59,7 +59,7 @@ export default function SettingsLayout() {
                             <div className={styles.mydata}>
                                 <div className={styles.plan}>
                                     <p className={styles.sectionsubhead}>Subscription</p>
-                                    <h1 className={styles.sectionhead}>Burner Freemium</h1>
+                                    <h1 className={styles.sectionhead}>Freemium</h1>
                                 </div>
 
                                 <div className={styles.plandetails}>

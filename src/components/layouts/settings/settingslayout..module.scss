@@ -30,6 +30,10 @@
             gap: 1rem;
             padding: 4rem 4rem 0rem 4rem;
 
+            @media only screen and (max-width: 60rem){
+                padding: 4rem 0rem;
+            }
+
             .subwraper {
                 display: flex;
                 gap: 0rem;
@@ -72,6 +76,10 @@
                     width: 100%;
                     @include smooth;
 
+                    @media only screen and (max-width: 60rem){
+                        padding: 1.8rem 1rem;
+                    }
+
                     &:hover {
                         background-color: hsl(0, 0, 22%);
                     }
@@ -94,6 +102,10 @@
                     width: 100%;
                     @include smooth;
 
+                    @media only screen and (max-width: 60rem){
+                        padding: 1.8rem 1rem;
+                    }
+
                     &:hover {
                         color: hsl(0, 0, 100%);
                         background-color: hsl(0, 58%, 52%);
@@ -110,6 +122,10 @@
                     background-color: hsl(0, 0, 16%);
                     padding: 4rem 2.6rem;
                     border-bottom: 0.03rem solid hsl(0, 0, 26%);
+
+                    @media only screen and (max-width: 60rem){
+                        padding: 4rem 1rem;
+                    }
 
                     .plan {
                         display: flex;
