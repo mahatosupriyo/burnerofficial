@@ -59,19 +59,19 @@ $default-animation-duration: 1.5s;
     width: 100%;
     max-width: 70rem;
     align-items: center;
-    gap: 4rem;
+    gap: 3rem;
 
     .header {
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        gap: 4rem;
+        gap: 2rem;
 
         .avatar {
             display: flex;
             border-radius: 200rem;
-            @include skeleton-loading(8rem, 5rem);
+            @include skeleton-loading(8rem, 8rem);
         }
 
         .name {
