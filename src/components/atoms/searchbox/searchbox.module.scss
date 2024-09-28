@@ -61,7 +61,8 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: hsl(0, 0%, 0%);
+    background-color: hsl(0, 0%, 0%, 0.3);
+    backdrop-filter: blur(0.6rem);
     z-index: 999;
 }
 

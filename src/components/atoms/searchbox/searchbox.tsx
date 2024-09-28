@@ -91,7 +91,7 @@ const SearchBox = () => {
                         <motion.div
                             className={styles.backgroundOverlay}
                             initial={{ opacity: 0 }}
-                            animate={{ opacity: 0.9 }}
+                            animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
                             transition={{ duration: 0.2 }}
                         />
