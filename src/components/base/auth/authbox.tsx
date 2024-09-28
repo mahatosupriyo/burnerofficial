@@ -25,7 +25,7 @@ const AuthBox = () => {
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.2, delay: 0.16 }}
                 >
-                    Sign up to
+                    Login to
                     <br />
                     experience
                 </motion.h2>
