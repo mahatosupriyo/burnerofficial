@@ -1,0 +1,90 @@
+// Variables for customization
+$bg-color: hsl(0, 0%, 16%);
+$shimmer-color: hsl(0, 0%, 20%);
+$default-animation-duration: 1.5s;
+
+// Mixin for skeleton loading animation
+@mixin skeleton-loading($width: 100%, $height: 20px, $animation-duration: $default-animation-duration) {
+    background-color: $bg-color;
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    width: $width;
+    height: $height;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg,
+                $bg-color 0%,
+                $shimmer-color 50%,
+                $bg-color 100%);
+        animation: shimmer $animation-duration infinite;
+        background-size: 200% 100%;
+    }
+}
+
+// Keyframes for the shimmer effect
+@keyframes shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+
+.skeleton-text {
+    @include skeleton-loading(100%, 16px);
+}
+
+.skeleton-image {
+    @include skeleton-loading(300px, 200px);
+}
+
+.skeleton-button {
+    @include skeleton-loading(120px, 40px);
+}
+
+.settingslayout {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    max-width: 70rem;
+    align-items: center;
+    gap: 4rem;
+
+    .header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 4rem;
+
+        .avatar {
+            display: flex;
+            border-radius: 200rem;
+            @include skeleton-loading(8rem, 5rem);
+        }
+
+        .name {
+            display: flex;
+            border-radius: 10rem;
+            @include skeleton-loading(16rem, 3rem);
+        }
+
+
+    }
+
+    .content {
+        display: flex;
+        @include skeleton-loading(100%, 30rem);
+    }
+}
