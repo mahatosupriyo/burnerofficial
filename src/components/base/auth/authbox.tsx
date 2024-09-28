@@ -48,7 +48,7 @@ const AuthBox = () => {
                     transition={{ duration: 0.2, delay: 0.3 }}
                     className={styles.policy}
                 >
-                    By continuing, you agree to our <a target='_blank' href='/company/terms' style={{ textDecoration: 'underline', color: '#989898' }}>terms</a> &  <a target='_blank' href='/company/delivery' style={{ textDecoration: 'underline', color: '#989898' }}>policies</a>.
+                    By continuing, you agree to our <a target='_blank' href='/company/terms' style={{ textDecoration: 'underline', color: '#989898' }}>terms</a> and <a target='_blank' href='/company/delivery' style={{ textDecoration: 'underline', color: '#989898' }}>policies</a>.
                 </motion.p>
             </div>
         </>
