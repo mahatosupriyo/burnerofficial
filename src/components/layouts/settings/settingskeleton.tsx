@@ -18,9 +18,6 @@ const SettingsSkeleton = () => {
           <div className={styles.avatar}>
 
           </div>
-          <div className={styles.name}>
-
-          </div>
         </div>
         <div className={styles.content}>
 
