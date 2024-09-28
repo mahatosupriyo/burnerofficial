@@ -1,11 +1,13 @@
-"use client"
+'use client'
 import React from 'react'
 import styles from './settingslayout..module.scss'
 import { useSession } from "next-auth/react"
 import { signOut } from "next-auth/react"
+// import { auth } from "@/auth"
 
-const SettingsLayout = () => {
+export default function SettingsLayout()  {
     const { data: session, status } = useSession()
+    // const session = await auth()
 
     const getFirstName = (name: string | null | undefined) => {
         if (!name) return ''
@@ -124,5 +126,3 @@ const SettingsLayout = () => {
         </div>
     )
 }
-
-export default SettingsLayout
