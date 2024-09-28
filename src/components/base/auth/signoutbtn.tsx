@@ -1,7 +1,6 @@
 "use client"
 import styles from './signoutbtn.module.scss'
 import { signOut } from "next-auth/react"
-import { motion } from 'framer-motion'
 
 export function SignOut() {
     return (

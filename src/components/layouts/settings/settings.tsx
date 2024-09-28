@@ -9,7 +9,7 @@ export default async function SettingsLayout() {
     const session = await auth()
 
     if (!session || !session.user) {
-        redirect("/api/auth/signin")
+        redirect("/auth")
     }
 
     const user = await prisma.user.findUnique({
