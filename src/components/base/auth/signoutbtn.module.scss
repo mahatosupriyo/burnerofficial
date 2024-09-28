@@ -1,19 +1,29 @@
 @use '../../../styles/essentials';
 @import '../../../styles/essentials';
 
-.signoutbtn {
-    padding: 1.8rem 2rem;
-
-    background-color: hsl(0, 52%, 53%);
-    border-radius: 6rem;
-    font-weight: 600;
-    font-size: 1.56rem;
+.logoutbtn {
+    user-select: none;
     cursor: pointer;
+    background-color: hsl(0, 0, 16%);
+    padding: 1.8rem 2.6rem;
+    font-size: 1.66rem;
+    font-weight: 600;
+    color: hsl(0, 0, 80%);
+    display: flex;
     line-height: 100%;
-    color: hsl(0, 52%, 98%);
+    align-items: center;
+    flex-direction: row;
+    gap: 1rem;
+    justify-content: space-between;
+    width: 100%;
     @include smooth;
 
+    @media only screen and (max-width: 40rem){
+        padding: 1.8rem 1.6rem;
+    }
+
     &:hover {
-        background-color: hsl(0, 52%, 40%);
+        color: hsl(0, 0, 100%);
+        background-color: hsl(0, 58%, 52%);
     }
 }
