@@ -1,28 +1,55 @@
+"use client"
 import React from 'react'
 import styles from './authbox.module.scss'
 import Logo from '../logo'
 import AuthBtn from './authbtn'
+import { motion } from 'framer-motion'
 
 const AuthBox = () => {
     return (
         <>
             <div className={styles.authbox}>
-                <Logo width='100'fill='#fafafa' />
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 0.9 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.2 }}
+                >
+                    <Logo width='100' fill='#fafafa' />
+                </motion.div>
 
-                <h2 className={styles.titlemain}>
+                <motion.h2
+                    className={styles.titlemain}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 0.9 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.2, delay: 0.16 }}
+                >
                     Sign up to
                     <br />
                     experience
-                </h2>
+                </motion.h2>
 
-                <div className={styles.providerbox}>
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 0.9 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.2, delay: 0.24, staggerChildren: 0.15 }}
+                    className={styles.providerbox}
+                >
                     <AuthBtn provider='google' />
                     <AuthBtn provider='github' />
-                </div>
+                </motion.div>
 
-                <p className={styles.policy}>
-                    This site is protected by reCAPTCHA and the Google <span style={{ textDecoration: 'underline', color: '#989898' }}>Privacy Policy</span> and <span style={{ textDecoration: 'underline', color: '#989898' }}>Terms of Service</span> apply.
-                </p>
+                <motion.p
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 0.9 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.2, delay: 0.3 }}
+                    className={styles.policy}
+                >
+                    By continuing, you agree to our <a target='_blank' href='/company/terms' style={{ textDecoration: 'underline', color: '#989898' }}>terms</a> &  <a target='_blank' href='/company/delivery' style={{ textDecoration: 'underline', color: '#989898' }}>policies</a>.
+                </motion.p>
             </div>
         </>
     )
