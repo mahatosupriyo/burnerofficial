@@ -4,6 +4,7 @@ import { redirect } from "next/navigation"
 import { auth } from "@/auth"
 import prisma from "@/lib/prisma"
 import { SignOut } from '@/components/base/auth/signoutbtn'
+import Link from 'next/link'
 
 export default async function SettingsLayout() {
     const session = await auth()
@@ -59,7 +60,7 @@ export default async function SettingsLayout() {
 
                         </div>
 
-                        <button className={styles.editbtn}>
+                        <Link href="/settings/editprofile" className={styles.editbtn}>
                             <div className={styles.subwraper} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.8rem' }}>
                                 Edit account
                             </div>
@@ -68,7 +69,7 @@ export default async function SettingsLayout() {
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M42.8 36.2783L58.0534 52.2117L42.8972 68.2422L46.8805 72.2256L66.3115 52.3088L46.9777 32.1006L42.8 36.2783Z" fill="white" />
                             </svg>
 
-                        </button>
+                        </Link>
 
                         <button className={styles.editbtn}>
                             <div className={styles.subwraper} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.8rem' }}>

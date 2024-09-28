@@ -119,15 +119,6 @@ const Feed = () => {
 
 
                   </div>
-                  {/* <div className={styles.making}>
-
-                    <svg xmlns="http://www.w3.org/2000/svg" className={styles.playicon} height="16" viewBox="0 0 160 160" fill="#FF805B">
-                      <path fill-rule="evenodd" clip-rule="evenodd" d="M118.332 79.836L60 125.668V34L118.332 79.836ZM104.844 79.836L68.332 108.52V51.149L104.844 79.836Z" />
-                      <path d="M104.844 79.836L68.332 108.52V51.149L104.844 79.836Z" />
-                    </svg>
-                    Behind the scenes
-
-                  </div> */}
                 </div>
 
 
@@ -182,7 +173,7 @@ const Feed = () => {
           className={styles.btn}
           whileTap={{ opacity: 0.6 }}
         >
-          Subscribe to Pro
+          Subscribe Pro
         </motion.button>
       </div>
     </div >

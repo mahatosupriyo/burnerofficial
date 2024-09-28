@@ -1,0 +1,55 @@
+@use '../../../../../styles/essentials';
+@import '../../../../../styles/essentials';
+
+.data {
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+    width: 100%;
+    // max-width: 70rem;
+    width: 100%;
+
+    .subcontainer {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 0.6rem;
+
+        .label {
+            width: 100%;
+            font-size: 1.46rem;
+            font-weight: 500;
+            color: hsl(0, 0, 90%);
+        }
+
+        .inputbar {
+            padding: 1.46rem;
+            font-size: 1.66rem;
+            font-weight: 500;
+            color: hsl(0, 0, 50%);
+            width: 100%;
+            border-radius: 0.4rem;
+            background: none;
+            border: 0.2rem solid hsl(0, 0, 20%);
+            @include smooth;
+
+            &:focus {
+                color: hsl(0, 0, 90%);
+            }
+
+            &::placeholder {
+                font-size: 1.66rem;
+                font-weight: 500;
+                color: hsl(0, 0, 50%);
+            }
+        }
+    }
+}
+
+.buttons{
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    padding: 2rem 0rem;
+}
