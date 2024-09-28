@@ -19,7 +19,7 @@ const SuccessPage = () => {
                     </p>
                 </div>
                 <p className={styles.highpriority}>
-                    You can close the page. Don't worry, we'll let you know.
+                    you can close the page.
                 </p>
             </div>
         </div>
