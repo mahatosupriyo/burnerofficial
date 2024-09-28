@@ -76,8 +76,8 @@
                     width: 100%;
                     @include smooth;
 
-                    @media only screen and (max-width: 60rem){
-                        padding: 1.8rem 1rem;
+                    @media only screen and (max-width: 40rem){
+                        padding: 1.8rem 1.6rem;
                     }
 
                     &:hover {
@@ -102,8 +102,8 @@
                     width: 100%;
                     @include smooth;
 
-                    @media only screen and (max-width: 60rem){
-                        padding: 1.8rem 1rem;
+                    @media only screen and (max-width: 40rem){
+                        padding: 1.8rem 1.6rem;
                     }
 
                     &:hover {
@@ -123,8 +123,8 @@
                     padding: 4rem 2.6rem;
                     border-bottom: 0.03rem solid hsl(0, 0, 26%);
 
-                    @media only screen and (max-width: 60rem){
-                        padding: 4rem 1rem;
+                    @media only screen and (max-width: 40rem){
+                        padding: 4rem 1.6rem;
                     }
 
                     .plan {
