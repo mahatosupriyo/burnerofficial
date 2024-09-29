@@ -1,7 +1,7 @@
 @use '../../../../../styles/essentials';
 @import '../../../../../styles/essentials';
 
-.error{
+.error {
     font-size: 1.46rem;
     text-transform: lowercase;
     font-weight: 500;
@@ -31,40 +31,49 @@
         }
 
         .inputbar {
-            padding: 1.46rem;
+            padding: 1.46rem 1.46rem;
             font-size: 1.66rem;
             font-weight: 500;
             color: hsl(0, 0, 50%);
             width: 100%;
             // border-radius: 0.4rem;
             background: none;
-            border: 0.2rem solid hsl(0, 0, 20%);
+            border-bottom: 0.2rem solid hsl(0, 0, 20%);
             @include smooth;
+
+            &:hover{
+                border-bottom: 0.2rem solid hsl(0, 0, 30%);
+                background-color: hsl(0, 0, 12%);
+            }
 
             &:focus {
                 color: hsl(0, 0, 90%);
+                border-bottom: 0.2rem solid hsl(0, 0, 80%);
+                background-color: hsl(0, 0, 16%);
             }
 
             &::placeholder {
                 font-size: 1.66rem;
                 font-weight: 500;
-                color: hsl(0, 0, 50%);
+                color: hsl(0, 0, 40%);
             }
         }
     }
 }
 
-.buttons{
+.buttons {
     width: 100%;
     display: flex;
     align-items: flex-end;
     justify-content: flex-end;
     padding: 2rem 0rem;
-    .btn{
+
+    .btn {
         cursor: pointer;
         background-color: hsl(0, 0, 100%);
     }
-    .disabledbtn{
+
+    .disabledbtn {
         cursor: not-allowed;
         background-color: hsl(0, 0, 30%);
     }

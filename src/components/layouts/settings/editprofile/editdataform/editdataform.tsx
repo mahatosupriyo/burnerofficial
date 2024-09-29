@@ -93,13 +93,13 @@ export default function EditProfileForm({ initialData }: EditProfileFormProps) {
 
         <div className={styles.subcontainer}>
           <label className={styles.label}>username</label>
-          <input style={{ textTransform: 'lowercase' }} {...register('username')} className={styles.inputbar} required />
+          <input spellCheck="false" autoComplete='off' style={{ textTransform: 'lowercase' }} {...register('username')} className={styles.inputbar} required />
           {errors.username && <p className={styles.error}>{errors.username.message}</p>}
         </div>
 
         <div className={styles.subcontainer}>
           <label className={styles.label}>email</label>
-          <input disabled style={{ cursor: 'not-allowed' }} {...register('email')} className={styles.inputbar} required type="email" />
+          <input autoComplete='off' spellCheck="false" disabled style={{ cursor: 'not-allowed' }} {...register('email')} className={styles.inputbar} required type="email" />
           {errors.email && <p className={styles.error}>{errors.email.message}</p>}
         </div>
       </div>
