@@ -1,6 +1,7 @@
 'use server'
 
-import { S3Client, PutObjectCommand, DeleteObjectCommand } from "@aws-sdk/client-s3";
+import { S3Client, PutObjectCommand, GetObjectCommand } from "@aws-sdk/client-s3";
+import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 import { revalidatePath } from "next/cache";
 import prisma from "@/lib/prisma";
 import { auth } from "@/auth";
@@ -30,6 +31,16 @@ const PostSchema = z.object({
   caption: z.string().optional(),
   links: z.string().optional(),
 });
+
+async function getSignedImageUrl(key: string) {
+  const command = new GetObjectCommand({
+    Bucket: env.AWS_S3_BUCKET_NAME,
+    Key: key,
+  });
+  
+  // The URL will be valid for 1 hour
+  return await getSignedUrl(s3Client, command, { expiresIn: 3600 });
+}
 
 export async function createPost(formData: FormData) {
   const session = await auth();
@@ -67,11 +78,11 @@ export async function createPost(formData: FormData) {
 
   await s3Client.send(putObjectCommand);
 
-  const imageUrl = `https://${env.AWS_S3_BUCKET_NAME}.s3.${env.AWS_REGION}.amazonaws.com/${fileName}`;
+  const imageUrl = await getSignedImageUrl(fileName);
 
   const post = await prisma.post.create({
     data: {
-      imageUrl,
+      imageUrl: fileName, // Store only the file name in the database
       caption,
       links: links ? links.split(',').map(link => link.trim()) : [],
       userId: session.user.id,
@@ -79,51 +90,19 @@ export async function createPost(formData: FormData) {
   });
 
   revalidatePath('/');
-  return post;
+  return { ...post, imageUrl }; // Return the post with the signed URL
 }
 
-export async function deletePost(postId: string) {
-  try {
-    const session = await auth();
-    if (!session?.user?.id) {
-      throw new Error("You must be logged in to delete a post");
-    }
+export async function getPostWithSignedUrl(postId: string) {
+  const post = await prisma.post.findUnique({
+    where: { id: postId },
+  });
 
-    const post = await prisma.post.findUnique({
-      where: { id: postId },
-      select: { userId: true, imageUrl: true },
-    });
-
-    if (!post) {
-      throw new Error("Post not found");
-    }
-
-    if (post.userId !== session.user.id) {
-      throw new Error("You can only delete your own posts");
-    }
-
-    // Delete the image from S3
-    const fileName = post.imageUrl.split('/').pop();
-    if (!fileName) {
-      throw new Error("Invalid image URL");
-    }
-
-    const deleteCommand = new DeleteObjectCommand({
-      Bucket: env.AWS_S3_BUCKET_NAME,
-      Key: fileName,
-    });
-
-    await s3Client.send(deleteCommand);
-
-    // Delete the post from the database
-    await prisma.post.delete({
-      where: { id: postId },
-    });
-
-    revalidatePath('/');
-    return { success: true, message: "Post deleted successfully" };
-  } catch (error) {
-    console.error("Error deleting post:", error);
-    return { success: false, message: error instanceof Error ? error.message : "An unknown error occurred" };
+  if (!post) {
+    throw new Error("Post not found");
   }
+
+  const signedUrl = await getSignedImageUrl(post.imageUrl);
+
+  return { ...post, imageUrl: signedUrl };
 }

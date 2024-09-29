@@ -1,7 +1,8 @@
 'use client'
-
-import { useState } from 'react'
-import { deletePost } from '@/app/actions/post'
+import { useState, useEffect } from 'react'
+import { deletePost } from '@/app/actions/post/delete-post'
+import { useRouter } from 'next/navigation'
+import {getPostWithSignedUrl} from '@/app/actions/post'
 
 type Post = {
   id: string
@@ -22,10 +23,36 @@ type PostListProps = {
 export function PostList({ initialPosts }: PostListProps) {
   const [posts, setPosts] = useState(initialPosts)
 
+  useEffect(() => {
+    const updateSignedUrls = async () => {
+      const updatedPosts = await Promise.all(
+        posts.map(async (post) => {
+          const updatedPost = await getPostWithSignedUrl(post.id)
+          return { ...post, imageUrl: updatedPost.imageUrl }
+        })
+      )
+      setPosts(updatedPosts)
+    }
+
+    updateSignedUrls()
+
+    const intervalId = setInterval(updateSignedUrls, 50 * 60 * 1000)
+
+    return () => clearInterval(intervalId)
+  }, [])
+
+  const router = useRouter()
+
   const handleDelete = async (postId: string) => {
     if (confirm('Are you sure you want to delete this post?')) {
-      await deletePost(postId)
-      setPosts(posts.filter(post => post.id !== postId))
+      try {
+        await deletePost(postId)
+        setPosts(posts.filter(post => post.id !== postId))
+        router.refresh() // Refresh the page to ensure all data is up to date
+      } catch (error) {
+        console.error("Error deleting post:", error)
+        alert("Failed to delete post. Please try again.")
+      }
     }
   }
 
