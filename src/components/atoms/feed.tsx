@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import styles from './feed.module.scss'
 import { AnimatePresence, motion } from 'framer-motion'
 import { useEffect, useRef, useState } from 'react';

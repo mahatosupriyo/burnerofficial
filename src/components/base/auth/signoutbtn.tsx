@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import styles from './signoutbtn.module.scss'
 import { signOut } from "next-auth/react"
 

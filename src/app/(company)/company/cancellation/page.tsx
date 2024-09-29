@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React from 'react'
 import styles from './cancellation.module.scss'
 import CompanyNav from '../components/companynav/companynav'

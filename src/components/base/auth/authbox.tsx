@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React from 'react'
 import styles from './authbox.module.scss'
 import Logo from '../logo'

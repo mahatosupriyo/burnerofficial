@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React from 'react'
 import styles from './badge.module.scss'
 import Link from 'next/link'

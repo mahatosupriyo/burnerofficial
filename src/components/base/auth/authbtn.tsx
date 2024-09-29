@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React from 'react';
 import styles from './authbtn.module.scss';
 import { signIn } from 'next-auth/react';

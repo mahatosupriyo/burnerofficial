@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React from 'react'
 import styles from './terms.module.scss'
 import { motion } from 'framer-motion'
