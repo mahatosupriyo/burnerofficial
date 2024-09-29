@@ -1,6 +1,14 @@
 @use '../../../../../styles/essentials';
 @import '../../../../../styles/essentials';
 
+.error{
+    font-size: 1.46rem;
+    text-transform: lowercase;
+    font-weight: 500;
+    color: hsl(0, 100%, 61%);
+    padding: 0.3rem 0rem;
+}
+
 .data {
     display: flex;
     flex-direction: column;
@@ -52,4 +60,12 @@
     align-items: flex-end;
     justify-content: flex-end;
     padding: 2rem 0rem;
+    .btn{
+        cursor: pointer;
+        background-color: hsl(0, 0, 100%);
+    }
+    .disabledbtn{
+        cursor: not-allowed;
+        background-color: hsl(0, 0, 30%);
+    }
 }

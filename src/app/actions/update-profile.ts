@@ -30,26 +30,6 @@ export async function updateProfile(formData: FormData) {
   const { name, email } = validatedFields.data
   const username = validatedFields.data.username.toLowerCase() // Convert username to lowercase
 
-  // Check if username is already taken
-  const existingUser = await prisma.user.findUnique({
-    where: { username },
-    select: { id: true },
-  })
-
-  if (existingUser && existingUser.id !== session.user.id) {
-    return { error: { username: ["This username is already taken."] } }
-  }
-
-  // Check if email is already taken
-  const existingEmail = await prisma.user.findUnique({
-    where: { email },
-    select: { id: true },
-  })
-
-  if (existingEmail && existingEmail.id !== session.user.id) {
-    return { error: { email: ["This email is already in use."] } }
-  }
-
   // Fetch current user data
   const currentUser = await prisma.user.findUnique({
     where: { email: session.user.email },
@@ -65,6 +45,11 @@ export async function updateProfile(formData: FormData) {
 
   if (!currentUser) {
     return { error: { general: ["User not found."] } }
+  }
+
+  // Check if any changes were made
+  if (currentUser.name === name && currentUser.email === email && currentUser.username === username) {
+    return { error: { general: ["No changes detected. Please make changes before submitting."] } }
   }
 
   const oneWeekAgo = new Date()
@@ -94,6 +79,30 @@ export async function updateProfile(formData: FormData) {
   if (currentUser.username !== username) {
     if (currentUser.lastUsernameUpdate && currentUser.lastUsernameUpdate > oneWeekAgo) {
       errors.username = ["You can only update your username once a week."]
+    }
+  }
+
+  // Check if username is already taken
+  if (currentUser.username !== username) {
+    const existingUser = await prisma.user.findUnique({
+      where: { username },
+      select: { id: true },
+    })
+
+    if (existingUser && existingUser.id !== session.user.id) {
+      errors.username = [...(errors.username || []), "This username is already taken."]
+    }
+  }
+
+  // Check if email is already taken
+  if (currentUser.email !== email) {
+    const existingEmail = await prisma.user.findUnique({
+      where: { email },
+      select: { id: true },
+    })
+
+    if (existingEmail && existingEmail.id !== session.user.id) {
+      errors.email = [...(errors.email || []), "This email is already in use."]
     }
   }
 

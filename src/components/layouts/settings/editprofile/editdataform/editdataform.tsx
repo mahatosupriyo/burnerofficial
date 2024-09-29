@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
@@ -11,7 +11,7 @@ import { SuccessMessage, ErrorMessage } from '@/components/atoms/messages/messag
 const UpdateProfileSchema = z.object({
   name: z.string().min(1, "Name is required"),
   email: z.string().email("Invalid email address"),
-  username: z.string().min(3).max(20).regex(/^[a-zA-Z0-9_.]+$/, 
+  username: z.string().min(3).max(20).regex(/^[a-zA-Z0-9_.]+$/,
     "Username must be 3-20 characters and can only contain letters, numbers, underscores, and dots"),
 })
 
@@ -28,12 +28,26 @@ interface EditProfileFormProps {
 export default function EditProfileForm({ initialData }: EditProfileFormProps) {
   const [successMessage, setSuccessMessage] = useState<string | null>(null)
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
-  const { register, handleSubmit, formState: { errors }, setError } = useForm<FormData>({
+  const [isFormChanged, setIsFormChanged] = useState(false)
+
+  const { register, handleSubmit, formState: { errors, dirtyFields }, setError, watch } = useForm<FormData>({
     resolver: zodResolver(UpdateProfileSchema),
     defaultValues: initialData,
   })
 
+  const watchedFields = watch()
+
+  useEffect(() => {
+    const hasChanges = Object.keys(dirtyFields).length > 0
+    setIsFormChanged(hasChanges)
+  }, [watchedFields, dirtyFields])
+
   const onSubmit = async (data: FormData) => {
+    if (!isFormChanged) {
+      setErrorMessage("No changes detected. Please make changes before submitting.")
+      return
+    }
+
     setSuccessMessage(null)
     setErrorMessage(null)
     const formData = new FormData()
@@ -57,17 +71,17 @@ export default function EditProfileForm({ initialData }: EditProfileFormProps) {
   }
 
   return (
-    <form style={{width: '100%'}} onSubmit={handleSubmit(onSubmit)}>
+    <form style={{ width: '100%' }} onSubmit={handleSubmit(onSubmit)}>
       {successMessage && (
-        <SuccessMessage 
-          message={successMessage} 
-          onClose={() => setSuccessMessage(null)} 
+        <SuccessMessage
+          message={successMessage}
+          onClose={() => setSuccessMessage(null)}
         />
       )}
       {errorMessage && (
-        <ErrorMessage 
-          message={errorMessage} 
-          onClose={() => setErrorMessage(null)} 
+        <ErrorMessage
+          message={errorMessage}
+          onClose={() => setErrorMessage(null)}
         />
       )}
       <div className={styles.data}>
@@ -78,19 +92,23 @@ export default function EditProfileForm({ initialData }: EditProfileFormProps) {
         </div>
 
         <div className={styles.subcontainer}>
-          <label className={styles.label}>email</label>
-          <input disabled style={{cursor: 'not-allowed'}} {...register('email')} className={styles.inputbar} required type="email" />
-          {errors.email && <p className={styles.error}>{errors.email.message}</p>}
+          <label className={styles.label}>username</label>
+          <input style={{ textTransform: 'lowercase' }} {...register('username')} className={styles.inputbar} required />
+          {errors.username && <p className={styles.error}>{errors.username.message}</p>}
         </div>
 
         <div className={styles.subcontainer}>
-          <label className={styles.label}>username</label>
-          <input style={{textTransform: 'lowercase'}} {...register('username')} className={styles.inputbar} required />
-          {errors.username && <p className={styles.error}>{errors.username.message}</p>}
+          <label className={styles.label}>email</label>
+          <input disabled style={{ cursor: 'not-allowed' }} {...register('email')} className={styles.inputbar} required type="email" />
+          {errors.email && <p className={styles.error}>{errors.email.message}</p>}
         </div>
       </div>
       <div className={styles.buttons}>
-        <button type="submit" className={styles.btn}>
+        <button
+          type="submit"
+          className={`${styles.btn} ${!isFormChanged ? styles.disabledbtn : ''}`}
+          disabled={!isFormChanged}
+        >
           Update
         </button>
       </div>
