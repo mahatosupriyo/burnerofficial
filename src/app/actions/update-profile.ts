@@ -74,14 +74,8 @@ export async function updateProfile(formData: FormData) {
 
   // Check if updates are allowed
   if (currentUser.name !== name) {
-    const nameUpdateCount = await prisma.user.count({
-      where: {
-        id: session.user.id,
-        lastNameUpdate: { gt: oneWeekAgo }
-      }
-    })
-    if (nameUpdateCount >= 2) {
-      errors.name = ["You can only update your name twice a week."]
+    if (currentUser.lastNameUpdate && currentUser.lastNameUpdate > oneWeekAgo) {
+      errors.name = ["You can only update your name once a week."]
     }
   }
 
