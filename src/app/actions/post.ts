@@ -5,6 +5,7 @@ import { revalidatePath } from "next/cache";
 import prisma from "@/lib/prisma";
 import { auth } from "@/auth";
 import { z } from 'zod';
+import sharp from 'sharp';
 
 const s3Client = new S3Client({
   region: process.env.AWS_REGION!,
@@ -40,12 +41,17 @@ export async function createPost(formData: FormData) {
 
   const fileBuffer = await file.arrayBuffer();
 
+  // Compress and resize the image
+  const compressedImageBuffer = await sharp(Buffer.from(fileBuffer))
+    .resize({ width: 1080, withoutEnlargement: true })
+    .webp({ quality: 80 })
+    .toBuffer();
+
   const putObjectCommand = new PutObjectCommand({
     Bucket: process.env.AWS_S3_BUCKET_NAME!,
     Key: fileName,
-    Body: Buffer.from(fileBuffer),
-    ContentType: file.type,
-    ACL: 'public-read', // Add this line to make the object publicly readable
+    Body: compressedImageBuffer,
+    ContentType: 'image/webp',
   });
 
   await s3Client.send(putObjectCommand);
