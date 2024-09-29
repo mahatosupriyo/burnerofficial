@@ -38,17 +38,17 @@
             width: 100%;
             // border-radius: 0.4rem;
             background: none;
-            border-bottom: 0.2rem solid hsl(0, 0, 20%);
+            border: 0.2rem solid hsl(0, 0, 20%);
             @include smooth;
 
             &:hover{
-                border-bottom: 0.2rem solid hsl(0, 0, 30%);
+                border: 0.2rem solid hsl(0, 0, 30%);
                 background-color: hsl(0, 0, 12%);
             }
 
             &:focus {
                 color: hsl(0, 0, 90%);
-                border-bottom: 0.2rem solid hsl(0, 0, 80%);
+                border: 0.2rem solid hsl(0, 0, 80%);
                 background-color: hsl(0, 0, 16%);
             }
 
