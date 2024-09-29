@@ -42,6 +42,8 @@ model User {
   image              String?
   username           String?   @unique
   lastUsernameUpdate DateTime?
+  lastNameUpdate     DateTime?
+  lastEmailUpdate    DateTime?
   accounts           Account[]
   sessions           Session[]
 }

@@ -6,6 +6,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import { updateProfile } from '@/app/actions/update-profile'
 import styles from './editdataform.module.scss'
+import { SuccessMessage, ErrorMessage } from '@/components/atoms/messages/messages'
 
 const UpdateProfileSchema = z.object({
   name: z.string().min(1, "Name is required"),
@@ -25,14 +26,16 @@ interface EditProfileFormProps {
 }
 
 export default function EditProfileForm({ initialData }: EditProfileFormProps) {
-  const [generalError, setGeneralError] = useState<string | null>(null)
+  const [successMessage, setSuccessMessage] = useState<string | null>(null)
+  const [errorMessage, setErrorMessage] = useState<string | null>(null)
   const { register, handleSubmit, formState: { errors }, setError } = useForm<FormData>({
     resolver: zodResolver(UpdateProfileSchema),
     defaultValues: initialData,
   })
 
   const onSubmit = async (data: FormData) => {
-    setGeneralError(null)
+    setSuccessMessage(null)
+    setErrorMessage(null)
     const formData = new FormData()
     Object.entries(data).forEach(([key, value]) => formData.append(key, value || ''))
     const result = await updateProfile(formData)
@@ -40,23 +43,33 @@ export default function EditProfileForm({ initialData }: EditProfileFormProps) {
       if (typeof result.error === 'object') {
         Object.entries(result.error).forEach(([key, value]) => {
           if (key === 'general') {
-            setGeneralError(value[0] || null)
+            setErrorMessage(value[0] || null)
           } else {
             setError(key as keyof FormData, { type: 'manual', message: value[0] })
           }
         })
       } else {
-        setGeneralError(result.error || null)
+        setErrorMessage(result.error || null)
       }
     } else {
-      // Handle success (e.g., show success message, redirect)
-      console.log('Profile updated successfully')
+      setSuccessMessage('Account updated successfully')
     }
   }
 
   return (
     <form style={{width: '100%'}} onSubmit={handleSubmit(onSubmit)}>
-      {generalError && <p className={styles.error}>{generalError}</p>}
+      {successMessage && (
+        <SuccessMessage 
+          message={successMessage} 
+          onClose={() => setSuccessMessage(null)} 
+        />
+      )}
+      {errorMessage && (
+        <ErrorMessage 
+          message={errorMessage} 
+          onClose={() => setErrorMessage(null)} 
+        />
+      )}
       <div className={styles.data}>
         <div className={styles.subcontainer}>
           <label className={styles.label}>name</label>
@@ -66,13 +79,13 @@ export default function EditProfileForm({ initialData }: EditProfileFormProps) {
 
         <div className={styles.subcontainer}>
           <label className={styles.label}>email</label>
-          <input {...register('email')} className={styles.inputbar} required type="email" />
+          <input disabled style={{cursor: 'not-allowed'}} {...register('email')} className={styles.inputbar} required type="email" />
           {errors.email && <p className={styles.error}>{errors.email.message}</p>}
         </div>
 
         <div className={styles.subcontainer}>
           <label className={styles.label}>username</label>
-          <input {...register('username')} className={styles.inputbar} required />
+          <input style={{textTransform: 'lowercase'}} {...register('username')} className={styles.inputbar} required />
           {errors.username && <p className={styles.error}>{errors.username.message}</p>}
         </div>
       </div>

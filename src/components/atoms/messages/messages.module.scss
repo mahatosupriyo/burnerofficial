@@ -1,0 +1,27 @@
+.successmessage{
+    display: flex;
+    width: 100%;
+    padding: 1.4rem;
+    align-items: center;
+    justify-content: space-between;
+    
+    background-color: #1DD860;
+    margin: 1.6rem 0rem;
+
+    .messagetext{
+        color: hsl(0, 0, 10%);
+        font-size: 1.66rem;
+        line-height: 100%;
+        font-weight: 600;
+        
+    }
+
+    .closebutton{
+        background: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        padding: 0.4rem;
+    }
+}

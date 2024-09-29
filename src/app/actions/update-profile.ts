@@ -27,7 +27,8 @@ export async function updateProfile(formData: FormData) {
     return { error: validatedFields.error.flatten().fieldErrors }
   }
 
-  const { name, email, username } = validatedFields.data
+  const { name, email } = validatedFields.data
+  const username = validatedFields.data.username.toLowerCase() // Convert username to lowercase
 
   // Check if username is already taken
   const existingUser = await prisma.user.findUnique({
@@ -39,32 +40,82 @@ export async function updateProfile(formData: FormData) {
     return { error: { username: ["This username is already taken."] } }
   }
 
-  // Check if the user has updated their username in the last week
+  // Check if email is already taken
+  const existingEmail = await prisma.user.findUnique({
+    where: { email },
+    select: { id: true },
+  })
+
+  if (existingEmail && existingEmail.id !== session.user.id) {
+    return { error: { email: ["This email is already in use."] } }
+  }
+
+  // Fetch current user data
   const currentUser = await prisma.user.findUnique({
     where: { email: session.user.email },
-    select: { lastUsernameUpdate: true, username: true },
+    select: {
+      name: true,
+      email: true,
+      username: true,
+      lastUsernameUpdate: true,
+      lastNameUpdate: true,
+      lastEmailUpdate: true,
+    },
   })
 
   if (!currentUser) {
     return { error: { general: ["User not found."] } }
   }
 
-  if (currentUser.username !== username) {
-    const oneWeekAgo = new Date()
-    oneWeekAgo.setDate(oneWeekAgo.getDate() - 7)
+  const oneWeekAgo = new Date()
+  oneWeekAgo.setDate(oneWeekAgo.getDate() - 7)
 
-    if (currentUser.lastUsernameUpdate && currentUser.lastUsernameUpdate > oneWeekAgo) {
-      return { error: { username: ["You can only update your username once a week."] } }
+  const errors: Record<string, string[]> = {}
+
+  // Check if updates are allowed
+  if (currentUser.name !== name) {
+    const nameUpdateCount = await prisma.user.count({
+      where: {
+        id: session.user.id,
+        lastNameUpdate: { gt: oneWeekAgo }
+      }
+    })
+    if (nameUpdateCount >= 2) {
+      errors.name = ["You can only update your name twice a week."]
     }
+  }
+
+  if (currentUser.email !== email) {
+    const emailUpdateCount = await prisma.user.count({
+      where: {
+        id: session.user.id,
+        lastEmailUpdate: { gt: oneWeekAgo }
+      }
+    })
+    if (emailUpdateCount >= 2) {
+      errors.email = ["You can only update your email twice a week."]
+    }
+  }
+
+  if (currentUser.username !== username) {
+    if (currentUser.lastUsernameUpdate && currentUser.lastUsernameUpdate > oneWeekAgo) {
+      errors.username = ["You can only update your username once a week."]
+    }
+  }
+
+  if (Object.keys(errors).length > 0) {
+    return { error: errors }
   }
 
   try {
     await prisma.user.update({
       where: { email: session.user.email },
       data: { 
-        name, 
-        email, 
-        username,
+        name: currentUser.name !== name ? name : undefined,
+        email: currentUser.email !== email ? email : undefined,
+        username: currentUser.username !== username ? username : undefined,
+        lastNameUpdate: currentUser.name !== name ? new Date() : undefined,
+        lastEmailUpdate: currentUser.email !== email ? new Date() : undefined,
         lastUsernameUpdate: currentUser.username !== username ? new Date() : undefined,
       },
     })
