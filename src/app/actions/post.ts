@@ -42,57 +42,6 @@ async function getSignedImageUrl(key: string) {
   return await getSignedUrl(s3Client, command, { expiresIn: 3600 });
 }
 
-// export async function createPost(formData: FormData) {
-//   const session = await auth();
-//   if (!session?.user?.id) {
-//     throw new Error("You must be logged in to create a post");
-//   }
-
-//   const file = formData.get('file') as File | null;
-//   if (!file) {
-//     throw new Error("No file uploaded");
-//   }
-
-//   const { caption, links } = PostSchema.parse({
-//     caption: formData.get('caption'),
-//     links: formData.get('links'),
-//   });
-
-//   const fileHash = crypto.createHash('md5').update(`${Date.now()}-${file.name}`).digest('hex');
-//   const fileName = `${fileHash}.webp`;
-
-//   const fileBuffer = await file.arrayBuffer();
-
-//   // Convert, compress, and resize the image to WebP
-//   const webpBuffer = await sharp(Buffer.from(fileBuffer))
-//     .resize({ width: 1080, withoutEnlargement: true })
-//     .webp({ quality: 80 })
-//     .toBuffer();
-
-//   const putObjectCommand = new PutObjectCommand({
-//     Bucket: env.AWS_S3_BUCKET_NAME,
-//     Key: fileName,
-//     Body: webpBuffer,
-//     ContentType: 'image/webp',
-//   });
-
-//   await s3Client.send(putObjectCommand);
-
-//   const imageUrl = await getSignedImageUrl(fileName);
-
-//   const post = await prisma.post.create({
-//     data: {
-//       imageUrl: fileName, // Store only the file name in the database
-//       caption,
-//       links: links ? links.split(',').map(link => link.trim()) : [],
-//       userId: session.user.id,
-//     },
-//   });
-
-//   revalidatePath('/');
-//   return { ...post, imageUrl }; // Return the post with the signed URL
-// }
-
 export async function createPost(formData: FormData) {
   const session = await auth();
   if (!session?.user?.id) {

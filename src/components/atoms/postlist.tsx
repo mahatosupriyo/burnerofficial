@@ -48,7 +48,7 @@ export function PostList({ initialPosts }: PostListProps) {
       try {
         await deletePost(postId)
         setPosts(posts.filter(post => post.id !== postId))
-        router.refresh() // Refresh the page to ensure all data is up to date
+        router.refresh()
       } catch (error) {
         console.error("Error deleting post:", error)
         alert("Failed to delete post. Please try again.")
