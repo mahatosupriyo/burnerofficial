@@ -35,7 +35,9 @@ export default async function NavBar() {
                     </Link>
                 </div>
 
-                <SearchBox />
+                <div style={{width: '100%'}}>
+                    <SearchBox />
+                </div>
 
 
                 <div className={styles.rightwraper}>
