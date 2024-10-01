@@ -1,53 +1,3 @@
-// // app/actions/sitemap/sitemapsearch.ts
-
-// 'use server'
-
-// import { PrismaClient } from '@prisma/client'
-
-// const prisma = new PrismaClient()
-
-// interface SitemapItem {
-//   id: string
-//   name: string
-//   label: string
-//   url: string
-//   createdAt: Date
-//   updatedAt: Date
-// }
-
-// interface SitemapResult {
-//   items: SitemapItem[]
-// }
-
-// interface ErrorResult {
-//   error: string
-// }
-
-// export async function searchSitemapItems(query: string): Promise<SitemapResult | ErrorResult> {
-//   try {
-//     const items = await prisma.sitemapItem.findMany({
-//       where: {
-//         OR: [
-//           { name: { contains: query, mode: 'insensitive' } },
-//           { label: { contains: query, mode: 'insensitive' } },
-//           { url: { contains: query, mode: 'insensitive' } },
-//         ],
-//       },
-//       orderBy: {
-//         name: 'asc',
-//       },
-//     })
-
-//     return { items }
-//   } catch (error) {
-//     console.error('Error searching sitemap items:', error)
-//     return { error: 'Failed to search sitemap items' }
-//   }
-// }
-
-
-// app/actions/sitemap/sitemapsearch.ts
-
 'use server'
 
 import { PrismaClient } from '@prisma/client'
@@ -58,7 +8,7 @@ import { logger } from '@/lib/logger'
 const prisma = new PrismaClient()
 
 const SearchQuerySchema = z.object({
-  query: z.string().min(1).max(100),
+  query: z.string().max(100),
 })
 
 interface SitemapItem {
@@ -84,6 +34,10 @@ export async function searchSitemapItems(rawQuery: string): Promise<SitemapResul
     const sanitizedQuery = sanitize(query)
 
     logger.info(`Sitemap search request: ${sanitizedQuery}`)
+
+    if (!sanitizedQuery.trim()) {
+      return { items: [] }
+    }
 
     const items = await prisma.sitemapItem.findMany({
       where: {
