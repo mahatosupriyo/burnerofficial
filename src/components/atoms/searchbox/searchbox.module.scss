@@ -73,9 +73,10 @@
     }
 }
 
-.presencecontainer{
+.presencecontainer {
     position: relative;
     width: 100%;
+
     .backgroundOverlay {
         position: fixed;
         top: 0;
@@ -86,7 +87,7 @@
         backdrop-filter: blur(0.6rem);
         z-index: 999;
     }
-    
+
     /* Container for the overlay */
     .overlayContainer {
         position: fixed;
@@ -98,7 +99,7 @@
         z-index: 1000;
         height: 50%;
         min-height: 50rem;
-    
+
         .overlayContent {
             width: 100%;
             max-width: 200rem;
@@ -110,7 +111,7 @@
             @media only screen and (max-width: 80rem) {
                 padding: 1.6rem 1rem;
             }
-    
+
             .inputbarwraper {
                 display: flex;
                 height: 5rem;
@@ -118,47 +119,52 @@
                 background-color: hsl(0, 0, 16%);
                 border-radius: 100rem;
                 width: 100%;
-    
+
+                &:focus-within {
+                    outline: 0.2rem solid hsl(0, 0%, 50%);
+                }
+
                 .mainsearch {
-                    width: 100%;
                     display: flex;
                     align-items: center;
                     gap: 1rem;
                     flex-direction: row;
                     line-height: 100%;
+                    width: 100%;
                     padding: 0rem 1.6rem;
                     overflow: hidden;
                     cursor: pointer;
                     user-select: none;
-    
+
                     overflow: hidden;
                     @include smooth;
-    
-                    height: 5rem;
-    
+
+                    height: 100%;
+
                     &:hover {
                         background-color: hsl(0, 0, 14%);
-    
+
                         .searchicon {
                             fill: hsl(0, 0, 80%);
                         }
                     }
-    
+
                     .inputcontainer {
                         flex-direction: row;
                         align-items: center;
                         overflow: hidden;
                         height: 100%;
-    
+
+                        width: 100%;
                         font-size: 1.7rem;
                         color: hsl(0, 0, 90%);
                         line-height: 100%;
                         font-weight: 500;
                         overflow: hidden;
-    
+
                         background: none;
                         @include smooth;
-    
+
                         &::placeholder {
                             font-size: 1.7rem;
                             color: hsl(0, 0, 56%);
@@ -166,18 +172,19 @@
                             font-weight: 500;
                         }
                     }
-    
+
                     .searchicon {
                         height: 2.4rem;
                         fill: hsl(0, 0, 56%);
                         @include smooth;
                     }
                 }
-    
+
             }
-    
-            .bottomlayer{
+
+            .bottomlayer {
                 padding: 1rem 0rem;
+
                 .drops {
                     width: 100%;
                     display: flex;
@@ -187,7 +194,7 @@
                     height: 100%;
                     max-height: 50rem;
                     overflow-y: scroll;
-        
+
                     font-size: 1.3rem;
                     font-weight: 600;
                     color: hsl(0, 0, 34%);
@@ -196,19 +203,19 @@
                     justify-content: space-between;
                     align-items: flex-start;
                     gap: 1.8rem;
-        
+
                     @media only screen and (max-width: 80rem) {
                         padding-right: 0rem;
                     }
-        
-        
+
+
                     .dropswraper {
                         width: 100%;
                         display: flex;
                         align-items: flex-start;
                         flex-direction: column;
                         gap: 1rem;
-        
+
                         .drop {
                             text-decoration: none;
                             display: flex;
@@ -220,16 +227,16 @@
                             padding: 1rem;
                             @include smooth;
                             cursor: pointer;
-        
+
                             .index {
                                 min-width: 1.8rem;
                                 color: hsl(0, 0, 30%);
                             }
-        
+
                             &:hover {
                                 background-color: hsl(0, 0, 14%);
                             }
-        
+
                             .seriesdetails {
                                 height: 100%;
                                 display: flex;
@@ -237,12 +244,12 @@
                                 gap: 0.2rem;
                                 justify-content: space-between;
                                 padding: 0.1rem 0rem;
-        
+
                                 .toplayer {
                                     display: flex;
                                     flex-direction: column;
                                     gap: 0.2rem;
-        
+
                                     .seriestitle {
                                         color: hsl(0, 0, 80%);
                                         font-size: 1.66rem;
@@ -252,7 +259,7 @@
                                         align-items: center;
                                         gap: 0.4rem;
                                     }
-        
+
                                     .subheading {
                                         color: hsl(0, 0, 40%);
                                         font-size: 1.36rem;
@@ -260,24 +267,25 @@
                                         font-weight: 500;
                                     }
                                 }
-        
+
                             }
-        
-        
+
+
 
                         }
-        
+
                     }
-        
+
                 }
             }
-    
 
-    
-    
+
+
+
         }
     }
 }
+
 /* Background overlay that dims the rest of the page */
 
 
