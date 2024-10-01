@@ -133,14 +133,14 @@ const SearchBox: React.FC = () => {
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
-                            transition={{ duration: 0.2 }}
+                            transition={{ duration: 0.16 }}
                         />
 
                         <motion.div
                             className={styles.overlayContainer}
-                            initial={{ opacity: 0, y: '-4%', scale: 0.9 }}
+                            initial={{ opacity: 0, y: '-2%', scale: 0.96 }}
                             animate={{ opacity: 1, y: '0%', scale: 1 }}
-                            exit={{ opacity: 0, y: '-4%', scale: 0.9 }}
+                            exit={{ opacity: 0, y: '-2%', scale: 0.96 }}
                             transition={{ duration: 0.16 }}
                         >
                             <div className={styles.overlayContent} ref={overlayRef}>
