@@ -112,23 +112,25 @@
                 padding: 1.6rem 1rem;
             }
 
-            .toplayer{
+            .toplayer {
                 display: flex;
                 width: 100%;
                 flex-direction: row;
                 gap: 0.6rem;
 
-                .btn{
+                .btn {
                     display: flex;
                     align-items: center;
                     justify-content: center;
                     height: 5.06rem;
                     width: 5.06rem;
-                    .closeicon{
+
+                    .closeicon {
                         height: 3.4rem;
                         width: 3.4rem;
                     }
                 }
+
                 .inputbarwraper {
                     display: flex;
                     flex-direction: row;
@@ -138,9 +140,11 @@
                     background-color: hsl(0, 0, 16%);
                     border-radius: 100rem;
                     width: 100%;
-    
-    
-    
+
+                    &:focus-within {
+                        outline: 0.2rem solid hsl(0, 0%, 30%);
+                    }
+
                     .mainsearch {
                         display: flex;
                         align-items: center;
@@ -152,40 +156,37 @@
                         overflow: hidden;
                         cursor: pointer;
                         user-select: none;
-    
+
                         overflow: hidden;
                         @include smooth;
-    
+
                         height: 100%;
-    
-                        &:focus-within {
-                            outline: 0.2rem solid hsl(0, 0%, 50%);
-                        }
-    
+
+
                         &:hover {
                             background-color: hsl(0, 0, 14%);
-    
+
                             .searchicon {
                                 fill: hsl(0, 0, 80%);
                             }
                         }
-    
+
                         .inputcontainer {
                             flex-direction: row;
                             align-items: center;
                             overflow: hidden;
                             height: 100%;
-    
+
                             width: 100%;
                             font-size: 1.7rem;
                             color: hsl(0, 0, 90%);
                             line-height: 100%;
                             font-weight: 500;
                             overflow: hidden;
-    
+
                             background: none;
                             @include smooth;
-    
+
                             &::placeholder {
                                 font-size: 1.7rem;
                                 color: hsl(0, 0, 56%);
@@ -193,21 +194,21 @@
                                 font-weight: 500;
                             }
                         }
-    
+
                         .searchicon {
                             height: 2.4rem;
                             fill: hsl(0, 0, 56%);
                             @include smooth;
                         }
                     }
-    
+
                 }
             }
 
-
-
             .bottomlayer {
+                
                 padding: 1rem 0rem;
+
 
                 .drops {
                     width: 100%;
@@ -300,6 +301,11 @@
 
                     }
 
+                }
+
+                .popular{
+                    width: 100%;
+                    max-width: 40rem;
                 }
             }
 

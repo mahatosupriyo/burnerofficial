@@ -177,7 +177,9 @@ const SearchBox: React.FC = () => {
                                         {isLoading && <SearchItemSkeleton />}
                                         {error && <div className={styles.error}>{error}</div>}
                                         {isInitialState && items.length === 0 && (
-                                            <div className={styles.empty}>start searching</div>
+                                            <div className={styles.empty} style={{ fontSize: '1.46rem', fontWeight: 500 }}>
+                                                Popular searches
+                                            </div>
                                         )}
                                         {!isLoading && items.length > 0 && (
                                             <div className={styles.dropswraper}>
