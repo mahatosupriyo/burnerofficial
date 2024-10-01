@@ -1,0 +1,41 @@
+@use '../../../../styles/essentials';
+@import '../../../../styles/essentials';
+
+.searchitemskeleton{
+    width: 100%;
+    display: flex;
+    padding: 1rem;
+    background-color: hsl(0, 0, 10%);
+    gap: 1rem;
+    flex-direction: row;
+
+    .index{
+        @include skeleton-loading(1.8rem, 1.2rem);
+        min-width: 1.8rem;
+    }
+
+    .thumbnail{
+        // display: flex;
+        height: 5.6rem;
+        width: 5.6rem;
+        min-width: 5.6rem;
+        overflow: hidden;
+        @include skeleton-loading(5.6rem, 5.6rem);
+    }
+
+    .seriesdetails{
+        width: 100%;
+        padding: 0.1rem 0rem;
+        .toplayer{
+            display: flex;
+            flex-direction: column;
+            gap: 0.2rem;
+            .seriestitle{
+                @include skeleton-loading(14rem, 1.2rem);
+            }
+            .subheading{
+                @include skeleton-loading(8rem, 1.3rem);
+            }
+        }
+    }
+}

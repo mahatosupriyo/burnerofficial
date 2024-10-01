@@ -65,13 +65,13 @@
                     background-color: hsl(0, 0, 20%);
 
                     .backicon {
-                        fill: hsl(0, 0, 90%);
+                        fill: hsl(0, 0, 80%);
                     }
                 }
 
                 .backicon {
                     @include smooth;
-                    fill: hsl(0, 0, 40%);
+                    fill: hsl(0, 0, 50%);
                     height: 1.629rem;
                 }
             }
