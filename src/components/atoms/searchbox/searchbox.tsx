@@ -22,7 +22,7 @@ const SearchBox: React.FC = () => {
     const [isOpen, setIsOpen] = useState(false)
     const [items, setItems] = useState<SitemapItem[]>([])
     const [search, setSearch] = useState('')
-    const [debouncedSearch] = useDebounce(search, 1000)
+    const [debouncedSearch] = useDebounce(search, 300)
     const [error, setError] = useState<string | null>(null)
     const [isRateLimited, setIsRateLimited] = useState(false)
     const [isInitialState, setIsInitialState] = useState(true)
