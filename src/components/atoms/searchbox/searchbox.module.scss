@@ -118,16 +118,22 @@
                 flex-direction: row;
                 gap: 0.6rem;
 
-                .btn {
+                .closebtn {
                     display: flex;
                     align-items: center;
                     justify-content: center;
                     height: 5.06rem;
                     width: 5.06rem;
+                    aspect-ratio: 1/1;
+                    background: none;
+                    background-color: hsl(0, 0, 90%);
+                    border-radius: 100rem;
+                    cursor: pointer;
 
                     .closeicon {
-                        height: 3.4rem;
-                        width: 3.4rem;
+                        height: 1.6rem;
+                        width: 1.6rem;
+                        stroke: hsl(0, 0, 40%);
                     }
                 }
 

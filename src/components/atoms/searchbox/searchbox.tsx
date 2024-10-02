@@ -163,7 +163,7 @@ const SearchBox: React.FC = () => {
                                             />
                                         </div>
                                     </div>
-                                    <button className={styles.btn} onClick={() => setIsOpen(false)}>
+                                    <button className={styles.closebtn} onClick={() => setIsOpen(false)}>
                                         <svg xmlns="http://www.w3.org/2000/svg" className={styles.closeicon} fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="#1a1a1a" >
                                             <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
                                         </svg>
