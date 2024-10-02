@@ -130,10 +130,14 @@
                     border-radius: 100rem;
                     cursor: pointer;
 
+                    &:hover {
+                        background-color: hsl(0, 0, 60%);
+                    }
+
                     .closeicon {
                         height: 1.6rem;
                         width: 1.6rem;
-                        stroke: hsl(0, 0, 40%);
+                        stroke: hsl(0, 0, 20%);
                     }
                 }
 
@@ -212,7 +216,7 @@
             }
 
             .bottomlayer {
-                
+
                 padding: 1rem 0rem;
 
 
@@ -309,7 +313,7 @@
 
                 }
 
-                .popular{
+                .popular {
                     width: 100%;
                     max-width: 40rem;
                 }

@@ -29,14 +29,8 @@
 
         width: 100%;
         max-width: 200rem;
-        padding: 1.3rem 2rem;
+        padding: 1.3rem 1rem;
         gap: 0.6rem;
-
-
-        @media only screen and (max-width: 60rem) {
-            padding: 1rem;
-            gap: 0.6rem;
-        }
 
         .leftwraper {
             display: flex;
@@ -58,10 +52,13 @@
                 text-decoration: none;
                 @include smooth;
                 background-color: hsl(0, 0, 16%);
+                background: radial-gradient(100% 100% at 49.52% 0%, #793C1A 0%, #292929 21.11%);
+
+                transition: 0.4s ease-in-out;
                 border-radius: 60rem;
 
                 &:hover {
-                    background-color: hsl(0, 0, 20%);
+                    background: radial-gradient(100% 100% at 49.52% 0%, #793C1A 0%, hsl(0, 0%, 16%) 31.11%);
 
                     .backicon {
                         fill: hsl(0, 0, 80%);
