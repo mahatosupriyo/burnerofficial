@@ -209,8 +209,6 @@ const SearchBox: React.FC = () => {
                                 </div>
 
 
-
-
                             </div>
                         </motion.div>
                     </div>
