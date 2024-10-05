@@ -203,8 +203,8 @@ $gap: 1.6rem;
 
   .overlayContent {
     display: flex;
-    padding: 1rem;
-    flex-direction: column;
+    padding: 0.8rem;
+    flex-direction: column-reverse;
     gap: 0.6rem;
     background-color: hsl(0, 0, 10%);
     margin: 2rem;
@@ -225,11 +225,11 @@ $gap: 1.6rem;
         flex-direction: row;
         align-items: center;
         gap: 1rem;
-        padding: 0.2rem 0rem;
+        padding: 0.2rem 0.6rem;
 
         .avatar {
-          height: 4rem;
-          width: 4rem;
+          height: 4.2rem;
+          width: 4.2rem;
           border-radius: 100rem;
           object-fit: cover;
           object-position: center;
@@ -244,13 +244,13 @@ $gap: 1.6rem;
 
 
           .subheading {
-            font-size: 1.6rem;
+            font-size: 1.56rem;
             color: hsl(0, 0, 50%);
             font-weight: 400;
           }
 
           .username {
-            font-size: 1.6rem;
+            font-size: 1.66rem;
             font-weight: 500;
             display: inline-flex;
             color: hsl(0, 0, 90%);
@@ -268,11 +268,14 @@ $gap: 1.6rem;
       object-fit: contain;
       width: 100%;
       user-select: none;
+      pointer-events: none;
       max-width: 70rem;
       max-height: calc(100vh - 20rem);
 
-      border-top-left-radius: 1rem;
-      border-top-right-radius: 1rem;
+      border-top-left-radius: 0.6em;
+      border-top-right-radius: 0.6em;
+      border-bottom-left-radius: 1rem;
+      border-bottom-right-radius: 1rem;
     }
   }
 }
