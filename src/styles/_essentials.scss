@@ -12,6 +12,14 @@
 
 $corner: 0rem;
 
+
+.highlighttxt {
+    background: var(--ln, linear-gradient(87deg, #AFA7A1 -15.71%, #FE4200 28.99%, #FF805B 89.6%, #98B7C0 114.83%));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
 .btn {
     padding: 1.8rem 2rem;
     font-size: 1.56rem;

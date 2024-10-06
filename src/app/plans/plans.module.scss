@@ -20,8 +20,7 @@
         max-width: 200rem;
         position: relative;
 
-        background-color: #5F0CE5;
-        // background-color: hsl(0, 0%, 15%);
+        background-color: #fff;
 
         .nav {
             position: absolute;
@@ -37,45 +36,129 @@
         .hero {
             width: 100%;
             display: flex;
-            align-items: center;
-            justify-content: center;
             flex-direction: column;
             max-width: 100rem;
+            align-items: center;
             min-height: 100vh;
 
-            gap: 4rem;
+            gap: 1.6rem;
             padding: 18rem 2rem;
 
-            @media only screen and (max-width: 60rem) {
-                gap: 4rem;
-            }
-
             .subhead {
-                font-family: Involve Bold;
-
-                font-size: 1.3rem;
-                text-transform: uppercase;
-                letter-spacing: 0.1rem;
-                font-weight: 700;
+                color: hsl(0, 0%, 30%);
+                font-size: 1.66rem;
+                font-weight: 400;
                 opacity: 0.6;
             }
 
             .headingtext {
-                font-family: Involve Bold;
-                letter-spacing: -0.2rem;
-                color: hsl(0, 100%, 96%);
+                color: hsl(0, 0%, 10%);
                 text-align: center;
-                font-size: 12rem;
-                line-height: 90%;
-
+                font-size: 5rem;
+                line-height: 110%;
                 font-weight: 700;
 
-                color: #ffe4e4;
+                letter-spacing: -0.04rem;
+
 
                 @media only screen and (max-width: 60rem) {
                     font-size: 4rem;
                     letter-spacing: -0.01rem;
                     line-height: 90%;
+                }
+            }
+
+            .planscontainer {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+                gap: 1.6rem;
+                width: 100%;
+                padding: 6rem 0rem;
+
+                .plan {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 6rem;
+
+                    width: 100%;
+                    max-width: 80rem;
+
+                    border: 0.03rem solid hsl(0, 0, 80%);
+                    display: flex;
+                    min-height: 50rem;
+                    padding: 2.6rem 2.4rem;
+
+                    .planname {
+                        color: #222;
+                        font-size: 1.7rem;
+                        font-weight: 500;
+                    }
+
+                    .price {
+
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        gap: 1rem;
+
+                        .cost {
+                            display: flex;
+                            flex-direction: row;
+                            align-items: flex-end;
+                            font-size: 5rem;
+                            line-height: 100%;
+                            font-weight: 500;
+                            gap: 1rem;
+                            color: #222;
+
+
+                            .rupee {
+                                transform: translateY(-1rem);
+                                line-height: 100%;
+                                font-weight: 500;
+                                font-size: 2rem;
+                                opacity: 0.6;
+
+                            }
+                        }
+
+                        .label {
+                            font-size: 1.7rem;
+                            color: #222;
+
+                            opacity: 0.5;
+                            font-weight: 500;
+                        }
+
+
+                    }
+
+                    &:nth-child(2) {
+                        background-color: #222;
+
+                        .planname {
+                            color: #fff;
+                            font-weight: 500;
+                        }
+
+                        .price {
+                            color: #fff;
+
+                            .cost {
+                                color: #fff;
+
+                            }
+
+                            
+                            .label {
+                                color: #fff;
+                                opacity: 0.5;
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -90,10 +173,9 @@
             gap: 6rem;
 
             .headingtext {
-                font-family: Involve Bold;
-                font-size: 7rem;
+                font-size: 6rem;
                 line-height: 100%;
-                font-weight: 700;
+                font-weight: 600;
 
                 letter-spacing: -0.1rem;
                 color: hsl(0, 100%, 7%);
@@ -112,11 +194,9 @@
             gap: 2rem;
 
             .headingtext {
-                font-family: Involve Bold;
-
-                font-size: 1.5rem;
+                font-size: 1.66rem;
                 color: hsl(0, 0, 42%);
-                font-weight: 700;
+                font-weight: 400;
             }
 
             .methods {

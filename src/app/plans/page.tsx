@@ -31,14 +31,55 @@ const BurnerPlans = () => {
             <div className={styles.wraper}>
                 <div className={styles.container}>
                     <nav className={styles.nav}>
-                        <Logo width='100' fill='#fafafa' />
+                        <Logo width='80' fill='#fafafa' />
                     </nav>
 
                     <section className={styles.hero}>
-                        <p className={styles.subhead}>burner pro plans</p>
                         <h1 className={styles.headingtext}>
-                            UNLEASH YOUR DESIGN SUPER POWERS WITH BURNER PRO
+                            Get unlimted access
                         </h1>
+                        <p className={styles.subhead}>
+                            Celebrate with up to ₹4000 instant discount on yearly plans.
+                        </p>
+
+                        <div className={styles.planscontainer}>
+                            <div className={styles.plan}>
+                                <h3 className={styles.planname}>Free</h3>
+                                <div className={styles.price}>
+
+                                    <h1 className={styles.cost}>
+                                        ₹0
+                                    </h1>
+                                    <p className={styles.label}>/ month</p>
+
+                                </div>
+                            </div>
+
+                            <div className={styles.plan}>
+                                <h3 className={styles.planname}><span className={styles.highlighttxt}>Pro</span> quarterly</h3>
+                                <div className={styles.price}>
+
+                                    <h1 className={styles.cost}>
+                                        ₹759
+                                    </h1>
+                                    <p className={styles.label}>/ month</p>
+
+                                </div>
+
+                            </div>
+
+                            <div className={styles.plan}>
+                                <h3 className={styles.planname}><span className={styles.highlighttxt}>Pro</span> annually</h3>
+                                <div className={styles.price}>
+
+                                    <h1 className={styles.cost}>
+                                        ₹999
+                                    </h1>
+                                    <p className={styles.label}>/ month</p>
+
+                                </div>
+                            </div>
+                        </div>
                     </section>
 
                     <section className={styles.plans}>
