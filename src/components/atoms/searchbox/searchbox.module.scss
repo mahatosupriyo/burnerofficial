@@ -272,6 +272,20 @@
                                 @media only screen and (max-width: 80rem){
                                     gap: 1.3rem;
                                 }
+
+                                .new{
+                                    color: #fff;
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: center;
+                                    padding: 0.2rem;
+                                    background-color: #0C8CE9;
+                                    line-height: 100%;
+                                    font-size: 1.1rem;
+                                    font-weight: 500;
+                                    padding: 0.46rem;
+                                    border-radius: 0.5rem;
+                                }
     
                                 &:hover{
                                     opacity: 0.6;
