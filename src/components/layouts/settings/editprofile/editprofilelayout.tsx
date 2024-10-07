@@ -44,7 +44,7 @@ export default async function EditProfileLayout() {
 
                 <div className={styles.layoutwraper}>
                     <h1 className={styles.pagehead}>
-                        Edit Profile
+                        Edit Account
                     </h1>
                     <p className={styles.description}>Update your account data</p>
                 </div>
