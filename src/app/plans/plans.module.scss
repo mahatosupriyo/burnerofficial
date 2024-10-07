@@ -44,11 +44,16 @@
             gap: 1.6rem;
             padding: 18rem 2rem;
 
+            @media only screen and (max-width: 60rem){
+                padding: 18rem 1.6rem;
+            }
+
             .subhead {
                 color: hsl(0, 0%, 30%);
                 font-size: 1.66rem;
                 font-weight: 400;
                 opacity: 0.6;
+                text-align: center;
             }
 
             .headingtext {
@@ -71,25 +76,30 @@
             .planscontainer {
                 display: flex;
                 flex-direction: row;
-                align-items: center;
+                align-items: flex-start;
                 justify-content: center;
                 gap: 1.6rem;
                 width: 100%;
                 padding: 6rem 0rem;
 
+                @media only screen and (max-width: 60rem){
+                    flex-direction: column;
+                }
+
                 .plan {
                     display: flex;
                     flex-direction: column;
                     align-items: center;
-                    gap: 6rem;
+                    // gap: 1rem;
 
                     width: 100%;
-                    max-width: 80rem;
 
                     border: 0.03rem solid hsl(0, 0, 80%);
                     display: flex;
-                    min-height: 50rem;
+                    // min-height: 50rem;
                     padding: 2.6rem 2.4rem;
+                    border-radius: 2rem;
+                    overflow: hidden;
 
                     .planname {
                         color: #222;
@@ -103,6 +113,7 @@
                         flex-direction: column;
                         align-items: center;
                         gap: 1rem;
+                        padding: 4rem 0rem;
 
                         .cost {
                             display: flex;
@@ -125,6 +136,8 @@
                             }
                         }
 
+
+
                         .label {
                             font-size: 1.7rem;
                             color: #222;
@@ -136,8 +149,120 @@
 
                     }
 
+                    .features {
+                        padding: 4rem 0rem;
+                        display: flex;
+                        width: 100%;
+                        flex-direction: column;
+                        line-height: 200%;
+                        font-size: 1.66rem;
+                        color: hsl(0, 0, 40%);
+                        font-weight: 500;
+
+                        .listitem {
+                            list-style-type: none;
+                            display: flex;
+                            flex-direction: row;
+                            align-items: center;
+                            gap: 1.6rem;
+
+                            &::before {
+
+                                height: 2rem;
+                                width: 2rem;
+
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+
+                                content: url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%229%22%20height%3D%228%22%20viewBox%3D%220%200%209%208%22%20fill%3D%22none%22%3E%3Cpath%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%20d%3D%22M9%201.28715L2.74836%207.53874L0%204.79041L0.825723%203.96465L2.74836%205.88731L8.17425%200.461426L9%201.28715Z%22%20fill%3D%22%23111111%22/%3E%3C/svg%3E');
+                            }
+                        }
+                    }
+
+
+                    &:nth-child(1) {
+                        .currentbtn {
+                            @include btn(hsl(0, 0, 90%), hsl(0, 0, 60%));
+
+                            &:hover {
+                                color: hsl(0, 0, 60%);
+                                background: hsl(0, 0, 90%);
+                            }
+                        }
+                    }
+
+
+                    &:nth-child(3) {
+                        .btn {
+                            color: #fff;
+                            background: #0075FF;
+
+                            &:hover {
+                                color: hsl(0, 0, 86%);
+                                background: hsl(212, 100%, 40%);
+                            }
+                        }
+                        position: relative;
+
+                        &::before {
+                            content: '';
+                            display: flex;
+                            width: 100%;
+
+                            position: absolute;
+                            top: 0;
+                            background: linear-gradient(87deg, #AFA7A1 -15.71%, #FE4200 28.99%, #FF805B 89.6%, #98B7C0 114.83%);
+                            height: 0.4rem;
+                        }
+                        
+                    }
+
+
                     &:nth-child(2) {
-                        background-color: #222;
+                        background-color: #1a1a1a;
+                        position: relative;
+                        border: transparent;
+
+                        &::before {
+                            content: '';
+                            display: flex;
+                            width: 100%;
+
+                            position: absolute;
+                            top: 0;
+                            background: linear-gradient(87deg, #AFA7A1 -15.71%, #FE4200 28.99%, #FF805B 89.6%, #98B7C0 114.83%);
+                            height: 0.4rem;
+                        }
+
+                        .btn {
+                            @include btn(hsl(0, 0, 100%), hsl(0, 0, 100%));
+                            background: hsl(212, 100%, 50%);
+                            @include smooth;
+
+                            &:hover {
+                                color: hsl(0, 0, 86%);
+                                background: hsl(212, 100%, 40%);
+                            }
+                        }
+
+                        .features {
+                            .listitem {
+                                color: #fafafa;
+
+                                &::before {
+                                    height: 2rem;
+                                    width: 2rem;
+
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: center;
+
+                                    content: url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%229%22%20height%3D%228%22%20viewBox%3D%220%200%209%208%22%20fill%3D%22none%22%3E%3Cpath%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%20d%3D%22M9%201.28715L2.74836%207.53874L0%204.79041L0.825723%203.96465L2.74836%205.88731L8.17425%200.461426L9%201.28715Z%22%20fill%3D%22%23FAFAFA%22/%3E%3C/svg%3E');
+
+                                }
+                            }
+                        }
 
                         .planname {
                             color: #fff;
@@ -152,7 +277,7 @@
 
                             }
 
-                            
+
                             .label {
                                 color: #fff;
                                 opacity: 0.5;

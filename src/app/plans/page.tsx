@@ -52,6 +52,14 @@ const BurnerPlans = () => {
                                     </h1>
                                     <p className={styles.label}>/ month</p>
 
+
+                                </div>
+                                <button className={styles.currentbtn} style={{ width: '100%' }}>Current plan</button>
+
+                                <div className={styles.features}>
+                                    <li className={styles.listitem}>Top 20 Inspirations</li>
+                                    <li className={styles.listitem}>Free series only</li>
+                                    <li className={styles.listitem}>Share upto 5 posts</li>
                                 </div>
                             </div>
 
@@ -65,7 +73,16 @@ const BurnerPlans = () => {
                                     <p className={styles.label}>/ month</p>
 
                                 </div>
+                                <button className={styles.btn} style={{ width: '100%' }}>Select quarterly</button>
 
+                                <div className={styles.features}>
+                                <li className={styles.listitem}>Unlimited Inspirations</li>
+                                    <li className={styles.listitem}>Access making of inspirations</li>
+                                    <li className={styles.listitem}>All series access</li>
+                                    <li className={styles.listitem}>Share unlimited posts </li>
+                                    <li className={styles.listitem}>Career opportunities</li>
+                                    <li className={styles.listitem}>Community access</li>
+                                </div>
                             </div>
 
                             <div className={styles.plan}>
@@ -78,6 +95,18 @@ const BurnerPlans = () => {
                                     <p className={styles.label}>/ month</p>
 
                                 </div>
+                                <button className={styles.btn} style={{ width: '100%' }}>Select quarterly</button>
+
+                                <div className={styles.features}>
+                                    <li className={styles.listitem}>Unlimited Inspirations</li>
+                                    <li className={styles.listitem}>Access making of inspirations</li>
+                                    <li className={styles.listitem}>All series access</li>
+                                    <li className={styles.listitem}>Share unlimited posts </li>
+                                    <li className={styles.listitem}>Special starter kit</li>
+                                    <li className={styles.listitem}>Career opportunities</li>
+                                    <li className={styles.listitem}>Community access</li>
+                                </div>
+
                             </div>
                         </div>
                     </section>

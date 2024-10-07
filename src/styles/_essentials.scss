@@ -38,6 +38,24 @@ $corner: 0rem;
     }
 }
 
+@mixin btn($bg: #fff, $color: '#222'){
+    padding: 1.8rem 2rem;
+    font-size: 1.56rem;
+    font-weight: 600;
+    cursor: pointer;
+    user-select: none;
+    line-height: 100%;
+    border-radius: 6rem;
+    background-color: $bg;
+    color: $color;
+    @include smooth();
+
+    &:hover {
+        background-color: hsl(0, 0, 70%);
+
+    }
+}
+
 
 // Skeleton Starts
 // Variables for customization
