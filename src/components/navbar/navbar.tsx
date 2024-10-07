@@ -14,6 +14,10 @@ export default async function NavBar() {
         redirect("/auth")
     }
 
+    if (!session.user.email) {
+        throw new Error("User email is missing")
+    }
+
     const user = await prisma.user.findUnique({
         where: { email: session.user.email },
         select: { name: true, email: true, image: true },
@@ -22,7 +26,6 @@ export default async function NavBar() {
     if (!user) {
         throw new Error("User not found")
     }
-
     return (
         <div className={styles.navwraper}>
             <div className={styles.nav}>
@@ -57,7 +60,9 @@ export default async function NavBar() {
                             {user.image ? (
                                 <Link className={styles.settingslink} href="/settings">
                                     <img
-                                        src={session.user.image} draggable="false"
+                                        src={user.image}
+                                        alt={user.name || 'User avatar'}
+                                        draggable="false"
                                         className={styles.avatar}
                                     />
                                 </Link>

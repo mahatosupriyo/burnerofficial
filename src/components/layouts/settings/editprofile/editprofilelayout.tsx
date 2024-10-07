@@ -13,6 +13,10 @@ export default async function EditProfileLayout() {
         redirect("/auth")
     }
 
+    if (!session.user.email) {
+        throw new Error("User email is missing")
+    }
+
     const user = await prisma.user.findUnique({
         where: { email: session.user.email },
         select: { name: true, email: true, username: true, lastUsernameUpdate: true },
@@ -21,7 +25,6 @@ export default async function EditProfileLayout() {
     if (!user || !user.name || !user.email || !user.username) {
         throw new Error("User not found or missing required fields")
     }
-
     const formInitialData = {
         name: user.name,
         email: user.email,

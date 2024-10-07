@@ -13,6 +13,10 @@ export default async function SettingsLayout() {
         redirect("/auth")
     }
 
+    if (!session.user.email) {
+        throw new Error("User email is missing")
+    }
+
     const user = await prisma.user.findUnique({
         where: { email: session.user.email },
         select: { name: true, email: true, image: true },
