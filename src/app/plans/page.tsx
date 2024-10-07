@@ -95,7 +95,7 @@ const BurnerPlans = () => {
                                     <p className={styles.label}>/ month</p>
 
                                 </div>
-                                <button className={styles.btn} style={{ width: '100%' }}>Select quarterly</button>
+                                <button className={styles.btn} style={{ width: '100%' }}>Select annually</button>
 
                                 <div className={styles.features}>
                                     <li className={styles.listitem}>Unlimited Inspirations</li>
