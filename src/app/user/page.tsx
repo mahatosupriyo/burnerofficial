@@ -33,7 +33,6 @@ export default async function UserPage() {
         <div className={styles.wraper}>
             <NavBar />
             <div className={styles.container}>
-                {/* <UserProfile/> */}
                 <PostList initialPosts={posts} />
 
             </div>
