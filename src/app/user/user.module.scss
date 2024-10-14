@@ -61,18 +61,23 @@
                 display: flex;
                 gap: 4rem;
                 flex-direction: row;
+                align-items: flex-end;
                 justify-content: space-between;
                 padding: 0rem 0rem;
                 width: 100%;
+                position: relative;
 
                 .userbadge {
                     display: flex;
                     flex-direction: column;
+
                     gap: 5rem;
-                    // width: 100%;
                     max-width: 70%;
 
                     .username {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
                         font-size: 2rem;
                         font-weight: 600;
                         display: flex;
