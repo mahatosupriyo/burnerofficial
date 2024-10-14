@@ -31,6 +31,8 @@
                 align-items: flex-start;
                 padding: 4rem 0rem;
 
+                display: none;
+
                 .sociallink {
                     padding: 0.6rem 0rem;
                     text-decoration: none;
@@ -59,13 +61,14 @@
 
             .contentwraper {
                 display: flex;
-                gap: 4rem;
+                gap: 2rem;
                 flex-direction: row;
                 align-items: flex-end;
                 justify-content: space-between;
                 padding: 0rem 0rem;
                 width: 100%;
                 position: relative;
+                align-items: flex-start;
 
                 .userbadge {
                     display: flex;
@@ -91,7 +94,8 @@
                         font-weight: 400;
                         font-family: "freightdispcmp-pro";
                         font-size: 3.6rem;
-                        color: hsl(0, 0, 50%);
+                        color: hsl(0, 0, 80%);
+                        margin-top: 10rem;
                     }
                 }
 
