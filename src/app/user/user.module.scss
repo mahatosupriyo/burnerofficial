@@ -1,3 +1,96 @@
 @use '../../styles/essentials';
 @import '../../styles/essentials';
 
+.wraper {
+    display: flex;
+    width: 100%;
+
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+
+    .container {
+        width: 100%;
+        display: flex;
+        max-width: 200rem;
+        align-items: flex-start;
+        overflow: hidden;
+
+
+        .content {
+            padding: 4rem 4rem;
+            width: 100%;
+            display: flex;
+            align-items: flex-start;
+            flex-direction: column;
+
+
+            .socials {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 4rem 0rem;
+
+                .sociallink {
+                    padding: 0.6rem 0rem;
+                    text-decoration: none;
+                    display: flex;
+                    flex-direction: row;
+                    gap: 0.6rem;
+                    align-items: center;
+
+                    color: hsl(0, 0, 90%);
+                    font-size: 1.56rem;
+                    font-weight: 600;
+
+                    @include smooth;
+
+                    &:hover {
+                        opacity: 0.5;
+                    }
+
+                    .socialicon {
+                        height: 4rem;
+                        fill: #fff;
+                    }
+                }
+
+            }
+
+            .contentwraper {
+                display: flex;
+                gap: 4rem;
+                flex-direction: row;
+                justify-content: space-between;
+                padding: 0rem 0rem;
+                width: 100%;
+
+                .userbadge {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 5rem;
+                    // width: 100%;
+                    max-width: 70%;
+
+                    .username {
+                        font-size: 2rem;
+                        font-weight: 600;
+                        display: flex;
+                        align-items: center;
+                        flex-direction: row;
+                        gap: 0.4rem;
+                    }
+
+                    .intro {
+                        width: 100%;
+                        font-weight: 400;
+                        font-family: "freightdispcmp-pro";
+                        font-size: 3.6rem;
+                        color: hsl(0, 0, 50%);
+                    }
+                }
+
+            }
+        }
+    }
+}

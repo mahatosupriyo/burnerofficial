@@ -105,6 +105,7 @@ const Feed = () => {
                     <img
                       src="https://middaycdn.s.llnwi.net/Radiocity-images/images/uploads/darshan%20raval%20india%20tour_d.jpg"
                       draggable="false"
+                      loading='lazy'
                       className={styles.avatar}
                     />
                     <div className={styles.creationdetails}>
