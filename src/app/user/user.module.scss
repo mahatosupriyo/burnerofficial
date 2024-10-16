@@ -24,41 +24,6 @@
             align-items: flex-start;
             flex-direction: column;
 
-
-            .socials {
-                display: flex;
-                flex-direction: column;
-                align-items: flex-start;
-                padding: 4rem 0rem;
-
-                display: none;
-
-                .sociallink {
-                    padding: 0.6rem 0rem;
-                    text-decoration: none;
-                    display: flex;
-                    flex-direction: row;
-                    gap: 0.6rem;
-                    align-items: center;
-
-                    color: hsl(0, 0, 90%);
-                    font-size: 1.56rem;
-                    font-weight: 600;
-
-                    @include smooth;
-
-                    &:hover {
-                        opacity: 0.5;
-                    }
-
-                    .socialicon {
-                        height: 4rem;
-                        fill: #fff;
-                    }
-                }
-
-            }
-
             .contentwraper {
                 display: flex;
                 gap: 2rem;
@@ -81,7 +46,7 @@
                         position: absolute;
                         top: 0;
                         left: 0;
-                        font-size: 2rem;
+                        font-size: 1.8rem;
                         font-weight: 600;
                         display: flex;
                         align-items: center;
@@ -102,4 +67,40 @@
             }
         }
     }
+}
+
+
+.creatordata {
+    display: flex;
+    overflow: hidden;
+    
+    flex-direction: row;
+    justify-content: space-between;
+
+    .creator {
+        width: 100%;
+        display: flex;
+        gap: 1.6rem;
+        flex-direction: column;
+        .avatar {
+            width: 24rem;
+            height: 24rem;
+            aspect-ratio: 1/1;
+            @include protectmedia;
+        }
+
+        .contactbutton{
+            background-color: hsl(0, 0, 90%);
+            color: hsl(0, 0, 10%);
+
+            border-radius: 0%;
+            font-size: 1.48rem;
+            padding: 1.46rem 1.6rem;
+            font-weight: 600;
+            line-height: 100%;
+            cursor: pointer;
+            border-radius: 100rem;
+        }
+    }
+
 }
