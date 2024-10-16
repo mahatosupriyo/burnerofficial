@@ -33,7 +33,7 @@ const defaultOptions = {
     max:                    15,     // max tilt rotation (degrees)
     startX:                 0,      // the starting tilt on the X axis, in degrees.
     startY:                 0,      // the starting tilt on the Y axis, in degrees.
-    perspective:            1000,   // Transform perspective, the lower the more extreme the tilt gets.
+    perspective:            1600,   // Transform perspective, the lower the more extreme the tilt gets.
     scale:                  1,      // 2 = 200%, 1.5 = 150%, etc..
     speed:                  300,    // Speed of the enter/exit transition
     transition:             true,   // Set a transition on enter/exit.
