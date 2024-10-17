@@ -23,144 +23,141 @@
         padding-bottom: 10rem;
 
         padding: 4rem;
+        overflow-x: hidden;
 
         @media only screen and (max-width: 60rem) {
-            padding: 4rem 1rem;
+            padding: 4rem 2rem;
         }
 
-        .header {
-            display: flex;
-            padding: 3.4rem;
+        .content {
             width: 100%;
-            flex-direction: column;
-            // align-items: center;
-            gap: 2.6rem;
-            max-width: 70rem;
-            background-color: hsl(0, 0, 12%);
+            display: flex;
+            align-items: flex-start;
 
-            position: relative;
-
-            @media only screen and (max-width: 40rem) {
-                padding: 4rem 1.6rem;
-            }
-
-            &::before {
-                position: absolute;
-                top: 0;
-                left: 0;
-                content: '';
-                width: 100%;
-                background: var(--ln, linear-gradient(87deg, #AFA7A1 -15.71%, #FE4200 28.99%, #FF805B 89.6%, #98B7C0 114.83%));
-                height: 0.26rem;
-            }
-
-            .username {
-                font-size: 1.8rem;
-                font-weight: 600;
-                color: hsl(0, 0, 90%);
+            .contentwraper {
                 display: flex;
-                align-items: center;
-                gap: 0.3rem;
-            }
+                gap: 2rem;
+                flex-direction: row;
+                align-items: flex-end;
+                justify-content: space-between;
+                padding: 0rem 0rem;
+                width: 100%;
+                position: relative;
+                align-items: flex-start;
 
-            .avatar {
-                border-radius: 100rem;
-                @include protectmedia;
-                height: 12rem;
-                width: 12rem;
-            }
+                @media only screen and (max-width: 60rem) {
+                    flex-direction: column;
+                    gap: 6rem;
+                }
 
-        }
+                .username {
+                    // position: absolute;
+                    // top: 0;
+                    // left: 0;
+                    font-size: 1.8rem;
+                    font-weight: 600;
+                    display: flex;
+                    align-items: center;
+                    flex-direction: row;
+                    gap: 0.4rem;
+                }
 
-        .feed {
-            width: 100%;
-            max-width: 70rem;
-            // min-height: 40rem;
-            background-color: hsl(0, 0, 12%);
-            padding: 4rem 4rem 0rem 4rem;
-            display: flex;
-            flex-direction: column;
-            gap: 2.6rem;
+                .userbadge {
+                    display: flex;
+                    flex-direction: column;
 
-            @media only screen and (max-width: 40rem) {
-                padding: 3rem 1.6rem 0rem 1.6rem;
-            }
+                    gap: 5rem;
+                    max-width: 70%;
 
-            .sectionhead {
-                font-size: 1.7rem;
-                font-weight: 400;
-            }
 
-            .gridcontainer {
-                display: grid;
-                grid-template-columns: repeat(3, 1fr);
-                gap: 1rem;
+                    @media only screen and (max-width: 60rem) {
+                        max-width: 100%;
+                    }
 
-                .griditem {
-                    overflow: hidden;
-
-                    .image {
+                    .intro {
                         width: 100%;
-                        height: 100%;
-                        object-fit: cover;
-                        aspect-ratio: 1/1;
+                        font-weight: 500;
+                        font-family: "freightdispcmp-pro";
+                        font-size: 3.6rem;
+                        color: hsl(0, 0, 80%);
+                        margin-top: 10rem;
                     }
                 }
-            }
 
-            .expandbtn {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                width: 100%;
-                padding: 2rem;
-                cursor: pointer;
-                background: hsl(0, 0, 14%);
-                @include smooth;
-
-                &:hover {
-                    background: hsl(0, 0, 18%);
-                }
-
-                .downarrow {
-                    height: 2.6rem;
-                }
-            }
-        }
-
-        .userbio {
-            display: flex;
-            flex-direction: column;
-            gap: 0.6rem;
-
-            .name {
-                font-size: 1.8rem;
-                font-weight: 600;
-                color: hsl(0, 0, 90%);
-            }
-
-            .bio {
-                font-size: 1.56rem;
-                font-weight: 500;
-                color: hsl(0, 0, 60%);
-                line-height: 140%;
-            }
-        }
-
-        .footer {
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            gap: 1.6rem;
-            padding: 4rem;
-
-            .label {
-                font-size: 1.66rem;
-                font-weight: 500;
-                color: hsl(0, 0, 90%);
             }
         }
     }
+}
+
+
+.creatordata {
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+
+    flex-direction: row;
+    justify-content: space-between;
+
+    .creator {
+        width: 100%;
+        display: flex;
+        gap: 2.6rem;
+        flex-direction: row;
+        justify-content: space-between;
+        height: 100%;
+
+        .avatar {
+            width: 20rem;
+            height: 20rem;
+            aspect-ratio: 1/1;
+            @include protectmedia;
+        }
+
+        .label {
+            color: hsl(0, 0, 90%);
+
+            font-size: 1.2rem;
+
+            font-weight: 500;
+            line-height: 100%;
+        }
+
+        .socials {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+
+            .sociallink {
+                display: flex;
+                width: 100%;
+
+                flex-direction: row;
+                gap: 1.6rem;
+                user-select: none;
+                font-size: 1.46rem;
+                // border-top: 0.03rem solid hsl(0, 0, 20%);
+                border-bottom: 0.03rem solid hsl(0, 0, 30%);
+                padding: 1.6rem 0rem;
+                align-items: center;
+                font-weight: 600;
+                cursor: pointer;
+                @include smooth;
+
+                .socialicon {
+                    height: 2rem;
+                    fill: hsl(0, 0, 100%);
+                }
+
+                &:hover {
+                    opacity: 0.6;
+                    border-bottom: 0.03rem solid hsl(0, 0, 64%);
+                }
+
+                &:nth-child(1) {
+                    border-top: 0.03rem solid hsl(0, 0, 30%);
+                }
+            }
+        }
+    }
+
 }

@@ -17,6 +17,12 @@
 
     gap: 4rem;
 
+    
+    @media only screen and (max-width: 60rem) {
+        align-items: center;
+        justify-content: center;
+    }
+
 
     .postContent {
         display: flex;

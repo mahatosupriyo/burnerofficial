@@ -1,7 +1,7 @@
 "use client"
 import React, { useState, useEffect, useRef } from 'react'
-import { motion, useAnimation } from 'framer-motion'
-import styles from './banner.module.scss'
+import { easeInOut, motion, useAnimation } from 'framer-motion'
+import styles from './postcard.module.scss'
 import { Tilt } from 'react-tilt'
 
 
@@ -136,6 +136,8 @@ export default function PostCard() {
                     onDrag={handleDrag}
                     onDragEnd={handleDragEnd}
                     animate={controls}
+                    whileHover={{scale: 1.01}}
+                    transition={easeInOut}
                 >
                     <img
                         draggable="false"
