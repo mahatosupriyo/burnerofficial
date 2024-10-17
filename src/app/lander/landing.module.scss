@@ -1,0 +1,80 @@
+@use "../../styles/_essentials.scss";
+@import "../../styles/_essentials.scss";
+
+.wraper {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    background-color: #000;
+    flex-direction: column;
+
+    .container {
+        display: flex;
+        width: 100%;
+        max-width: 200rem;
+        background-color: #000;
+        min-height: 100lvh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 4rem;
+        gap: 10rem;
+
+        .header {
+            display: flex;
+            padding: 4rem 0rem;
+            flex-direction: column;
+            align-items: center;
+            gap: 6rem;
+
+            .headercontent {
+                .title {
+                    background: linear-gradient(93deg, #E1DDFF 23.39%, #F2E4DE 34.59%, #E1E1E1 50%);
+                    background-clip: text;
+                    -webkit-background-clip: text;
+                    -webkit-text-fill-color: transparent;
+
+                    user-select: none;
+                }
+            }
+        }
+
+        .subwraper {
+            .ctabutton {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 100rem;
+
+                padding: 0.04rem;
+                background: var(--BurnerRed, linear-gradient(87deg, #AFA7A1 -15.71%, #FE4200 28.99%, #FF805B 89.6%, #98B7C0 114.83%));
+                overflow: hidden;
+                background: #0099FF;
+                background: hsl(204, 100%, 60%);
+                cursor: pointer;
+
+                .innercontent {
+                    background-color: #000;
+                    background-color: #0099FF;
+
+                    padding: 2rem 2.4rem;
+                    color: #fff;
+
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    line-height: 100%;
+                    font-size: 1.56rem;
+                    font-weight: 600;
+                    border-radius: 100rem;
+                    position: relative;
+                    z-index: 1;
+                    user-select: none;
+                    pointer-events: none;
+
+                }
+            }
+        }
+    }
+}

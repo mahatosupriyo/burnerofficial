@@ -34,8 +34,9 @@ export default async function UserPage() {
                 <NavBar />
             </div>
 
-            <UserProfile />
+                <UserProfile />
 
         </div>
+
     )
 }
