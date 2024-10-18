@@ -7,7 +7,6 @@ import {getPostWithSignedUrl} from '@/app/actions/post'
 type Post = {
   id: string
   imageUrl: string
-  links: string[]
   createdAt: Date
   user: {
     name: string | null
@@ -61,20 +60,6 @@ export function PostList({ initialPosts }: PostListProps) {
         <div key={post.id} className="bg-white shadow rounded-lg overflow-hidden">
           <img src={post.imageUrl} className="w-full h-64 object-cover" />
           <div className="p-4">
-            {post.links.length > 0 && (
-              <div className="mt-2">
-                <p className="text-sm font-medium text-gray-500">Links:</p>
-                <ul className="list-disc pl-5">
-                  {post.links.map((link, index) => (
-                    <li key={index}>
-                      <a href={link} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">
-                        {link}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
             <div className="mt-4 flex items-center justify-between">
               <div className="flex items-center">
                 {post.user.image && (
