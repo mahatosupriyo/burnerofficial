@@ -26,15 +26,20 @@ async function getPosts() {
         }
     })
 
+    console.log('Posts fetched from database:', posts);
+
+
     // Fetch signed URLs for each post
     const postsWithSignedUrls = await Promise.all(
         posts.map(async (post) => {
-            const postWithSignedUrl = await getPostWithSignedUrl(post.id)
-            return { ...post, imageUrl: postWithSignedUrl.imageUrl }
+            const postWithSignedUrl = await getPostWithSignedUrl(post.id);
+            // Log to ensure the signed URL is returned
+            console.log('Post with Signed URL:', postWithSignedUrl);
+            return { ...post, imageUrl: postWithSignedUrl?.imageUrl || post.imageUrl };
         })
-    )
+    );
 
-    return postsWithSignedUrls
+    return postsWithSignedUrls;
 }
 
 export default async function Dashboard() {
