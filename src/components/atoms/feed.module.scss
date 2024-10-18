@@ -86,10 +86,6 @@ $gap: 1.6rem;
     padding: 2rem;
     opacity: 0;
 
-    &:hover {
-      opacity: 0.56;
-    }
-
     .creatorname {
       display: flex;
       align-items: center;
@@ -241,7 +237,12 @@ $gap: 1.6rem;
           display: flex;
           flex-direction: column;
           gap: 0.3rem;
+          @include smooth;
+          text-decoration: none;
 
+          &:hover {
+            opacity: 0.6;
+          }
 
           .subheading {
             font-size: 1.56rem;

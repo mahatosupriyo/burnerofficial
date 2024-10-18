@@ -68,7 +68,7 @@ const BurnerPlans = () => {
                                 <div className={styles.price}>
 
                                     <h1 className={styles.cost}>
-                                        ₹759
+                                        ₹999
                                     </h1>
                                     <p className={styles.label}>/ month</p>
 
@@ -90,7 +90,7 @@ const BurnerPlans = () => {
                                 <div className={styles.price}>
 
                                     <h1 className={styles.cost}>
-                                        ₹999
+                                        ₹759
                                     </h1>
                                     <p className={styles.label}>/ month</p>
 
