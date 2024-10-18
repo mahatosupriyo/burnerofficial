@@ -49,12 +49,22 @@
         }
     }
 
+    @media only screen and (max-width: 80rem){
+        align-items: center;
+        justify-content: center;
+    }
+
     .searchboxContent {
         display: flex;
         width: 100%;
         align-items: center;
         justify-content: space-between;
         flex-direction: row;
+        position: relative;
+
+        @media only screen and (max-width: 80rem){
+           display: none;
+        }
 
         .shortcutKey {
             border-radius: 0.4rem;
@@ -63,6 +73,12 @@
             font-weight: 600;
             font-size: 1.1rem;
             background-color: hsl(0, 0, 26%);
+            position: absolute;
+            right: 0;
+
+            @media only screen and (max-width: 80rem){
+                display: none;
+            }
         }
     }
 
