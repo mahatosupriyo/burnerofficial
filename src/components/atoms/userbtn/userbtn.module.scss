@@ -1,0 +1,40 @@
+@use '../../../styles/essentials';
+@import '../../../styles/essentials';
+
+.avatarbtn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    background: none;
+    background-color: none;
+    cursor: pointer;
+
+    border-radius: 10rem;
+    position: relative;
+    @include smooth;
+
+    z-index: 90;
+
+
+    &:hover {
+        opacity: 0.8;
+    }
+
+    .settingslink {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+
+        .avatar {
+            @include protectmedia;
+            height: 5rem;
+            width: 5rem;
+            border-radius: 10rem;
+            object-fit: cover;
+            object-position: center;
+        }
+    }
+
+}

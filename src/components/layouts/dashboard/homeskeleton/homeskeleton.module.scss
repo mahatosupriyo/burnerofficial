@@ -1,0 +1,55 @@
+@use '../../../../styles/essentials';
+@import '../../../../styles/essentials';
+
+.feed {
+    display: flex;
+    width: 100%;
+    padding: 0rem 2rem;
+
+    .masonrygrid {
+        display: flex;
+        width: 100%;
+        flex-direction: row;
+        gap: 1.6rem;
+
+        .gridItem {
+            display: flex;
+            width: 100%;
+            min-height: 50rem;
+            border-radius: 2rem;
+            @include skeleton-loading(100%, 50rem);
+
+            &:nth-child(1) {
+                @include skeleton-loading(100%, 50rem);
+            }
+
+            &:nth-child(2) {
+                @include skeleton-loading(100%, 60rem);
+            }
+
+            &:nth-child(3) {
+                @include skeleton-loading(100%, 20rem);
+            }
+
+            &:nth-child(4) {
+                @include skeleton-loading(100%, 30rem);
+            }
+
+            @media only screen and (max-width: 1100px) {
+                &:nth-child(1) {
+                    display: none;
+                }
+
+                &:nth-child(2) {
+                    display: none;
+                }
+            }
+
+            @media only screen and (max-width: 700px) {
+                &:nth-child(3) {
+                    display: none;
+                }
+            }
+        }
+    }
+}
