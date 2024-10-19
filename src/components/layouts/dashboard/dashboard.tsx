@@ -64,6 +64,7 @@
 //     )
 // }
 
+
 import React from 'react'
 import styles from './dashboard.module.scss'
 import { PrismaClient } from '@prisma/client'
@@ -75,7 +76,7 @@ const prisma = new PrismaClient()
 interface Post {
   id: string;
   imageUrl: string;
-  caption: string | null;
+  caption: string;
   links: string[];
   createdAt: Date;
   userId: string;
@@ -112,8 +113,12 @@ async function getPosts(): Promise<Post[]> {
       try {
         const postWithSignedUrl = await getPostWithSignedUrl(post.id)
         return {
-          ...post,
-          imageUrl: postWithSignedUrl.imageUrl,
+          id: post.id,
+          imageUrl: postWithSignedUrl.imageUrl || '/placeholder-image.jpg',
+          caption: post.caption || '',
+          links: post.links || [],
+          createdAt: post.createdAt,
+          userId: post.userId,
           user: {
             username: post.user?.username || 'Anonymous',
             image: post.user?.image || '/defaultavatar.png'
@@ -122,8 +127,12 @@ async function getPosts(): Promise<Post[]> {
       } catch (error) {
         console.error(`Error processing post ${post.id}:`, error);
         return {
-          ...post,
+          id: post.id,
           imageUrl: '/placeholder-image.jpg',
+          caption: '',
+          links: [],
+          createdAt: post.createdAt,
+          userId: post.userId,
           user: {
             username: 'Anonymous',
             image: '/defaultavatar.png'

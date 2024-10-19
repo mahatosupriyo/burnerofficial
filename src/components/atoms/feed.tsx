@@ -182,7 +182,6 @@
 
 // // export default Feed
 
-
 'use client';
 
 import styles from './feed.module.scss';
@@ -196,6 +195,10 @@ import Icon from './icons';
 interface Post {
   id: string;
   imageUrl: string;
+  caption: string;
+  links: string[];
+  createdAt: Date;
+  userId: string;
   user: {
     username: string;
     image: string;
@@ -206,7 +209,7 @@ interface FeedProps {
   posts: Post[];
 }
 
-const Feed = ({ posts }: FeedProps) => {
+const Feed: React.FC<FeedProps> = ({ posts }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState<Post | null>(null);
   const overlayRef = useRef(null);
