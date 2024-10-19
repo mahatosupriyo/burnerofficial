@@ -55,28 +55,8 @@ export function CreatePostForm() {
           <img src={preview} alt="Preview" className="mt-2 h-32 w-auto object-cover" />
         )}
       </div>
-      <div>
-        <label htmlFor="caption" className="block text-sm font-medium text-gray-700">
-          Caption (optional)
-        </label>
-        <input
-          type="text"
-          id="caption"
-          name="caption"
-          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm"
-        />
-      </div>
-      <div>
-        <label htmlFor="links" className="block text-sm font-medium text-gray-700">
-          Links (optional, comma-separated)
-        </label>
-        <input
-          type="text"
-          id="links"
-          name="links"
-          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm"
-        />
-      </div>
+
+
       <button
         type="submit"
         disabled={isSubmitting}

@@ -181,6 +181,7 @@
 // // }
 
 // // export default Feed
+
 'use client';
 
 import styles from './feed.module.scss';
@@ -194,8 +195,6 @@ import Icon from './icons';
 interface Post {
   id: string;
   imageUrl: string;
-  caption: string;
-  links: string[];
   createdAt: string;
   userId: string;
   user: {
@@ -212,9 +211,14 @@ const Feed: React.FC = () => {
 
   useEffect(() => {
     const scriptElement = document.getElementById('posts-data');
-    if (scriptElement) {
-      const postsData = JSON.parse(scriptElement.textContent || '[]') as Post[];
-      setPosts(postsData);
+    if (scriptElement && scriptElement.textContent) {
+      try {
+        const postsData = JSON.parse(scriptElement.textContent) as Post[];
+        setPosts(postsData);
+      } catch (error) {
+        console.error("Error parsing posts data:", error);
+        setPosts([]);
+      }
     }
   }, []);
 

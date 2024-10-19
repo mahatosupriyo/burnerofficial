@@ -136,25 +136,25 @@ const s3Client = new S3Client({
   },
 });
 
-const PostSchema = z.object({
-  caption: z.string().optional(),
-  links: z.string().optional(),
-});
+// const PostSchema = z.object({
+//   caption: z.string().optional(),
+//   links: z.string().optional(),
+// });
 
-async function getSignedImageUrl(key: string): Promise<string> {
-  const command = new GetObjectCommand({
-    Bucket: env.AWS_S3_BUCKET_NAME,
-    Key: key,
-  });
+// async function getSignedImageUrl(key: string): Promise<string> {
+//   const command = new GetObjectCommand({
+//     Bucket: env.AWS_S3_BUCKET_NAME,
+//     Key: key,
+//   });
 
-  try {
-    // The URL will be valid for 1 hour
-    return await getSignedUrl(s3Client, command, { expiresIn: 3600 });
-  } catch (error) {
-    console.error("Error generating signed URL:", error);
-    throw new Error("Failed to generate signed URL");
-  }
-}
+//   try {
+//     // The URL will be valid for 1 hour
+//     return await getSignedUrl(s3Client, command, { expiresIn: 3600 });
+//   } catch (error) {
+//     console.error("Error generating signed URL:", error);
+//     throw new Error("Failed to generate signed URL");
+//   }
+// }
 
 export async function createPost(formData: FormData) {
   try {
@@ -167,11 +167,6 @@ export async function createPost(formData: FormData) {
     if (!(file instanceof File)) {
       throw new Error("No valid file uploaded");
     }
-
-    const { caption, links } = PostSchema.parse({
-      caption: formData.get('caption'),
-      links: formData.get('links'),
-    });
 
     const fileHash = crypto.createHash('md5').update(`${Date.now()}-${file.name}`).digest('hex');
     const fileName = `${fileHash}.webp`;
@@ -196,8 +191,6 @@ export async function createPost(formData: FormData) {
     await prisma.post.create({
       data: {
         imageUrl: fileName, // Store only the file name in the database
-        caption: caption || '',
-        links: links ? links.split(',').map(link => link.trim()) : [],
         userId: session.user.id,
       },
     });
@@ -241,5 +234,19 @@ export async function getPostWithSignedUrl(postId: string) {
   } catch (error) {
     console.error("Error fetching post with signed URL:", error);
     throw new Error("Failed to fetch post");
+  }
+}
+
+export async function getSignedImageUrl(key: string) {
+  const command = new GetObjectCommand({
+    Bucket: process.env.AWS_S3_BUCKET_NAME!,
+    Key: key,
+  });
+
+  try {
+    return await getSignedUrl(s3Client, command, { expiresIn: 3600 });
+  } catch (error) {
+    console.error("Error generating signed URL:", error);
+    return '/placeholder-image.jpg';
   }
 }
