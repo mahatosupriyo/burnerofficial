@@ -11,19 +11,19 @@ import crypto from 'crypto';
 
 // Validate environment variables
 const envSchema = z.object({
-  AWS_REGION: z.string(),
-  AWS_ACCESS_KEY_ID: z.string(),
-  AWS_SECRET_ACCESS_KEY: z.string(),
-  AWS_S3_BUCKET_NAME: z.string(),
+  AWS_REGION: z.string().nullish(),
+  AWS_ACCESS_KEY_ID: z.string().nullish(),
+  AWS_SECRET_ACCESS_KEY: z.string().nullish(),
+  AWS_S3_BUCKET_NAME: z.string().nullish(),
 });
 
 const env = envSchema.parse(process.env);
 
 const s3Client = new S3Client({
-  region: env.AWS_REGION,
+  region: env.AWS_REGION!,
   credentials: {
-    accessKeyId: env.AWS_ACCESS_KEY_ID,
-    secretAccessKey: env.AWS_SECRET_ACCESS_KEY,
+    accessKeyId: env.AWS_ACCESS_KEY_ID!,
+    secretAccessKey: env.AWS_SECRET_ACCESS_KEY!,
   },
 });
 
@@ -52,7 +52,7 @@ export async function createPost(formData: FormData) {
       .toBuffer();
 
     const putObjectCommand = new PutObjectCommand({
-      Bucket: env.AWS_S3_BUCKET_NAME,
+      Bucket: env.AWS_S3_BUCKET_NAME!,
       Key: fileName,
       Body: webpBuffer,
       ContentType: 'image/webp',
