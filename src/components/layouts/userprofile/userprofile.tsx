@@ -1,4 +1,6 @@
-import React from 'react';
+"use client"
+
+import React, { useState } from 'react';
 import styles from './userprofile.module.scss';
 import PostCard from '@/components/molecules/banner/postcard';
 import Icon from '@/components/atoms/icons';
@@ -19,6 +21,12 @@ interface UserProfileProps {
 }
 
 export default function UserProfile({ user }: UserProfileProps) {
+    const [visiblePosts, setVisiblePosts] = useState(3);
+
+    const loadMorePosts = () => {
+        setVisiblePosts(prevVisible => prevVisible + 3);
+    };
+
     return (
         <div className={styles.displaycontainer}>
             <section className={styles.displaywraper}>
@@ -79,28 +87,34 @@ export default function UserProfile({ user }: UserProfileProps) {
                             </div>
                         </div>
 
-                        <PostCard posts={user.posts} />
-                    </div>
-                </div>
+                        <div className={styles.componentwraper}>
+                            <PostCard posts={user.posts} />
 
-                <div className={styles.userposts}>
-                    <h2 style={{fontSize: '1.66rem', fontWeight: 600}}>Creations</h2>
-                    <div className={styles.postwraper}>
-                        {user.posts.length > 0 ? (
-                            user.posts.map((post) => (
-                                <div key={post.id} className={styles.post}>
-                                    <img
-                                        src={post.imageUrl}
-                                        alt="Post image"
-                                        draggable="false"
-                                        className={styles.creation}
-                                    />
-                                    {/* <p>Posted on: {new Date(post.createdAt).toLocaleDateString()}</p> */}
+                            <div className={styles.userposts}>
+                                <div className={styles.postwraper}>
+                                    {user.posts.slice(0, visiblePosts).map((post) => (
+                                        <div key={post.id} className={styles.post}>
+                                            <img
+                                                src={post.imageUrl}
+                                                alt="Post image"
+                                                draggable="false"
+                                                className={styles.creation}
+                                            />
+                                        </div>
+                                    ))}
                                 </div>
-                            ))
-                        ) : (
-                            <p>No posts available</p>
-                        )}
+                                {visiblePosts < user.posts.length && (
+                                    <div className={styles.loadMoreContainer}>
+                                        <button
+                                            onClick={loadMorePosts}
+                                            className={styles.loadMoreButton}
+                                        >
+                                            <Icon name='downarrow' size={22} fill='#fafafa'/>
+                                        </button>
+                                    </div>
+                                )}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>

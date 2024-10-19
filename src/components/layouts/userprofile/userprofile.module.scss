@@ -29,33 +29,7 @@
             padding: 4rem 2rem;
         }
 
-        .userposts{
-            width: 100%;
-            display: flex;
-            gap: 2rem;
-            flex-direction: column;
-            padding: 6rem 0rem;
-            .postwraper{
-                display: flex;
-                flex-wrap: wrap;
-                gap: 1rem;
-                
-                .post{
-                    max-width: 14rem;
-                    // max-height: 12rem;
-                    .creation{
-                        aspect-ratio: 1/1;
-                        display: flex;
-                        height: 100%;
-                        width: 100%;
-                        object-fit: cover;
-                        @include protectmedia;
-                    }
-                }
 
-
-            }
-        }
 
         .content {
             width: 100%;
@@ -78,16 +52,48 @@
                     gap: 6rem;
                 }
 
-                .username {
-                    // position: absolute;
-                    // top: 0;
-                    // left: 0;
-                    font-size: 1.8rem;
-                    font-weight: 600;
+                .componentwraper {
                     display: flex;
-                    align-items: center;
-                    flex-direction: row;
-                    gap: 0.4rem;
+                    flex-direction: column;
+                    width: 100%;
+                    max-width: 30%;
+
+                    @media only screen and (max-width: 60rem) {
+                        max-width: 100%;
+                    }
+
+                    .userposts {
+                        width: 100%;
+                        display: flex;
+                        gap: 0.6rem;
+                        flex-direction: column;
+                        padding: 1.6rem 0rem;
+
+                        .postwraper {
+                            display: flex;
+                            display: grid;
+                            grid-template-columns: repeat(3, 1fr);
+                            gap: 0.6rem;
+                            width: 100%;
+
+                            .post {
+                                width: 100%;
+
+                                // max-height: 12rem;
+                                .creation {
+                                    aspect-ratio: 1/1;
+                                    display: flex;
+                                    height: 100%;
+                                    width: 100%;
+                                    object-fit: cover;
+                                    @include protectmedia;
+                                    cursor: pointer;
+                                }
+                            }
+
+
+                        }
+                    }
                 }
 
                 .userbadge {
@@ -95,11 +101,23 @@
                     flex-direction: column;
 
                     gap: 5rem;
-                    max-width: 70%;
-
+                    width: 100%;
+                    max-width: 100%;
 
                     @media only screen and (max-width: 60rem) {
                         max-width: 100%;
+                    }
+
+                    .username {
+                        // position: absolute;
+                        // top: 0;
+                        // left: 0;
+                        font-size: 1.8rem;
+                        font-weight: 600;
+                        display: flex;
+                        align-items: center;
+                        flex-direction: row;
+                        gap: 0.4rem;
                     }
 
                     .intro {
@@ -148,7 +166,7 @@
             aspect-ratio: 1/1;
             @include protectmedia;
 
-            
+
             @media only screen and (max-width: 60rem) {
                 height: 8rem;
                 width: 8rem;
@@ -202,4 +220,19 @@
         }
     }
 
+}
+
+.loadMoreButton {
+    width: 100%;
+    display: flex;
+    padding: 1.2rem;
+    background-color: hsl(0, 0, 16%);
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    @include smooth;
+
+    &:hover {
+        background-color: hsl(0, 0, 20%);
+    }
 }
