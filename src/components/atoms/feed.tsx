@@ -133,6 +133,10 @@ const Feed: React.FC = () => {
             className={styles.feedbtn}
             onClick={() => toggleOverlay(post)}
             whileTap={{ opacity: 0.6 }}
+
+            initial={{ opacity: 0.6, filter: 'blur(10px)' }}
+            animate={{ opacity: 1, filter: 'blur(0px)' }}
+            transition={{ delay: 0.3 }}
           >
             <div className={styles.gridItem}>
               <img
