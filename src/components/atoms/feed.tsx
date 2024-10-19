@@ -181,7 +181,6 @@
 // // }
 
 // // export default Feed
-
 'use client';
 
 import styles from './feed.module.scss';
@@ -197,7 +196,7 @@ interface Post {
   imageUrl: string;
   caption: string;
   links: string[];
-  createdAt: Date;
+  createdAt: string;
   userId: string;
   user: {
     username: string;
@@ -205,14 +204,19 @@ interface Post {
   };
 }
 
-interface FeedProps {
-  posts: Post[];
-}
-
-const Feed: React.FC<FeedProps> = ({ posts }) => {
+const Feed: React.FC = () => {
+  const [posts, setPosts] = useState<Post[]>([]);
   const [isOpen, setIsOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState<Post | null>(null);
   const overlayRef = useRef(null);
+
+  useEffect(() => {
+    const scriptElement = document.getElementById('posts-data');
+    if (scriptElement) {
+      const postsData = JSON.parse(scriptElement.textContent || '[]') as Post[];
+      setPosts(postsData);
+    }
+  }, []);
 
   const toggleOverlay = (post: Post) => {
     setSelectedImage(post);
