@@ -22,6 +22,7 @@ interface UserProfileProps {
 
 export default function UserProfile({ user }: UserProfileProps) {
     const [visiblePosts, setVisiblePosts] = useState(3);
+    const firstName = user.name.split(" ")[0]; 
 
     const loadMorePosts = () => {
         setVisiblePosts(prevVisible => prevVisible + 3);
@@ -40,7 +41,7 @@ export default function UserProfile({ user }: UserProfileProps) {
 
                             <h3 className={styles.intro}>
                                 <span style={{ paddingLeft: '50%' }}></span>
-                                Supriyo is a Design Engineer based in India. He is a Top LinkedIn Design voice.
+                                {firstName} is a Design Engineer based in India. He is a Top LinkedIn Design voice.
                                 As a visionary Design Engineer, Supriyo Mahato continues to shape the design landscape with his unique perspective and relentless pursuit of excellence.
                             </h3>
 
@@ -89,7 +90,6 @@ export default function UserProfile({ user }: UserProfileProps) {
 
                         <div className={styles.componentwraper}>
                             <PostCard posts={user.posts} />
-
                             <div className={styles.userposts}>
                                 <div className={styles.postwraper}>
                                     {user.posts.slice(0, visiblePosts).map((post) => (
@@ -109,7 +109,7 @@ export default function UserProfile({ user }: UserProfileProps) {
                                             onClick={loadMorePosts}
                                             className={styles.loadMoreButton}
                                         >
-                                            <Icon name='downarrow' size={22} fill='#fafafa'/>
+                                            <Icon name='downarrow' size={22} fill='#fafafa' />
                                         </button>
                                     </div>
                                 )}
