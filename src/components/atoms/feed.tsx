@@ -107,7 +107,7 @@ const Feed: React.FC = () => {
                       className={styles.avatar}
                       alt={`Avatar of ${selectedImage.user.username}`}
                     />
-                    <Link href={`/user/${selectedImage.user.username}`} className={styles.creationdetails}>
+                    <Link href={`/${selectedImage.user.username}`} className={styles.creationdetails}>
                       <h2 className={styles.subheading}>Inspiration by</h2>
                       <p className={styles.username}>
                         {selectedImage.user.username}

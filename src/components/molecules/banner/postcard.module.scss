@@ -15,7 +15,7 @@
     align-items: flex-start;
     justify-content: flex-start;
 
-    gap: 4rem;
+    gap: 3rem;
 
     
     @media only screen and (max-width: 60rem) {
@@ -27,7 +27,16 @@
     .postContent {
         display: flex;
         flex-direction: column;
-        gap: 0.8rem;
+        gap: 1rem;
+
+        .postInfo {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 400;
+            font-size: 1.4rem;
+            user-select: none;
+            color: hsl(0, 0, 50%);
+        }
 
         .subtitle {
             font-size: 1.56rem;
@@ -45,14 +54,7 @@
 
 
 
-.postInfo {
-    display: flex;
-    justify-content: space-between;
-    font-weight: 400;
-    font-size: 1.24rem;
-    user-select: none;
-    color: hsl(0, 0, 60%);
-}
+
 
 
 

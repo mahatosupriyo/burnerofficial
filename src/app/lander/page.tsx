@@ -60,7 +60,7 @@ const Lander = () => {
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ delay: 0.2 }}
                                     className={styles.subwraper}>
-                                    <Link href="/auth" className={styles.plansbutton}>
+                                    <Link href="/plans" target='_blank' className={styles.plansbutton}>
                                         <div className={styles.innercontent}>
                                             See plans
                                         </div>

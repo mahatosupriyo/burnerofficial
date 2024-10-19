@@ -22,11 +22,39 @@
         gap: 0.6rem;
         padding-bottom: 10rem;
 
-        padding: 4rem;
+        padding: 4rem 10rem;
         overflow-x: hidden;
 
         @media only screen and (max-width: 60rem) {
             padding: 4rem 2rem;
+        }
+
+        .userposts{
+            width: 100%;
+            display: flex;
+            gap: 2rem;
+            flex-direction: column;
+            padding: 6rem 0rem;
+            .postwraper{
+                display: flex;
+                flex-wrap: wrap;
+                gap: 1rem;
+                
+                .post{
+                    max-width: 14rem;
+                    // max-height: 12rem;
+                    .creation{
+                        aspect-ratio: 1/1;
+                        display: flex;
+                        height: 100%;
+                        width: 100%;
+                        object-fit: cover;
+                        @include protectmedia;
+                    }
+                }
+
+
+            }
         }
 
         .content {
@@ -36,7 +64,7 @@
 
             .contentwraper {
                 display: flex;
-                gap: 2rem;
+                gap: 4rem;
                 flex-direction: row;
                 align-items: flex-end;
                 justify-content: space-between;

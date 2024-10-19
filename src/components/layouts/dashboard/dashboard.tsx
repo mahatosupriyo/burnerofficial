@@ -3,7 +3,7 @@ import styles from './dashboard.module.scss'
 import Feed from '@/components/atoms/feed'
 import PostsFetcher from '@/components/atoms/postfetcher'
 
-export default function Dashboard() {
+export default async function Dashboard() {
 
     return (
         <div className={styles.displaycontainer}>

@@ -1,0 +1,22 @@
+.wraper {
+    // background-color: hsl(0, 0%, 0%);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    overflow: hidden;
+    // min-height: 100dvh;
+    
+    .container {
+        overflow: hidden;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        // padding: 0rem rem 0rem 1.2rem;
+        max-width: 200rem;
+        gap: 0.9rem;
+        
+    }
+}
