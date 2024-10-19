@@ -1,5 +1,5 @@
-@use "../../styles/_essentials.scss";
-@import "../../styles/_essentials.scss";
+@use "../../../styles/essentials";
+@import "../../../styles/_essentials.scss";
 
 .wraper {
     display: flex;

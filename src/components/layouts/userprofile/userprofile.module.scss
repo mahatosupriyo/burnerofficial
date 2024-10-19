@@ -195,8 +195,6 @@
                 gap: 1.6rem;
                 user-select: none;
                 font-size: 1.46rem;
-                // border-top: 0.03rem solid hsl(0, 0, 20%);
-                border-bottom: 0.03rem solid hsl(0, 0, 30%);
                 padding: 1.6rem 0rem;
                 align-items: center;
                 font-weight: 600;
@@ -210,11 +208,6 @@
 
                 &:hover {
                     opacity: 0.6;
-                    border-bottom: 0.03rem solid hsl(0, 0, 64%);
-                }
-
-                &:nth-child(1) {
-                    border-top: 0.03rem solid hsl(0, 0, 30%);
                 }
             }
         }

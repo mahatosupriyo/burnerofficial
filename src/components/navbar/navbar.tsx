@@ -3,7 +3,6 @@ import prisma from "@/lib/prisma"
 import React from 'react';
 import styles from './navbar.module.scss';
 import Link from 'next/link';
-import Logo from '../base/logo';
 import { redirect } from "next/navigation"
 import SearchBox from '../atoms/searchbox/searchbox';
 import Icon from "../atoms/icons";

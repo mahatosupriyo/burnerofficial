@@ -13,6 +13,7 @@ interface Post {
 
 interface UserProfileProps {
     user: {
+        verified: boolean;
         name: string;
         image: string | null;
         username: string;
@@ -22,7 +23,7 @@ interface UserProfileProps {
 
 export default function UserProfile({ user }: UserProfileProps) {
     const [visiblePosts, setVisiblePosts] = useState(3);
-    const firstName = user.name.split(" ")[0]; 
+    const firstName = user.name.split(" ")[0];
 
     const loadMorePosts = () => {
         setVisiblePosts(prevVisible => prevVisible + 3);
@@ -36,7 +37,10 @@ export default function UserProfile({ user }: UserProfileProps) {
                         <div className={styles.userbadge}>
                             <h4 className={styles.username}>
                                 {user.username}
-                                <Icon name='verified' size={10} />
+
+                                {user.verified === true &&
+                                    <Icon name='verified' size={10} />
+                                }
                             </h4>
 
                             <h3 className={styles.intro}>
