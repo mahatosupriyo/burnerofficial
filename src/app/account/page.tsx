@@ -1,4 +1,3 @@
-// import { PostList } from '@/components/atoms/postlist';
 import { CreatePostForm } from '@/components/atoms/createpostform';
 import prisma from '@/lib/prisma';
 
@@ -26,7 +25,6 @@ export default async function Account() {
       </div>
       <div>
         <h2 className="text-2xl font-semibold mb-4">Recent Posts</h2>
-        {/* <PostList initialPosts={posts} /> */}
       </div>
     </main>
   );
