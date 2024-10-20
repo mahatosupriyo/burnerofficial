@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import styles from './userprofile.module.scss';
 import PostCard from '@/components/molecules/banner/postcard';
 import Icon from '@/components/atoms/icons';
+import { motion } from 'framer-motion'
 
 interface Post {
     id: string;
@@ -97,14 +98,21 @@ export default function UserProfile({ user }: UserProfileProps) {
                             <div className={styles.userposts}>
                                 <div className={styles.postwraper}>
                                     {user.posts.slice(0, visiblePosts).map((post) => (
-                                        <div key={post.id} className={styles.post}>
+                                        <motion.div
+                                            key={post.id}
+                                            className={styles.post}
+                                            whileTap={{ opacity: 0.6 }}
+                                            initial={{ opacity: 0.6, filter: 'blur(10px)' }}
+                                            animate={{ opacity: 1, filter: 'blur(0px)' }}
+                                            // transition={{ delay: 0.3 }}
+                                        >
                                             <img
                                                 src={post.imageUrl}
                                                 alt="Post image"
                                                 draggable="false"
                                                 className={styles.creation}
                                             />
-                                        </div>
+                                        </motion.div>
                                     ))}
                                 </div>
                                 {visiblePosts < user.posts.length && (

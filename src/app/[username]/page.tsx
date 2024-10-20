@@ -33,7 +33,7 @@ async function getUserData(username: string) {
         ...user,
         posts: postsWithSignedUrls,
         name: user.name || 'Anonymous', // Provide a default value
-        username: user.username || 'anonymous', 
+        username: user.username || 'anonymous',
     };
 }
 
@@ -48,8 +48,10 @@ export default async function UserPage({ params }: { params: { username: string 
         <div className={styles.wraper}>
             <NavBar />
             <div className={styles.container}>
+                <div style={{ width: '100%', display: 'flex', alignItems: 'center', flexDirection: 'column' }}>
                 <UserProfile user={user} />
-                <Controls/>
+                    <Controls />
+                </div>
             </div>
         </div>
     );
