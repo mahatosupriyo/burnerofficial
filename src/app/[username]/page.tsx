@@ -4,6 +4,7 @@ import { getSignedImageUrl } from '@/app/actions/post';
 import UserProfile from '@/components/layouts/userprofile/userprofile';
 import NavBar from '@/components/navbar/navbar';
 import styles from './username.module.scss'
+import Controls from '@/components/molecules/controls/controls';
 
 async function getUserData(username: string) {
     const user = await prisma.user.findUnique({
@@ -48,6 +49,7 @@ export default async function UserPage({ params }: { params: { username: string 
             <NavBar />
             <div className={styles.container}>
                 <UserProfile user={user} />
+                <Controls/>
             </div>
         </div>
     );

@@ -27,7 +27,7 @@ export function CreatePostForm() {
     try {
       await createPost(formData)
       setSuccessMessage('Post created successfully!')
-      router.refresh() // Refresh the page to show the new post
+      router.refresh()
     } catch (error) {
       console.error('Error creating post:', error)
       setSuccessMessage('Failed to create post. Please try again.')

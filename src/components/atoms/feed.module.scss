@@ -6,6 +6,9 @@ $gap: 1.6rem;
 .feedwraper {
   width: 100%;
   position: relative;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
 .masonryGrid {

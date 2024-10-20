@@ -7,6 +7,7 @@ import Masonry from 'react-masonry-css';
 import { useClickAway } from 'react-use';
 import Link from 'next/link';
 import Icon from './icons';
+import Controls from '../molecules/controls/controls';
 
 interface Post {
   id: string;
@@ -121,6 +122,8 @@ const Feed: React.FC = () => {
           </>
         )}
       </AnimatePresence>
+
+      <Controls />
 
       <Masonry
         breakpointCols={breakpointColumnsObj}
