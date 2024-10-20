@@ -104,8 +104,9 @@ export default function PostCard({ posts }: PostCardProps) {
         controls.start({ rotate: rotation });
     };
 
-    if (topPosts.length === 0) {
-        return <div className={styles.noPostsMessage}>No posts available</div>;
+    // If there are no posts, return null to prevent rendering
+    if (posts.length === 0) {
+        return null;
     }
 
     const currentImage = topPosts[currentPost]?.imageUrl || '/placeholder.svg?height=400&width=600';

@@ -1,0 +1,22 @@
+@use '../../../styles/essentials';
+@import '../../../styles/essentials';
+
+.deletebtn {
+    background-color: none;
+    background: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #d62828;
+    padding: 1.6rem 0.6rem;
+    font-size: 1.46rem;
+    font-weight: 600;
+
+    @include smooth;
+
+    &:hover {
+        opacity: 0.6;
+    }
+}

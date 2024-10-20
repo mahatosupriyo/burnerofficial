@@ -4,6 +4,10 @@
 @import '../../../styles/essentials';
 @import '../../../styles/typography';
 
+.noPostsMessage{
+    display: none;
+}
+
 .main {
     flex-grow: 1;
     display: flex;

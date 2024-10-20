@@ -32,7 +32,7 @@ async function getUserData(username: string) {
     return {
         ...user,
         posts: postsWithSignedUrls,
-        name: user.name || 'Anonymous', // Provide a default value
+        name: user.name || 'Anonymous',
         username: user.username || 'anonymous',
     };
 }
