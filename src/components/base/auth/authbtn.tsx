@@ -18,7 +18,7 @@ const AuthBtn: React.FC<AuthBtnsProps> = ({ provider }) => {
     return (
         <>
             {provider === 'google' && (
-                <button className={styles.provider}>
+                <button onClick={() => handleSignIn('google')} className={styles.provider}>
                     <svg xmlns="http://www.w3.org/2000/svg" className={styles.providerlogo} width="29" height="29" viewBox="0 0 25 24" fill="none">
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M22.1 12.227C22.1 11.518 22.0364 10.8361 21.9182 10.1816H12.5V14.0498H17.8818C17.65 15.2998 16.9455 16.3589 15.8864 17.068V19.577H19.1182C21.0091 17.8361 22.1 15.2725 22.1 12.227Z" fill="#4285F4" />
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M12.4998 21.9994C15.1998 21.9994 17.4635 21.104 19.118 19.5767L15.8862 17.0676C14.9907 17.6676 13.8453 18.0222 12.4998 18.0222C9.89529 18.0222 7.69075 16.2631 6.90439 13.8994H3.56348V16.4903C5.20893 19.7585 8.59075 21.9994 12.4998 21.9994Z" fill="#34A853" />
