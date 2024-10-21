@@ -1,20 +1,30 @@
 'use client';
 
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { createPost } from '@/app/actions/post';
 import { useRouter } from 'next/navigation';
 import React from 'react';
 import styles from './controls.module.scss';
 import Icon from '@/components/atoms/icons';
-import SuccessPopup from '@/app/success/successpop'; // Import SuccessPopup
+import SuccessPopup from '@/app/success/successpop';
 
 const Controls = () => {
     const [preview, setPreview] = useState<string | null>(null);
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [successMessage, setSuccessMessage] = useState<string | null>(null);
-    const [showPopup, setShowPopup] = useState(false); // State for showing popup
+    const [showPopup, setShowPopup] = useState(false);
     const router = useRouter();
     const fileInputRef = useRef<HTMLInputElement>(null);
+
+    useEffect(() => {
+        // Check for persisted success message on component mount
+        const persistedMessage = localStorage.getItem('successMessage');
+        if (persistedMessage) {
+            setSuccessMessage(persistedMessage);
+            setShowPopup(true);
+            localStorage.removeItem('successMessage'); // Clear the persisted message
+        }
+    }, []);
 
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0];
@@ -34,18 +44,21 @@ const Controls = () => {
         setSuccessMessage(null);
         try {
             await createPost(formData);
-            setSuccessMessage('Post created successfully!');
-            setShowPopup(true); // Show success popup
+            const message = 'Post created successfully';
+            setSuccessMessage(message);
+            localStorage.setItem('successMessage', message); // Persist the message
+            setShowPopup(true);
             router.refresh();
-            setPreview(null); // Reset preview
-            // Reset the file input
+            setPreview(null);
             if (fileInputRef.current) {
                 fileInputRef.current.value = '';
             }
         } catch (error) {
             console.error('Error creating post:', error);
-            setSuccessMessage('Failed to create post. Please try again.');
-            setShowPopup(true); // Show error popup
+            const errorMessage = 'Failed to create post. Please try again.';
+            setSuccessMessage(errorMessage);
+            localStorage.setItem('successMessage', errorMessage); // Persist the error message
+            setShowPopup(true);
         } finally {
             setIsSubmitting(false);
         }
@@ -56,6 +69,12 @@ const Controls = () => {
         if (fileInputRef.current) {
             fileInputRef.current.value = '';
         }
+    };
+
+    const handleClosePopup = () => {
+        setShowPopup(false);
+        setSuccessMessage(null);
+        localStorage.removeItem('successMessage'); // Ensure the message is cleared from storage
     };
 
     return (
@@ -109,10 +128,7 @@ const Controls = () => {
             <SuccessPopup
                 message={successMessage}
                 isVisible={showPopup}
-                onClose={() => {
-                    setShowPopup(false);
-                    setSuccessMessage(null);
-                }} 
+                onClose={handleClosePopup}
             />
         </div>
     );
