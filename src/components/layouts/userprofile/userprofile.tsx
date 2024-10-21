@@ -8,6 +8,7 @@ import { motion } from 'framer-motion'
 import Overlay from '@/components/molecules/overlay/overlay'
 import { deletePost } from '@/app/actions/post/delete-post'
 import { revalidatePath } from 'next/cache'
+import { useSession } from 'next-auth/react';
 
 interface Post {
   id: string
@@ -18,6 +19,7 @@ interface Post {
 interface User {
   verified: boolean
   name: string
+  email: string
   image: string | null
   username: string
   posts: Post[]
@@ -28,6 +30,9 @@ interface UserProfileProps {
 }
 
 export default function UserProfile({ user: initialUser }: UserProfileProps) {
+
+  const { data: session } = useSession(); // Get the logged-in user's session
+
   const [user, setUser] = useState<User>(initialUser)
   const [visiblePosts, setVisiblePosts] = useState(3)
   const [deletingPostId, setDeletingPostId] = useState<string | null>(null)
@@ -59,6 +64,9 @@ export default function UserProfile({ user: initialUser }: UserProfileProps) {
       setDeletingPostId(null)
     }
   }
+
+  const isCurrentUser = session?.user?.email === user.email;
+
 
   return (
     <div className={styles.displaycontainer}>
@@ -159,20 +167,23 @@ export default function UserProfile({ user: initialUser }: UserProfileProps) {
                                 </p>
                               </div>
                             </div>
-                            <motion.button
-                              className={styles.deletebtn}
-                              whileTap={{ scale: 0.96 }}
-                              onClick={() => handleDelete(post.id)}
-                              disabled={deletingPostId === post.id}
-                            >
-                              {deletingPostId === post.id ? (
-                                <div className={styles.loader}></div>
-                              ) : (
 
-                                'Delete'
+                            {isCurrentUser && (
+                              <motion.button
+                                className={styles.deletebtn}
+                                whileTap={{ scale: 0.96 }}
+                                onClick={() => handleDelete(post.id)}
+                                disabled={deletingPostId === post.id}
+                              >
+                                {deletingPostId === post.id ? (
+                                  <div className={styles.loader}></div>
+                                ) : (
 
-                              )}
-                            </motion.button>
+                                  'Delete'
+
+                                )}
+                              </motion.button>
+                            )}
                           </div>
                         </div>
                       }

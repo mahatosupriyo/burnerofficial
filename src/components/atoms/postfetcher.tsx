@@ -5,7 +5,7 @@ import { redis } from '@/lib/redis'
 const prisma = new PrismaClient()
 
 const CACHE_KEY = 'verified_posts'
-const CACHE_EXPIRATION = 60 * 5 // 5 minutes
+const CACHE_EXPIRATION = 60 * 35 // 35 minutes
 
 type PostWithUser = {
   id: string

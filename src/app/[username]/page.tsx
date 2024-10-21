@@ -34,6 +34,7 @@ async function getUserData(username: string) {
         posts: postsWithSignedUrls,
         name: user.name || 'Anonymous',
         username: user.username || 'anonymous',
+        email: user.email || 'No email provided',
     };
 }
 
