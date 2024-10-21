@@ -48,7 +48,7 @@ const Lander = () => {
                                     transition={{ delay: 0.1 }}
 
                                     className={styles.subwraper}>
-                                    <Link href="/auth" className={styles.ctabutton}>
+                                    <Link href="/signin" className={styles.ctabutton}>
                                         <div className={styles.innercontent}>
                                             Get started for Free
                                         </div>
