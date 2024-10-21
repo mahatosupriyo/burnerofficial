@@ -50,11 +50,22 @@ model User {
   lastUsernameUpdate DateTime?
   lastNameUpdate     DateTime?
   lastEmailUpdate    DateTime?
-  accounts           Account[]
-  sessions           Session[]
-  verified           Boolean   @default(false)
-  posts              Post[]
-  role               UserRole  @default(USER)
+
+  about           String?
+  designation     String?
+  lastupdateabout DateTime?
+  location        String?
+  accounts        Account[]
+  sessions        Session[]
+  verified        Boolean   @default(false)
+  posts           Post[]
+  role            UserRole  @default(USER)
+
+  instagram String?
+  x         String?
+  behance   String?
+  linkedin  String?
+  dribbble  String?
 }
 
 model Post {

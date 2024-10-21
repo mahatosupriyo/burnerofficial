@@ -47,7 +47,6 @@ export default function UserProfile({ user: initialUser }: UserProfileProps) {
           posts: prevUser.posts.filter(post => post.id !== postId)
         }))
         console.log(result.message)
-        // revalidatePath(`/user/${user.username}`)
         revalidatePath('/')
 
 
