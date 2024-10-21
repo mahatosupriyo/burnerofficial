@@ -38,7 +38,7 @@ const AuthBox = () => {
                     className={styles.providerbox}
                 >
                     <AuthBtn provider='google' />
-                    <AuthBtn provider='github' />
+                    {/* <AuthBtn provider='github' /> */}
                 </motion.div>
 
                 <motion.p
