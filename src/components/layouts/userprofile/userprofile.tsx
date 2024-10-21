@@ -1,94 +1,107 @@
-"use client"
+"use client";
 
-import React, { useState } from 'react'
-import styles from './userprofile.module.scss'
-import PostCard from '@/components/molecules/banner/postcard'
-import Icon from '@/components/atoms/icons'
-import { motion } from 'framer-motion'
-import Overlay from '@/components/molecules/overlay/overlay'
-import { deletePost } from '@/app/actions/post/delete-post'
-import { revalidatePath } from 'next/cache'
-import { useSession } from 'next-auth/react';
+import React, { useState } from "react";
+import styles from "./userprofile.module.scss";
+import PostCard from "@/components/molecules/banner/postcard";
+import Icon from "@/components/atoms/icons";
+import { motion } from "framer-motion";
+import Overlay from "@/components/molecules/overlay/overlay";
+import { deletePost } from "@/app/actions/post/delete-post";
+import { revalidatePath } from "next/cache";
+import { useSession } from "next-auth/react";
+import SuccessPopup from "@/app/success/successpop"; 
 
 interface Post {
-  id: string
-  imageUrl: string
-  createdAt: string
+  id: string;
+  imageUrl: string;
+  createdAt: string;
 }
 
 interface User {
-  verified: boolean
-  name: string
-  email: string
-  image: string | null
-  username: string
-  posts: Post[]
+  verified: boolean;
+  name: string;
+  email: string;
+  image: string | null;
+  username: string;
+  posts: Post[];
 }
 
 interface UserProfileProps {
-  user: User
+  user: User;
 }
 
 export default function UserProfile({ user: initialUser }: UserProfileProps) {
+  const { data: session } = useSession();
 
-  const { data: session } = useSession(); // Get the logged-in user's session
-
-  const [user, setUser] = useState<User>(initialUser)
-  const [visiblePosts, setVisiblePosts] = useState(3)
-  const [deletingPostId, setDeletingPostId] = useState<string | null>(null)
-  const firstName = user.name.split(" ")[0]
+  const [user, setUser] = useState<User>(initialUser);
+  const [visiblePosts, setVisiblePosts] = useState(3);
+  const [deletingPostId, setDeletingPostId] = useState<string | null>(null);
+  const [successMessage, setSuccessMessage] = useState<string | null>(null);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [isPopupVisible, setIsPopupVisible] = useState(false); // Control popup visibility
+  const firstName = user.name.split(" ")[0];
 
   const loadMorePosts = () => {
-    setVisiblePosts(prevVisible => prevVisible + 3)
-  }
+    setVisiblePosts((prevVisible) => prevVisible + 3);
+  };
 
   const handleDelete = async (postId: string) => {
-    setDeletingPostId(postId)
+    setDeletingPostId(postId);
+    setSuccessMessage(null);
+    setErrorMessage(null);
     try {
-      const result = await deletePost(postId)
+      const result = await deletePost(postId);
       if (result.success) {
-        setUser(prevUser => ({
+        setUser((prevUser) => ({
           ...prevUser,
-          posts: prevUser.posts.filter(post => post.id !== postId)
-        }))
-        console.log(result.message)
-        revalidatePath('/')
-
-
+          posts: prevUser.posts.filter((post) => post.id !== postId),
+        }));
+        setSuccessMessage(result.message);
+        setIsPopupVisible(true); // Show success message popup
+        revalidatePath("/");
       } else {
-        console.error(result.message)
+        setErrorMessage(result.message);
+        setIsPopupVisible(true); // Show error message popup
       }
     } catch (error) {
-      console.error("Error deleting post:", error)
+      setErrorMessage("Error deleting post.");
+      setIsPopupVisible(true); // Show error message popup
+      console.error("Error deleting post:", error);
     } finally {
-      setDeletingPostId(null)
+      setDeletingPostId(null);
     }
-  }
+  };
 
   const isCurrentUser = session?.user?.email === user.email;
-
 
   return (
     <div className={styles.displaycontainer}>
       <section className={styles.displaywraper}>
+        {/* Display success or error messages using SuccessPopup */}
+        <SuccessPopup
+          message={successMessage || errorMessage}
+          isVisible={isPopupVisible}
+          onClose={() => setIsPopupVisible(false)}
+        />
         <div className={styles.content}>
           <div className={styles.contentwraper}>
+
+
             <div className={styles.userbadge}>
               <h4 className={styles.username}>
                 {user.username}
-                {user.verified && <Icon name='verified' size={10} />}
+                {user.verified && <Icon name="verified" size={10} />}
               </h4>
               <h3 className={styles.intro}>
-                <span style={{ paddingLeft: '50%' }}></span>
-                {firstName} is a Design Engineer based in India. He is a Top LinkedIn Design voice.
-                As a visionary Design Engineer, Supriyo Mahato continues to shape the design landscape with his unique perspective and relentless pursuit of excellence.
+                <span style={{ paddingLeft: "50%" }}></span>
+                {firstName} is a Design Engineer based in India. He is a Top LinkedIn Design voice. As a visionary Design Engineer, Supriyo Mahato continues to shape the design landscape with his unique perspective and relentless pursuit of excellence.
               </h3>
-              <div style={{ width: '100%', display: 'flex', flexDirection: 'row' }}>
+              <div style={{ width: "100%", display: "flex", flexDirection: "row" }}>
                 <div className={styles.creatordata}>
                   <div className={styles.creator}>
-                    <div style={{ width: '100%' }}>
+                    <div style={{ width: "100%" }}>
                       <img
-                        src={user.image || '/avatar.png'}
+                        src={user.image || "/avatar.png"}
                         alt="User Avatar"
                         draggable="false"
                         className={styles.avatar}
@@ -96,23 +109,23 @@ export default function UserProfile({ user: initialUser }: UserProfileProps) {
                     </div>
                     <div className={styles.socials}>
                       <div className={styles.sociallink}>
-                        <Icon name='instagram' size={20} fill='#fafafa' />
+                        <Icon name="instagram" size={20} fill="#fafafa" />
                         Instagram
                       </div>
                       <div className={styles.sociallink}>
-                        <Icon name='linkedin' size={20} />
+                        <Icon name="linkedin" size={20} />
                         LinkedIn
                       </div>
                       <div className={styles.sociallink}>
-                        <Icon name='behance' size={20} fill='#fafafa' />
+                        <Icon name="behance" size={20} fill="#fafafa" />
                         Behance
                       </div>
                       <div className={styles.sociallink}>
-                        <Icon name='dribbble' size={20} fill='#fafafa' />
+                        <Icon name="dribbble" size={20} fill="#fafafa" />
                         Dribbble
                       </div>
                       <div className={styles.sociallink}>
-                        <Icon name='x' size={20} fill='#fafafa' />
+                        <Icon name="x" size={20} fill="#fafafa" />
                         X (Twitter)
                       </div>
                     </div>
@@ -131,9 +144,9 @@ export default function UserProfile({ user: initialUser }: UserProfileProps) {
                         <motion.div
                           className={styles.post}
                           whileTap={{ opacity: 0.6 }}
-                          initial={{ opacity: 0.6, filter: 'blur(10px)' }}
-                          animate={{ opacity: 1, filter: 'blur(0px)' }}
-                          style={{ cursor: 'pointer' }}
+                          initial={{ opacity: 0.6, filter: "blur(10px)" }}
+                          animate={{ opacity: 1, filter: "blur(0px)" }}
+                          style={{ cursor: "pointer" }}
                         >
                           <img
                             src={post.imageUrl}
@@ -154,7 +167,7 @@ export default function UserProfile({ user: initialUser }: UserProfileProps) {
                           <div className={styles.creatorwraper}>
                             <div className={styles.creator}>
                               <img
-                                src={user.image || '/avatar.png'}
+                                src={user.image || "/avatar.png"}
                                 draggable="false"
                                 loading="lazy"
                                 className={styles.avatar}
@@ -178,9 +191,7 @@ export default function UserProfile({ user: initialUser }: UserProfileProps) {
                                 {deletingPostId === post.id ? (
                                   <div className={styles.loader}></div>
                                 ) : (
-
-                                  'Delete'
-
+                                  "Delete"
                                 )}
                               </motion.button>
                             )}
@@ -196,7 +207,7 @@ export default function UserProfile({ user: initialUser }: UserProfileProps) {
                       onClick={loadMorePosts}
                       className={styles.loadMoreButton}
                     >
-                      <Icon name='downarrow' size={22} fill='#fafafa' />
+                      <Icon name="downarrow" size={22} fill="#fafafa" />
                     </button>
                   </div>
                 )}
@@ -206,5 +217,5 @@ export default function UserProfile({ user: initialUser }: UserProfileProps) {
         </div>
       </section>
     </div>
-  )
+  );
 }

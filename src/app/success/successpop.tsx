@@ -14,7 +14,7 @@ const SuccessPopup: React.FC<SuccessPopupProps> = ({ message, isVisible, onClose
     if (isVisible) {
       const timer = setTimeout(() => {
         onClose();
-      }, 1000);
+      }, 1600);
       return () => clearTimeout(timer); 
     }
   }, [isVisible, onClose]);
@@ -27,6 +27,7 @@ const SuccessPopup: React.FC<SuccessPopupProps> = ({ message, isVisible, onClose
           initial={{ y: '100%', opacity: 0 }} // Start from below
           animate={{ y: -20, opacity: 1 }} // Animate to normal position
           exit={{ y: '100%', opacity: 0 }} // Exit animation
+          style={{position: 'fixed', bottom: 0, marginBottom: '12rem'}}
           transition={{ 
             duration: 0.4, // Duration of the transition
             ease: [0.785, 0.135, 0.15, 0.86], // Using the specified cubic-bezier

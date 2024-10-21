@@ -22,7 +22,7 @@ const Controls = () => {
         if (persistedMessage) {
             setSuccessMessage(persistedMessage);
             setShowPopup(true);
-            localStorage.removeItem('successMessage'); // Clear the persisted message
+            localStorage.removeItem('successMessage'); 
         }
     }, []);
 
