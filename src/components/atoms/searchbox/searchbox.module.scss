@@ -30,7 +30,7 @@
     align-items: center;
     gap: 0.7rem;
     width: 100%;
-    height: 5rem;
+    height: 5.06rem;
     flex-direction: row;
     color: hsl(0, 0, 56%);
     font-weight: 500;
@@ -61,6 +61,7 @@
         justify-content: space-between;
         flex-direction: row;
         position: relative;
+        height: 5.06rem;
 
         @media only screen and (max-width: 80rem){
            display: none;
