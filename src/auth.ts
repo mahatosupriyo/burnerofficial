@@ -51,11 +51,28 @@ export const { handlers, auth } = NextAuth({
       const { user } = message;
       if (user?.email) {
         const emailUsername = user.email.split('@')[0];
+        let username = emailUsername;
+        let suffix = 1;
+
+        // Check username availability and add suffix if needed
+        while (true) {
+          const existingUser = await prisma.user.findUnique({
+            where: { username },
+          });
+
+          if (!existingUser) {
+            break; // Username is available
+          }
+
+          // Username taken, try with a number suffix
+          username = `${emailUsername}${suffix}`;
+          suffix++;
+        }
+
+        // Update user with the available username
         await prisma.user.update({
           where: { id: user.id },
-          data: {
-            username: emailUsername,
-          },
+          data: { username },
         });
       }
     },
