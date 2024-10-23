@@ -3,6 +3,7 @@
 import React, { useRef, useEffect } from 'react'
 import MuxPlayer from '@mux/mux-player-react'
 import styles from './displaylayout.module.scss'
+import { div } from 'framer-motion/client'
 export default function AmbientMuxPlayer() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const playerRef = useRef<HTMLDivElement>(null)
@@ -56,37 +57,46 @@ export default function AmbientMuxPlayer() {
   }, [])
 
   return (
-    <div className={styles.displaylayout}>
-      <div className={styles.canvaswraper}>
-        <div
-          className={styles.canvasoverlay}
-          draggable="false"
-        ></div>
-        <canvas
-          ref={canvasRef}
-          className={styles.canvasambient}
-          style={{
-            opacity: 0.3,
-            scale: '140%',
-            filter: 'blur(40px)'
-          }}
-        />
+    <div className={styles.seriescontainer}>
+
+      <div className={styles.displaylayout}>
+        <div className={styles.canvaswraper}>
+          <canvas
+            ref={canvasRef}
+            className={styles.canvasambient}
+            style={{
+              opacity: 0.46,
+              scale: '140%',
+              filter: 'blur(60px)'
+            }}
+          />
+        </div>
+
+        <div ref={playerRef} className={styles.videowraper} style={{ position: 'relative', zIndex: 1, height: '100%' }}>
+          <MuxPlayer
+            streamType="on-demand"
+            playbackId="DS00Spx1CV902MCtPj5WknGlR102V5HFkDe"
+            className={styles.muxplayer}
+            accent-color="#FE4200"
+
+            metadata={{
+              video_id: "video-id-54321",
+              video_title: "Test video title",
+              viewer_user_id: "user-id-007",
+            }}
+          />
+
+          <div className={styles.chapterswraper}>
+            <div className={styles.chapter}>
+              <img
+                src="https://images.unsplash.com/photo-1719937206930-84afb0daf141?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxfHx8ZW58MHx8fHx8"
+                className={styles.chapterbanner}
+              />
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div ref={playerRef} className={styles.videowraper} style={{ position: 'relative', zIndex: 1, height: '100%', padding: '10rem' }}>
-        <MuxPlayer
-          streamType="on-demand"
-          playbackId="DS00Spx1CV902MCtPj5WknGlR102V5HFkDe"
-          className={styles.muxplayer}
-
-          metadata={{
-            video_id: "video-id-54321",
-            video_title: "Test video title",
-            viewer_user_id: "user-id-007",
-          }}
-          style={{ width: '100%', aspectRatio: 16 / 9 }}
-        />
-      </div>
-    // </div>
+    </div>
   )
 }
