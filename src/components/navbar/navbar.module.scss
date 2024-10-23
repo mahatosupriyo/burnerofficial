@@ -51,8 +51,8 @@
                 width: 5.06rem;
                 text-decoration: none;
                 @include smooth;
-                background-color: hsl(0, 0, 16%);
-                background: radial-gradient(100% 100% at 49.52% 0%, #793C1A 0%, #292929 21.11%);
+                // background-color: hsl(0, 0, 16%);
+                background: radial-gradient(100% 100% at 49.52% 0%, #793C1A 0%, #222 21.11%);
 
                 transition: 0.4s ease-in-out;
                 border-radius: 60rem;
