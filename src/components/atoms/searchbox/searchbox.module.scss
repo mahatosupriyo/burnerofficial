@@ -26,7 +26,7 @@
     // background-color: hsl(0, 0, 16%);
     background-color: none;
     background: none;
-    border: 0.2rem solid hsl(0, 0, 16%);
+    border: 0.2rem solid hsl(0, 0, 100%, 0.1);
     font-size: 1.7rem;
 
     padding: 0rem 1.2rem;
@@ -45,7 +45,7 @@
     @include smooth;
 
     &:hover {
-        background-color: hsl(0, 0, 14%);
+        background-color: hsl(0, 0, 7%);
 
         .searchicon {
             fill: hsl(0, 0, 80%);
@@ -88,7 +88,7 @@
 
     .searchicon {
         height: 2.8rem;
-        fill: hsl(0, 0, 56%);
+        fill: hsl(0, 0, 26%);
         @include smooth;
     }
 }

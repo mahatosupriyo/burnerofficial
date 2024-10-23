@@ -57,21 +57,22 @@ export default function AmbientMuxPlayer() {
 
   return (
     <div className={styles.displaylayout}>
-      <canvas
-        ref={canvasRef}
-        className={styles.canvasambient}
-      style={{
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        width: '100vw',
-        height: '100vh',
-        opacity: 0.4,
-        scale: '140%',
-        zIndex: 0,
-        filter: 'blur(40px)'
-      }}
-      />
+      <div className={styles.canvaswraper}>
+        <div
+          className={styles.canvasoverlay}
+          draggable="false"
+        ></div>
+        <canvas
+          ref={canvasRef}
+          className={styles.canvasambient}
+          style={{
+            opacity: 0.3,
+            scale: '140%',
+            filter: 'blur(40px)'
+          }}
+        />
+      </div>
+
       <div ref={playerRef} className={styles.videowraper} style={{ position: 'relative', zIndex: 1, height: '100%', padding: '10rem' }}>
         <MuxPlayer
           streamType="on-demand"
