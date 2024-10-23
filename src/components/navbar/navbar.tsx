@@ -6,16 +6,16 @@ import Icon from "../atoms/icons";
 import UserBtn from "../atoms/userbtn/userbtn";
 
 export default function NavBar() {
-   
+
     return (
         <div className={styles.navwraper}>
             <div className={styles.nav}>
 
                 <div className={styles.leftwraper}>
                     <Link draggable="false" href="/" className={styles.back}>
-                    <div className={styles.iconwraper}>
-                        <Icon name="home" size={16.29} />
-                    </div>
+                        <div className={styles.iconwraper}>
+                            <Icon name="home" size={16.80} fill='#ffffff5c' />
+                        </div>
                     </Link>
                 </div>
 
