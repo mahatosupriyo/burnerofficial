@@ -21,7 +21,7 @@
     position: fixed;
     top: 0;
 
-    background-color: hsl(0, 0, 0%, 0.7);
+    background-color: hsl(0, 0, 0%, 0.8);
     backdrop-filter: blur(1.6rem);
 
     @include smooth;
@@ -58,7 +58,7 @@
                 text-decoration: none;
                 @include smooth;
                 // background-color: hsl(0, 0, 16%);
-                border:  0.2rem solid hsl(0, 0, 10%);
+                border: 0.2rem solid hsl(0, 0, 100%, 0.1);
 
                 border-radius: 60rem;
                 overflow: hidden;
