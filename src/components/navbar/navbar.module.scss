@@ -21,7 +21,7 @@
     position: fixed;
     top: 0;
 
-    background-color: hsl(0, 0, 0%, 0.9);
+    background-color: hsl(0, 0, 0%, 0.7);
     backdrop-filter: blur(1.6rem);
 
     @include smooth;
@@ -58,13 +58,21 @@
                 text-decoration: none;
                 @include smooth;
                 // background-color: hsl(0, 0, 16%);
-                background: radial-gradient(100% 100% at 49.52% 0%, #793C1A 0%, #222 21.11%);
+                border:  0.2rem solid hsl(0, 0, 10%);
 
-                transition: 0.4s ease-in-out;
                 border-radius: 60rem;
+                overflow: hidden;
+
+                .iconwraper{
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    transform: translateY(-0.08rem);
+                }
 
                 &:hover {
-                    background: radial-gradient(100% 100% at 49.52% 0%, #793C1A 0%, hsl(0, 0%, 16%) 31.11%);
+                    border:  0.2rem solid hsl(0, 0, 20%);
                 }
             }
         }

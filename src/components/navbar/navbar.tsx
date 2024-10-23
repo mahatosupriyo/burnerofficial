@@ -13,7 +13,9 @@ export default function NavBar() {
 
                 <div className={styles.leftwraper}>
                     <Link draggable="false" href="/" className={styles.back}>
+                    <div className={styles.iconwraper}>
                         <Icon name="home" size={16.29} />
+                    </div>
                     </Link>
                 </div>
 
