@@ -21,7 +21,7 @@
             // overflow: hidden;
             width: 100%;
             z-index: 0;
-            background-color: hsl(0, 0%, 6%);
+            background-color: hsl(0, 0%, 3%);
 
             display: flex;
             flex-direction: row-reverse;
@@ -292,51 +292,106 @@
 
 }
 
-.chaptercontainer{
+.chapterwraper {
     width: 100%;
     display: flex;
-    padding: 4rem 6rem;
     flex-direction: column;
     gap: 4rem;
+    // justify-content: space-between;
 
-    .title{
-        font-size: 1.66rem;
-        color: #fff;
-        font-weight: 500;
-        opacity: 0.8;
-        mix-blend-mode: lighten;
-    }
+    padding: 4rem 6rem;
 
-    .chapter{
-        display: flex;
-        align-items: flex-start;
-        // justify-content: center;
-        flex-direction: row;
-        gap: 4rem;
+    .chaptercontainer {
         width: 100%;
-        .chapterbanner{
-            aspect-ratio: 16/9;
-            max-width: 24%;
-            display: flex;
-            width: 100%;
-            height: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 4rem;
+
+        .title {
+            font-size: 1.66rem;
+            color: #fff;
+            font-weight: 500;
+            opacity: 0.8;
+            mix-blend-mode: lighten;
         }
 
-        .episodelabel{
+        .chapter {
+            display: flex;
+            align-items: flex-start;
+            // justify-content: center;
+            flex-direction: row;
+            gap: 2rem;
+            width: 100%;
+            
+
+            .chapterbanner {
+                aspect-ratio: 16/9;
+                display: flex;
+                width: 100%;
+                max-width: 24%;
+                height: 100%;
+                cursor: pointer;
+                @include smooth;
+
+                &:hover{
+                    opacity: 0.8;
+                }
+            }
+
+            .episodelabel {
+                display: flex;
+                flex-direction: column;
+                gap: 0.6rem;
+
+                .chaptertitle {
+                    font-size: 1.66rem;
+                    font-weight: 500;
+                }
+
+                .episode {
+                    font-size: 1.56rem;
+                    font-weight: 400;
+                    opacity: 0.4;
+                }
+            }
+        }
+    }
+
+
+
+}
+
+
+.featurecontainer {
+    width: 100%;
+    max-width: 40rem;
+    display: flex;
+    flex-direction: column;
+    gap: 3.2rem;
+    padding: 6rem 0rem;
+
+    .feature {
+        display: flex;
+        flex-direction: row;
+        gap: 3rem;
+        width: 100%;
+
+        .labelwraper {
+            width: 100%;
             display: flex;
             flex-direction: column;
-            gap: 0.6rem;
+            gap: 1rem;
 
-            .chaptertitle{
+            .labelhead {
                 font-size: 1.66rem;
-                font-weight: 500;
+                font-weight: 600;
             }
-            .episode{
+
+            .label {
                 font-size: 1.56rem;
                 font-weight: 400;
-                opacity: 0.4;
+                color: hsl(0, 0, 46%);
             }
         }
     }
 }
-

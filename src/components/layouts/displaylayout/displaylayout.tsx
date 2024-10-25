@@ -46,39 +46,96 @@ export default function AmbientMuxPlayer() {
 
         </div>
 
-        <div className={styles.chaptercontainer}>
-          <h3 className={styles.title}>chapters</h3>
+        <div className={styles.chapterwraper}>
+          <div className={styles.chaptercontainer}>
+            <h3 className={styles.title}>chapters</h3>
 
-          <div className={styles.chapter}>
-            <img
-              src="https://image.mux.com/tgcgNxURMDq02gJ02thoMZ3cLPsNHzN4Ak/animated.gif?start=20"
-              className={styles.chapterbanner}
-            />
+            <div className={styles.chapter}>
+              <img
+                src="https://image.mux.com/tgcgNxURMDq02gJ02thoMZ3cLPsNHzN4Ak/animated.gif?start=20"
+                className={styles.chapterbanner}
+              />
 
-            <div className={styles.episodelabel}>
-              <h3 className={styles.chaptertitle}>
-                Era of glassmorphism
-              </h3>
-              <p className={styles.episode}>
-                Episode 1
-              </p>
+              <div className={styles.episodelabel}>
+                <h3 className={styles.chaptertitle}>
+                  Era of glassmorphism
+                </h3>
+                <p className={styles.episode}>
+                  Episode 1
+                </p>
+              </div>
+            </div>
+
+            <div className={styles.chapter}>
+              <img
+                src="https://i.pinimg.com/control/564x/6f/49/45/6f4945d4cb375332f9cd5049a33e5ad3.jpg"
+                className={styles.chapterbanner}
+              />
+
+              <div className={styles.episodelabel}>
+                <h3 className={styles.chaptertitle}>
+                  Era of glassmorphism
+                </h3>
+                <p className={styles.episode}>
+                  Episode 2
+                </p>
+              </div>
             </div>
           </div>
 
-          <div className={styles.chapter}>
-            <img
-              src="https://i.pinimg.com/control/564x/6f/49/45/6f4945d4cb375332f9cd5049a33e5ad3.jpg"
-              className={styles.chapterbanner}
-            />
+          <div className={styles.featurecontainer}>
 
-            <div className={styles.episodelabel}>
-              <h3 className={styles.chaptertitle}>
-                Era of glassmorphism
-              </h3>
-              <p className={styles.episode}>
-                Episode 2
-              </p>
+          <div className={styles.feature}>
+              <Icon name='language' size={24} fill="#777" />
+              <div className={styles.labelwraper}>
+                <h4 className={styles.labelhead}>
+                  Dual-Language flow
+                </h4>
+                <h3 className={styles.label}>
+                  English and Hindi, tailored to you.
+                </h3>
+              </div>
             </div>
+
+            <div className={styles.feature}>
+              <Icon name='resources' size={24} fill="#777" />
+              <div className={styles.labelwraper}>
+                <h4 className={styles.labelhead}>
+                  Resources included - royalty free
+                </h4>
+                <h3 className={styles.label}>
+                  Project assets included.
+                </h3>
+              </div>
+            </div>
+
+            <div className={styles.feature}>
+              <Icon name='time' size={24} fill="#777" />
+              <div className={styles.labelwraper}>
+                <h4 className={styles.labelhead}>
+                  Journey spanning seven months
+                </h4>
+                <h3 className={styles.label}>
+                  Seven months of immersive experience.
+                </h3>
+              </div>
+            </div>
+
+
+
+
+            <div className={styles.feature}>
+              <Icon name='live' size={24} fill="#777" />
+              <div className={styles.labelwraper}>
+                <h4 className={styles.labelhead}>
+                  Connect and clarify
+                </h4>
+                <h3 className={styles.label}>
+                  Regular Q&A sessions.
+                </h3>
+              </div>
+            </div>
+
           </div>
 
         </div>
