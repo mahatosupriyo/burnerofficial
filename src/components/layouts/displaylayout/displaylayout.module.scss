@@ -21,11 +21,11 @@
             // overflow: hidden;
             width: 100%;
             z-index: 0;
-            background-color: hsl(0, 0%, 3%);
+            background-color: hsl(0, 0%, 5%);
 
             display: flex;
             flex-direction: row-reverse;
-            gap: 4rem;
+            gap: 2.6rem;
             // height: 100%;
             padding: 4rem 6rem;
             padding-top: 12rem;
@@ -76,9 +76,16 @@
                 .subheading {
                     font-size: 1.66rem;
                     color: #616362;
-                    // color: #fff;
-                    // opacity: 0.4;
                     font-weight: 500;
+                }
+
+
+                .description {
+                    font-size: 1.6rem;
+                    color: hsl(0, 0%, 30%);
+                    font-weight: 400;
+                    line-height: 150%;
+                    padding: 1.6rem 0rem;
                 }
 
                 .title {
@@ -134,41 +141,38 @@
 .videowraper {
     width: 100%;
     display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-
-    gap: 1.6rem;
-    justify-content: space-between;
-    padding: 1rem;
-
+    align-items: center;
+    justify-content: center;
     .muxplayer {
         display: flex;
         z-index: 10;
-        border-radius: 1.6rem;
+        border-radius: 1rem;
         overflow: hidden;
         width: 100%;
+        max-width: 100rem;
         aspect-ratio: 16/9;
-
+    
         --controls-backdrop-color: rgba(0, 0, 0, 0);
         --volume-range: none;
-
+    
         &::part(time) {
             user-select: none;
-            padding: 1rem;
-            font-family: Gabarito;
+            // padding: 1rem;
+            // font-family: Gabarito;
             cursor: default;
             font-weight: 600;
-
+    
             &:hover {
                 background-color: none;
                 background: none;
             }
         }
-
+    
         &::part(seek-backward) {
             display: none;
         }
-
+    
+    
         &::part(button) {
             background-color: none;
             background: none;
@@ -180,52 +184,56 @@
             aspect-ratio: 1/1;
             background-color: #00000030;
             border-radius: 100rem;
-
+    
             &:hover {
                 background-color: none;
                 background: none;
             }
         }
-
+    
         &::part(mute) {
             display: none;
         }
-
+    
         &::part(airplay) {
             display: none;
         }
-
+    
         &::part(captions) {
             display: none;
         }
-
+    
         &::part(cast) {
             display: none;
         }
-
-        &::part(time) {
+    
+        // &::part(time) {
+        //     display: none;
+        // }
+    
+        &::part(pip) {
             display: none;
         }
-
+    
         &::part(playback-rate) {
             display: none;
         }
-
-
+    
+    
         &::part(bottom seek-forward button) {
             display: none;
         }
-
-
+    
+    
         &::part(bottom seek-backward button) {
             display: none;
         }
-
+    
         &::part(volume) {
             display: none;
         }
-
-
+    
+    
         &::part(bottom play button) {
             height: 6rem;
             width: 6rem;
@@ -237,45 +245,45 @@
             border-radius: 100rem;
             padding: 1rem;
         }
-
+    
         &::part(play) {
             padding: 0.4rem 1rem;
             font-family: Gabarito;
-
+    
             &:hover {
                 background-color: none;
                 background: none;
             }
         }
-
-
+    
+    
         &::part(center play button) {
             position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
             background-color: transparent;
-
+    
             height: 6rem;
             width: 6rem;
             border-radius: 100rem;
             background-color: #00000030;
             padding: 4rem;
             overflow: hidden;
-
+    
             &::before {
                 position: absolute;
                 content: '';
-
+    
                 z-index: 20;
                 height: 100%;
                 width: 100%;
-
+    
                 background-image: url("data:image/svg+xml,%3Csvg xmlns%3D'http%3A//www.w3.org/2000/svg' width%3D'40' height%3D'40' viewBox%3D'0 0 40 40' fill%3D'none'%3E%3Cpath d%3D'M14 32V9L29 20.5L14 32Z' fill%3D'%23D9D9D9'/%3E%3C/svg%3E");
                 background-position: center;
                 background-repeat: no-repeat;
             }
-
+    
             &::after {
                 content: '';
                 height: 100%;
@@ -283,14 +291,16 @@
                 position: absolute;
                 z-index: 10;
             }
-
+    
             &::parts {
                 display: none;
             }
         }
     }
-
 }
+
+
+
 
 .chapterwraper {
     width: 100%;
@@ -315,46 +325,7 @@
             mix-blend-mode: lighten;
         }
 
-        .chapter {
-            display: flex;
-            align-items: flex-start;
-            // justify-content: center;
-            flex-direction: row;
-            gap: 2rem;
-            width: 100%;
-            
 
-            .chapterbanner {
-                aspect-ratio: 16/9;
-                display: flex;
-                width: 100%;
-                max-width: 24%;
-                height: 100%;
-                cursor: pointer;
-                @include smooth;
-
-                &:hover{
-                    opacity: 0.8;
-                }
-            }
-
-            .episodelabel {
-                display: flex;
-                flex-direction: column;
-                gap: 0.6rem;
-
-                .chaptertitle {
-                    font-size: 1.66rem;
-                    font-weight: 500;
-                }
-
-                .episode {
-                    font-size: 1.56rem;
-                    font-weight: 400;
-                    opacity: 0.4;
-                }
-            }
-        }
     }
 
 
@@ -373,7 +344,7 @@
     .feature {
         display: flex;
         flex-direction: row;
-        gap: 3rem;
+        gap: 2rem;
         width: 100%;
 
         .labelwraper {
@@ -384,7 +355,7 @@
 
             .labelhead {
                 font-size: 1.66rem;
-                font-weight: 600;
+                font-weight: 500;
             }
 
             .label {
@@ -392,6 +363,51 @@
                 font-weight: 400;
                 color: hsl(0, 0, 46%);
             }
+        }
+    }
+}
+
+
+.chapter {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 2.6rem;
+    cursor: pointer;
+
+    width: 100%;
+
+    &:hover {
+        opacity: 0.8;
+    }
+
+    .chapterbanner {
+        aspect-ratio: 16/9;
+        display: flex;
+        width: 100%;
+        max-width: 24%;
+        height: 100%;
+        @include smooth;
+    }
+
+    .episodelabel {
+        display: flex;
+        flex-direction: column;
+        gap: 0.6rem;
+        align-items: flex-start;
+
+        .chaptertitle {
+            color: hsl(0, 0%, 90%);
+            font-size: 1.66rem;
+            font-weight: 600;
+        }
+
+        .episode {
+            color: hsl(0, 0%, 90%);
+
+            font-size: 1.56rem;
+            font-weight: 400;
+            opacity: 0.4;
         }
     }
 }

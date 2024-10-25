@@ -38,7 +38,7 @@ export default function Overlay({ triggerButton, overlayContent }: OverlayProps)
 
   return (
     <>
-      <button onClick={() => setIsOpen(true)} style={{background: 'none', backgroundColor: 'none'}} className={styles.feedbtn}>{triggerButton}</button>
+      <button onClick={() => setIsOpen(true)} style={{background: 'none', textDecoration: 'none', backgroundColor: 'none', width: '100%'}} className={styles.feedbtn}>{triggerButton}</button>
       <AnimatePresence>
         {isOpen && (
           <>
