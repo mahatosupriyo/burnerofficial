@@ -50,7 +50,7 @@ export default async function UserPage({ params }: { params: { username: string 
             <NavBar />
             <div className={styles.container}>
                 <div style={{ width: '100%', display: 'flex', alignItems: 'center', flexDirection: 'column' }}>
-                <UserProfile user={user} />
+                    <UserProfile user={user} />
                     <Controls />
                 </div>
             </div>

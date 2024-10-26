@@ -8,6 +8,7 @@ import Icon from './icons'
 import Controls from '../molecules/controls/controls'
 import Overlay from '../molecules/overlay/overlay'
 import styles from './feed.module.scss'
+import Avatar from './avatar'
 
 interface Post {
   id: string
@@ -17,8 +18,10 @@ interface Post {
   user: {
     username: string
     image: string
+    avatarUrl: string
   }
 }
+
 
 export default function Feed() {
   const [posts, setPosts] = useState<Post[]>([])
@@ -60,17 +63,15 @@ export default function Feed() {
                   whileTap={{ opacity: 0.6 }}
                   initial={{ opacity: 0.6, filter: 'blur(10px)' }}
                   animate={{ opacity: 1, filter: 'blur(0px)' }}
-                  transition={{duration: 0.3}}
+                  transition={{ duration: 0.3 }}
                   src={post.imageUrl}
                   alt={`Image by ${post.user.username}`}
                   draggable="false"
                 />
                 <div className={styles.creator}>
-                  <img
-                    src={post.user.image}
-                    draggable="false"
-                    className={styles.avatar}
-                    alt={`Avatar of ${post.user.username}`}
+                  <Avatar
+                    src={post.user.avatarUrl}
+                    size={32}
                   />
                   <div className={styles.creatorname}>
                     {post.user.username}
@@ -89,12 +90,9 @@ export default function Feed() {
                 />
                 <div className={styles.creatorwraper}>
                   <div className={styles.creator}>
-                    <img
-                      src={post.user.image}
-                      draggable="false"
-                      loading="lazy"
-                      className={styles.avatar}
-                      alt={`Avatar of ${post.user.username}`}
+                    <Avatar
+                      src={post.user.avatarUrl}
+                      size={42}
                     />
                     <Link href={`/${post.user.username}`} className={styles.creationdetails}>
                       <h2 className={styles.subheading}>Inspiration by</h2>

@@ -1,5 +1,6 @@
 import { PrismaClient } from '@prisma/client'
 import { getSignedImageUrl } from '@/app/actions/post'
+import { getAvatarUrl } from '@/app/actions/avatar'
 import { redis } from '@/lib/redis'
 
 const prisma = new PrismaClient()
@@ -15,6 +16,7 @@ type PostWithUser = {
   user: {
     username: string
     image: string
+    avatarUrl: string
   }
 }
 
@@ -49,6 +51,7 @@ async function getPosts(): Promise<PostWithUser[]> {
     const postsWithSignedUrls: PostWithUser[] = await Promise.all(
       posts.map(async (post) => {
         const signedImageUrl = await getSignedImageUrl(post.imageUrl)
+        const avatarUrl = await getAvatarUrl(post.user.image || 'defaultavatar.png')
         return {
           id: post.id,
           imageUrl: signedImageUrl,
@@ -56,7 +59,8 @@ async function getPosts(): Promise<PostWithUser[]> {
           userId: post.userId,
           user: {
             username: post.user.username || 'Anonymous',
-            image: post.user.image || '/defaultavatar.png'
+            image: post.user.image || '/defaultavatar.png',
+            avatarUrl: avatarUrl
           }
         }
       })

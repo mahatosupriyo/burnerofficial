@@ -77,7 +77,6 @@ export default function UserProfile({ user: initialUser }: UserProfileProps) {
   return (
     <div className={styles.displaycontainer}>
       <section className={styles.displaywraper}>
-        {/* Display success or error messages using SuccessPopup */}
         <SuccessPopup
           message={successMessage || errorMessage}
           isVisible={isPopupVisible}
@@ -106,6 +105,7 @@ export default function UserProfile({ user: initialUser }: UserProfileProps) {
                         draggable="false"
                         className={styles.avatar}
                       />
+                      
                     </div>
                     <div className={styles.socials}>
                       <div className={styles.sociallink}>
