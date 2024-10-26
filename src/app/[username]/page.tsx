@@ -5,6 +5,7 @@ import UserProfile from '@/components/layouts/userprofile/userprofile';
 import NavBar from '@/components/navbar/navbar';
 import styles from './username.module.scss'
 import Controls from '@/components/molecules/controls/controls';
+import { getAvatarUrl } from '../actions/avatar';
 
 async function getUserData(username: string) {
     const user = await prisma.user.findUnique({
@@ -17,6 +18,8 @@ async function getUserData(username: string) {
     if (!user) {
         return null;
     }
+
+    const avatarUrl = await getAvatarUrl(user.image || 'defaultavatar.png')
 
     const postsWithSignedUrls = await Promise.all(
         user.posts.map(async (post) => {
@@ -35,6 +38,7 @@ async function getUserData(username: string) {
         name: user.name || 'Anonymous',
         username: user.username || 'anonymous',
         email: user.email || 'No email provided',
+        image: avatarUrl || '/defaultavatar.jpg'
     };
 }
 
