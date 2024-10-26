@@ -6,7 +6,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { updateProfile } from '@/app/actions/update-profile';
 import styles from './editdataform.module.scss';
-import SuccessPopup from '@/app/success/successpop'; // Assuming this handles both success and error messages
+import SuccessPopup from '@/app/success/successpop';
 
 const UpdateProfileSchema = z.object({
   name: z.string().min(1, "Name is required"),
@@ -93,7 +93,7 @@ export default function EditProfileForm({ initialData }: EditProfileFormProps) {
     } else {
       const message = 'Account updated successfully';
       setSuccessMessage(message);
-      localStorage.setItem('successMessage', message); // Persist the success message
+      localStorage.setItem('successMessage', message); 
       setShowPopup(true);
     }
   };
@@ -127,12 +127,6 @@ export default function EditProfileForm({ initialData }: EditProfileFormProps) {
           <label className={styles.label}>username</label>
           <input spellCheck="false" autoComplete='off' style={{ textTransform: 'lowercase' }} {...register('username')} className={styles.inputbar} required />
           {errors.username && <p className={styles.error}>{errors.username.message}</p>}
-        </div>
-
-        <div className={styles.subcontainer}>
-          <label className={styles.label}>email</label>
-          <input autoComplete='off' spellCheck="false" disabled style={{ cursor: 'not-allowed' }} {...register('email')} className={styles.inputbar} required type="email" />
-          {errors.email && <p className={styles.error}>{errors.email.message}</p>}
         </div>
       </div>
       <div className={styles.buttons}>

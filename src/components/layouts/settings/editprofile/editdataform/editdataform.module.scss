@@ -25,30 +25,31 @@
         .label {
             width: 100%;
             font-size: 1.46rem;
-            font-weight: 500;
+            font-weight: 400;
             color: hsl(0, 0, 90%);
         }
 
         .inputbar {
-            padding: 1.46rem 1.46rem;
+            padding: 1.36rem 1.36rem;
             font-size: 1.66rem;
-            font-weight: 500;
+            font-weight: 600;
             color: hsl(0, 0, 50%);
             width: 100%;
-            // border-radius: 0.4rem;
+            border-radius: 0.8rem;
             background: none;
+            line-height: 100%;
             border: 0.2rem solid hsl(0, 0, 20%);
             @include smooth;
 
             &:hover{
                 border: 0.2rem solid hsl(0, 0, 30%);
-                background-color: hsl(0, 0, 12%);
+                background-color: hsl(0, 0, 8%);
             }
 
             &:focus {
                 color: hsl(0, 0, 90%);
-                border: 0.2rem solid hsl(0, 0, 80%);
-                background-color: hsl(0, 0, 16%);
+                border: 0.2rem solid hsl(207, 100%, 61%);
+                background-color: hsl(0, 0, 12%);
             }
 
             &::placeholder {
