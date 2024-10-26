@@ -6,8 +6,14 @@ import { useRouter } from 'next/navigation';
 import styles from './uploadavatar.module.scss'
 import SuccessPopup from '@/app/success/successpop';
 import Icon from '../icons';
+import DefaultAvatar from './defaultavatar';
 
-export default function AvatarUpload({ currentAvatar }: { currentAvatar: string }) {
+interface AvatarUploadProps {
+  currentAvatar: string | null;
+  lastImageUpdate: Date | null;
+}
+
+export default function AvatarUpload({ currentAvatar, lastImageUpdate }: AvatarUploadProps) {
   const [isUploading, setIsUploading] = useState(false);
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
   const [showPopup, setShowPopup] = useState(false);
@@ -25,9 +31,23 @@ export default function AvatarUpload({ currentAvatar }: { currentAvatar: string 
     }
   }, []);
 
+  const canUpdateAvatar = useCallback(() => {
+    if (!lastImageUpdate) return true;
+    const timeSinceLastUpdate = Date.now() - lastImageUpdate.getTime();
+    return timeSinceLastUpdate >= 24 * 60 * 60 * 1000;
+  }, [lastImageUpdate]);
+
   const handleFileChange = useCallback(async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
+
+    if (!canUpdateAvatar()) {
+      const errorMessage = "You can only update your avatar once per day";
+      setSuccessMessage(errorMessage);
+      localStorage.setItem('avatarSuccessMessage', errorMessage);
+      setShowPopup(true);
+      return;
+    }
 
     setIsUploading(true);
     setSuccessMessage(null);
@@ -61,7 +81,7 @@ export default function AvatarUpload({ currentAvatar }: { currentAvatar: string 
         fileInputRef.current.value = '';
       }
     }
-  }, [router]);
+  }, [router, canUpdateAvatar]);
 
   const triggerFileInput = () => {
     fileInputRef.current?.click();
@@ -79,18 +99,20 @@ export default function AvatarUpload({ currentAvatar }: { currentAvatar: string 
         <div className={styles.skeletonLoader}></div>
       ) : (
         <div className={styles.avatarsubcontainer}>
-          <img
-            src={avatarSrc || '/defaultavatar.png'}
-            alt="User avatar"
-            className={styles.avatar}
-            onClick={triggerFileInput}
-          />
-
+          {avatarSrc ? (
+            <img
+              src={avatarSrc}
+              alt="User avatar"
+              className={styles.avatar}
+              onClick={triggerFileInput}
+            />
+          ) : (
+            <DefaultAvatar size={40} />
+          )}
           <div className={styles.uploadicon}>
             <Icon name='upload' size={36} />
           </div>
         </div>
-
       )}
       <input
         id="avatar-upload"

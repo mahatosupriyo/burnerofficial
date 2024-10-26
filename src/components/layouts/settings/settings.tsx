@@ -5,7 +5,7 @@ import { auth } from "@/auth"
 import prisma from "@/lib/prisma"
 import { SignOut } from '@/components/base/auth/signoutbtn'
 import Link from 'next/link'
-import { getSignedAvatarUrl } from '@/app/actions/avatar'
+import { getAvatarUrl } from '@/app/actions/avatar'
 
 export default async function SettingsLayout() {
     const session = await auth()
@@ -27,7 +27,7 @@ export default async function SettingsLayout() {
         throw new Error("User not found")
     }
 
-    const avatarUrl = await getSignedAvatarUrl(session.user.image || 'defaultavatar.png')
+    const avatarUrl = await getAvatarUrl(session.user.image || 'defaultavatar.png')
 
     return (
         <div className={styles.settingscontainer}>

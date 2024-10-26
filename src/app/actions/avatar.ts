@@ -39,11 +39,23 @@ export async function updateAvatar(formData: FormData) {
       throw new Error("No valid file uploaded");
     }
 
-    // Fetch the current user to get the existing avatar
+    // Fetch the current user to get the existing avatar and last update time
     const currentUser = await prisma.user.findUnique({
       where: { id: session.user.id },
-      select: { image: true },
+      select: { image: true, lastImageUpdate: true },
     });
+
+    if (!currentUser) {
+      throw new Error("User not found");
+    }
+
+    // Check if the user has updated their avatar in the last 24 hours
+    if (currentUser.lastImageUpdate) {
+      const timeSinceLastUpdate = Date.now() - currentUser.lastImageUpdate.getTime();
+      if (timeSinceLastUpdate < 24 * 60 * 60 * 1000) {
+        throw new Error("You can only update your avatar once per day");
+      }
+    }
 
     const fileHash = crypto.createHash('md5').update(`${Date.now()}-${file.name}`).digest('hex');
     const fileName = `avatar/${fileHash}.webp`;
@@ -66,8 +78,8 @@ export async function updateAvatar(formData: FormData) {
 
     await s3Client.send(putObjectCommand);
 
-    // Delete old avatar if it exists
-    if (currentUser?.image && currentUser.image !== 'defaultavatar.png') {
+    // Delete old avatar if it exists and is not the default avatar
+    if (currentUser.image && !currentUser.image.startsWith('http') && !currentUser.image.startsWith('https') && currentUser.image !== 'defaultavatar.png') {
       const deleteObjectCommand = new DeleteObjectCommand({
         Bucket: env.AWS_S3_BUCKET_NAME,
         Key: currentUser.image,
@@ -81,10 +93,13 @@ export async function updateAvatar(formData: FormData) {
       }
     }
 
-    // Update user's avatar in the database
+    // Update user's avatar and lastImageUpdate in the database
     await prisma.user.update({
       where: { id: session.user.id },
-      data: { image: fileName },
+      data: { 
+        image: fileName,
+        lastImageUpdate: new Date(),
+      },
     });
 
     revalidatePath('/profile'); 
@@ -95,7 +110,18 @@ export async function updateAvatar(formData: FormData) {
   }
 }
 
-export async function getSignedAvatarUrl(key: string) {
+export async function getAvatarUrl(key: string) {
+  // If the key is already a full URL, return it as is
+  if (key.startsWith('http') || key.startsWith('https')) {
+    return key;
+  }
+
+  // If it's the default avatar, return the local path
+  if (key === 'defaultavatar.png') {
+    return '/defaultavatar.png';
+  }
+
+  // Otherwise, generate a signed URL for S3
   const command = new GetObjectCommand({
     Bucket: process.env.AWS_S3_BUCKET_NAME!,
     Key: key,

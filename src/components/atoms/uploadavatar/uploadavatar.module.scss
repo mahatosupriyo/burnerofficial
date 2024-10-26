@@ -13,9 +13,9 @@
     position: relative;
     border: 0.26rem solid hsl(0, 0, 10%);
 
-    &:hover{
-        .avatarsubcontainer{
-            .uploadicon{
+    &:hover {
+        .avatarsubcontainer {
+            .uploadicon {
                 opacity: 1;
             }
         }
@@ -68,4 +68,12 @@
 
 .skeletonLoader {
     @include skeleton-loading(100%, 100%);
+}
+
+.defaultavatar {
+    border-radius: 100rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(87deg, #AFA7A1 -15.71%, #FE4200 28.99%, #FF805B 89.6%, #98B7C0 114.83%);
 }

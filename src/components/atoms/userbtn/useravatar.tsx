@@ -4,7 +4,7 @@ import styles from './userbtn.module.scss'
 import { auth } from '@/auth'
 import prisma from '@/lib/prisma'
 import { redirect } from 'next/navigation'
-import { getSignedAvatarUrl } from '@/app/actions/avatar'
+import { getAvatarUrl } from '@/app/actions/avatar'
 
 
 export default async function UserAvatar(){ 
@@ -27,7 +27,7 @@ export default async function UserAvatar(){
         throw new Error("User not found")
     }
 
-    const avatarUrl = await getSignedAvatarUrl(session.user.image || 'defaultavatar.png')
+    const avatarUrl = await getAvatarUrl(session.user.image || 'defaultavatar.png')
 
     return (
         <div style={{borderRadius: '100rem', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
