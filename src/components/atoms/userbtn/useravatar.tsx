@@ -6,7 +6,8 @@ import prisma from '@/lib/prisma'
 import { redirect } from 'next/navigation'
 import { getSignedAvatarUrl } from '@/app/actions/avatar'
 
-export default async function UserBtn() {
+
+export default async function UserAvatar(){ 
     const session = await auth()
 
     if (!session || !session.user) {
@@ -26,29 +27,24 @@ export default async function UserBtn() {
         throw new Error("User not found")
     }
 
-  const avatarUrl = await getSignedAvatarUrl(session.user.image || 'defaultavatar.png')
+    const avatarUrl = await getSignedAvatarUrl(session.user.image || 'defaultavatar.png')
 
     return (
-        <div>
-
+        <div style={{borderRadius: '100rem', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
             {session.user ? (
-
-                <div className={styles.avatarbtn} draggable="false">
-
+                <div draggable="false" style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
                     {user.image ? (
-                        <Link className={styles.settingslink} href="/settings">
-                            <img
-                                src={avatarUrl || session.user.image || 'avatarUrl.png'}
-                                alt={user.name || 'User avatar'}
-                                draggable="false"
-                                className={styles.avatar}
-                            />
-                        </Link>
+                        <img
+                            src={avatarUrl || session.user.image || 'avatarUrl.png'}
+                            alt={user.name || 'User avatar'}
+                            draggable="false"
+                            className={styles.avatar}
+                        />
 
                     ) : (
-                        <div className={styles.avatarFallback}>
-                            {session.user.name ? session.user.name[0].toUpperCase() : 'U'}
-                        </div>
+                        <img
+                            src={session.user.image || 'avatar.png'}
+                        />
                     )}
                 </div>
             ) : (
@@ -57,4 +53,6 @@ export default async function UserBtn() {
         </div>
     )
 }
+
+
 

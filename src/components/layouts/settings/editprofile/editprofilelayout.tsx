@@ -5,6 +5,8 @@ import { auth } from "@/auth"
 import prisma from "@/lib/prisma"
 import EditProfileForm from './editdataform/editdataform'
 import Link from 'next/link'
+import { getSignedAvatarUrl } from '@/app/actions/avatar'
+import AvatarUpload from "@/components/atoms/uploadavatar/uploadavatar"
 
 export default async function EditProfileLayout() {
     const session = await auth()
@@ -31,6 +33,9 @@ export default async function EditProfileLayout() {
         username: user.username,
     }
 
+    const avatarUrl = await getSignedAvatarUrl(session.user.image || 'defaultavatar.png')
+
+
     return (
         <div className={styles.settingscontainer}>
             <div className={styles.settingswraper}>
@@ -47,6 +52,10 @@ export default async function EditProfileLayout() {
                         Edit Account
                     </h1>
                     <p className={styles.description}>Update your account data</p>
+                </div>
+
+                <div style={{ width: '100%', maxWidth: '70rem', padding: '0rem 0rem 4rem 0rem', display: 'flex', alignItems: 'flex-start' }}>
+                    <AvatarUpload currentAvatar={avatarUrl} />
                 </div>
 
                 <div className={styles.formlayout}>
