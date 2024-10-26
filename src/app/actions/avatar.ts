@@ -39,6 +39,12 @@ export async function updateAvatar(formData: FormData) {
       throw new Error("No valid file uploaded");
     }
 
+    // Check if the file is an image
+    const allowedImageTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
+    if (!allowedImageTypes.includes(file.type)) {
+      throw new Error("Please upload a JPEG, PNG, GIF, or WebP image.");
+    }
+
     // Fetch the current user to get the existing avatar and last update time
     const currentUser = await prisma.user.findUnique({
       where: { id: session.user.id },
@@ -102,7 +108,7 @@ export async function updateAvatar(formData: FormData) {
       },
     });
 
-    revalidatePath('/profile'); 
+    revalidatePath('/'); 
     return { success: true, message: "Avatar updated successfully" };
   } catch (error) {
     console.error("Error updating avatar:", error);

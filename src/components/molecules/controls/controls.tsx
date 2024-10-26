@@ -11,18 +11,17 @@ import SuccessPopup from '@/app/success/successpop';
 const Controls = () => {
     const [preview, setPreview] = useState<string | null>(null);
     const [isSubmitting, setIsSubmitting] = useState(false);
-    const [successMessage, setSuccessMessage] = useState<string | null>(null);
+    const [message, setMessage] = useState<string | null>(null);
     const [showPopup, setShowPopup] = useState(false);
     const router = useRouter();
     const fileInputRef = useRef<HTMLInputElement>(null);
 
     useEffect(() => {
-        // Check for persisted success message on component mount
-        const persistedMessage = localStorage.getItem('successMessage');
+        const persistedMessage = localStorage.getItem('postMessage');
         if (persistedMessage) {
-            setSuccessMessage(persistedMessage);
+            setMessage(persistedMessage);
             setShowPopup(true);
-            localStorage.removeItem('successMessage'); 
+            localStorage.removeItem('postMessage');
         }
     }, []);
 
@@ -41,23 +40,26 @@ const Controls = () => {
 
     const handleSubmit = async (formData: FormData) => {
         setIsSubmitting(true);
-        setSuccessMessage(null);
+        setMessage(null);
         try {
-            await createPost(formData);
-            const message = 'Post created successfully';
-            setSuccessMessage(message);
-            localStorage.setItem('successMessage', message); // Persist the message
-            setShowPopup(true);
-            router.refresh();
-            setPreview(null);
-            if (fileInputRef.current) {
-                fileInputRef.current.value = '';
+            const result = await createPost(formData);
+            if (result.success) {
+                setMessage(result.message);
+                localStorage.setItem('postMessage', result.message);
+                setShowPopup(true);
+                router.refresh();
+                setPreview(null);
+                if (fileInputRef.current) {
+                    fileInputRef.current.value = '';
+                }
+            } else {
+                throw new Error(result.message);
             }
         } catch (error) {
             console.error('Error creating post:', error);
-            const errorMessage = 'Failed to create post. Please try again.';
-            setSuccessMessage(errorMessage);
-            localStorage.setItem('successMessage', errorMessage); // Persist the error message
+            const errorMessage = error instanceof Error ? error.message : 'An unknown error occurred';
+            setMessage(errorMessage);
+            localStorage.setItem('postMessage', errorMessage);
             setShowPopup(true);
         } finally {
             setIsSubmitting(false);
@@ -73,8 +75,8 @@ const Controls = () => {
 
     const handleClosePopup = () => {
         setShowPopup(false);
-        setSuccessMessage(null);
-        localStorage.removeItem('successMessage'); // Ensure the message is cleared from storage
+        setMessage(null);
+        localStorage.removeItem('postMessage');
     };
 
     return (
@@ -126,7 +128,7 @@ const Controls = () => {
             </form>
             
             <SuccessPopup
-                message={successMessage}
+                message={message}
                 isVisible={showPopup}
                 onClose={handleClosePopup}
             />

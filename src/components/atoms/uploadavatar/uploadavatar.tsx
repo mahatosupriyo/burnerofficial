@@ -110,7 +110,7 @@ export default function AvatarUpload({ currentAvatar, lastImageUpdate }: AvatarU
             <DefaultAvatar size={40} />
           )}
           <div className={styles.uploadicon}>
-            <Icon name='upload' size={36} />
+            <Icon name='upload' size={26} />
           </div>
         </div>
       )}

@@ -40,6 +40,12 @@ export async function createPost(formData: FormData) {
       throw new Error("No valid file uploaded");
     }
 
+    // Check if the file is an image
+    const allowedImageTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
+    if (!allowedImageTypes.includes(file.type)) {
+      throw new Error("Please upload a JPEG, PNG, GIF, or WebP image.");
+    }
+
     const fileHash = crypto.createHash('md5').update(`${Date.now()}-${file.name}`).digest('hex');
     const fileName = `${fileHash}.webp`;
 
