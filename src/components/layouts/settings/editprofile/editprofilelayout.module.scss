@@ -1,20 +1,21 @@
 @use '../../../../styles/essentials';
 @import '../../../../styles/essentials';
 
+
 .settingscontainer {
     width: 100%;
     height: 100%;
     overflow: hidden;
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
 
     .settingswraper {
         width: 100%;
         height: 100%;
 
         margin-top: 8rem;
-
+        max-width: 50rem;
 
         display: flex;
         flex-direction: column;
@@ -27,7 +28,6 @@
         .topbuttonwraper {
             width: 100%;
             display: flex;
-            max-width: 70rem;
 
             .backbtn {
                 text-decoration: none;
@@ -40,7 +40,7 @@
                 @include smooth;
                 transform: translateX(-1rem);
 
-                &:hover{
+                &:hover {
                     background-color: hsl(0, 0, 14%);
                 }
 
@@ -54,21 +54,20 @@
 
         .formlayout {
             width: 100%;
-            max-width: 70rem;
             display: flex;
             gap: 1rem;
+            flex-direction: column;
         }
 
         .layoutwraper {
             display: flex;
             width: 100%;
-            max-width: 70rem;
             padding: 4rem 0rem;
             flex-direction: column;
             gap: 0.6rem;
 
             .pagehead {
-                font-size: 2.2rem;
+                font-size: 2rem;
                 font-weight: 600;
                 color: hsl(0, 0, 90%);
                 width: 100%;
@@ -76,9 +75,9 @@
 
             .description {
                 text-transform: lowercase;
-                font-size: 1.6rem;
+                font-size: 1.46rem;
                 font-weight: 400;
-                color: hsl(0, 0, 50%);
+                color: hsl(0, 0, 46%);
             }
         }
 

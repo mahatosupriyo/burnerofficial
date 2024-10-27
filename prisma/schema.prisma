@@ -100,21 +100,14 @@ model User {
   lastEmailUpdate    DateTime?
   lastImageUpdate    DateTime?
 
-  about           String?
-  designation     String?
   lastupdateabout DateTime?
   location        String?
   accounts        Account[]
   sessions        Session[]
+  about           About[]
   verified        Boolean   @default(false)
   posts           Post[]
   role            UserRole  @default(USER)
-
-  instagram String?
-  x         String?
-  behance   String?
-  linkedin  String?
-  dribbble  String?
 
   courses  Course[]
   videos   Video[]
@@ -127,6 +120,23 @@ model Post {
   createdAt DateTime @default(now())
   userId    String   @db.ObjectId
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model About {
+  id       String  @id @default(auto()) @map("_id") @db.ObjectId
+  about    String?
+  location String?
+  work     String?
+
+  instagram       String?
+  behance         String?
+  x               String?
+  linkedin        String?
+  youtube         String?
+  dribbble        String?
+  userId          String   @db.ObjectId
+  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  lastAboutUpdate DateTime @default(now())
 }
 
 model VerificationToken {

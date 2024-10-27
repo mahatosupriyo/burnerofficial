@@ -104,6 +104,8 @@ export default function AvatarUpload({ currentAvatar, lastImageUpdate }: AvatarU
               src={avatarSrc}
               alt="User avatar"
               className={styles.avatar}
+              draggable="false"
+              style={{ userSelect: 'none', pointerEvents: 'none' }}
               onClick={triggerFileInput}
             />
           ) : (

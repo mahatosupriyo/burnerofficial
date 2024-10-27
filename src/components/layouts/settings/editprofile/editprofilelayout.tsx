@@ -7,6 +7,7 @@ import EditProfileForm from './editdataform/editdataform'
 import Link from 'next/link'
 import { getAvatarUrl } from '@/app/actions/avatar'
 import AvatarUpload from "@/components/atoms/uploadavatar/uploadavatar"
+import UpdateAboutForm from '../editabout/editaboutform'
 
 export default async function EditProfileLayout() {
     const session = await auth()
@@ -20,14 +21,27 @@ export default async function EditProfileLayout() {
     }
 
     const user = await prisma.user.findUnique({
-        where: { email: session.user.email },
-        select: { 
-            name: true, 
-            email: true, 
-            username: true, 
+        where: { id: session.user.id },
+        select: {
+            name: true,
+            email: true,
+            username: true,
             lastUsernameUpdate: true,
             image: true,
-            lastImageUpdate: true
+            lastImageUpdate: true,
+            about: {
+                select: {
+                    about: true,
+                    location: true,
+                    work: true,
+                    instagram: true,
+                    behance: true,
+                    x: true,
+                    linkedin: true,
+                    youtube: true,
+                    dribbble: true,
+                },
+            },
         },
     })
 
@@ -35,11 +49,17 @@ export default async function EditProfileLayout() {
         throw new Error("User not found or missing required fields")
     }
 
+
     const formInitialData = {
         name: user.name,
         email: user.email,
         username: user.username,
     }
+
+    // socialmedia form data
+    const socialMediaInitialData = Array.isArray(user.about) && user.about.length > 0 ? user.about[0] : {};
+
+
 
     const avatarUrl = await getAvatarUrl(user.image || 'defaultavatar.png')
 
@@ -56,7 +76,7 @@ export default async function EditProfileLayout() {
 
                 <div className={styles.layoutwraper}>
                     <h1 className={styles.pagehead}>
-                        Edit Account
+                        Edit account
                     </h1>
                     <p className={styles.description}>Update your account data</p>
                 </div>
@@ -66,9 +86,12 @@ export default async function EditProfileLayout() {
                 </div>
 
                 <div className={styles.formlayout}>
-                    <EditProfileForm 
-                        initialData={formInitialData} 
+                    <EditProfileForm
+                        initialData={formInitialData}
                     />
+
+                    <UpdateAboutForm userId={session.user.id} initialData={socialMediaInitialData} />
+
                 </div>
 
             </div>

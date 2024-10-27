@@ -9,6 +9,7 @@ import styles from './searchbox.module.scss'
 import Link from 'next/link'
 import SearchItemSkeleton from './searchitemskeleton/searchitemskeleton'
 import Icon from '../icons'
+import { usePathname } from 'next/navigation'
 
 interface SitemapItem {
     id: string
@@ -32,6 +33,8 @@ const SearchBox: React.FC = () => {
 
     const inputRef = useRef<HTMLInputElement>(null)
     const overlayRef = useRef<HTMLDivElement>(null)
+    const pathname = usePathname()
+
 
     // Toggle the search overlay
     const toggleOverlay = useCallback(() => {
@@ -88,27 +91,34 @@ const SearchBox: React.FC = () => {
         }
     }, [debouncedSearch, fetchItems])
 
-    // Handle opening the search box with `/` and closing with `Esc`
-    useEffect(() => {
-        const handleKeyDown = (event: KeyboardEvent) => {
-            if (event.key === '/' && !isOpen) {
-                setIsOpen(true)
-                event.preventDefault()
-            } else if (event.key === 'Escape' && isOpen) {
-                setIsOpen(false)
-            }
-        }
 
-        document.addEventListener('keydown', handleKeyDown)
+     // Handle opening the search box with `/` and closing with `Esc`
+     useEffect(() => {
+        const handleKeyDown = (event: KeyboardEvent) => {
+            const activeElement = document.activeElement;
+            const isInputFocused = activeElement instanceof HTMLInputElement || activeElement instanceof HTMLTextAreaElement;
+
+            // Disable '/' shortcut on /settings/editprofile route
+            if (pathname === '/settings/editprofile') return;
+
+            if (event.key === '/' && !isOpen && !isInputFocused) {
+                setIsOpen(true);
+                event.preventDefault();
+            } else if (event.key === 'Escape' && isOpen) {
+                setIsOpen(false);
+            }
+        };
+
+        document.addEventListener('keydown', handleKeyDown);
 
         if (isOpen && inputRef.current) {
-            inputRef.current.focus()
+            inputRef.current.focus();
         }
 
         return () => {
-            document.removeEventListener('keydown', handleKeyDown)
-        }
-    }, [isOpen])
+            document.removeEventListener('keydown', handleKeyDown);
+        };
+    }, [isOpen, pathname]);
 
     return (
         <>
