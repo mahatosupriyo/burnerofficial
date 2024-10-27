@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./userprofile.module.scss";
 import PostCard from "@/components/molecules/banner/postcard";
 import Icon from "@/components/atoms/icons";
@@ -9,7 +9,7 @@ import Overlay from "@/components/molecules/overlay/overlay";
 import { deletePost } from "@/app/actions/post/delete-post";
 import { revalidatePath } from "next/cache";
 import { useSession } from "next-auth/react";
-import SuccessPopup from "@/app/success/successpop"; 
+import SuccessPopup from "@/app/success/successpop";
 
 interface Post {
   id: string;
@@ -24,6 +24,15 @@ interface User {
   image: string | null;
   username: string;
   posts: Post[];
+  about?: string;
+  location?: string;
+  work?: string;
+  instagram?: string;
+  behance?: string;
+  x?: string;
+  linkedin?: string;
+  youtube?: string;
+  dribbble?: string;
 }
 
 interface UserProfileProps {
@@ -36,10 +45,18 @@ export default function UserProfile({ user: initialUser }: UserProfileProps) {
   const [user, setUser] = useState<User>(initialUser);
   const [visiblePosts, setVisiblePosts] = useState(3);
   const [deletingPostId, setDeletingPostId] = useState<string | null>(null);
-  const [successMessage, setSuccessMessage] = useState<string | null>(null);
-  const [errorMessage, setErrorMessage] = useState<string | null>(null);
-  const [isPopupVisible, setIsPopupVisible] = useState(false); // Control popup visibility
+  const [message, setMessage] = useState<string | null>(null);
+  const [showPopup, setShowPopup] = useState(false);
   const firstName = user.name.split(" ")[0];
+
+  useEffect(() => {
+    const persistedMessage = localStorage.getItem('userProfileMessage');
+    if (persistedMessage) {
+      setMessage(persistedMessage);
+      setShowPopup(true);
+      localStorage.removeItem('userProfileMessage');
+    }
+  }, []);
 
   const loadMorePosts = () => {
     setVisiblePosts((prevVisible) => prevVisible + 3);
@@ -47,8 +64,7 @@ export default function UserProfile({ user: initialUser }: UserProfileProps) {
 
   const handleDelete = async (postId: string) => {
     setDeletingPostId(postId);
-    setSuccessMessage(null);
-    setErrorMessage(null);
+    setMessage(null);
     try {
       const result = await deletePost(postId);
       if (result.success) {
@@ -56,20 +72,28 @@ export default function UserProfile({ user: initialUser }: UserProfileProps) {
           ...prevUser,
           posts: prevUser.posts.filter((post) => post.id !== postId),
         }));
-        setSuccessMessage(result.message);
-        setIsPopupVisible(true); // Show success message popup
+        setMessage(result.message);
+        localStorage.setItem('userProfileMessage', result.message);
+        setShowPopup(true);
         revalidatePath("/");
       } else {
-        setErrorMessage(result.message);
-        setIsPopupVisible(true); // Show error message popup
+        throw new Error(result.message);
       }
     } catch (error) {
-      setErrorMessage("Error deleting post.");
-      setIsPopupVisible(true); // Show error message popup
       console.error("Error deleting post:", error);
+      const errorMessage = error instanceof Error ? error.message : "An unknown error occurred";
+      setMessage(errorMessage);
+      localStorage.setItem('userProfileMessage', errorMessage);
+      setShowPopup(true);
     } finally {
       setDeletingPostId(null);
     }
+  };
+
+  const handleClosePopup = () => {
+    setShowPopup(false);
+    setMessage(null);
+    localStorage.removeItem('userProfileMessage');
   };
 
   const isCurrentUser = session?.user?.email === user.email;
@@ -77,23 +101,22 @@ export default function UserProfile({ user: initialUser }: UserProfileProps) {
   return (
     <div className={styles.displaycontainer}>
       <section className={styles.displaywraper}>
-        <SuccessPopup
-          message={successMessage || errorMessage}
-          isVisible={isPopupVisible}
-          onClose={() => setIsPopupVisible(false)}
+      <SuccessPopup
+          message={message}
+          isVisible={showPopup}
+          onClose={handleClosePopup}
         />
         <div className={styles.content}>
           <div className={styles.contentwraper}>
-
-
             <div className={styles.userbadge}>
               <h4 className={styles.username}>
                 {user.username}
                 {user.verified && <Icon name="verified" size={10} />}
               </h4>
+
               <h3 className={styles.intro}>
                 <span style={{ paddingLeft: "50%" }}></span>
-                {firstName} is a Design Engineer based in India. He is a Top LinkedIn Design voice. As a visionary Design Engineer, Supriyo Mahato continues to shape the design landscape with his unique perspective and relentless pursuit of excellence.
+                {`${firstName} is a ${user.work} from ${user.location}. ${user.about}`}
               </h3>
               <div style={{ width: "100%", display: "flex", flexDirection: "row" }}>
                 <div className={styles.creatordata}>
@@ -105,29 +128,44 @@ export default function UserProfile({ user: initialUser }: UserProfileProps) {
                         draggable="false"
                         className={styles.avatar}
                       />
-                      
                     </div>
                     <div className={styles.socials}>
-                      <div className={styles.sociallink}>
-                        <Icon name="instagram" size={20} fill="#fafafa" />
-                        Instagram
-                      </div>
-                      <div className={styles.sociallink}>
-                        <Icon name="linkedin" size={20} />
-                        LinkedIn
-                      </div>
-                      <div className={styles.sociallink}>
-                        <Icon name="behance" size={20} fill="#fafafa" />
-                        Behance
-                      </div>
-                      <div className={styles.sociallink}>
-                        <Icon name="dribbble" size={20} fill="#fafafa" />
-                        Dribbble
-                      </div>
-                      <div className={styles.sociallink}>
-                        <Icon name="x" size={20} fill="#fafafa" />
-                        X (Twitter)
-                      </div>
+                      {user.instagram && (
+                        <a href={user.instagram} target="_blank" rel="noopener noreferrer" className={styles.sociallink}>
+                          <Icon name="instagram" size={20} fill="#fafafa" />
+                          Instagram
+                        </a>
+                      )}
+                      {user.linkedin && (
+                        <a href={user.linkedin} target="_blank" rel="noopener noreferrer" className={styles.sociallink}>
+                          <Icon name="linkedin" size={20} />
+                          LinkedIn
+                        </a>
+                      )}
+                      {user.behance && (
+                        <a href={user.behance} target="_blank" rel="noopener noreferrer" className={styles.sociallink}>
+                          <Icon name="behance" size={20} fill="#fafafa" />
+                          Behance
+                        </a>
+                      )}
+                      {user.dribbble && (
+                        <a href={user.dribbble} target="_blank" rel="noopener noreferrer" className={styles.sociallink}>
+                          <Icon name="dribbble" size={20} fill="#fafafa" />
+                          Dribbble
+                        </a>
+                      )}
+                      {user.x && (
+                        <a href={user.x} target="_blank" rel="noopener noreferrer" className={styles.sociallink}>
+                          <Icon name="x" size={20} fill="#fafafa" />
+                          X (Twitter)
+                        </a>
+                      )}
+                      {/* {user.youtube && (
+                        <a href={user.youtube} target="_blank" rel="noopener noreferrer" className={styles.sociallink}>
+                          <Icon name="youtube" size={20} fill="#fafafa" />
+                          YouTube
+                        </a>
+                      )} */}
                     </div>
                   </div>
                 </div>

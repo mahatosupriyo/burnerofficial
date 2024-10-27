@@ -60,10 +60,12 @@ export default function UpdateAboutForm({ userId, initialData }: { userId: strin
           {...register('about')}
           className={styles.textarea}
           autoComplete="off"
+          placeholder='something about you'
           spellCheck="false"
         />
         {errors.about && <p className="mt-1 text-sm text-red-600">{errors.about.message}</p>}
       </div>
+
 
       <div className={styles.formsection}>
         <label htmlFor="location" className={styles.label}>Location</label>
@@ -90,6 +92,12 @@ export default function UpdateAboutForm({ userId, initialData }: { userId: strin
         />
         {errors.work && <p className="mt-1 text-sm text-red-600">{errors.work.message}</p>}
       </div>
+
+      <div style={{ paddingTop: '4rem', paddingBottom: '2rem', display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
+        <h4 style={{ fontSize: '1.66rem', fontWeight: 500 }}>Social links</h4>
+        <p style={{ opacity: 0.46, fontSize: '1.46rem', fontWeight: 400 }}>paste your social media links</p>
+      </div>
+
 
       <div className={styles.formsection}>
         <label htmlFor="instagram" className={styles.label}>Instagram</label>

@@ -194,6 +194,8 @@
                 font-weight: 600;
                 cursor: pointer;
                 @include smooth;
+                color: hsl(0, 0, 90%);
+                text-decoration: none;
 
                 .socialicon {
                     height: 2rem;
@@ -213,7 +215,7 @@
     width: 100%;
     display: flex;
     padding: 1.6rem;
-    background-color: hsl(0, 0, 16%);
+    background-color: hsl(0, 0, 12%);
     align-items: center;
     justify-content: center;
     cursor: pointer;
