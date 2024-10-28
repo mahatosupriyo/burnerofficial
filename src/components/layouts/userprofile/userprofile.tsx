@@ -101,7 +101,7 @@ export default function UserProfile({ user: initialUser }: UserProfileProps) {
   return (
     <div className={styles.displaycontainer}>
       <section className={styles.displaywraper}>
-      <SuccessPopup
+        <SuccessPopup
           message={message}
           isVisible={showPopup}
           onClose={handleClosePopup}
@@ -116,7 +116,9 @@ export default function UserProfile({ user: initialUser }: UserProfileProps) {
 
               <h3 className={styles.intro}>
                 <span style={{ paddingLeft: "50%" }}></span>
-                {`${firstName} is a ${user.work} from ${user.location}. ${user.about}`}
+
+                {user.about}
+
               </h3>
               <div style={{ width: "100%", display: "flex", flexDirection: "row" }}>
                 <div className={styles.creatordata}>
