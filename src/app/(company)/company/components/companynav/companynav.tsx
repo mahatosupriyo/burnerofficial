@@ -42,6 +42,14 @@ const CompanyNav = () => {
         >
           refunds
         </Link>
+
+        <Link
+          className={`${styles.linkchip} ${pathname === '/company/privacy' ? styles.active : ''
+            }`}
+          href="/company/privacy"
+        >
+          privacy
+        </Link>
       </div>
     </div>
 
