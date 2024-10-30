@@ -29,11 +29,11 @@ const Lander = () => {
                             </svg>
 
                             <div className={styles.buttons}>
-                                <motion.button
-                                    whileTap={{ scale: 0.96, background: '#fff', color: '#000' }}
+                                <Link
+                                    href="/auth"
                                     className={styles.loginbtn}>
                                     Get started
-                                </motion.button>
+                                </Link>
                             </div>
 
                         </motion.div>

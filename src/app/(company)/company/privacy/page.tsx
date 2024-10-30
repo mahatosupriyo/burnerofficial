@@ -4,6 +4,7 @@ import styles from './privacy.module.scss'
 import { motion } from 'framer-motion'
 import CompanyNav from '../components/companynav/companynav'
 import CompanyHeader from '../components/header/header'
+import Footer from '@/components/footer/footer';
 
 const DeliveryPage = () => {
     return (
@@ -125,6 +126,7 @@ const DeliveryPage = () => {
                 </div>
 
             </div>
+            <Footer/>
         </div >
     )
 }

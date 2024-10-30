@@ -4,7 +4,7 @@ import styles from './cancellation.module.scss'
 import CompanyNav from '../components/companynav/companynav'
 import { motion } from 'framer-motion'
 import CompanyHeader from '../components/header/header'
-import CompanyFooter from '../components/companyfooter/compayfooter'
+import Footer from '@/components/footer/footer';
 
 const CancellationPage = () => {
     return (
@@ -29,7 +29,7 @@ const CancellationPage = () => {
                 </div>
 
             </div>
-            {/* <CompanyFooter /> */}
+            <Footer/>
         </div >
     )
 }

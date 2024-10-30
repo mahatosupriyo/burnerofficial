@@ -26,10 +26,10 @@ const Footer = () => {
                     <div className={styles.linkswraper}>
                         <p className={styles.linkhead}>company</p>
                         <div className={styles.linklist}>
-                            <Link className={styles.link} href="/">Terms</Link>
-                            <Link className={styles.link} href="/">Privacy</Link>
-                            <Link className={styles.link} href="/">refund</Link>
-                            <Link className={styles.link} href="/">Contact us</Link>
+                            <Link className={styles.link} href="/company/terms">Terms</Link>
+                            <Link className={styles.link} href="/company/privacy">Privacy</Link>
+                            <Link className={styles.link} href="/company/refund">refund</Link>
+                            {/* <Link className={styles.link} href="/company/contact">Contact us</Link> */}
                         </div>
                     </div>
 
