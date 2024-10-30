@@ -28,7 +28,7 @@ const Footer = () => {
                         <div className={styles.linklist}>
                             <Link className={styles.link} href="/company/terms">Terms</Link>
                             <Link className={styles.link} href="/company/privacy">Privacy</Link>
-                            <Link className={styles.link} href="/company/refund">refund</Link>
+                            <Link className={styles.link} href="/company/cancellation">refund</Link>
                             {/* <Link className={styles.link} href="/company/contact">Contact us</Link> */}
                         </div>
                     </div>
