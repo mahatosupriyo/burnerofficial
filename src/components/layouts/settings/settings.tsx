@@ -61,9 +61,9 @@ export default async function SettingsLayout() {
                             </div>
 
                             <div className={styles.plandetails}>
-                                <button className={styles.btn}>
+                                <Link href="/plans" target='_blank' className={styles.btn}>
                                     Subscribe Pro
-                                </button>
+                                </Link>
                             </div>
 
                         </div>

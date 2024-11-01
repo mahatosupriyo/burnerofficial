@@ -8,6 +8,58 @@
     background-color: #000;
     flex-direction: column;
 
+    .nav {
+        display: flex;
+        width: 100%;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+
+        position: fixed;
+        top: 0;
+
+        background-color: hsl(0, 0%, 0%, 0.8);
+        backdrop-filter: blur(4rem);
+
+        padding: 1rem 4rem;
+        z-index: 10000;
+
+        .buttons {
+            display: flex;
+            align-items: center;
+            gap: 0.4;
+            flex-direction: row;
+
+            .loginbtn {
+                color: #111;
+                font-size: 1.56rem;
+                font-weight: 600;
+                border-radius: 100rem;
+                padding: 1.4rem 1.8rem;
+                cursor: pointer;
+                background-color: none;
+                background: #fff;
+                border: 0.16rem solid hsl(0, 0, 100%);
+            }
+        }
+
+
+
+        .links {
+            display: flex;
+            flex-direction: row;
+            gap: 2rem;
+            align-items: center;
+
+            .link {
+                color: #000;
+                font-size: 1.6rem;
+                font-weight: 600;
+                // text-transform: lowercase;
+            }
+        }
+    }
+
     .container {
         display: flex;
         width: 100%;
@@ -20,66 +72,25 @@
         align-items: center;
         padding: 2rem 4rem;
         gap: 10rem;
+        padding-top: 10rem;
+        // background-image: url(https://ik.imagekit.io/eduburner/back.svg?updatedAt=1729236535973);
+        // background-position: top;
+        // background-repeat: no-repeat;
+        // background-size: contain;
 
-        background-image: url(https://ik.imagekit.io/eduburner/back.svg?updatedAt=1729236535973);
-        background-position: top;
-        background-repeat: no-repeat;
-        background-size: contain;
-
-        .nav {
-            display: flex;
-            width: 100%;
-            flex-direction: row;
-            align-items: center;
-            justify-content: space-between;
-
-            .buttons {
-                display: flex;
-                align-items: center;
-                gap: 0.4;
-                flex-direction: row;
-
-                .loginbtn {
-                    color: #111;
-                    font-size: 1.56rem;
-                    font-weight: 600;
-                    border-radius: 100rem;
-                    padding: 1.4rem 1.8rem;
-                    cursor: pointer;
-                    background-color: none;
-                    background: #fff;
-                    border: 0.16rem solid hsl(0, 0, 100%);
-                }
-            }
-
-
-
-            .links {
-                display: flex;
-                flex-direction: row;
-                gap: 2rem;
-                align-items: center;
-
-                .link {
-                    color: #000;
-                    font-size: 1.6rem;
-                    font-weight: 600;
-                    // text-transform: lowercase;
-                }
-            }
-        }
 
         .header {
             width: 100%;
             display: flex;
             flex-direction: column;
             align-items: flex-start;
-            gap: 6rem;
+            gap: 4rem;
 
             .headercontent {
                 display: flex;
                 flex-direction: column;
-                gap: 3rem;
+                gap: 1.4rem;
+
                 .title {
                     width: 100%;
                     // max-width: 60%;
@@ -90,14 +101,14 @@
                     mix-blend-mode: hard-light;
                     padding: 0.2rem 0rem;
                     font-size: 5rem;
-                    font-size: 14rem;
-                    font-weight: 900;
+                    font-size: 4rem;
+                    font-weight: 600;
                     letter-spacing: -0.1rem;
                     line-height: 102%;
                 }
 
                 .subtitle {
-                    font-size: 2.2rem;
+                    font-size: 1.6rem;
                     // font-family: Stolzl;
                     // font-family: Involve Bold;
                     font-weight: 400;
