@@ -6,7 +6,6 @@ import prisma from "@/lib/prisma";
 import { auth } from "@/auth";
 import { z } from 'zod';
 
-// Move this part to a shared config file or keep it here if it's not reused in many places
 const envSchema = z.object({
   AWS_REGION: z.string(),
   AWS_ACCESS_KEY_ID: z.string(),
@@ -63,6 +62,7 @@ export async function deletePost(postId: string) {
       });
   
       revalidatePath('/');
+
       return { success: true, message: "Post deleted successfully" };
     } catch (error) {
       console.error("Error deleting post:", error);

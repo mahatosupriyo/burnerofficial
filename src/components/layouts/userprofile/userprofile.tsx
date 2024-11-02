@@ -75,7 +75,6 @@ export default function UserProfile({ user: initialUser }: UserProfileProps) {
         setMessage(result.message);
         localStorage.setItem('userProfileMessage', result.message);
         setShowPopup(true);
-        revalidatePath("/");
       } else {
         throw new Error(result.message);
       }
