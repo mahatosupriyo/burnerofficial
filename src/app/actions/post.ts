@@ -35,9 +35,17 @@ export async function createPost(formData: FormData) {
       throw new Error("You must be logged in to create a post");
     }
 
+    
+    
     const file = formData.get('file');
     if (!(file instanceof File)) {
       throw new Error("No valid file uploaded");
+    }
+    
+    const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5 MB in bytes
+    // Check file size
+    if (file.size > MAX_FILE_SIZE) {
+      throw new Error("File size exceeds 5 mega byte limit");
     }
 
     // Check if the file is an image
@@ -50,6 +58,8 @@ export async function createPost(formData: FormData) {
     const fileName = `${fileHash}.webp`;
 
     const fileBuffer = await file.arrayBuffer();
+
+
 
     // Convert, compress, and resize the image to WebP
     const webpBuffer = await sharp(Buffer.from(fileBuffer))

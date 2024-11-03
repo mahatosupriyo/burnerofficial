@@ -7,7 +7,6 @@ import React from 'react';
 import styles from './controls.module.scss';
 import Icon from '@/components/atoms/icons';
 import SuccessPopup from '@/app/success/successpop';
-import Avatar from '@/components/atoms/avatar';
 
 const Controls = () => {
     const [preview, setPreview] = useState<string | null>(null);
