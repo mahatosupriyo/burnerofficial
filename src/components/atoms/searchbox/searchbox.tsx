@@ -35,7 +35,6 @@ const SearchBox: React.FC = () => {
     const overlayRef = useRef<HTMLDivElement>(null)
     const pathname = usePathname()
 
-
     // Toggle the search overlay
     const toggleOverlay = useCallback(() => {
         setIsOpen((prev) => !prev)
@@ -91,9 +90,8 @@ const SearchBox: React.FC = () => {
         }
     }, [debouncedSearch, fetchItems])
 
-
-     // Handle opening the search box with `/` and closing with `Esc`
-     useEffect(() => {
+    // Handle opening the search box with `/` and closing with `Esc`
+    useEffect(() => {
         const handleKeyDown = (event: KeyboardEvent) => {
             const activeElement = document.activeElement;
             const isInputFocused = activeElement instanceof HTMLInputElement || activeElement instanceof HTMLTextAreaElement;
@@ -155,12 +153,9 @@ const SearchBox: React.FC = () => {
                         >
                             <div className={styles.overlayContent} ref={overlayRef}>
                                 <div className={styles.toplayer}>
-
                                     <div className={styles.inputbarwraper}>
                                         <div className={styles.mainsearch}>
-
                                             <Icon name='activesearch' size={24} />
-
                                             <input
                                                 ref={inputRef}
                                                 type="text"
@@ -172,13 +167,10 @@ const SearchBox: React.FC = () => {
                                             />
                                         </div>
                                     </div>
-
                                     <button className={styles.closebtn} onClick={() => setIsOpen(false)}>
                                         <Icon name='close' size={16} fill='#333333' />
                                     </button>
-
                                 </div>
-
 
                                 <div className={styles.bottomlayer}>
                                     <div className={styles.drops}>
@@ -187,32 +179,26 @@ const SearchBox: React.FC = () => {
                                         {isInitialState && items.length === 0 && (
                                             <div className={styles.empty} style={{ fontSize: '1.46rem', fontWeight: 500 }}>
                                                 Popular
-
                                                 <div className={styles.quicklinkscontainer}>
                                                     <div className={styles.quicklink}>
                                                         <Icon name='freebies' fill='#808080' size={24} />
                                                         Freebies
                                                     </div>
-
                                                     <div className={styles.quicklink}>
                                                         <Icon name='job' fill='#808080' size={24} />
                                                         Jobs and internships
                                                     </div>
-
                                                     <div className={styles.quicklink}>
                                                         <Icon name='campus' fill='#808080' size={24} />
-
                                                         <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '0.6rem', }}>
                                                             Campus ambassador <span className={styles.new}>NEW</span>
                                                         </div>
                                                     </div>
-
                                                     <div className={styles.quicklink}>
                                                         <Icon name='store' fill='#808080' size={24} />
                                                         Store
                                                     </div>
                                                 </div>
-
                                             </div>
                                         )}
                                         {!isLoading && items.length > 0 && (
@@ -241,8 +227,6 @@ const SearchBox: React.FC = () => {
                                         )}
                                     </div>
                                 </div>
-
-
                             </div>
                         </motion.div>
                     </div>
