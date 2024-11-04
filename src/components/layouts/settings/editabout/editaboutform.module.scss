@@ -49,40 +49,58 @@
             }
         }
 
-        .textarea {
-            width: 100%;
-            padding: 1.6rem 1.4rem;
-            font-size: 1.5rem;
-            font-weight: 400;
-            color: hsl(0, 0, 50%);
-            width: 100%;
-            border-radius: 1rem;
-            min-height: 14rem;
-            height: 20rem;
-            max-height: 30rem;
-            background: none;
-            line-height: 130%;
-            border: 0.2rem solid hsl(0, 0, 20%);
-            @include smooth;
-            resize: vertical;
+        .subwrapergen {
+            position: relative;
 
-            &:hover {
-                border: 0.2rem solid hsl(0, 0, 30%);
-                background-color: hsl(0, 0, 8%);
+            .textarea {
+                width: 100%;
+                padding: 1.6rem 1.4rem;
+                font-size: 1.5rem;
+                font-weight: 400;
+                color: hsl(0, 0, 50%);
+                width: 100%;
+                border-radius: 1rem;
+                min-height: 14rem;
+                height: 20rem;
+                max-height: 30rem;
+                background: none;
+                line-height: 130%;
+                border: 0.2rem solid hsl(0, 0, 20%);
+                @include smooth;
+                resize: vertical;
+
+                &:hover {
+                    border: 0.2rem solid hsl(0, 0, 30%);
+                    background-color: hsl(0, 0, 8%);
+                }
+
+                &:focus {
+                    color: hsl(0, 0, 90%);
+                    border: 0.2rem solid hsl(207, 100%, 61%);
+                    background-color: hsl(0, 0, 12%);
+                }
+
+                &::placeholder {
+                    font-size: 1.66rem;
+                    font-weight: 500;
+                    color: hsl(0, 0, 40%);
+                }
             }
 
-            &:focus {
-                color: hsl(0, 0, 90%);
-                border: 0.2rem solid hsl(207, 100%, 61%);
-                background-color: hsl(0, 0, 12%);
-            }
-
-            &::placeholder {
-                font-size: 1.66rem;
-                font-weight: 500;
-                color: hsl(0, 0, 40%);
+            .generatebtn {
+                background-color: none;
+                background: none;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: absolute;
+                bottom: 2rem;
+                right: 1.6rem;
+                cursor: pointer;
             }
         }
+
+
     }
 }
 
@@ -103,4 +121,25 @@
         cursor: not-allowed;
         background-color: hsl(0, 0, 30%);
     }
+}
+
+
+@keyframes rotate360 {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+
+.generating {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    animation: rotate360 1s infinite;
+    transition: all 0.2s cubic-bezier(0.785, 0.135, 0.15, 0.86);
 }

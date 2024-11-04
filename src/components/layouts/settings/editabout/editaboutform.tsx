@@ -3,12 +3,13 @@
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
-import { updateAbout } from '@/app/actions/update-about'
+import { updateAbout, generateAbout } from '@/app/actions/update-about'
 import { useState, useEffect } from 'react'
 import styles from './editaboutform.module.scss'
+import Icon from '@/components/atoms/icons'
 
 const aboutSchema = z.object({
-  about: z.string().max(500).optional(),
+  about: z.string().min(1, "About is required").max(500),
   location: z.string().max(100).optional(),
   work: z.string().max(100).optional(),
   instagram: z.string().url().optional().or(z.literal('')),
@@ -25,20 +26,19 @@ export default function UpdateAboutForm({ userId, initialData }: { userId: strin
   const [error, setError] = useState<string | null>(null)
   const [success, setSuccess] = useState<boolean>(false)
   const [isFormChanged, setIsFormChanged] = useState<boolean>(false)
+  const [isGenerating, setIsGenerating] = useState<boolean>(false)
 
-
-  const { register, handleSubmit, formState: { errors }, watch } = useForm<AboutFormData>({
+  const { register, handleSubmit, formState: { errors }, watch, setValue } = useForm<AboutFormData>({
     resolver: zodResolver(aboutSchema),
     defaultValues: initialData
   })
 
   const watchedFields = watch()
+  const aboutContent = watch('about')
 
   useEffect(() => {
     setIsFormChanged(JSON.stringify(watchedFields) !== JSON.stringify(initialData))
   }, [watchedFields, initialData])
-
-
 
   const onSubmit = async (data: AboutFormData) => {
     try {
@@ -51,18 +51,56 @@ export default function UpdateAboutForm({ userId, initialData }: { userId: strin
     }
   }
 
+  const handleGenerate = async () => {
+    if (aboutContent && aboutContent.trim().split(/\s+/).length >= 5) {
+      setIsGenerating(true)
+      try {
+        const generatedAbout = await generateAbout(aboutContent)
+        setValue('about', generatedAbout)
+        setError(null)
+      } catch (e) {
+        setError(e instanceof Error ? e.message : 'Failed to generate about content')
+      } finally {
+        setIsGenerating(false)
+      }
+    }
+  }
+
+  const isGenerateDisabled = !aboutContent || aboutContent.trim().split(/\s+/).length < 5
+
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={styles.aboutform}>
       <div className={styles.formsection}>
         <label htmlFor="about" className={styles.label}>About</label>
-        <textarea
-          id="about"
-          {...register('about')}
-          className={styles.textarea}
-          autoComplete="off"
-          placeholder='something about you'
-          spellCheck="false"
-        />
+        <div className={styles.subwrapergen}>
+          <textarea
+            id="about"
+            {...register('about')}
+            className={styles.textarea}
+            autoComplete="off"
+            placeholder='something about you'
+            spellCheck="false"
+          />
+          <button
+            type="button"
+            onClick={handleGenerate}
+            disabled={isGenerateDisabled || isGenerating}
+            className={`${styles.generatebtn} ${(isGenerateDisabled || isGenerating) ? styles.disabledbtn : ''}`}
+          >
+            {isGenerating ? (
+              <div className={styles.generating}>
+                <Icon name='generate' size={28} />
+              </div>
+            )
+              :
+              (
+                <Icon name='generate' size={28} />
+              )
+
+            }
+          </button>
+        </div>
+
         {errors.about && <p className="mt-1 text-sm text-red-600">{errors.about.message}</p>}
       </div>
 

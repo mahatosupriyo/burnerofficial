@@ -3,9 +3,12 @@
 import { z } from 'zod'
 import prisma from '@/lib/prisma'
 import { revalidatePath } from 'next/cache'
+import { GoogleGenerativeAI } from '@google/generative-ai'
+
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || '')
 
 const aboutSchema = z.object({
-  about: z.string().max(500).optional(),
+  about: z.string().min(1, "About is required").max(500),
   location: z.string().max(100).optional(),
   work: z.string().max(100).optional(),
   instagram: z.string().url().optional().or(z.literal('')),
@@ -62,5 +65,23 @@ export async function updateAbout(userId: string, data: z.infer<typeof aboutSche
 
     revalidatePath('/')
     return newAbout
+  }
+}
+
+export async function generateAbout(userInput: string): Promise<string> {
+  try {
+    const model = genAI.getGenerativeModel({ model: 'gemini-pro' })
+    const prompt = `Based on the following information about a user, generate a engaging 'About' section in first person, approximately 40 words long:
+
+    User input: ${userInput}
+
+    Please create an 'About' section that expands on this information, adding relevant details and maintaining a professional yet personable tone.`
+
+    const result = await model.generateContent(prompt)
+    const response = await result.response
+    return response.text()
+  } catch (error) {
+    console.error('Error generating about content:', error)
+    throw new Error('Failed to generate about content')
   }
 }
