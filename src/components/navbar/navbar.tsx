@@ -12,10 +12,13 @@ export default function NavBar() {
             <div className={styles.nav}>
 
                 <div className={styles.leftwraper}>
-                    <Link draggable="false" href="/" className={styles.back}>
+                    <Link draggable="false" href="/" className={styles.primarybutton}>
                         <div className={styles.iconwraper}>
                             <Icon name="home" size={16.80} fill='#ffffff5c' />
                         </div>
+                    </Link>
+                    <Link href="/series" className={styles.primarybutton}>
+                        <Icon name='series' size={26.80} fill='#ffffff5c' />
                     </Link>
                 </div>
 

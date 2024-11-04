@@ -35,8 +35,6 @@ export async function createPost(formData: FormData) {
       throw new Error("You must be logged in to create a post");
     }
 
-    
-    
     const file = formData.get('file');
     if (!(file instanceof File)) {
       throw new Error("No valid file uploaded");
