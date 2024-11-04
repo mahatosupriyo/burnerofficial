@@ -13,6 +13,6 @@ export async function chatWithGemini(message: string) {
     return response.text()
   } catch (error) {
     console.error('Error in Gemini chat:', error)
-    return 'Sorry, I encountered an error. Please try again.'
+    return 'Sorry, an error, Please try again.'
   }
 }
