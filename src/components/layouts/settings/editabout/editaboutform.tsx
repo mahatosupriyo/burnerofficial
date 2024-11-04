@@ -9,7 +9,7 @@ import styles from './editaboutform.module.scss'
 import Icon from '@/components/atoms/icons'
 
 const aboutSchema = z.object({
-  about: z.string().min(1, "About is required").max(500),
+  about: z.string().max(500).optional(),
   location: z.string().max(100).optional(),
   work: z.string().max(100).optional(),
   instagram: z.string().url().optional().or(z.literal('')),
@@ -42,14 +42,18 @@ export default function UpdateAboutForm({ userId, initialData }: { userId: strin
 
   const onSubmit = async (data: AboutFormData) => {
     try {
-      await updateAbout(userId, data)
-      setSuccess(true)
-      setError(null)
+      const dataToSubmit = {
+        ...data,
+        about: data.about || '', // Provide a default empty string if about is undefined
+      };
+      await updateAbout(userId, dataToSubmit);
+      setSuccess(true);
+      setError(null);
     } catch (e) {
-      setError(e instanceof Error ? e.message : 'An error occurred')
-      setSuccess(false)
+      setError(e instanceof Error ? e.message : 'An error occurred');
+      setSuccess(false);
     }
-  }
+  };
 
   const handleGenerate = async () => {
     if (aboutContent && aboutContent.trim().split(/\s+/).length >= 5) {
