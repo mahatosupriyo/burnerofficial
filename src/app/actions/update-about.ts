@@ -71,7 +71,7 @@ export async function updateAbout(userId: string, data: z.infer<typeof aboutSche
 export async function generateAbout(userInput: string): Promise<string> {
   try {
     const model = genAI.getGenerativeModel({ model: 'gemini-pro' })
-    const prompt = `Based on the following information about a user, in third person. generate a engaging 'About' section, approximately 40 words long:
+    const prompt = `Based on the following information about a user, in third person. generate a engaging 'About' section, approximately 24 words long:
 
     User input: ${userInput}
 
