@@ -70,7 +70,9 @@ export default function UpdateAboutForm({ userId, initialData }: { userId: strin
     }
   }
 
-  const isGenerateDisabled = !aboutContent || aboutContent.trim().split(/\s+/).length < 5
+  // const isGenerateDisabled = !aboutContent || aboutContent.trim().split(/\s+/).length < 5
+  const wordCount = aboutContent ? aboutContent.trim().split(/\s+/).length : 0
+  const isGenerateDisabled = wordCount < 5
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={styles.aboutform}>
@@ -89,7 +91,7 @@ export default function UpdateAboutForm({ userId, initialData }: { userId: strin
             type="button"
             onClick={handleGenerate}
             disabled={isGenerateDisabled || isGenerating}
-            className={`${styles.generatebtn} ${(isGenerateDisabled || isGenerating) ? styles.disabledbtn : ''}`}
+            className={`${styles.generatebtn} ${isGenerateDisabled ? styles.insufficientWords : ''} ${isGenerating ? styles.generating : ''}`}
           >
             {isGenerating ? (
               <div className={styles.generating}>
@@ -104,6 +106,10 @@ export default function UpdateAboutForm({ userId, initialData }: { userId: strin
             }
           </button>
         </div>
+
+        <p style={{opacity: 0}}>
+          {wordCount} word{wordCount !== 1 ? 's' : ''} {isGenerateDisabled ? '(minimum 5 required)' : ''}
+        </p>
 
         {errors.about && <p className="mt-1 text-sm text-red-600">{errors.about.message}</p>}
       </div>

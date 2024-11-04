@@ -97,6 +97,9 @@
                 bottom: 2rem;
                 right: 1.6rem;
                 cursor: pointer;
+                padding: 0.6rem;
+                background-color: #111;
+                border-radius: 100rem;
             }
         }
 
@@ -142,4 +145,8 @@
 
     animation: rotate360 1s infinite;
     transition: all 0.2s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+}
+
+.insufficientWords{
+    opacity: 0.3;
 }
