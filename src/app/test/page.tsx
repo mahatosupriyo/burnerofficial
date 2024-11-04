@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState, useRef, useEffect } from 'react'
-import { chatWithGemini } from '../actions/chat'
+import { chatWithGemini } from '@/app/actions/chat'
 
 export default function ChatComponent() {
   const [messages, setMessages] = useState<{ role: 'user' | 'ai'; content: string }[]>([])
