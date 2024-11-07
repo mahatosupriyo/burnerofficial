@@ -14,16 +14,16 @@
     padding: 6rem 4rem;
 
     width: 100%;
-    max-width: 40rem;
+    max-width: 44rem;
 
     @media only screen and (max-width: 60rem) {
         padding: 6rem 2rem;
     }
 
     .titlemain {
-        font-family: Gabarito;
+        // font-family: Gabarito;
         font-size: 2.5rem;
-        font-weight: 600;
+        font-weight: 700;
     }
 
     .providerbox {
@@ -36,9 +36,9 @@
     }
 
     .policy {
-        font-family: Gabarito;
+        // font-family: Gabarito;
         color: hsl(0, 0%, 40%);
-        font-weight: 400;
+        font-weight: 500;
         font-size: 1.42rem;
         line-height: 150%;
     }

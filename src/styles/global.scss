@@ -6,6 +6,9 @@
 
 @import url("https://use.typekit.net/ika2qcu.css");
 
+// HK Grotest
+@import url('https://fonts.googleapis.com/css2?family=Gabarito:wght@400..900&family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&display=swap');
+
 
 * {
     margin: 0;
@@ -15,6 +18,7 @@
     box-sizing: border-box;
     -webkit-tap-highlight-color: transparent;
     font-family: Gabarito;
+    font-family: "Hanken Grotesk", sans-serif;
 }
 
 html {
