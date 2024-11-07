@@ -177,16 +177,16 @@ const SearchBox: React.FC = () => {
                                         {isLoading && <SearchItemSkeleton />}
                                         {error && <div className={styles.error}>{error}</div>}
                                         {isInitialState && items.length === 0 && (
-                                            <div className={styles.empty} style={{ fontSize: '1.46rem', fontWeight: 500 }}>
+                                            <div className={styles.empty} style={{ fontSize: '1.46rem', fontWeight: 600 }}>
                                                 Popular
                                                 <div className={styles.quicklinkscontainer}>
                                                     <div className={styles.quicklink}>
                                                         <Icon name='freebies' fill='#808080' size={24} />
-                                                        Freebies
+                                                        Resources
                                                     </div>
                                                     <div className={styles.quicklink}>
                                                         <Icon name='job' fill='#808080' size={24} />
-                                                        Jobs and internships
+                                                        Career
                                                     </div>
                                                     <div className={styles.quicklink}>
                                                         <Icon name='campus' fill='#808080' size={24} />

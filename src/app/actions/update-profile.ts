@@ -32,7 +32,7 @@ export async function updateProfile(formData: FormData) {
 
   // Fetch current user data
   const currentUser = await prisma.user.findUnique({
-    where: { email: session.user.email },
+    where: { id: session.user.id },
     select: {
       name: true,
       email: true,

@@ -1,6 +1,8 @@
 'use server'
 
 import { z } from 'zod'
+import { auth } from "@/auth"
+
 import prisma from '@/lib/prisma'
 import { revalidatePath } from 'next/cache'
 import { GoogleGenerativeAI } from '@google/generative-ai'
@@ -22,8 +24,13 @@ const aboutSchema = z.object({
 export async function updateAbout(userId: string, data: z.infer<typeof aboutSchema>) {
   const validatedData = aboutSchema.parse(data)
 
+  const session = await auth()
+  if (!session || !session.user?.email) {
+    return { error: "You must be logged in to update your profile." }
+  }
+
   const user = await prisma.user.findUnique({
-    where: { id: userId },
+    where: { id: session.user.id },
     include: { about: true }
   })
 
