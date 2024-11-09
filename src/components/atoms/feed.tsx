@@ -15,6 +15,8 @@ interface Post {
   imageUrl: string
   createdAt: string
   userId: string
+  link?: string
+  caption?: string
   user: {
     username: string
     image: string
@@ -68,6 +70,7 @@ export default function Feed() {
                   alt={`Image by ${post.user.username}`}
                   draggable="false"
                 />
+
                 <div className={styles.creator}>
                   <Avatar
                     src={post.user.avatarUrl}
@@ -94,6 +97,10 @@ export default function Feed() {
                       src={post.user.avatarUrl}
                       size={42}
                     />
+
+                    {post.caption && <p>{post.caption}</p>}
+                    {post.link && <p>{post.link}</p>}
+
                     <Link href={`/${post.user.username}`} className={styles.creationdetails}>
                       <h2 className={styles.subheading}>Inspiration by</h2>
                       <p className={styles.username}>

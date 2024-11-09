@@ -8,6 +8,9 @@ import { auth } from "@/auth";
 import { z } from 'zod';
 import sharp from 'sharp';
 import crypto from 'crypto';
+import { rateLimit } from '@/lib/rate-limit';
+import { sanitizeString } from '@/lib/sanitize';
+import { FileTypeResult, fileTypeFromBuffer } from 'file-type';
 
 // Validate environment variables
 const envSchema = z.object({
@@ -27,6 +30,36 @@ const s3Client = new S3Client({
   },
 });
 
+// Define schemas for various parts of the application
+const FileSchema = z.instanceof(File);
+
+const PostInputSchema = z.object({
+  file: FileSchema,
+  caption: z.string().max(500).optional().nullable(),
+  link: z.string().url().max(2000).optional().nullable(),
+});
+
+const UserSchema = z.object({
+  id: z.string(),
+  username: z.string().nullable(),
+  image: z.string().nullable(),
+});
+
+const PostSchema = z.object({
+  id: z.string(),
+  imageUrl: z.string(),
+  caption: z.string().nullable(),
+  link: z.string().nullable(),
+  createdAt: z.date(),
+  userId: z.string(),
+  user: UserSchema,
+});
+
+type PostInput = z.infer<typeof PostInputSchema>;
+type Post = z.infer<typeof PostSchema>;
+
+const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5 MB
+const ALLOWED_FILE_TYPES = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
 
 export async function createPost(formData: FormData) {
   try {
@@ -35,31 +68,35 @@ export async function createPost(formData: FormData) {
       throw new Error("You must be logged in to create a post");
     }
 
-    const file = formData.get('file');
-    if (!(file instanceof File)) {
-      throw new Error("No valid file uploaded");
+    // Apply rate limiting
+    await rateLimit(session.user.id);
+
+    const input = PostInputSchema.safeParse({
+      file: formData.get('file'),
+      caption: formData.get('caption') || null,
+      link: formData.get('link') || null,
+    });
+
+    if (!input.success) {
+      throw new Error("Invalid input data");
     }
+
+    const { file, caption, link } = input.data;
     
-    const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5 MB in bytes
-    // Check file size
     if (file.size > MAX_FILE_SIZE) {
       throw new Error("File size exceeds 5 mega byte limit");
     }
 
-    // Check if the file is an image
-    const allowedImageTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
-    if (!allowedImageTypes.includes(file.type)) {
-      throw new Error("Please upload a JPEG, PNG, GIF, or WebP image.");
+    const fileBuffer = await file.arrayBuffer();
+    const fileType: FileTypeResult | undefined = await fileTypeFromBuffer(Buffer.from(fileBuffer));
+
+    if (!fileType || !ALLOWED_FILE_TYPES.includes(fileType.mime)) {
+      throw new Error("Invalid file type. Please upload a JPEG, PNG, GIF, or WebP image.");
     }
 
-    const fileHash = crypto.createHash('md5').update(`${Date.now()}-${file.name}`).digest('hex');
+    const fileHash = crypto.createHash('sha256').update(`${Date.now()}-${file.name}`).digest('hex');
     const fileName = `${fileHash}.webp`;
 
-    const fileBuffer = await file.arrayBuffer();
-
-
-
-    // Convert, compress, and resize the image to WebP
     const webpBuffer = await sharp(Buffer.from(fileBuffer))
       .resize({ width: 1080, withoutEnlargement: true })
       .webp({ quality: 80 })
@@ -74,32 +111,45 @@ export async function createPost(formData: FormData) {
 
     await s3Client.send(putObjectCommand);
 
-    await prisma.post.create({
+    const newPost = await prisma.post.create({
       data: {
         imageUrl: fileName,
         userId: session.user.id,
+        caption: caption ? sanitizeString(caption) : undefined,
+        link: link ? sanitizeString(link) : undefined,
+      },
+      include: {
+        user: true,
       },
     });
 
+    const validatedPost = PostSchema.parse(newPost);
+
     revalidatePath('/');
-    return { success: true, message: "Post created successfully" };
+    return { success: true, message: "Post created successfully", post: validatedPost };
   } catch (error) {
     console.error("Error creating post:", error);
-    return { success: false, message: error instanceof Error ? error.message : "An unknown error occurred" };
+    if (error instanceof z.ZodError) {
+      return { success: false, message: "Invalid input data", errors: error.errors };
+    }
+    return { success: false, message: "An error occurred while creating the post" };
   }
 }
 
 export async function getPostWithSignedUrl(postId: string) {
   try {
+    const session = await auth();
+    if (!session?.user?.id) {
+      throw new Error("You must be logged in to view posts");
+    }
+
+    // Apply rate limiting
+    await rateLimit(session.user.id);
+
     const post = await prisma.post.findUnique({
       where: { id: postId },
       include: {
-        user: {
-          select: {
-            username: true,
-            image: true,
-          },
-        },
+        user: true,
       },
     });
 
@@ -107,15 +157,12 @@ export async function getPostWithSignedUrl(postId: string) {
       throw new Error("Post not found");
     }
 
-    const signedUrl = await getSignedImageUrl(post.imageUrl);
+    const validatedPost = PostSchema.parse(post);
+    const signedUrl = await getSignedImageUrl(validatedPost.imageUrl);
 
     return {
-      ...post,
+      ...validatedPost,
       imageUrl: signedUrl,
-      user: {
-        username: post.user?.username || 'Anonymous',
-        image: post.user?.image || '/defaultavatar.png',
-      },
     };
   } catch (error) {
     console.error("Error fetching post with signed URL:", error);
@@ -125,7 +172,7 @@ export async function getPostWithSignedUrl(postId: string) {
 
 export async function getSignedImageUrl(key: string) {
   const command = new GetObjectCommand({
-    Bucket: process.env.AWS_S3_BUCKET_NAME!,
+    Bucket: env.AWS_S3_BUCKET_NAME,
     Key: key,
   });
 

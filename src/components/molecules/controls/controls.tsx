@@ -10,6 +10,8 @@ import SuccessPopup from '@/app/success/successpop';
 
 const Controls = () => {
     const [preview, setPreview] = useState<string | null>(null);
+    const [caption, setCaption] = useState('');
+    const [link, setLink] = useState('');
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [message, setMessage] = useState<string | null>(null);
     const [showPopup, setShowPopup] = useState(false);
@@ -42,6 +44,8 @@ const Controls = () => {
         setIsSubmitting(true);
         setMessage(null);
         try {
+            if (caption) formData.append('caption', caption);
+            if (link) formData.append('link', link);
             const result = await createPost(formData);
             if (result.success) {
                 setMessage(result.message);
@@ -49,6 +53,8 @@ const Controls = () => {
                 setShowPopup(true);
                 router.refresh();
                 setPreview(null);
+                setCaption('');
+                setLink('');
                 if (fileInputRef.current) {
                     fileInputRef.current.value = '';
                 }
@@ -68,6 +74,8 @@ const Controls = () => {
 
     const handleDismissPreview = () => {
         setPreview(null);
+        setCaption('');
+        setLink('');
         if (fileInputRef.current) {
             fileInputRef.current.value = '';
         }
@@ -96,6 +104,28 @@ const Controls = () => {
                     </div>
                 )}
 
+                {preview && (
+                    <div className={styles.postinputcontainer}>
+                        <input
+                            type="text"
+                            placeholder="something about it"
+                            value={caption}
+                            onChange={(e) => setCaption(e.target.value)}
+                            className={styles.postInput}
+                            disabled={isSubmitting}
+                        />
+
+                        <input
+                            type="url"
+                            placeholder="source of it"
+                            value={link}
+                            onChange={(e) => setLink(e.target.value)}
+                            className={styles.postInput}
+                            disabled={isSubmitting}
+                        />
+                    </div>
+                )}
+
                 <div className={styles.uploadbtnwraper}>
                     {preview ? (
                         <button
@@ -108,9 +138,9 @@ const Controls = () => {
                             }
                         </button>
                     ) : (
-                        <button className={styles.uploadbtn} type="button">
+                        <label htmlFor="file" className={styles.uploadbtn}>
                             <Icon name='upload' size={30} fill='#666' />
-                        </button>
+                        </label>
                     )}
 
                     <input
@@ -132,7 +162,6 @@ const Controls = () => {
                 isVisible={showPopup}
                 onClose={handleClosePopup}
             />
-
         </div>
     );
 };

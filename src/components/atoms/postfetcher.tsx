@@ -57,6 +57,8 @@ async function getPosts(): Promise<PostWithUser[]> {
           imageUrl: signedImageUrl,
           createdAt: post.createdAt.toISOString(),
           userId: post.userId,
+          link: post.link,
+          caption: post.caption,
           user: {
             username: post.user.username || 'Anonymous',
             image: post.user.image || '/defaultavatar.png',
