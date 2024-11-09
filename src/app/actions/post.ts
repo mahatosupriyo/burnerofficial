@@ -35,7 +35,10 @@ const FileSchema = z.instanceof(File);
 
 const PostInputSchema = z.object({
   file: FileSchema,
-  caption: z.string().max(500).optional().nullable(),
+  caption: z.string().max(500).optional().nullable().refine(
+    (val) => !val || val.trim().split(/\s+/).length <= 20,
+    { message: "Caption must not exceed 20 words" }
+  ),
   link: z.string().url().max(2000).optional().nullable(),
 });
 
@@ -78,7 +81,7 @@ export async function createPost(formData: FormData) {
     });
 
     if (!input.success) {
-      throw new Error("Invalid input data");
+      throw new Error(input.error.errors[0].message || "Invalid input data");
     }
 
     const { file, caption, link } = input.data;
@@ -132,7 +135,7 @@ export async function createPost(formData: FormData) {
     if (error instanceof z.ZodError) {
       return { success: false, message: "Invalid input data", errors: error.errors };
     }
-    return { success: false, message: "An error occurred while creating the post" };
+    return { success: false, message: error instanceof Error ? error.message : "An error occurred while creating the post" };
   }
 }
 

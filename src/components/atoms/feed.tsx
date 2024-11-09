@@ -91,6 +91,7 @@ export default function Feed() {
                   className={styles.selectedImage}
                   alt={`Image by ${post.user.username}`}
                 />
+                {post.caption && <p className={styles.caption}>{post.caption}</p>}
                 <div className={styles.creatorwraper}>
                   <div className={styles.creator}>
                     <Avatar
@@ -98,8 +99,6 @@ export default function Feed() {
                       size={42}
                     />
 
-                    {post.caption && <p>{post.caption}</p>}
-                    {post.link && <p>{post.link}</p>}
 
                     <Link href={`/${post.user.username}`} className={styles.creationdetails}>
                       <h2 className={styles.subheading}>Inspiration by</h2>
@@ -109,6 +108,11 @@ export default function Feed() {
                       </p>
                     </Link>
                   </div>
+                  {post.link &&
+                    <a href={post.link} target='_blank' className={styles.link}>
+                      <Icon name='link' fill='#fff'  size={26}/>
+                    </a>
+                  }
                 </div>
               </>
             }

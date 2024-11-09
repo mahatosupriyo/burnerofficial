@@ -15,6 +15,8 @@ interface Post {
   id: string;
   imageUrl: string;
   createdAt: string;
+  // caption: string;
+  // link: string;
 }
 
 interface User {
@@ -47,7 +49,6 @@ export default function UserProfile({ user: initialUser }: UserProfileProps) {
   const [deletingPostId, setDeletingPostId] = useState<string | null>(null);
   const [message, setMessage] = useState<string | null>(null);
   const [showPopup, setShowPopup] = useState(false);
-  const firstName = user.name.split(" ")[0];
 
   useEffect(() => {
     const persistedMessage = localStorage.getItem('userProfileMessage');
@@ -203,6 +204,9 @@ export default function UserProfile({ user: initialUser }: UserProfileProps) {
                             draggable="false"
                             className={styles.selectedImage}
                           />
+
+                          {/* {post.caption && <p className={styles.caption}>{post.caption}</p>} */}
+
                           <div className={styles.creatorwraper}>
                             <div className={styles.creator}>
                               <img

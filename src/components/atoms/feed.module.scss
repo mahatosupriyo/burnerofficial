@@ -218,7 +218,7 @@ $gap: 1.6rem;
       width: 100%;
       justify-content: space-between;
       align-items: center;
-      padding: 0.6rem 0rem;
+      padding: 0.4rem 0rem;
       flex-wrap: wrap;
       gap: 2rem;
 
@@ -269,6 +269,22 @@ $gap: 1.6rem;
         }
 
       }
+
+      .link {
+        text-decoration: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0.8rem;
+
+        border: 0.2rem solid hsl(0, 0, 25%);
+        border-radius: 100rem;
+        @include smooth;
+
+        &:hover {
+          background-color: hsl(0, 0, 25%);
+        }
+      }
     }
 
 
@@ -287,4 +303,16 @@ $gap: 1.6rem;
       border-bottom-right-radius: 0.6rem;
     }
   }
+}
+
+.caption {
+  display: flex;
+  padding: 1rem 1rem;
+  font-size: 1.56rem;
+  color: hsl(0, 0, 80%);
+
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }

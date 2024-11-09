@@ -6,7 +6,6 @@ import NavBar from '@/components/navbar/navbar';
 import styles from './username.module.scss'
 import Controls from '@/components/molecules/controls/controls';
 import { getAvatarUrl } from '../actions/avatar';
-import BurnerLoader from '@/components/atoms/lotties/loader';
 
 async function getUserData(username: string) {
     const user = await prisma.user.findUnique({

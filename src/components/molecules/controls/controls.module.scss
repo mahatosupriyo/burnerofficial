@@ -15,7 +15,7 @@
 
     .controlcontainer {
         display: flex;
-        background-color: hsl(0, 0, 10%, 0.9);
+        background-color: hsl(0, 0, 16%, 0.98);
         backdrop-filter: blur(2rem);
 
         border-radius: 3rem;
@@ -84,7 +84,7 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                background-color: hsl(0, 0, 10%);
+                background-color: hsl(0, 0, 12%);
                 padding: 1rem;
                 @include smooth;
                 cursor: pointer;
