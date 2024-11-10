@@ -28,6 +28,9 @@ export default function NavBar() {
 
 
                 <div className={styles.rightwraper}>
+                    <Link href='/settings' className={styles.primarybutton}>
+                        <Icon name='settings' size={26.80} fill='#ffffff5c' />
+                    </Link>
                     <UserBtn />
                 </div>
 

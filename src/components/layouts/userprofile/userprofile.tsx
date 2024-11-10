@@ -2,12 +2,10 @@
 
 import React, { useState, useEffect } from "react";
 import styles from "./userprofile.module.scss";
-import PostCard from "@/components/molecules/banner/postcard";
 import Icon from "@/components/atoms/icons";
 import { motion } from "framer-motion";
 import Overlay from "@/components/molecules/overlay/overlay";
 import { deletePost } from "@/app/actions/post/delete-post";
-import { revalidatePath } from "next/cache";
 import { useSession } from "next-auth/react";
 import SuccessPopup from "@/app/success/successpop";
 
@@ -15,8 +13,8 @@ interface Post {
   id: string;
   imageUrl: string;
   createdAt: string;
-  // caption: string;
-  // link: string;
+  caption?: string;
+  link?: string;
 }
 
 interface User {
@@ -45,7 +43,7 @@ export default function UserProfile({ user: initialUser }: UserProfileProps) {
   const { data: session } = useSession();
 
   const [user, setUser] = useState<User>(initialUser);
-  const [visiblePosts, setVisiblePosts] = useState(3);
+  const [visiblePosts, setVisiblePosts] = useState(10);
   const [deletingPostId, setDeletingPostId] = useState<string | null>(null);
   const [message, setMessage] = useState<string | null>(null);
   const [showPopup, setShowPopup] = useState(false);
@@ -60,7 +58,7 @@ export default function UserProfile({ user: initialUser }: UserProfileProps) {
   }, []);
 
   const loadMorePosts = () => {
-    setVisiblePosts((prevVisible) => prevVisible + 3);
+    setVisiblePosts((prevVisible) => prevVisible + 10);
   };
 
   const handleDelete = async (postId: string) => {
@@ -109,10 +107,36 @@ export default function UserProfile({ user: initialUser }: UserProfileProps) {
         <div className={styles.content}>
           <div className={styles.contentwraper}>
             <div className={styles.userbadge}>
+
               <h4 className={styles.username}>
                 {user.username}
                 {user.verified && <Icon name="verified" size={10} />}
               </h4>
+
+
+              <img
+                src={user.image || "/avatar.png"}
+                draggable="false"
+                loading="lazy"
+                className={styles.avatar}
+                alt={`Avatar of ${user.username}`}
+              />
+
+
+
+              <h3 className={styles.name}>{user.name}</h3>
+
+              {user.location && <p className={styles.generatedbio}>{user.location}</p>}
+
+              {/* 
+              {(user.work || user.location) && (
+                <p className={styles.generatedbio}>
+                  I'm
+                  {user.work && <> a {user.work}</>}
+                  {user.location && <> from {user.location}</>}
+                </p>
+              )} */}
+
 
               <h3 className={styles.intro}>
                 <span style={{ paddingLeft: "50%" }}></span>
@@ -123,58 +147,45 @@ export default function UserProfile({ user: initialUser }: UserProfileProps) {
               <div style={{ width: "100%", display: "flex", flexDirection: "row" }}>
                 <div className={styles.creatordata}>
                   <div className={styles.creator}>
-                    <div style={{ width: "100%" }}>
-                      <img
-                        src={user.image || "/avatar.png"}
-                        alt="User Avatar"
-                        draggable="false"
-                        className={styles.avatar}
-                      />
-                    </div>
                     <div className={styles.socials}>
                       {user.instagram && (
                         <a href={user.instagram} target="_blank" rel="noopener noreferrer" className={styles.sociallink}>
-                          <Icon name="instagram" size={20} fill="#fafafa" />
-                          Instagram
+                          <Icon name="instagram" size={30} fill="#fafafa" />
+                          {/* Instagram */}
                         </a>
                       )}
                       {user.linkedin && (
                         <a href={user.linkedin} target="_blank" rel="noopener noreferrer" className={styles.sociallink}>
-                          <Icon name="linkedin" size={20} />
-                          LinkedIn
+                          <Icon name="linkedin" size={30} />
+                          {/* LinkedIn */}
                         </a>
                       )}
                       {user.behance && (
                         <a href={user.behance} target="_blank" rel="noopener noreferrer" className={styles.sociallink}>
-                          <Icon name="behance" size={20} fill="#fafafa" />
-                          Behance
+                          <Icon name="behance" size={30} fill="#fafafa" />
+                          {/* Behance */}
                         </a>
                       )}
                       {user.dribbble && (
                         <a href={user.dribbble} target="_blank" rel="noopener noreferrer" className={styles.sociallink}>
-                          <Icon name="dribbble" size={20} fill="#fafafa" />
-                          Dribbble
+                          <Icon name="dribbble" size={30} fill="#fafafa" />
+                          {/* Dribbble */}
                         </a>
                       )}
                       {user.x && (
                         <a href={user.x} target="_blank" rel="noopener noreferrer" className={styles.sociallink}>
-                          <Icon name="x" size={20} fill="#fafafa" />
-                          X (Twitter)
+                          <Icon name="x" size={30} fill="#fafafa" />
+                          {/* X (Twitter) */}
                         </a>
                       )}
-                      {/* {user.youtube && (
-                        <a href={user.youtube} target="_blank" rel="noopener noreferrer" className={styles.sociallink}>
-                          <Icon name="youtube" size={20} fill="#fafafa" />
-                          YouTube
-                        </a>
-                      )} */}
+
                     </div>
                   </div>
                 </div>
               </div>
             </div>
             <div className={styles.componentwraper}>
-              <PostCard posts={user.posts} />
+              {/* <PostCard posts={user.posts} /> */}
               <div className={styles.userposts}>
                 <div className={styles.postwraper}>
                   {user.posts.slice(0, visiblePosts).map((post) => (
@@ -205,7 +216,14 @@ export default function UserProfile({ user: initialUser }: UserProfileProps) {
                             className={styles.selectedImage}
                           />
 
-                          {/* {post.caption && <p className={styles.caption}>{post.caption}</p>} */}
+                          <div className={styles.captionwraper}>
+                            {post.caption && <p className={styles.caption}>{post.caption}</p>}
+                            {post.link &&
+                              <a href={post.link} target='_blank' className={styles.link}>
+                                <Icon name='link' fill='#fff' size={26} />
+                              </a>
+                            }
+                          </div>
 
                           <div className={styles.creatorwraper}>
                             <div className={styles.creator}>
@@ -213,7 +231,7 @@ export default function UserProfile({ user: initialUser }: UserProfileProps) {
                                 src={user.image || "/avatar.png"}
                                 draggable="false"
                                 loading="lazy"
-                                className={styles.avatar}
+                                className={styles.creatoravatar}
                                 alt={`Avatar of ${user.username}`}
                               />
                               <div className={styles.creationdetails}>

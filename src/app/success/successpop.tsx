@@ -33,7 +33,7 @@ const SuccessPopup: React.FC<SuccessPopupProps> = ({ message, isVisible, onClose
             ease: [0.785, 0.135, 0.15, 0.86], // Using the specified cubic-bezier
           }}
         >
-          <p>{message}</p> {/* Wrap message in a paragraph for better styling control */}
+          <p style={{fontWeight: 500}}>{message}</p>
         </motion.div>
       )}
     </AnimatePresence>

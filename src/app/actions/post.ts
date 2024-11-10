@@ -85,7 +85,7 @@ export async function createPost(formData: FormData) {
     }
 
     const { file, caption, link } = input.data;
-    
+
     if (file.size > MAX_FILE_SIZE) {
       throw new Error("File size exceeds 5 mega byte limit");
     }
@@ -148,6 +148,15 @@ export async function getPostWithSignedUrl(postId: string) {
 
     // Apply rate limiting
     await rateLimit(session.user.id);
+
+    // Check if the user has reached the maximum post limit
+    const userPostCount = await prisma.post.count({
+      where: { userId: session.user.id }
+    });
+
+    if (userPostCount >= 100) {
+      throw new Error("You have reached the maximum limit of 100 posts");
+    }
 
     const post = await prisma.post.findUnique({
       where: { id: postId },

@@ -45,38 +45,7 @@
             flex-direction: row;
             gap: 0.6rem;
 
-            .primarybutton {
-                display: flex;
-                align-items: center;
-                flex-direction: row;
-                justify-content: center;
-                gap: 0.3rem;
-                font-size: 1.36rem;
-                font-weight: 500;
 
-                height: 5.06rem;
-                width: 5.06rem;
-                text-decoration: none;
-                @include smooth;
-                // background-color: hsl(0, 0, 16%);
-                border: 0.2rem solid hsl(0, 0, 100%, 0.1);
-
-                border-radius: 60rem;
-                overflow: hidden;
-                
-
-                .iconwraper{
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-
-                    transform: translateY(-0.04rem);
-                }
-
-                &:hover {
-                    border:  0.2rem solid hsl(0, 0, 20%);
-                }
-            }
         }
 
         .rightwraper {
@@ -85,7 +54,7 @@
             justify-content: flex-end;
             gap: 0.6rem;
             flex-direction: row;
-            max-width: 5rem;
+            // max-width: 5rem;
 
             .avatarbtn {
                 display: inline-flex;
@@ -148,5 +117,38 @@
 
     &:hover {
         background-color: hsl(0, 0, 70%);
+    }
+}
+
+.primarybutton {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+    gap: 0.3rem;
+    font-size: 1.36rem;
+    font-weight: 500;
+
+    height: 5.06rem;
+    width: 5.06rem;
+    text-decoration: none;
+    @include smooth;
+    // background-color: hsl(0, 0, 16%);
+    border: 0.2rem solid hsl(0, 0, 100%, 0.1);
+
+    border-radius: 60rem;
+    overflow: hidden;
+    
+
+    .iconwraper{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        transform: translateY(-0.04rem);
+    }
+
+    &:hover {
+        border:  0.2rem solid hsl(0, 0, 20%);
     }
 }

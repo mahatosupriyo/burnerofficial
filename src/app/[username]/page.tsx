@@ -28,6 +28,8 @@ async function getUserData(username: string) {
             return {
                 ...post,
                 imageUrl: signedImageUrl,
+                caption: post.caption || '',
+                link: post.link || '',
                 createdAt: post.createdAt.toISOString(), // Convert Date to string
             };
         })

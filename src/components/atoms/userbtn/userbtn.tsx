@@ -19,7 +19,7 @@ export default async function UserBtn() {
 
     const user = await prisma.user.findUnique({
         where: { email: session.user.email },
-        select: { name: true, email: true, image: true },
+        select: { name: true, email: true, image: true, username: true },
     })
 
     if (!user) {
@@ -36,7 +36,7 @@ export default async function UserBtn() {
                 <div className={styles.avatarbtn} draggable="false">
 
                     {user.image ? (
-                        <Link className={styles.settingslink} href="/settings">
+                        <Link className={styles.settingslink} href={`/${user.username}`}>
                             <img
                                 src={avatarUrl || session.user.image || 'avatarUrl.png'}
                                 alt={user.name || 'User avatar'}
