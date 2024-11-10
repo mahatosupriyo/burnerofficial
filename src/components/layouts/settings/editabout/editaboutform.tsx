@@ -3,7 +3,7 @@
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
-import { updateAbout, generateAbout } from '@/app/actions/update-about'
+import { updateAbout } from '@/app/actions/update-about'
 import { useState, useEffect } from 'react'
 import styles from './editaboutform.module.scss'
 import Icon from '@/components/atoms/icons'
@@ -55,24 +55,24 @@ export default function UpdateAboutForm({ userId, initialData }: { userId: strin
     }
   };
 
-  const handleGenerate = async () => {
-    if (aboutContent && aboutContent.trim().split(/\s+/).length >= 5) {
-      setIsGenerating(true)
-      try {
-        const generatedAbout = await generateAbout(aboutContent)
-        setValue('about', generatedAbout)
-        setError(null)
-      } catch (e) {
-        setError(e instanceof Error ? e.message : 'Failed to generate about content')
-      } finally {
-        setIsGenerating(false)
-      }
-    }
-  }
+  // const handleGenerate = async () => {
+  //   if (aboutContent && aboutContent.trim().split(/\s+/).length >= 5) {
+  //     setIsGenerating(true)
+  //     try {
+  //       const generatedAbout = await generateAbout(aboutContent)
+  //       setValue('about', generatedAbout)
+  //       setError(null)
+  //     } catch (e) {
+  //       setError(e instanceof Error ? e.message : 'Failed to generate about content')
+  //     } finally {
+  //       setIsGenerating(false)
+  //     }
+  //   }
+  // }
 
   // const isGenerateDisabled = !aboutContent || aboutContent.trim().split(/\s+/).length < 5
   const wordCount = aboutContent ? aboutContent.trim().split(/\s+/).length : 0
-  const isGenerateDisabled = wordCount < 5
+  // const isGenerateDisabled = wordCount < 5
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={styles.aboutform}>
@@ -87,7 +87,7 @@ export default function UpdateAboutForm({ userId, initialData }: { userId: strin
             placeholder='something about you'
             spellCheck="false"
           />
-          <button
+          {/* <button
             type="button"
             onClick={handleGenerate}
             disabled={isGenerateDisabled || isGenerating}
@@ -104,12 +104,12 @@ export default function UpdateAboutForm({ userId, initialData }: { userId: strin
               )
 
             }
-          </button>
+          </button> */}
         </div>
 
-        <p style={{opacity: 0}}>
+        {/* <p style={{opacity: 0}}>
           {wordCount} word{wordCount !== 1 ? 's' : ''} {isGenerateDisabled ? '(minimum 5 required)' : ''}
-        </p>
+        </p> */}
 
         {errors.about && <p className="mt-1 text-sm text-red-600">{errors.about.message}</p>}
       </div>
