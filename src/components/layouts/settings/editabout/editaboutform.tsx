@@ -6,7 +6,6 @@ import { z } from 'zod'
 import { updateAbout } from '@/app/actions/update-about'
 import { useState, useEffect } from 'react'
 import styles from './editaboutform.module.scss'
-import Icon from '@/components/atoms/icons'
 
 const aboutSchema = z.object({
   about: z.string().max(500).optional(),
@@ -26,7 +25,6 @@ export default function UpdateAboutForm({ userId, initialData }: { userId: strin
   const [error, setError] = useState<string | null>(null)
   const [success, setSuccess] = useState<boolean>(false)
   const [isFormChanged, setIsFormChanged] = useState<boolean>(false)
-  const [isGenerating, setIsGenerating] = useState<boolean>(false)
 
   const { register, handleSubmit, formState: { errors }, watch, setValue } = useForm<AboutFormData>({
     resolver: zodResolver(aboutSchema),
@@ -34,7 +32,6 @@ export default function UpdateAboutForm({ userId, initialData }: { userId: strin
   })
 
   const watchedFields = watch()
-  const aboutContent = watch('about')
 
   useEffect(() => {
     setIsFormChanged(JSON.stringify(watchedFields) !== JSON.stringify(initialData))
@@ -55,25 +52,6 @@ export default function UpdateAboutForm({ userId, initialData }: { userId: strin
     }
   };
 
-  // const handleGenerate = async () => {
-  //   if (aboutContent && aboutContent.trim().split(/\s+/).length >= 5) {
-  //     setIsGenerating(true)
-  //     try {
-  //       const generatedAbout = await generateAbout(aboutContent)
-  //       setValue('about', generatedAbout)
-  //       setError(null)
-  //     } catch (e) {
-  //       setError(e instanceof Error ? e.message : 'Failed to generate about content')
-  //     } finally {
-  //       setIsGenerating(false)
-  //     }
-  //   }
-  // }
-
-  // const isGenerateDisabled = !aboutContent || aboutContent.trim().split(/\s+/).length < 5
-  const wordCount = aboutContent ? aboutContent.trim().split(/\s+/).length : 0
-  // const isGenerateDisabled = wordCount < 5
-
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={styles.aboutform}>
       <div className={styles.formsection}>
@@ -87,31 +65,10 @@ export default function UpdateAboutForm({ userId, initialData }: { userId: strin
             placeholder='something about you'
             spellCheck="false"
           />
-          {/* <button
-            type="button"
-            onClick={handleGenerate}
-            disabled={isGenerateDisabled || isGenerating}
-            className={`${styles.generatebtn} ${isGenerateDisabled ? styles.insufficientWords : ''} ${isGenerating ? styles.generating : ''}`}
-          >
-            {isGenerating ? (
-              <div className={styles.generating}>
-                <Icon name='generate' size={28} />
-              </div>
-            )
-              :
-              (
-                <Icon name='generate' size={28} />
-              )
 
-            }
-          </button> */}
         </div>
 
-        {/* <p style={{opacity: 0}}>
-          {wordCount} word{wordCount !== 1 ? 's' : ''} {isGenerateDisabled ? '(minimum 5 required)' : ''}
-        </p> */}
-
-        {errors.about && <p className="mt-1 text-sm text-red-600">{errors.about.message}</p>}
+        {errors.about && <p>{errors.about.message}</p>}
       </div>
 
 
@@ -125,7 +82,7 @@ export default function UpdateAboutForm({ userId, initialData }: { userId: strin
           spellCheck="false"
           className={styles.inputbox}
         />
-        {errors.location && <p className="mt-1 text-sm text-red-600">{errors.location.message}</p>}
+        {errors.location && <p>{errors.location.message}</p>}
       </div>
 
       <div className={styles.formsection}>
@@ -138,7 +95,7 @@ export default function UpdateAboutForm({ userId, initialData }: { userId: strin
           spellCheck="false"
           className={styles.inputbox}
         />
-        {errors.work && <p className="mt-1 text-sm text-red-600">{errors.work.message}</p>}
+        {errors.work && <p>{errors.work.message}</p>}
       </div>
 
       <div style={{ paddingTop: '4rem', paddingBottom: '2rem', display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
@@ -157,7 +114,7 @@ export default function UpdateAboutForm({ userId, initialData }: { userId: strin
           {...register('instagram')}
           className={styles.inputbox}
         />
-        {errors.instagram && <p className="mt-1 text-sm text-red-600">{errors.instagram.message}</p>}
+        {errors.instagram && <p>{errors.instagram.message}</p>}
       </div>
 
       <div className={styles.formsection}>
@@ -170,7 +127,7 @@ export default function UpdateAboutForm({ userId, initialData }: { userId: strin
           {...register('x')}
           className={styles.inputbox}
         />
-        {errors.x && <p className="mt-1 text-sm text-red-600">{errors.x.message}</p>}
+        {errors.x && <p>{errors.x.message}</p>}
       </div>
 
       <div className={styles.formsection}>

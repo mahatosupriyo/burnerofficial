@@ -70,25 +70,7 @@ export async function updateAbout(userId: string, data: z.infer<typeof aboutSche
       }
     })
 
-    revalidatePath('/')
+    // revalidatePath('/')
     return newAbout
   }
 }
-
-// export async function generateAbout(userInput: string): Promise<string> {
-//   try {
-//     const model = genAI.getGenerativeModel({ model: 'gemini-pro' })
-//     const prompt = `Based on the following information about a user, in third person. generate a engaging 'About' section, approximately 24 words long:
-
-//     User input: ${userInput}
-
-//     Please create an 'About' section that expands on this information, adding relevant details and maintaining a professional yet simple tone.`
-
-//     const result = await model.generateContent(prompt)
-//     const response = await result.response
-//     return response.text()
-//   } catch (error) {
-//     console.error('Error generating about content:', error)
-//     throw new Error('Failed to generate about content')
-//   }
-// }
