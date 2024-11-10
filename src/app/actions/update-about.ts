@@ -5,9 +5,9 @@ import { auth } from "@/auth"
 
 import prisma from '@/lib/prisma'
 import { revalidatePath } from 'next/cache'
-import { GoogleGenerativeAI } from '@google/generative-ai'
+// import { GoogleGenerativeAI } from '@google/generative-ai'
 
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || '')
+// const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || '')
 
 const aboutSchema = z.object({
   about: z.string().min(1, "About is required").max(500),
