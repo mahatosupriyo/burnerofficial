@@ -5,7 +5,7 @@
     display: flex;
     align-items: center;
     width: 100%;
-    background-color: #000;
+    background-color: #161616;
     flex-direction: column;
 
     .nav {
@@ -18,29 +18,21 @@
         position: fixed;
         top: 0;
 
-        background-color: hsl(0, 0%, 0%, 0.8);
-        backdrop-filter: blur(4rem);
 
-        padding: 1rem 4rem;
+        padding: 2rem 4rem;
         z-index: 10000;
+
+        @media only screen and (max-width: 60rem) {
+            padding: 2rem;
+        }
+
+
 
         .buttons {
             display: flex;
             align-items: center;
             gap: 0.4;
             flex-direction: row;
-
-            .loginbtn {
-                color: #111;
-                font-size: 1.56rem;
-                font-weight: 600;
-                border-radius: 100rem;
-                padding: 1.4rem 1.8rem;
-                cursor: pointer;
-                background-color: none;
-                background: #fff;
-                border: 0.16rem solid hsl(0, 0, 100%);
-            }
         }
 
 
@@ -64,7 +56,7 @@
         display: flex;
         width: 100%;
         max-width: 200rem;
-        background-color: #000;
+        background-color: #111111;
 
         min-height: 100lvh;
         display: flex;
@@ -73,10 +65,10 @@
         padding: 2rem 4rem;
         gap: 10rem;
         padding-top: 10rem;
-        // background-image: url(https://ik.imagekit.io/eduburner/back.svg?updatedAt=1729236535973);
-        // background-position: top;
-        // background-repeat: no-repeat;
-        // background-size: contain;
+
+        @media only screen and (max-width: 60rem) {
+            padding: 2rem 2rem;
+        }
 
 
         .header {
@@ -87,129 +79,92 @@
             gap: 4rem;
 
             .headercontent {
+                width: 100%;
                 display: flex;
                 flex-direction: column;
-                gap: 1.4rem;
+                gap: 4rem;
+                align-items: center;
+                padding: 16rem 0rem;
 
-                .title {
-                    width: 100%;
-                    // max-width: 60%;
+                .headerlist {
+                    display: inline-flex;
+                    gap: 1.6rem;
+                    flex-wrap: wrap;
 
-                    color: #fafafa;
+                    .title {
+                        cursor: pointer;
+                        color: #fafafa;
+                        @include smooth;
 
+                        mix-blend-mode: hard-light;
+                        padding: 0.2rem 0rem;
+                        font-size: 12rem;
+                        font-weight: 900;
+                        line-height: 80%;
+                        font-family: "ivypresto-headline", serif;
+                        font-weight: 500;
+                        font-style: italic;
 
-                    mix-blend-mode: hard-light;
-                    padding: 0.2rem 0rem;
-                    font-size: 5rem;
-                    font-size: 4rem;
-                    font-weight: 600;
-                    letter-spacing: -0.1rem;
-                    line-height: 102%;
+                        @media only screen and (max-width: 60rem){
+                            font-size: 6rem;
+                            line-height: 80%;
+                        }
+
+                        &:hover {
+                            text-decoration: underline;
+                            text-decoration-thickness: 0.6rem;
+                            text-underline-offset: 1.1rem;
+                        }
+                    }
                 }
 
                 .subtitle {
-                    font-size: 1.6rem;
-                    // font-family: Stolzl;
-                    // font-family: Involve Bold;
+                    font-size: 2rem;
+
                     font-weight: 400;
-                    // text-transform: lowercase;
-                    color: #fff;
+                    max-width: 44rem;
+                    text-align: center;
+                    line-height: 150%;
+                    color: hsl(0, 0%, 50%);
+
+                    @media only screen and (max-width: 60rem){
+                        text-align: left;
+                        font-size: 1.8rem;
+                    }
+                }
+
+                .ctabtn {
+                    color: hsl(0, 0%, 10%);
+                    font-size: 1.7rem;
+                    font-weight: 700;
+                    border-radius: 20rem;
+                    padding: 1.7rem 2rem;
+                    cursor: pointer;
+                    background-color: none;
+                    background: #fff;
+
+
+                    @media only screen and (max-width: 60rem){
+                        width: 100%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                    }
                 }
             }
-        }
-
-        .buttons {
-            display: flex;
-            flex-direction: row;
-            gap: 0.4rem;
-
-
-            .ctabutton {
-                display: inline-flex;
-                align-items: center;
-                justify-content: center;
-                border-radius: 100rem;
-
-                padding: 0.2rem;
-                background: var(--BurnerRed, linear-gradient(87deg, #AFA7A1 -15.71%, #FE4200 28.99%, #FF805B 89.6%, #98B7C0 114.83%));
-                overflow: hidden;
-                background: #0099FF;
-                background: hsl(204, 100%, 60%);
-                cursor: pointer;
-
-                @include smooth;
-
-                &:hover {
-                    background: hsl(204, 100%, 70%);
-
-                }
-
-                .innercontent {
-                    background-color: #000;
-                    background-color: #0099FF;
-
-                    padding: 2rem 2.4rem;
-                    color: #fff;
-
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-
-                    line-height: 100%;
-                    font-size: 1.66rem;
-                    font-weight: 500;
-                    border-radius: 100rem;
-                    position: relative;
-                    z-index: 1;
-                    user-select: none;
-                    pointer-events: none;
-
-                }
-            }
-
-            .plansbutton {
-                display: inline-flex;
-                align-items: center;
-                justify-content: center;
-                border-radius: 100rem;
-
-                padding: 0.2rem;
-                background: var(--BurnerRed, linear-gradient(87deg, #AFA7A1 -15.71%, #FE4200 28.99%, #FF805B 89.6%, #98B7C0 114.83%));
-                overflow: hidden;
-                background: #494949;
-
-
-                cursor: pointer;
-                @include smooth;
-
-                &:hover {
-                    background-color: hsl(0, 0%, 60%);
-
-                }
-
-                .innercontent {
-                    background-color: #000;
-
-                    padding: 2rem 2.4rem;
-                    color: #fff;
-
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-
-                    line-height: 100%;
-                    font-size: 1.66rem;
-                    font-weight: 500;
-                    border-radius: 100rem;
-                    position: relative;
-                    z-index: 1;
-                    user-select: none;
-                    pointer-events: none;
-
-                }
-            }
-
-
         }
     }
+}
+
+
+.loginbtn {
+    color: #111;
+    font-size: 1.56rem;
+    font-weight: 700;
+    border-radius: 20rem;
+    padding: 1.7rem 2rem;
+    cursor: pointer;
+    background-color: none;
+    background: #fff;
+    // border: 0.16rem solid hsl(0, 0, 100%);
 }

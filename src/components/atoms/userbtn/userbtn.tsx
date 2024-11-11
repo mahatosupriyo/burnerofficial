@@ -50,6 +50,7 @@ export default async function UserBtn() {
                             {session.user.name ? session.user.name[0].toUpperCase() : 'U'}
                         </div>
                     )}
+                    
                 </div>
             ) : (
                 <Link href="/auth" className={styles.btn}>Login</Link>

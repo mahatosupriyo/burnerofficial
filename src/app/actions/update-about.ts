@@ -70,7 +70,7 @@ export async function updateAbout(userId: string, data: z.infer<typeof aboutSche
       }
     })
 
-    // revalidatePath('/')
+    revalidatePath('/')
     return newAbout
   }
 }

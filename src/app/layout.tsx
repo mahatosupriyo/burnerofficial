@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { SessionProvider } from "next-auth/react";
 import "../styles/global.scss";
+import Head from "next/head";
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://eduburner.org'),
@@ -9,7 +10,7 @@ export const metadata: Metadata = {
     template: "%s | Edu Burner"
   },
   description: "Learn, create, and inspire — this is your Stage.",
-  keywords: ["eduburner", "design", "design education", "graphics designing", "design courses", "ux designing","ui ux", "courses", "tutorials", "graphics"],
+  keywords: ["eduburner", "design", "design education", "graphics designing", "design courses", "ux designing", "ui ux", "courses", "tutorials", "graphics"],
   authors: [{ name: "Edu Burner Team" }],
   creator: "Edu Burner",
   publisher: "Edu Burner",
@@ -65,6 +66,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <Head>
+        <link rel="stylesheet" href="https://use.typekit.net/ika2qcu.css"></link>
+      </Head>
       <body>
         <SessionProvider>
           {children}

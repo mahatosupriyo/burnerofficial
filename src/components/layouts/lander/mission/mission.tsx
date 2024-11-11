@@ -14,7 +14,7 @@ export default function TextHighlightScroll() {
 
   const words = [
     'the', 'path', 'to', 'great', 'design', 'starts', 'with', 'ambition.',
-    'we', 'believe', 'those', 'who', 'dare', 'to', 'create', 'deserve',
+    'we', 'believe', 'those', 'who', 'dare', 'to', 'create,', 'deserve',
     'the', 'finest', 'inspirations,', 'community,', 'and', 'opportunities',
     'to', 'thrive.'
   ]
@@ -22,6 +22,7 @@ export default function TextHighlightScroll() {
   return (
     <div className={styles.container} ref={containerRef}>
       <div className={styles.content}>
+        <p style={{fontSize: '1.16rem', opacity: 0.6, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.2rem'}}>Make your story live</p>
         <motion.p
           initial={{ opacity: 0, y: '2%', filter: 'blur(10px)' }}
           whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}

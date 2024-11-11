@@ -17,10 +17,10 @@ const Lander = () => {
                     <motion.div
                         className={styles.nav}
                     >
-                        <svg xmlns="http://www.w3.org/2000/svg" height="25" viewBox="0 0 813 227" fill="#fff">
-                            <path d="M0 0H209V110.5L104.5 221H0V0Z" />
-                            <path d="M218 0H316.5C377.527 0 427 49.4725 427 110.5C427 171.527 377.527 221 316.5 221H218V0Z" />
-                            <path d="M645 0V122.5C645 180.214 598.214 227 540.5 227C482.786 227 436 180.214 436 122.5V0H645Z" />
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 645 227" fill="none">
+                            <path d="M0 30C0 13.4315 13.4315 0 30 0H179C195.569 0 209 13.4315 209 30V98.5611C209 106.228 206.065 113.604 200.797 119.174L113.377 211.613C107.711 217.605 99.8274 221 91.5804 221H30C13.4315 221 0 207.569 0 191V30Z" fill="white" />
+                            <path d="M218 30C218 13.4315 231.431 0 248 0H316.5C377.527 0 427 49.4725 427 110.5C427 171.527 377.527 221 316.5 221H248C231.431 221 218 207.569 218 191V30Z" fill="white" />
+                            <path d="M615 0C631.569 0 645 13.4315 645 30V122.5C645 180.214 598.214 227 540.5 227C482.786 227 436 180.214 436 122.5V30C436 13.4315 449.431 0 466 0H615Z" fill="white" />
                         </svg>
 
                         <div className={styles.buttons}>
@@ -37,33 +37,54 @@ const Lander = () => {
 
                         <header className={styles.header}>
                             <div className={styles.headercontent}>
-                                <motion.h1
-                                    initial={{ opacity: 0, y: '2%', filter: 'blur(10px)' }}
-                                    animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-                                    className={styles.title}
-                                >
-                                    Launchpad for Designers.
-                                </motion.h1>
+                                <div className={styles.headerlist}>
+                                    <motion.h1
+                                        initial={{ opacity: 0, y: '2rem', filter: 'blur(10px)' }}
+                                        animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                                        transition={{ delay: 0.2 }}
+                                        className={styles.title}
+                                    >
+                                        learn,
+                                    </motion.h1>
+                                    <motion.h1
+                                        initial={{ opacity: 0, y: '2%', filter: 'blur(10px)' }}
+                                        animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                                        transition={{ delay: 0.3 }}
+                                        className={styles.title}
+                                    >
+                                        create,
+                                    </motion.h1>
+
+                                    <motion.h1
+                                        initial={{ opacity: 0, y: '2%', filter: 'blur(10px)' }}
+                                        animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                                        transition={{ delay: 0.4 }}
+                                        className={styles.title}
+                                    >
+                                        inspire
+                                    </motion.h1>
+                                </div>
+
                                 <motion.h4
                                     initial={{ opacity: 0, y: '2%' }}
-                                    animate={{ opacity: 0.6, y: 0 }}
+                                    animate={{ opacity: 1, y: 0 }}
                                     className={styles.subtitle}
-                                    transition={{ delay: 0.1 }}
+                                    transition={{ delay: 0.5 }}
                                 >
-                                    Learn, create, and inspire — this is your Stage.
+                                    Learn Design, build your Portfolio, and Connect with our community — all in one place.
                                 </motion.h4>
-                            </div>
 
-                            <img
-                                src="https://ik.imagekit.io/localstore/inspire.png?updatedAt=1730225224420"
-                                draggable="false"
-                                width={360}
-                            />
+                                <Link
+                                    href="/auth"
+                                    className={styles.ctabtn}>
+                                    Get started
+                                </Link>
+                            </div>
                         </header>
 
+                        <TextHighlightScroll />
 
                         <section>
-                            <TextHighlightScroll />
                         </section>
 
                     </div>
