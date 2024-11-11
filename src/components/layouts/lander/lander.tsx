@@ -4,14 +4,14 @@ import { easeInOut, motion } from 'framer-motion'
 import styles from './landing.module.scss'
 import Logo from '@/components/base/logo'
 import Link from 'next/link'
-import SmoothScrolling from '@/components/smoothscroll'
+// import SmoothScrolling from '@/components/smoothscroll'
 import TextHighlightScroll from './mission/mission'
 import Footer from '@/components/footer/footer'
 
 const Lander = () => {
     return (
         <>
-            <SmoothScrolling>
+            {/* <SmoothScrolling> */}
                 <div className={styles.wraper}>
 
                     <motion.div
@@ -92,7 +92,7 @@ const Lander = () => {
                     <Footer />
 
                 </div>
-            </SmoothScrolling>
+            {/* </SmoothScrolling> */}
         </>
     )
 }
