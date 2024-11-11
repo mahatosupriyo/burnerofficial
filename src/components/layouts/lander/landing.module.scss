@@ -17,7 +17,7 @@
 
         position: fixed;
         top: 0;
-
+        max-width: 200rem;
 
         padding: 2rem 4rem;
         z-index: 10000;
@@ -84,13 +84,14 @@
                 flex-direction: column;
                 gap: 4rem;
                 align-items: center;
+                align-items: flex-start;
                 padding: 16rem 0rem;
 
                 .headerlist {
                     display: inline-flex;
                     gap: 1.6rem;
                     flex-wrap: wrap;
-                    text-align: center;
+                    // text-align: center;
 
                     .title {
                         cursor: pointer;
@@ -99,14 +100,14 @@
 
                         mix-blend-mode: hard-light;
                         padding: 0.2rem 0rem;
-                        font-size: 12rem;
+                        font-size: 14rem;
                         font-weight: 900;
                         line-height: 80%;
                         font-family: "ivypresto-headline", serif;
                         font-weight: 500;
                         font-style: italic;
 
-                        @media only screen and (max-width: 60rem){
+                        @media only screen and (max-width: 60rem) {
                             font-size: 6rem;
                             line-height: 80%;
                             text-align: left;
@@ -125,11 +126,11 @@
 
                     font-weight: 400;
                     max-width: 44rem;
-                    text-align: center;
+                    // text-align: center;
                     line-height: 150%;
                     color: hsl(0, 0%, 50%);
 
-                    @media only screen and (max-width: 60rem){
+                    @media only screen and (max-width: 60rem) {
                         text-align: left;
                         font-size: 1.8rem;
                     }
@@ -146,7 +147,7 @@
                     background: #fff;
 
 
-                    @media only screen and (max-width: 60rem){
+                    @media only screen and (max-width: 60rem) {
                         width: 100%;
                         display: flex;
                         align-items: center;
