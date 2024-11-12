@@ -18,10 +18,10 @@ const Lander = () => {
                 <motion.div
                     className={styles.nav}
                 >
-                    <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 645 227" fill="none">
-                        <path d="M0 30C0 13.4315 13.4315 0 30 0H179C195.569 0 209 13.4315 209 30V98.5611C209 106.228 206.065 113.604 200.797 119.174L113.377 211.613C107.711 217.605 99.8274 221 91.5804 221H30C13.4315 221 0 207.569 0 191V30Z" fill="white" />
-                        <path d="M218 30C218 13.4315 231.431 0 248 0H316.5C377.527 0 427 49.4725 427 110.5C427 171.527 377.527 221 316.5 221H248C231.431 221 218 207.569 218 191V30Z" fill="white" />
-                        <path d="M615 0C631.569 0 645 13.4315 645 30V122.5C645 180.214 598.214 227 540.5 227C482.786 227 436 180.214 436 122.5V30C436 13.4315 449.431 0 466 0H615Z" fill="white" />
+                    <svg xmlns="http://www.w3.org/2000/svg"  height="26" viewBox="0 0 282 100" fill="none">
+                        <path d="M0.533203 0.316406H91.5694V48.448L46.0513 96.5796H0.533203V0.316406Z" fill="white" />
+                        <path d="M95.4896 0.316406H138.394C164.977 0.316406 186.526 21.8657 186.526 48.448C186.526 75.0303 164.977 96.5796 138.394 96.5796H95.4896V0.316406Z" fill="white" />
+                        <path d="M281.482 0.316406V53.675C281.482 78.8139 261.103 99.1931 235.964 99.1931C210.825 99.1931 190.446 78.8139 190.446 53.675V0.316406H281.482Z" fill="white" />
                     </svg>
 
                     <div className={styles.buttons}>
@@ -96,9 +96,9 @@ const Lander = () => {
                         <div className={styles.feature}>
                             <div className={styles.featurebanner}>
 
-                                <Lottie 
-                                className={styles.banner}
-                                animationData={animationData} style={{ width: '100%', padding: '4rem', boxSizing: 'border-box' }} autoplay />
+                                <Lottie
+                                    className={styles.banner}
+                                    animationData={animationData} style={{ width: '100%', padding: '4rem', boxSizing: 'border-box' }} autoplay />
                             </div>
                         </div>
                     </section>

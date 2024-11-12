@@ -35,6 +35,11 @@
             align-items: flex-start;
             gap: 10rem;
 
+            @media only screen and (max-width: 60rem){
+                flex-direction: column;
+                gap: 4rem;
+            }
+
             .logowraper {
                 display: flex;
                 flex-direction: column;
