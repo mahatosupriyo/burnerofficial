@@ -56,7 +56,7 @@
         display: flex;
         width: 100%;
         max-width: 200rem;
-        background-color: #111111;
+        background-color: #000;
 
         min-height: 100lvh;
         display: flex;
@@ -84,7 +84,7 @@
                 flex-direction: column;
                 gap: 4rem;
                 align-items: center;
-                align-items: flex-start;
+                // align-items: flex-start;
                 padding: 16rem 0rem;
 
                 .headerlist {
@@ -122,16 +122,16 @@
                 }
 
                 .subtitle {
-                    font-size: 2rem;
+                    font-size: 1.8rem;
 
                     font-weight: 400;
                     max-width: 44rem;
-                    // text-align: center;
+                    text-align: center;
                     line-height: 150%;
                     color: hsl(0, 0%, 50%);
 
                     @media only screen and (max-width: 60rem) {
-                        text-align: left;
+                        text-align: center;
                         font-size: 1.8rem;
                     }
                 }
@@ -170,4 +170,43 @@
     background-color: none;
     background: #fff;
     // border: 0.16rem solid hsl(0, 0, 100%);
+}
+
+.featuressection{
+    display: flex;
+    width: 100%;
+
+    flex-direction: column;
+    .feature{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        .featurebanner{
+            display: flex;
+            width: 100%;
+            max-width: 40%;
+            aspect-ratio: 1/1;
+            align-items: flex-start;
+            justify-content: center;
+            border-radius: 1.6rem;
+            flex-direction: column;
+            background-color: #B6A6A6;
+            overflow: hidden;
+            padding: 0rem;
+            .banner{
+                object-fit: contain;
+                width: 100%;
+                @include protectmedia;
+            }
+        }
+
+        .featuredetails{
+            width: 100%;
+            display: flex;
+            align-items: flex-start;
+            padding: 6rem;
+        }
+    }
 }
