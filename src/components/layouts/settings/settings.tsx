@@ -6,6 +6,7 @@ import prisma from "@/lib/prisma"
 import { SignOut } from '@/components/base/auth/signoutbtn'
 import Link from 'next/link'
 import { getAvatarUrl } from '@/app/actions/avatar'
+import Icon from '@/components/atoms/icons'
 
 export default async function SettingsLayout() {
     const session = await auth()
@@ -90,8 +91,8 @@ export default async function SettingsLayout() {
                         </button>
 
                         <button className={styles.editbtn}>
-                            <div className={styles.subwraper} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.8rem' }}>
-                                Contact us
+                            <div className={styles.subwraper} style={{ display: 'flex', alignItems: 'center', flexDirection: 'row', justifyContent: 'center', gap: '0.8rem' }}>
+                                Contact us 
                             </div>
 
                             <svg xmlns="http://www.w3.org/2000/svg" width="26" viewBox="0 0 107 107" fill="none">

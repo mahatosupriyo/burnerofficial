@@ -1,0 +1,52 @@
+@use '../../../../styles/essentials';
+@import '../../../../styles/essentials';
+
+.requestform {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 1.6rem;
+    padding: 4rem 0rem;
+}
+
+.inputbox {
+    padding: 1.6rem 1.4rem;
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: hsl(0, 0, 50%);
+    width: 100%;
+    border-radius: 1rem;
+    background: none;
+    line-height: 100%;
+    border: 0.2rem solid hsl(0, 0, 20%);
+    @include smooth;
+
+    &:hover {
+        border: 0.2rem solid hsl(0, 0, 30%);
+        background-color: hsl(0, 0, 8%);
+    }
+
+    &:focus {
+        color: hsl(0, 0, 90%);
+        border: 0.2rem solid hsl(207, 100%, 61%);
+        background-color: hsl(0, 0, 12%);
+    }
+
+    &::placeholder {
+        font-size: 1.66rem;
+        font-weight: 500;
+        color: hsl(0, 0, 40%);
+    }
+}
+
+
+
+.btn {
+    cursor: pointer;
+    background-color: hsl(0, 0, 100%);
+}
+
+.disabledbtn {
+    cursor: not-allowed;
+    background-color: hsl(0, 0, 30%);
+}

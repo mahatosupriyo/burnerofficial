@@ -68,7 +68,6 @@ export default function RootLayout({
     <html lang="en">
       <Head>
         <link rel="stylesheet" href="https://use.typekit.net/ika2qcu.css"></link>
-        <meta name="google-adsense-account" content="ca-pub-1932081710077170"></meta>
       </Head>
       <body>
         <SessionProvider>

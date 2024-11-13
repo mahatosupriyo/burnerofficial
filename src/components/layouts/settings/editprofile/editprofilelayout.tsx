@@ -8,6 +8,8 @@ import Link from 'next/link'
 import { getAvatarUrl } from '@/app/actions/avatar'
 import AvatarUpload from "@/components/atoms/uploadavatar/uploadavatar"
 import UpdateAboutForm from '../editabout/editaboutform'
+import VerificationRequestForm from '@/components/atoms/verification/resquestform/requestform'
+import Icon from '@/components/atoms/icons'
 
 export default async function EditProfileLayout() {
     const session = await auth()
@@ -29,6 +31,7 @@ export default async function EditProfileLayout() {
             lastUsernameUpdate: true,
             image: true,
             lastImageUpdate: true,
+            verificationStatus: true,  // Fetch verification status
             about: {
                 select: {
                     about: true,
@@ -89,6 +92,20 @@ export default async function EditProfileLayout() {
                     <EditProfileForm
                         initialData={formInitialData}
                     />
+
+                    {/* Conditional rendering for verification status */}
+                    {user.verificationStatus === 'UNVERIFIED' && (
+                        <VerificationRequestForm />
+                    )}
+                    {user.verificationStatus === 'PENDING' && (
+                        <p className={styles.message}>Your verification is pending.</p>
+                    )}
+                    {user.verificationStatus === 'VERIFIED' && (
+                        <p className={styles.message}>
+                            congrats you're verified
+                            <Icon name='verified' size={10}/>
+                        </p>
+                    )}
 
                     <UpdateAboutForm userId={session.user.id} initialData={socialMediaInitialData} />
 

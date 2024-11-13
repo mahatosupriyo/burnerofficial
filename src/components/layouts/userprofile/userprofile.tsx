@@ -18,6 +18,7 @@ interface Post {
 }
 
 interface User {
+  verificationStatus: 'UNVERIFIED' | 'PENDING' | 'VERIFIED' | 'REJECTED'
   verified: boolean;
   name: string;
   email: string;
@@ -110,8 +111,11 @@ export default function UserProfile({ user: initialUser }: UserProfileProps) {
 
               <h4 className={styles.username}>
                 {user.username}
-                {user.verified && <Icon name="verified" size={10} />}
+                {user.verificationStatus === 'VERIFIED' && (
+                  <Icon name="verified" size={10} />
+                )}
               </h4>
+
 
 
               <img
@@ -127,15 +131,6 @@ export default function UserProfile({ user: initialUser }: UserProfileProps) {
               <h3 className={styles.name}>{user.name}</h3>
 
               {user.location && <p className={styles.generatedbio}>{user.location}</p>}
-
-              {/* 
-              {(user.work || user.location) && (
-                <p className={styles.generatedbio}>
-                  I'm
-                  {user.work && <> a {user.work}</>}
-                  {user.location && <> from {user.location}</>}
-                </p>
-              )} */}
 
 
               <h3 className={styles.intro}>

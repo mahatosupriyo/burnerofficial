@@ -32,7 +32,7 @@ async function getPosts(): Promise<PostWithUser[]> {
     const posts = await prisma.post.findMany({
       where: {
         user: {
-          verified: true
+          verificationStatus: 'VERIFIED'
         }
       },
       include: {

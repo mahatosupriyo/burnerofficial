@@ -83,3 +83,39 @@
 
     }
 }
+
+.message{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ddd;
+    padding: 1.8rem;
+    width: 100%;
+    gap: 0.4rem;
+    cursor: default;
+    user-select: none;
+    border-radius: 1.6rem;
+    color: #222;
+    font-size: 1.56rem;
+    font-weight: 700;
+    text-transform: lowercase;
+    margin-bottom: 1rem;
+}
+
+.pending{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #222;
+    padding: 1.8rem;
+    width: 100%;
+    gap: 0.4rem;
+    cursor: default;
+    user-select: none;
+    border-radius: 1.6rem;
+    color: #fff;
+    font-size: 1.56rem;
+    font-weight: 700;
+    text-transform: lowercase;
+    margin-bottom: 1rem;
+}
