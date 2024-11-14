@@ -69,19 +69,12 @@ export default async function EditProfileLayout() {
     return (
         <div className={styles.settingscontainer}>
             <div className={styles.settingswraper}>
-                <div className={styles.topbuttonwraper}>
-                    <Link href="/settings" className={styles.backbtn}>
-                        <svg xmlns="http://www.w3.org/2000/svg" className={styles.backicon} viewBox="0 0 107 107" fill="none">
-                            <path fillRule="evenodd" clipRule="evenodd" d="M64.2 70.7217L48.9466 54.7883L64.1028 38.7578L60.1195 34.7744L40.6885 54.6912L60.0223 74.8994L64.2 70.7217Z" fill="white" />
-                        </svg>
-                    </Link>
-                </div>
 
                 <div className={styles.layoutwraper}>
                     <h1 className={styles.pagehead}>
                         Edit account
                     </h1>
-                    <p className={styles.description}>Update your account data</p>
+                    <p className={styles.description}>Add / change information about you here.</p>
                 </div>
 
                 <div style={{ width: '100%', maxWidth: '70rem', padding: '0rem 0rem 4rem 0rem', display: 'flex', alignItems: 'flex-start' }}>
