@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from './editprofile.module.scss'
+import styles from '../editprofile.module.scss'
 import { redirect } from 'next/navigation'
 import { auth } from '@/auth'
 import prisma from '@/lib/prisma'
@@ -8,10 +8,8 @@ import { getAvatarUrl } from '@/app/actions/avatar'
 import NavBar from '@/components/navbar/navbar'
 import EditProfileNav from '@/components/layouts/settings/editprofile/editprofilenav/editprofilenav'
 import EditProfileForm from '@/components/layouts/settings/editprofile/editdataform/editdataform'
-import VerificationRequestForm from '@/components/atoms/verification/resquestform/requestform'
-import Icon from '@/components/atoms/icons'
 
-export default async function EditProfile() {
+export default async function EditAboutPage() {
 
     const session = await auth()
 
@@ -82,20 +80,6 @@ export default async function EditProfile() {
                         <EditProfileForm
                             initialData={formInitialData}
                         />
-
-                        {user.verificationStatus === 'UNVERIFIED' && (
-                            <VerificationRequestForm />
-                        )}
-                        {user.verificationStatus === 'PENDING' && (
-                            <p className={styles.message}>Your verification is pending.</p>
-                        )}
-                        {user.verificationStatus === 'VERIFIED' && (
-                            <p className={styles.message}>
-                                you're verified
-                                <Icon name='verified' size={10} />
-                            </p>
-                        )}
-
                     </div>
                 </div>
 

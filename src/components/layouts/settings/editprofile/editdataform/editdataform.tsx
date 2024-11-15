@@ -93,7 +93,7 @@ export default function EditProfileForm({ initialData }: EditProfileFormProps) {
     } else {
       const message = 'Account updated successfully';
       setSuccessMessage(message);
-      localStorage.setItem('successMessage', message); 
+      localStorage.setItem('successMessage', message);
       setShowPopup(true);
     }
   };
@@ -107,7 +107,7 @@ export default function EditProfileForm({ initialData }: EditProfileFormProps) {
   };
 
   return (
-    <form style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center' }} onSubmit={handleSubmit(onSubmit)}>
+    <form className={styles.editaccountform} onSubmit={handleSubmit(onSubmit)}>
       {successMessage || errorMessage ? (
         <SuccessPopup
           message={successMessage || errorMessage}
@@ -116,28 +116,31 @@ export default function EditProfileForm({ initialData }: EditProfileFormProps) {
         />
       ) : null}
 
-      <div className={styles.data}>
+      <div className={styles.datawraper}>
         <div className={styles.subcontainer}>
           <label className={styles.label}>name</label>
-          <input {...register('name')} className={styles.inputbar} required />
+          <div className={styles.box}>
+            <input {...register('name')} className={styles.inputbox} required />
+          </div>
           {errors.name && <p className={styles.error}>{errors.name.message}</p>}
         </div>
 
         <div className={styles.subcontainer}>
           <label className={styles.label}>username</label>
-          <input spellCheck="false" autoComplete='off' style={{ textTransform: 'lowercase' }} {...register('username')} className={styles.inputbar} required />
+          <div className={styles.box} style={{paddingLeft: '1.6rem'}}>
+            eduburner.org/
+            <input spellCheck="false" autoComplete='off' style={{ textTransform: 'lowercase' }} {...register('username')} className={styles.usernameinputbox} required />
+          </div>
           {errors.username && <p className={styles.error}>{errors.username.message}</p>}
         </div>
       </div>
-      <div className={styles.buttons}>
-        <button
-          type="submit"
-          className={`${styles.btn} ${!isFormChanged ? styles.disabledbtn : ''}`}
-          disabled={!isFormChanged}
-        >
-          Update
-        </button>
-      </div>
+      <button
+        type="submit"
+        className={`${styles.updatebtn} ${!isFormChanged ? styles.disabledbtn : ''}`}
+        disabled={!isFormChanged}
+      >
+        Update
+      </button>
     </form>
   );
 }

@@ -9,5 +9,61 @@
         align-items: center;
         width: 100%;
         max-width: 200rem;
+        margin-top: 8rem;
+
+        padding: 4rem;
+
+        @media only screen and (max-width: 600px){
+            padding: 4rem 1.6rem;
+        }
     }
+}
+
+.toplayer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+
+    @media only screen and (max-width: 60rem){
+        flex-direction: column;
+        gap: 2rem;
+    }
+    .layoutwraper {
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        gap: 0.6rem;
+        max-width: 36rem;
+
+        .pagehead {
+            font-size: 2rem;
+            font-weight: 600;
+            color: hsl(0, 0, 90%);
+        }
+
+        .description {
+            text-transform: lowercase;
+            font-size: 1.46rem;
+            font-weight: 400;
+            color: hsl(0, 0, 46%);
+        }
+    }
+}
+
+.formcomponentwraper{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+}
+
+.message{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-weight: 500;
+    font-size: 1.6rem;
+    gap: 0.4rem;
 }

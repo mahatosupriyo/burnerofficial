@@ -10,6 +10,7 @@ import AvatarUpload from "@/components/atoms/uploadavatar/uploadavatar"
 import UpdateAboutForm from '../editabout/editaboutform'
 import VerificationRequestForm from '@/components/atoms/verification/resquestform/requestform'
 import Icon from '@/components/atoms/icons'
+import EditProfileNav from './editprofilenav/editprofilenav'
 
 export default async function EditProfileLayout() {
     const session = await auth()
@@ -31,7 +32,7 @@ export default async function EditProfileLayout() {
             lastUsernameUpdate: true,
             image: true,
             lastImageUpdate: true,
-            verificationStatus: true,  // Fetch verification status
+            verificationStatus: true, 
             about: {
                 select: {
                     about: true,
@@ -59,9 +60,7 @@ export default async function EditProfileLayout() {
         username: user.username,
     }
 
-    // socialmedia form data
     const socialMediaInitialData = Array.isArray(user.about) && user.about.length > 0 ? user.about[0] : {};
-
 
 
     const avatarUrl = await getAvatarUrl(user.image || 'defaultavatar.png')
@@ -70,23 +69,22 @@ export default async function EditProfileLayout() {
         <div className={styles.settingscontainer}>
             <div className={styles.settingswraper}>
 
-                <div className={styles.layoutwraper}>
-                    <h1 className={styles.pagehead}>
-                        Edit account
-                    </h1>
-                    <p className={styles.description}>Add / change information about you here.</p>
-                </div>
 
-                <div style={{ width: '100%', maxWidth: '70rem', padding: '0rem 0rem 4rem 0rem', display: 'flex', alignItems: 'flex-start' }}>
+
+
+                {/* <div style={{ width: '100%', maxWidth: '70rem', padding: '0rem 0rem 4rem 0rem', display: 'flex', alignItems: 'flex-start' }}>
                     <AvatarUpload currentAvatar={avatarUrl} lastImageUpdate={user.lastImageUpdate} />
-                </div>
+                    </div> */}
+
+
 
                 <div className={styles.formlayout}>
                     <EditProfileForm
                         initialData={formInitialData}
                     />
 
-                    {/* Conditional rendering for verification status */}
+                    {/*                     
+
                     {user.verificationStatus === 'UNVERIFIED' && (
                         <VerificationRequestForm />
                     )}
@@ -100,9 +98,11 @@ export default async function EditProfileLayout() {
                         </p>
                     )}
 
-                    <UpdateAboutForm userId={session.user.id} initialData={socialMediaInitialData} />
+                    <UpdateAboutForm userId={session.user.id} initialData={socialMediaInitialData} /> */}
 
                 </div>
+
+
 
             </div>
         </div>

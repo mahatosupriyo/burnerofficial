@@ -1,0 +1,61 @@
+@use '../../../../../styles/essentials';
+@import '../../../../../styles/essentials';
+
+.formsnavwraper {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    gap: 2rem;
+    align-items: flex-start;
+
+    .nav {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        border-bottom: 0.16rem solid hsl(0, 0%, 10%);
+        gap: 2rem;
+
+        .active {
+            display: flex;
+            font-size: 1.66rem;
+            color: #fff;
+            font-weight: 700;
+            padding: 2rem 0rem 2rem 0rem;
+            position: relative;
+            @include smooth;
+            user-select: none;
+
+            &::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                transform: translateY(0.16rem);
+                height: 0.16rem;
+                width: 100%;
+                background-color: #fff;
+            }
+
+            &:hover {
+                color: hsl(0, 0, 70%);
+            }
+        }
+
+        .link {
+            display: flex;
+            font-size: 1.66rem;
+            color: hsl(0, 0%, 40%);
+            font-weight: 700;
+            padding: 2rem 0rem 2rem 0rem;
+            @include smooth;
+            user-select: none;
+
+            &:hover {
+                opacity: 0.8;
+            }
+
+        }
+    }
+
+
+}

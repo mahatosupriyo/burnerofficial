@@ -9,72 +9,180 @@
     padding: 0.3rem 0rem;
 }
 
-.data {
+
+.editaccountform {
     display: flex;
-    flex-direction: column;
-    gap: 1.6rem;
+    flex-direction: row;
     width: 100%;
-    width: 100%;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 4rem;
 
-    .subcontainer {
-        width: 100%;
-        display: flex;
+    @media only screen and (max-width: 600px){
         flex-direction: column;
-        gap: 1rem;
+        gap: 0em;
+    }
 
-        .label {
-            width: 100%;
-            font-size: 1.46rem;
-            font-weight: 400;
-            color: hsl(0, 0, 90%);
+    .datawraper {
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: flex-start;
+        gap: 1rem;
+        width: 100%;
+        max-width: 80rem;
+
+        @media only screen and (max-width: 60rem){
+            flex-direction: column-reverse;
         }
 
-        .inputbar {
-            padding: 1.6rem 1.4rem;
-            font-size: 1.5rem;
-            font-weight: 500;
-            color: hsl(0, 0, 50%);
+        .subcontainer {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+
+            gap: 0.6rem;
             width: 100%;
-            border-radius: 1rem;
-            background: none;
-            line-height: 100%;
-            border: 0.2rem solid hsl(0, 0, 20%);
-            @include smooth;
-
-            &:hover{
-                border: 0.2rem solid hsl(0, 0, 30%);
-                background-color: hsl(0, 0, 8%);
-            }
-
-            &:focus {
-                color: hsl(0, 0, 90%);
-                border: 0.2rem solid hsl(207, 100%, 61%);
-                background-color: hsl(0, 0, 12%);
-            }
-
-            &::placeholder {
-                font-size: 1.66rem;
-                font-weight: 500;
-                color: hsl(0, 0, 40%);
-            }
         }
     }
 }
 
-.buttons {
-    width: 100%;
+.label {
+    font-size: 1.46rem;
+    font-weight: 500;
     display: flex;
-    align-items: flex-end;
-    justify-content: flex-end;
-    padding: 2rem 0rem;
+    flex-direction: column;
+    gap: 0.6rem;
+    width: 100%;
+    color: hsl(0, 0%, 36%);
+    font-weight: 600;
+    font-size: 1.56rem;
 
-    .btn {
-        cursor: pointer;
-        background-color: hsl(0, 0, 100%);
+}
+
+
+.box {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    border: 0.2rem solid hsl(0, 0, 12%);
+    border-radius: 0.6rem;
+    width: 100%;
+    line-height: 100%;
+
+    display: flex;
+    width: 100%;
+    color: hsl(0, 0%, 36%);
+    font-weight: 500;
+    font-size: 1.56rem;
+
+    @include smooth;
+
+    &:focus-within {
+        border: 0.2rem solid hsl(212, 78%, 44%);
     }
 
-    .disabledbtn {
-        cursor: not-allowed;
-        background-color: hsl(0, 0, 30%);
+    &:hover {
+        border: 0.2rem solid hsl(212, 78%, 30%);
     }
+
+    .usernameinputbox {
+        width: 100%;
+
+        display: flex;
+        padding: 1.8rem 1.6rem 1.8rem 0rem;
+        background-color: none;
+        background: none;
+        color: #fff;
+        line-height: 100%;
+        text-transform: lowercase;
+        font-size: 1.56rem;
+    }
+}
+
+
+.updatebtn {
+    margin: 2.46rem 0rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2.4rem 2rem;
+    border-radius: 0.6rem;
+    font-size: 1.6rem;
+    font-weight: 700;
+    width: 100%;
+    max-width: 30rem;
+
+    @media only screen and (max-width: 600px){
+        max-width: 100%;
+    }
+
+    text-wrap: nowrap;
+    cursor: pointer;
+    line-height: 100%;
+    user-select: none;
+    @include smooth;
+    background-color: hsl(0, 0, 100%);
+
+    &:hover {
+        background-color: hsl(0, 0, 80%);
+    }
+
+    &:focus {
+        outline: 0.1rem solid hsl(0, 0%, 100%);
+        outline-offset: 0.4rem;
+    }
+}
+
+
+.disabledbtn {
+
+    margin: 2.46rem 0rem;
+
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2.4rem 2rem;
+    border-radius: 0.6rem;
+    font-size: 1.6rem;
+    font-weight: 700;
+    width: 100%;
+    max-width: 30rem;
+
+    @media only screen and (max-width: 600px){
+        max-width: 100%;
+    }
+
+    text-wrap: nowrap;
+    cursor: not-allowed;
+    line-height: 100%;
+    user-select: none;
+    @include smooth;
+    color: hsl(0, 0, 20%);
+    background-color: hsl(0, 0, 60%);
+}
+
+.inputbox {
+    display: flex;
+    padding: 1.8rem 1.6rem;
+    background-color: none;
+    background: none;
+    color: #fff;
+    line-height: 100%;
+
+    font-size: 1.56rem;
+    width: 100%;
+}
+
+.usernameinputbox {
+    width: 100%;
+
+    display: flex;
+    background-color: none;
+    background: none;
+    color: #fff;
+    line-height: 100%;
+    text-transform: lowercase;
+    font-size: 1.56rem;
 }

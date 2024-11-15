@@ -27,14 +27,17 @@ export default function VerificationRequestForm() {
 
   return (
     <form onSubmit={handleSubmit} className={styles.requestform}>
-      <input
-        value={reason}
-        onChange={(e) => setReason(e.target.value)}
-        placeholder="Why should you be verified?"
-        required
-        className={styles.inputbox}
-      />
-      <button className={styles.btn} type="submit" disabled={isSubmitting}>
+      <div className={styles.subcontainer}>
+        <label className={styles.label}>something special about you</label>
+        <input
+          value={reason}
+          onChange={(e) => setReason(e.target.value)}
+          required
+          className={styles.inputbox}
+        />
+      </div>
+
+      <button className={styles.updatebtn} type="submit" disabled={isSubmitting}>
         {isSubmitting ? 'Submitting...' : 'Submit Verification Request'}
       </button>
     </form>
