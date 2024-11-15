@@ -33,12 +33,13 @@ export default function VerificationRequestForm() {
           value={reason}
           onChange={(e) => setReason(e.target.value)}
           required
+          maxLength={500}
           className={styles.inputbox}
         />
       </div>
 
       <button className={styles.updatebtn} type="submit" disabled={isSubmitting}>
-        {isSubmitting ? 'Submitting...' : 'Submit Verification Request'}
+        {isSubmitting ? 'Submitting' : 'Submit Verification Request'}
       </button>
     </form>
   )

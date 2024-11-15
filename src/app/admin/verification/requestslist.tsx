@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
-import { approveVerificationRequest, rejectVerificationRequest, getPendingVerificationRequests } from '@/app/actions/verification/verification'
+import { approveVerificationRequest, rejectVerificationRequest, bulkUpdateRejectedRequests, getPendingVerificationRequests } from '@/app/actions/verification/verification'
+import { revalidatePath } from 'next/cache'
 
 type VerificationRequest = {
   id: string
@@ -61,48 +62,59 @@ export default function VerificationRequestList() {
 
   if (pendingRequests.length === 0) return <div>No pending requests</div>
 
+
+
+
+
+
   return (
-    <ul className="space-y-6">
-      {pendingRequests.map((request) => (
-        <li key={request.id} className="border p-6 rounded-lg shadow-sm">
-          <div className="grid grid-cols-2 gap-4 mb-4">
-            <div>
-              <h3 className="font-semibold">Username</h3>
-              <p>{request.user.username || 'N/A'}</p>
+    <>
+
+
+
+      <ul className="space-y-6">
+        {pendingRequests.map((request) => (
+          <li key={request.id} className="border p-6 rounded-lg shadow-sm">
+            <div className="grid grid-cols-2 gap-4 mb-4">
+              <div>
+                <h3 className="font-semibold">Username</h3>
+                <p>{request.user.username || 'N/A'}</p>
+              </div>
+              <div>
+                <h3 className="font-semibold">Name</h3>
+                <p>{request.user.name || 'N/A'}</p>
+              </div>
+              <div>
+                <h3 className="font-semibold">Email</h3>
+                <p>{request.user.email || 'N/A'}</p>
+              </div>
+              <div>
+                <h3 className="font-semibold">Location</h3>
+                <p>{request.user.location || 'N/A'}</p>
+              </div>
             </div>
             <div>
-              <h3 className="font-semibold">Name</h3>
-              <p>{request.user.name || 'N/A'}</p>
+              <h3 className="font-semibold">Reason for Verification</h3>
+              <p className="mt-1">{request.reason}</p>
             </div>
-            <div>
-              <h3 className="font-semibold">Email</h3>
-              <p>{request.user.email || 'N/A'}</p>
+            <div className="mt-4 space-x-4">
+              <button
+                onClick={() => handleApprove(request.id)}
+                className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+              >
+                Approve
+              </button>
+              <button
+                onClick={() => handleReject(request.id)}
+                className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+              >
+                Reject
+              </button>
             </div>
-            <div>
-              <h3 className="font-semibold">Location</h3>
-              <p>{request.user.location || 'N/A'}</p>
-            </div>
-          </div>
-          <div>
-            <h3 className="font-semibold">Reason for Verification</h3>
-            <p className="mt-1">{request.reason}</p>
-          </div>
-          <div className="mt-4 space-x-4">
-            <button 
-              onClick={() => handleApprove(request.id)}
-              className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
-            >
-              Approve
-            </button>
-            <button 
-              onClick={() => handleReject(request.id)}
-              className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
-            >
-              Reject
-            </button>
-          </div>
-        </li>
-      ))}
-    </ul>
+          </li>
+        ))}
+      </ul>
+    </>
+
   )
 }

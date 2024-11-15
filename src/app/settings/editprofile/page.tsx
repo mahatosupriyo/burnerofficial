@@ -96,6 +96,10 @@ export default async function EditProfile() {
                             </p>
                         )}
 
+                        {user.verificationStatus === 'REJECTED' && (
+                            <p className={styles.message}>Your verification is rejected. Learn more how to get verified.</p>
+                        )}
+
                     </div>
                 </div>
 
