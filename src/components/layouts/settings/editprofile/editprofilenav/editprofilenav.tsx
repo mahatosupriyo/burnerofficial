@@ -15,13 +15,13 @@ const EditProfileNav = () => {
                     href="/settings/editprofile"
                     className={`${pathname === '/settings/editprofile' ? styles.active : styles.link}`}
                 >
-                    Personal
+                    Account
                 </Link>
                 <Link
                     href="/settings/editprofile/about"
                     className={`${pathname === '/settings/editprofile/about' ? styles.active : styles.link}`}
                 >
-                    About
+                    Personal
                 </Link>
             </div>
 

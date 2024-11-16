@@ -117,6 +117,7 @@ export default function EditProfileForm({ initialData }: EditProfileFormProps) {
       ) : null}
 
       <div className={styles.datawraper}>
+
         <div className={styles.subcontainer}>
           <label className={styles.label}>name</label>
           <div className={styles.box}>
@@ -127,7 +128,7 @@ export default function EditProfileForm({ initialData }: EditProfileFormProps) {
 
         <div className={styles.subcontainer}>
           <label className={styles.label}>username</label>
-          <div className={styles.box} style={{paddingLeft: '1.6rem'}}>
+          <div className={styles.box} style={{ paddingLeft: '1.6rem' }}>
             eduburner.org/
             <input spellCheck="false" autoComplete='off' style={{ textTransform: 'lowercase' }} {...register('username')} className={styles.usernameinputbox} required />
           </div>

@@ -8,6 +8,8 @@ import { getAvatarUrl } from '@/app/actions/avatar'
 import NavBar from '@/components/navbar/navbar'
 import EditProfileNav from '@/components/layouts/settings/editprofile/editprofilenav/editprofilenav'
 import EditProfileForm from '@/components/layouts/settings/editprofile/editdataform/editdataform'
+import UpdateAboutForm from '@/components/layouts/settings/editabout/editaboutform'
+import AvatarUpload from '@/components/atoms/uploadavatar/uploadavatar'
 
 export default async function EditAboutPage() {
 
@@ -59,6 +61,8 @@ export default async function EditAboutPage() {
         username: user.username,
     }
 
+    const socialMediaInitialData = Array.isArray(user.about) && user.about.length > 0 ? user.about[0] : {};
+
     const avatarUrl = await getAvatarUrl(user.image || 'defaultavatar.png')
 
 
@@ -77,9 +81,9 @@ export default async function EditAboutPage() {
 
                     <div className={styles.formcomponentwraper}>
                         <EditProfileNav />
-                        <EditProfileForm
-                            initialData={formInitialData}
-                        />
+                        <AvatarUpload currentAvatar={avatarUrl} lastImageUpdate={user.lastImageUpdate}/>
+                        <UpdateAboutForm userId={session.user.id} initialData={socialMediaInitialData} />
+
                     </div>
                 </div>
 
