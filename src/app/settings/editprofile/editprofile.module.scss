@@ -1,9 +1,13 @@
+@use '../../../styles/essentials';
+@import '../../../styles/essentials';
+
 .wraper {
     display: flex;
     align-items: center;
     flex-direction: column;
     width: 100%;
-    .container{
+
+    .container {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -13,23 +17,24 @@
 
         padding: 4rem;
 
-        @media only screen and (max-width: 600px){
+        @media only screen and (max-width: 600px) {
             padding: 4rem 1.6rem;
         }
     }
 }
 
-.toplayer{
+.toplayer {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-start;
     width: 100%;
 
-    @media only screen and (max-width: 1200px){
+    @media only screen and (max-width: 1200px) {
         flex-direction: column;
         gap: 2rem;
     }
+
     .layoutwraper {
         display: flex;
         width: 100%;
@@ -52,18 +57,108 @@
     }
 }
 
-.formcomponentwraper{
+.formcomponentwraper {
     width: 100%;
     display: flex;
     flex-direction: column;
     gap: 4rem;
 }
 
-.message{
+.message {
     display: flex;
     flex-direction: row;
     align-items: center;
     font-weight: 500;
     font-size: 1.6rem;
     gap: 0.4rem;
+}
+
+.verifiedlayout {
+    display: flex;
+    flex-direction: column;
+    // align-items: center;
+
+    .toplayer {
+        display: flex;
+        flex-direction: row;
+        gap: 3rem;
+
+        .creatorwraper {
+            display: flex;
+            flex-direction: column;
+            gap: 0.2rem;
+
+            .highlight {
+                font-weight: 600;
+                display: inline-flex;
+                font-size: 1.56rem;
+                user-select: none;
+                background: var(--BurnerRed, linear-gradient(87deg, #AFA7A1 -15.71%, #FE4200 28.99%, #FF805B 89.6%, #98B7C0 114.83%));
+                background-clip: text;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+
+            .creator {
+                display: flex;
+                align-items: center;
+                flex-direction: row;
+                gap: 0.3rem;
+
+                .username {
+                    font-size: 1.7rem;
+                    font-weight: 600;
+                }
+            }
+        }
+    }
+
+    .regulartxt {
+        padding: 2rem 0rem;
+        font-size: 1.56rem;
+        color: hsl(0, 0%, 56%);
+
+        .link {
+            text-decoration: none;
+            color: hsl(0, 0%, 90%);
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            padding-bottom: 1rem;
+
+            &:hover{
+                &::before{
+                    transform: translateX(0%);
+                }
+            }
+
+            &::after {
+                content: '';
+                z-index: 14;
+                // transform: translateX();
+                position: absolute;
+                bottom: 0;
+                height: 0.2rem;
+                width: 100%;
+                background-color: hsl(0, 0%, 16%);
+            }
+
+
+            &::before {
+                content: '';
+                @include smooth;
+                z-index: 20;
+                transform: translateX(-100%);
+                position: absolute;
+                bottom: 0;
+                // left: 0;
+                height: 0.2rem;
+                width: 100%;
+                background-color: hsl(0, 0%, 86%);
+            }
+        }
+    }
+
 }

@@ -10,6 +10,9 @@ import EditProfileNav from '@/components/layouts/settings/editprofile/editprofil
 import EditProfileForm from '@/components/layouts/settings/editprofile/editdataform/editdataform'
 import VerificationRequestForm from '@/components/atoms/verification/resquestform/requestform'
 import Icon from '@/components/atoms/icons'
+import AvatarUpload from '@/components/atoms/uploadavatar/uploadavatar'
+import Avatar from '@/components/atoms/avatar'
+import Link from 'next/link'
 
 export default async function EditProfile() {
 
@@ -87,17 +90,48 @@ export default async function EditProfile() {
                             <VerificationRequestForm />
                         )}
                         {user.verificationStatus === 'PENDING' && (
-                            <p className={styles.message}>Your verification is pending.</p>
+                            <div className={styles.verifiedlayout}>
+                                <div className={styles.toplayer}>
+                                    <div className={styles.creatorwraper}>
+                                        <span className={styles.highlight}>creator</span>
+                                        <div className={styles.creator}>
+                                            <p className={styles.username}>{user.username}</p>
+                                            <Icon name='verified' size={10} />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className={styles.regulartxt}>We are reviewing your request.</div>
+                            </div>
                         )}
                         {user.verificationStatus === 'VERIFIED' && (
-                            <p className={styles.message}>
-                                you're verified
-                                <Icon name='verified' size={10} />
-                            </p>
+                            <div className={styles.verifiedlayout}>
+                                <div className={styles.toplayer}>
+                                    <div className={styles.creatorwraper}>
+                                        <span className={styles.highlight}>creator</span>
+                                        <div className={styles.creator}>
+                                            <p className={styles.username}>{user.username}</p>
+                                            <Icon name='verified' size={10} />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className={styles.regulartxt}>Enjoy creator benefits. <Link className={styles.link} href={`/${user.username}`}>Add your creations</Link>.</div>
+                            </div>
+
                         )}
 
                         {user.verificationStatus === 'REJECTED' && (
-                            <p className={styles.message}>Your verification is rejected. Learn more how to get verified.</p>
+                            <div className={styles.verifiedlayout}>
+                                <div className={styles.toplayer}>
+                                    <div className={styles.creatorwraper}>
+                                        <span className={styles.highlight}>creator</span>
+                                        <div className={styles.creator}>
+                                            <p className={styles.username}>{user.username}</p>
+                                            <Icon name='verified' size={10} />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className={styles.regulartxt}>Your verification request is Rejected, update your profile to get verified.</div>
+                            </div>
                         )}
 
                     </div>
@@ -106,6 +140,6 @@ export default async function EditProfile() {
 
 
             </div>
-        </div>
+        </div >
     )
 }
