@@ -10,8 +10,7 @@ import EditProfileNav from '@/components/layouts/settings/editprofile/editprofil
 import EditProfileForm from '@/components/layouts/settings/editprofile/editdataform/editdataform'
 import VerificationRequestForm from '@/components/atoms/verification/resquestform/requestform'
 import Icon from '@/components/atoms/icons'
-import AvatarUpload from '@/components/atoms/uploadavatar/uploadavatar'
-import Avatar from '@/components/atoms/avatar'
+
 import Link from 'next/link'
 
 export default async function EditProfile() {
@@ -87,13 +86,23 @@ export default async function EditProfile() {
                         />
 
                         {user.verificationStatus === 'UNVERIFIED' && (
-                            <VerificationRequestForm />
+
+                            <div className={styles.verifiedlayout}>
+                                <div className={styles.toplayer}>
+                                    <div className={styles.creatorwraper}>
+                                        <div className={styles.creator}>
+                                            <p className={styles.username}>{user.username}</p>
+                                            <Icon name='verified' size={10} />
+                                        </div>
+                                    </div>
+                                </div>
+                                <VerificationRequestForm />
+                            </div>
                         )}
                         {user.verificationStatus === 'PENDING' && (
                             <div className={styles.verifiedlayout}>
                                 <div className={styles.toplayer}>
                                     <div className={styles.creatorwraper}>
-                                        <span className={styles.highlight}>creator</span>
                                         <div className={styles.creator}>
                                             <p className={styles.username}>{user.username}</p>
                                             <Icon name='verified' size={10} />
@@ -107,7 +116,6 @@ export default async function EditProfile() {
                             <div className={styles.verifiedlayout}>
                                 <div className={styles.toplayer}>
                                     <div className={styles.creatorwraper}>
-                                        <span className={styles.highlight}>creator</span>
                                         <div className={styles.creator}>
                                             <p className={styles.username}>{user.username}</p>
                                             <Icon name='verified' size={10} />
@@ -123,7 +131,6 @@ export default async function EditProfile() {
                             <div className={styles.verifiedlayout}>
                                 <div className={styles.toplayer}>
                                     <div className={styles.creatorwraper}>
-                                        <span className={styles.highlight}>creator</span>
                                         <div className={styles.creator}>
                                             <p className={styles.username}>{user.username}</p>
                                             <Icon name='verified' size={10} />
