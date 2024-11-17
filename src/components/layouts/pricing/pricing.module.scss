@@ -1,0 +1,274 @@
+@use '../../../styles/essentials';
+@import '../../../styles/essentials';
+
+
+.pricingoverlaycontainer {
+
+    z-index: 9999;
+    display: flex;
+    width: 100%;
+    min-height: 100dvh;
+
+    background-color: #fff;
+
+
+    .pricingoverlay {
+        padding: 3.2rem;
+
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 3.6rem;
+        background-color: #fff;
+        width: 100%;
+        // max-width: 80rem;
+
+
+        .centerlayout {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            gap: 4rem;
+            width: 100%;
+
+
+            @media (max-width: 768px){
+                flex-direction: column-reverse;
+            }
+
+            .leftlayout {
+                width: 100%;
+                max-width: 60%;
+
+                @media (max-width: 768px){
+                    max-width: 100%;
+                }
+            }
+
+            .rightlayout {
+                width: 100%;
+                flex-wrap: nowrap;
+
+                max-width: 40%;
+                display: flex;
+                flex-direction: column;
+                gap: 1.6rem;
+
+                @media (max-width: 768px){
+                    max-width: 100%;
+                }
+            }
+
+
+        }
+
+
+        .bottomlayer {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            align-items: center;
+            justify-content: space-between;
+
+            .terms {
+                display: flex;
+                line-height: 100%;
+                color: #111;
+                font-size: 1.26rem;
+
+                .inlinelink {
+                    padding: 0rem 0.3rem;
+                    display: inline-flex;
+                    text-decoration: none;
+                    color: #0A84FF;
+                    font-weight: 500;
+                }
+            }
+
+        }
+
+        @media (max-width: 768px) {
+            .pricingTable {
+
+                .header,
+                .row {
+                    grid-template-columns: 2fr 0.2fr 0.2fr;
+                }
+
+                .featureColumn {
+                    font-size: 1.4rem;
+                    font-weight: 500;
+                }
+
+                .planColumn {
+                    font-size: 1.36rem;
+                }
+            }
+        }
+
+
+    }
+}
+
+
+.pricingTable {
+    display: flex;
+    flex-direction: column;
+
+    .header,
+    .row {
+        display: grid;
+        grid-template-columns: 2fr 0.2fr 0.2fr;
+        align-items: center;
+        padding: 1.6rem 0rem;
+        border-bottom: 0.16rem solid #e0e0e0;
+        width: 100%;
+        gap: 1rem;
+
+        &:last-child {
+            border-bottom: none;
+        }
+    }
+
+    .header {
+        font-weight: 700;
+    }
+
+    .featureColumn {
+        text-align: left;
+        font-size: 16px;
+        color: #111;
+        font-weight: 700;
+        width: 100%;
+    }
+
+    .planColumn {
+        text-align: center;
+        font-size: 1.46rem;
+        color: #111;
+    }
+}
+
+
+
+.paybtn {
+    width: 100%;
+    // max-width: 30rem;
+    padding: 2.4rem 2rem;
+    border-radius: 0.6rem;
+    background: hsl(210, 100%, 52%);
+    @include smooth;
+    border-radius: 1rem;
+    color: #fff;
+    font-weight: 700;
+    cursor: pointer;
+
+    @media (max-width: 768px){
+        max-width: 100%;
+    }
+
+    &:hover {
+        background: hsl(210, 100%, 47%);
+    }
+}
+
+
+.disabledbtn {
+    width: 100%;
+    padding: 2.4rem 2rem;
+    border-radius: 0.6rem;
+    background: hsl(210, 100%, 72%);
+    @include smooth;
+    border-radius: 1rem;
+    color: hsl(0, 0%, 100%, 0.5);
+    font-weight: 700;
+    cursor: not-allowed;
+
+    @media (max-width: 768px){
+        max-width: 100%;
+    }
+    &:hover {
+        background: hsl(210, 100%, 72%);
+    }
+}
+
+
+.planSelector {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    flex-wrap: nowrap;
+
+    padding-top: 5rem;
+
+    .selectorcard {
+        width: 100%;
+        color: #111;
+        font-size: 1.46rem;
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 0.8rem;
+        padding: 2.6rem 1.6rem;
+        user-select: none;
+
+        flex-wrap: nowrap;
+
+        border: 0.16rem solid hsl(0, 0%, 90%);
+        border-radius: 1rem;
+        cursor: pointer;
+
+        &:focus-within {
+            border: 0.16rem solid #0A84FF;
+        }
+
+
+        .input {
+            cursor: pointer;
+            accent-color: #0A84FF;
+        }
+
+        .plandetails {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            flex-wrap: nowrap;
+
+
+            font-size: 1.46rem;
+            font-weight: 600;
+
+            .price {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-end;
+                gap: 0.4rem;
+
+                .actual {
+                    font-size: 1.4rem;
+                    font-weight: 600;
+                    color: hsl(0, 0, 56%);
+                    text-decoration: line-through;
+                    text-decoration-color: #F16060;
+                }
+
+
+                .upfront {
+                    font-size: 2rem;
+                    font-weight: 700;
+                }
+
+                .monthly {
+                    font-size: 1.2rem;
+                    font-weight: 500;
+                    color: hsl(0, 0, 40%);
+                }
+            }
+        }
+
+    }
+}
