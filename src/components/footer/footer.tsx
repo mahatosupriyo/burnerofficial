@@ -20,10 +20,9 @@ const Footer = () => {
                     <div className={styles.linkswraper}>
                         <p className={styles.linkhead}>company</p>
                         <div className={styles.linklist}>
-                            <Link className={styles.link} href="/company/terms">Terms</Link>
-                            <Link className={styles.link} href="/company/privacy">Privacy</Link>
-                            <Link className={styles.link} href="/company/cancellation">refund</Link>
-                            {/* <Link className={styles.link} href="/company/contact">Contact us</Link> */}
+                            <a target='_blank' className={styles.link} href="https://eduburner.org/company/terms">Terms</a>
+                            <a target='_blank' className={styles.link} href="https://eduburner.org/company/privacy">Privacy</a>
+                            <a target='_blank' className={styles.link} href="https://eduburner.org/company/cancellation">refund</a>
                         </div>
                     </div>
 
