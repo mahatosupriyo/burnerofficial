@@ -5,7 +5,6 @@ import Masonry from 'react-masonry-css'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import Icon from './icons'
-import Controls from '../molecules/controls/controls'
 import Overlay from '../molecules/overlay/overlay'
 import styles from './feed.module.scss'
 import Avatar from './avatar'
@@ -50,7 +49,6 @@ export default function Feed() {
 
   return (
     <div className={styles.feedwraper}>
-      <Controls />
       <Masonry
         breakpointCols={breakpointColumnsObj}
         className={styles.masonryGrid}
