@@ -9,7 +9,7 @@
     width: 100%;
     min-height: 100dvh;
 
-    background-color: #fff;
+    background-color: #fffafa;
 
 
     .pricingoverlay {
@@ -20,7 +20,6 @@
         flex-direction: column;
         justify-content: space-between;
         gap: 3.6rem;
-        background-color: #fff;
         width: 100%;
         // max-width: 80rem;
 
@@ -33,15 +32,30 @@
             width: 100%;
 
 
-            @media (max-width: 768px){
+            @media (max-width: 768px) {
                 flex-direction: column-reverse;
             }
 
             .leftlayout {
                 width: 100%;
                 max-width: 60%;
+                display: flex;
+                flex-direction: column;
 
-                @media (max-width: 768px){
+                .headertitle{
+                    font-size: 3rem;
+                    font-weight: 700;
+                    color: #111;
+                }
+
+                .subtitle{
+                    color: hsl(0, 0, 40%);
+                    font-size: 1.56rem;
+                    padding: 0.2rem 0rem;
+                    font-weight: 500;
+                }
+
+                @media (max-width: 768px) {
                     max-width: 100%;
                 }
             }
@@ -55,7 +69,7 @@
                 flex-direction: column;
                 gap: 1.6rem;
 
-                @media (max-width: 768px){
+                @media (max-width: 768px) {
                     max-width: 100%;
                 }
             }
@@ -103,6 +117,7 @@
 
                 .planColumn {
                     font-size: 1.36rem;
+
                 }
             }
         }
@@ -147,6 +162,7 @@
         text-align: center;
         font-size: 1.46rem;
         color: #111;
+
     }
 }
 
@@ -164,7 +180,7 @@
     font-weight: 700;
     cursor: pointer;
 
-    @media (max-width: 768px){
+    @media (max-width: 768px) {
         max-width: 100%;
     }
 
@@ -185,9 +201,10 @@
     font-weight: 700;
     cursor: not-allowed;
 
-    @media (max-width: 768px){
+    @media (max-width: 768px) {
         max-width: 100%;
     }
+
     &:hover {
         background: hsl(210, 100%, 72%);
     }
@@ -263,12 +280,32 @@
                 }
 
                 .monthly {
-                    font-size: 1.2rem;
-                    font-weight: 500;
-                    color: hsl(0, 0, 40%);
+                    font-size: 1.46rem;
+                    font-weight: 600;
+
+                    color: #0A84FF;
                 }
             }
         }
 
+    }
+}
+
+.offerlayout {
+    background-color: #0A84FF;
+    // background-image: linear-gradient(90deg, #FAD961 0%, #F76B1C 100%);
+    min-height: 4rem;
+
+    display: flex;
+    align-items: center;
+    padding: 1.6rem;
+    font-size: 1.56rem;
+    // border-radius: 0.6rem;
+    justify-content: center;
+    color: #fff;
+    font-weight: 600;
+
+    @media (max-width: 768px) {
+        font-size: 1.4rem;
     }
 }
