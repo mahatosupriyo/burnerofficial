@@ -109,12 +109,7 @@ export default function UserProfile({ user: initialUser }: UserProfileProps) {
           <div className={styles.contentwraper}>
             <div className={styles.userbadge}>
 
-              <h4 className={styles.username}>
-                {user.username}
-                {user.verificationStatus === 'VERIFIED' && (
-                  <Icon name="verified" size={10} />
-                )}
-              </h4>
+
 
 
 
@@ -126,6 +121,12 @@ export default function UserProfile({ user: initialUser }: UserProfileProps) {
                 alt={`Avatar of ${user.username}`}
               />
 
+              <h4 className={styles.username}>
+                {user.username}
+                {user.verificationStatus === 'VERIFIED' && (
+                  <Icon name="verified" size={10} />
+                )}
+              </h4>
 
 
               <h3 className={styles.name}>{user.name}</h3>
@@ -145,7 +146,7 @@ export default function UserProfile({ user: initialUser }: UserProfileProps) {
                     <div className={styles.socials}>
                       {user.instagram && (
                         <a href={user.instagram} target="_blank" rel="noopener noreferrer" className={styles.sociallink}>
-                          <Icon name="instagram" size={30} fill="#fafafa" />
+                          <Icon name="instagram" size={31} fill="#fafafa" />
                           {/* Instagram */}
                         </a>
                       )}
@@ -157,7 +158,7 @@ export default function UserProfile({ user: initialUser }: UserProfileProps) {
                       )}
                       {user.behance && (
                         <a href={user.behance} target="_blank" rel="noopener noreferrer" className={styles.sociallink}>
-                          <Icon name="behance" size={30} fill="#fafafa" />
+                          <Icon name="behance" size={34} fill="#fafafa" />
                           {/* Behance */}
                         </a>
                       )}
@@ -169,7 +170,7 @@ export default function UserProfile({ user: initialUser }: UserProfileProps) {
                       )}
                       {user.x && (
                         <a href={user.x} target="_blank" rel="noopener noreferrer" className={styles.sociallink}>
-                          <Icon name="x" size={30} fill="#fafafa" />
+                          <Icon name="x" size={27.8} fill="#fafafa" />
                           {/* X (Twitter) */}
                         </a>
                       )}

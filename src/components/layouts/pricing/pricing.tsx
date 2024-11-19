@@ -7,7 +7,7 @@ import Icon from '@/components/atoms/icons';
 
 export default function PricingComponent() {
     const features = [
-        { feature: "Access all inspirations", free: false, pro: true },
+        { feature: "Access all inspirations", free: true, pro: true },
         { feature: "Burner academy", free: false, pro: true },
         { feature: "Public Portfolio", free: false, pro: true },
         { feature: "Career opportunities", free: false, pro: true },
