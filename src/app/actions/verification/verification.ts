@@ -16,6 +16,24 @@ const verificationRequestSchema = z.object({
     )
 })
 
+async function checkAdminAuth() {
+  const session = await auth()
+  if (!session?.user?.email) {
+    throw new Error('You must be logged in to perform this action')
+  }
+
+  const admin = await prisma.user.findUnique({
+    where: { email: session.user.email },
+    select: { role: true }
+  })
+
+  if (!admin || admin.role !== 'ADMIN') {
+    throw new Error('You do not have permission to perform this action')
+  }
+
+  return session.user.email
+}
+
 export async function submitVerificationRequest(reason: string) {
   try {
     const session = await auth()
@@ -23,7 +41,6 @@ export async function submitVerificationRequest(reason: string) {
       throw new Error('You must be logged in to submit a verification request')
     }
 
-    // Validate and sanitize input
     const validatedData = verificationRequestSchema.parse({ reason })
     const sanitizedReason = DOMPurify.sanitize(validatedData.reason)
 
@@ -52,7 +69,6 @@ export async function submitVerificationRequest(reason: string) {
       throw new Error('You can only submit one verification request per month')
     }
 
-    // Use a transaction to ensure both operations succeed or fail together
     await prisma.$transaction(async (prisma) => {
       await prisma.verificationRequest.create({
         data: {
@@ -82,20 +98,9 @@ export async function submitVerificationRequest(reason: string) {
 }
 
 export async function getPendingVerificationRequests() {
-  const session = await auth()
-  if (!session?.user?.email) {
-    throw new Error('You must be logged in to view verification requests')
-  }
+  await checkAdminAuth()
 
-  const admin = await prisma.user.findUnique({
-    where: { email: session.user.email },
-  })
-
-  if (!admin || admin.role !== 'ADMIN') {
-    throw new Error('You do not have permission to view verification requests')
-  }
-
-  const pendingRequests = await prisma.verificationRequest.findMany({
+  return await prisma.verificationRequest.findMany({
     where: { status: 'PENDING' },
     include: {
       user: {
@@ -110,23 +115,10 @@ export async function getPendingVerificationRequests() {
       },
     },
   })
-
-  return pendingRequests
 }
 
 export async function approveVerificationRequest(requestId: string) {
-  const session = await auth()
-  if (!session?.user?.email) {
-    throw new Error('You must be logged in to approve a verification request')
-  }
-
-  const admin = await prisma.user.findUnique({
-    where: { email: session.user.email },
-  })
-
-  if (!admin || admin.role !== 'ADMIN') {
-    throw new Error('You do not have permission to approve verification requests')
-  }
+  await checkAdminAuth()
 
   const request = await prisma.verificationRequest.findUnique({
     where: { id: requestId },
@@ -141,14 +133,16 @@ export async function approveVerificationRequest(requestId: string) {
     throw new Error('User is already verified')
   }
 
-  await prisma.verificationRequest.update({
-    where: { id: requestId },
-    data: { status: 'APPROVED' },
-  })
+  await prisma.$transaction(async (prisma) => {
+    await prisma.verificationRequest.update({
+      where: { id: requestId },
+      data: { status: 'APPROVED' },
+    })
 
-  await prisma.user.update({
-    where: { id: request.userId },
-    data: { verificationStatus: 'VERIFIED' },
+    await prisma.user.update({
+      where: { id: request.userId },
+      data: { verificationStatus: 'VERIFIED' },
+    })
   })
 
   revalidatePath('/admin/verification-requests')
@@ -156,18 +150,7 @@ export async function approveVerificationRequest(requestId: string) {
 }
 
 export async function rejectVerificationRequest(requestId: string) {
-  const session = await auth()
-  if (!session?.user?.email) {
-    throw new Error('You must be logged in to reject a verification request')
-  }
-
-  const admin = await prisma.user.findUnique({
-    where: { email: session.user.email },
-  })
-
-  if (!admin || admin.role !== 'ADMIN') {
-    throw new Error('You do not have permission to reject verification requests')
-  }
+  await checkAdminAuth()
 
   const request = await prisma.verificationRequest.findUnique({
     where: { id: requestId },
@@ -182,7 +165,6 @@ export async function rejectVerificationRequest(requestId: string) {
     throw new Error('User is already verified')
   }
 
-  // Use a transaction to update both the request and the user status
   await prisma.$transaction(async (prisma) => {
     await prisma.verificationRequest.update({
       where: { id: requestId },
@@ -199,11 +181,6 @@ export async function rejectVerificationRequest(requestId: string) {
   return { success: true }
 }
 
-
-
-
-
-// Update in Bulk
 const RejectedRequestsCountSchema = z.object({
   eligibleForUpdate: z.number(),
   totalRejected: z.number(),
@@ -226,6 +203,8 @@ export type RejectedRequestsCounts = z.infer<typeof RejectedRequestsCountSchema>
 export type BulkUpdateResult = z.infer<typeof BulkUpdateResultSchema>
 
 export async function getRejectedRequestsCounts(): Promise<RejectedRequestsCounts> {
+  await checkAdminAuth()
+
   const oneMonthAgo = new Date()
   oneMonthAgo.setMonth(oneMonthAgo.getMonth() - 1)
 
@@ -245,18 +224,7 @@ export async function getRejectedRequestsCounts(): Promise<RejectedRequestsCount
 
 export async function bulkUpdateRejectedRequests(): Promise<BulkUpdateResult> {
   try {
-    const session = await auth()
-    if (!session?.user?.email) {
-      throw new Error('You must be logged in to perform this action')
-    }
-
-    const admin = await prisma.user.findUnique({
-      where: { email: session.user.email },
-    })
-
-    if (!admin || admin.role !== 'ADMIN') {
-      throw new Error('You do not have permission to perform this action')
-    }
+    await checkAdminAuth()
 
     const oneMonthAgo = new Date()
     oneMonthAgo.setMonth(oneMonthAgo.getMonth() - 1)
@@ -286,17 +254,19 @@ export async function bulkUpdateRejectedRequests(): Promise<BulkUpdateResult> {
     const { eligibleForUpdate, totalRejected } = await getRejectedRequestsCounts()
 
     revalidatePath('/admin/verification')
-    return BulkUpdateResultSchema.parse({ 
-      success: true, 
+    return BulkUpdateResultSchema.parse({
+      success: true,
       message: `Updated ${result[0].count} users and ${result[1].count} requests.`,
       eligibleForUpdate,
       totalRejected
     })
   } catch (error) {
     console.error('Error updating rejected requests:', error)
-    return BulkUpdateResultSchema.parse({ 
-      success: false, 
+    return BulkUpdateResultSchema.parse({
+      success: false,
       error: error instanceof Error ? error.message : 'An unexpected error occurred'
     })
   }
 }
+
+console.log('Server-side verification actions loaded successfully.')
