@@ -116,6 +116,7 @@ export default function EditProfileForm({ initialData }: EditProfileFormProps) {
         />
       ) : null}
 
+
       <div className={styles.datawraper}>
 
         <div className={styles.subcontainer}>
