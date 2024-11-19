@@ -1,0 +1,99 @@
+// SCSS Variables
+$background: hsl(220, 13%, 18%);
+$text: hsl(220, 14%, 71%);
+$text-muted: hsl(220, 10%, 40%);
+$primary: hsl(207, 82%, 66%);
+$border: hsl(220, 13%, 26%);
+$header-bg: hsl(220, 13%, 22%);
+$hover-bg: hsl(220, 13%, 24%);
+$error: hsl(0, 100%, 67%);
+
+.container {
+  padding: 2rem;
+  background-color: $background;
+  color: $text;
+  min-height: 100dvh;
+}
+
+.title {
+  font-size: 2.4rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: $primary;
+}
+
+.error {
+  color: $error;
+  font-weight: bold;
+  font-size: 1.4rem;
+}
+
+.loading {
+  font-style: italic;
+  color: $text-muted;
+  font-size: 1.4rem;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
+
+  th, td {
+    border: 1px solid $border;
+    padding: 1rem;
+    text-align: left;
+  }
+
+  th {
+    background-color: $header-bg;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background-color: $hover-bg;
+    }
+  }
+
+  tr:nth-child(even) {
+    background-color: $hover-bg;
+  }
+
+  tr:hover {
+    background-color: $hover-bg;
+  }
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+
+  button {
+    margin: 0 0.25rem;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid $border;
+    background-color: $background;
+    color: $text;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: background-color 0.2s ease, color 0.2s ease;
+
+    &:hover {
+      background-color: $hover-bg;
+    }
+
+    &.activePage {
+      background-color: $primary;
+      color: $background;
+      border-color: $primary;
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+}
