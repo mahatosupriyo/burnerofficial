@@ -281,6 +281,8 @@ $gap: 1.6rem;
         border-radius: 100rem;
         @include smooth;
 
+        background-color: hsl(0, 0, 0%, 0.4);
+
         &:hover {
           background-color: hsl(0, 0, 25%);
         }
