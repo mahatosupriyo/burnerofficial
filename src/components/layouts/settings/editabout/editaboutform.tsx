@@ -8,7 +8,7 @@ import { useState, useEffect } from 'react'
 import styles from './editaboutform.module.scss'
 
 const aboutSchema = z.object({
-  about: z.string().max(500).optional(),
+  about: z.string().max(150).optional(),
   location: z.string().max(100).optional(),
   work: z.string().max(100).optional(),
   instagram: z.string().url().optional().or(z.literal('')),
