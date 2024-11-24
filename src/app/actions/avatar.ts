@@ -11,19 +11,19 @@ import crypto from 'crypto';
 
 // Validate environment variables
 const envSchema = z.object({
-  AWS_REGION: z.string(),
-  AWS_ACCESS_KEY_ID: z.string(),
-  AWS_SECRET_ACCESS_KEY: z.string(),
-  AWS_S3_BUCKET_NAME: z.string(),
+  SERVER_REGION: z.string(),
+  SERVER_ACCESS_KEY_ID: z.string(),
+  SERVER_SECRET_ACCESS_KEY: z.string(),
+  SERVER_S3_BUCKET_NAME: z.string(),
 });
 
 const env = envSchema.parse(process.env);
 
 const s3Client = new S3Client({
-  region: env.AWS_REGION,
+  region: env.SERVER_REGION,
   credentials: {
-    accessKeyId: env.AWS_ACCESS_KEY_ID,
-    secretAccessKey: env.AWS_SECRET_ACCESS_KEY,
+    accessKeyId: env.SERVER_ACCESS_KEY_ID,
+    secretAccessKey: env.SERVER_SECRET_ACCESS_KEY,
   },
 });
 
@@ -76,7 +76,7 @@ export async function updateAvatar(formData: FormData) {
 
     // Upload new avatar
     const putObjectCommand = new PutObjectCommand({
-      Bucket: env.AWS_S3_BUCKET_NAME,
+      Bucket: env.SERVER_S3_BUCKET_NAME,
       Key: fileName,
       Body: webpBuffer,
       ContentType: 'image/webp',
@@ -87,7 +87,7 @@ export async function updateAvatar(formData: FormData) {
     // Delete old avatar if it exists and is not the default avatar
     if (currentUser.image && !currentUser.image.startsWith('http') && !currentUser.image.startsWith('https') && currentUser.image !== 'defaultavatar.png') {
       const deleteObjectCommand = new DeleteObjectCommand({
-        Bucket: env.AWS_S3_BUCKET_NAME,
+        Bucket: env.SERVER_S3_BUCKET_NAME,
         Key: currentUser.image,
       });
 
@@ -129,7 +129,7 @@ export async function getAvatarUrl(key: string) {
 
   // Otherwise, generate a signed URL for S3
   const command = new GetObjectCommand({
-    Bucket: process.env.AWS_S3_BUCKET_NAME!,
+    Bucket: process.env.SERVER_S3_BUCKET_NAME!,
     Key: key,
   });
 
