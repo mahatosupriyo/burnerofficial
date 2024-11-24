@@ -2,12 +2,11 @@
 
 import React, { useState, useEffect } from "react";
 import styles from "./userprofile.module.scss";
-import Icon from "@/components/atoms/icons";
-import { motion } from "framer-motion";
-import Overlay from "@/components/molecules/overlay/overlay";
 import { deletePost } from "@/app/actions/post/delete-post";
 import { useSession } from "next-auth/react";
 import SuccessPopup from "@/app/success/successpop";
+import UserPosts from "./userposts/userposts";
+import UserBadge from "./userbadge/userbadge";
 
 interface Post {
   id: string;
@@ -89,6 +88,19 @@ export default function UserProfile({ user: initialUser }: UserProfileProps) {
     }
   };
 
+  const handlePostDelete = (postId: string) => {
+    setUser((prevUser) => ({
+      ...prevUser,
+      posts: prevUser.posts.filter((post) => post.id !== postId),
+    }));
+  };
+
+  const handleMessageSet = (newMessage: string) => {
+    setMessage(newMessage);
+    localStorage.setItem('userProfileMessage', newMessage);
+    setShowPopup(true);
+  };
+
   const handleClosePopup = () => {
     setShowPopup(false);
     setMessage(null);
@@ -105,171 +117,16 @@ export default function UserProfile({ user: initialUser }: UserProfileProps) {
           isVisible={showPopup}
           onClose={handleClosePopup}
         />
-        <div className={styles.content}>
-          <div className={styles.contentwraper}>
-            <div className={styles.userbadge}>
-
-
-
-
-
-              <img
-                src={user.image || "/avatar.png"}
-                draggable="false"
-                loading="lazy"
-                className={styles.avatar}
-                alt={`Avatar of ${user.username}`}
-              />
-
-              <h4 className={styles.username}>
-                {user.username}
-                {user.verificationStatus === 'VERIFIED' && (
-                  <Icon name="verified" size={10} />
-                )}
-              </h4>
-
-
-              <h3 className={styles.name}>{user.name}</h3>
-
-              {user.location && <p className={styles.generatedbio}>{user.location}</p>}
-
-
-              <h3 className={styles.intro}>
-                <span style={{ paddingLeft: "50%" }}></span>
-
-                {user.about}
-
-              </h3>
-              <div style={{ width: "100%", display: "flex", flexDirection: "row" }}>
-                <div className={styles.creatordata}>
-                  <div className={styles.creator}>
-                    <div className={styles.socials}>
-                      {user.instagram && (
-                        <a href={user.instagram} target="_blank" rel="noopener noreferrer" className={styles.sociallink}>
-                          <Icon name="instagram" size={31} fill="#fafafa" />
-                          {/* Instagram */}
-                        </a>
-                      )}
-                      {user.linkedin && (
-                        <a href={user.linkedin} target="_blank" rel="noopener noreferrer" className={styles.sociallink}>
-                          <Icon name="linkedin" size={30} />
-                          {/* LinkedIn */}
-                        </a>
-                      )}
-                      {user.behance && (
-                        <a href={user.behance} target="_blank" rel="noopener noreferrer" className={styles.sociallink}>
-                          <Icon name="behance" size={34} fill="#fafafa" />
-                          {/* Behance */}
-                        </a>
-                      )}
-                      {user.dribbble && (
-                        <a href={user.dribbble} target="_blank" rel="noopener noreferrer" className={styles.sociallink}>
-                          <Icon name="dribbble" size={30} fill="#fafafa" />
-                          {/* Dribbble */}
-                        </a>
-                      )}
-                      {user.x && (
-                        <a href={user.x} target="_blank" rel="noopener noreferrer" className={styles.sociallink}>
-                          <Icon name="x" size={27.8} fill="#fafafa" />
-                          {/* X (Twitter) */}
-                        </a>
-                      )}
-
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className={styles.componentwraper}>
-              {/* <PostCard posts={user.posts} /> */}
-              <div className={styles.userposts}>
-                <div className={styles.postwraper}>
-                  {user.posts.slice(0, visiblePosts).map((post) => (
-                    <Overlay
-                      key={post.id}
-                      triggerButton={
-                        <motion.div
-                          className={styles.post}
-                          whileTap={{ opacity: 0.6 }}
-                          initial={{ opacity: 0.6, filter: "blur(10px)" }}
-                          animate={{ opacity: 1, filter: "blur(0px)" }}
-                          style={{ cursor: "pointer" }}
-                        >
-                          <img
-                            src={post.imageUrl}
-                            alt="Post image"
-                            draggable="false"
-                            className={styles.creation}
-                          />
-                        </motion.div>
-                      }
-                      overlayContent={
-                        <div className={styles.overlayContent}>
-                          <img
-                            src={post.imageUrl}
-                            alt={`Post by ${user.username}`}
-                            draggable="false"
-                            className={styles.selectedImage}
-                          />
-
-                          <div className={styles.captionwraper}>
-                            {post.caption && <p className={styles.caption}>{post.caption}</p>}
-                            {post.link &&
-                              <a href={post.link} target='_blank' className={styles.link}>
-                                <Icon name='link' fill='#fff' size={26} />
-                              </a>
-                            }
-                          </div>
-
-                          <div className={styles.creatorwraper}>
-                            <div className={styles.creator}>
-                              <img
-                                src={user.image || "/avatar.png"}
-                                draggable="false"
-                                loading="lazy"
-                                className={styles.creatoravatar}
-                                alt={`Avatar of ${user.username}`}
-                              />
-                              <div className={styles.creationdetails}>
-                                <p className={styles.username}>
-                                  {user.username}
-                                  {user.verified && <Icon name="verified" size={10} />}
-                                </p>
-                              </div>
-                            </div>
-
-                            {isCurrentUser && (
-                              <motion.button
-                                className={styles.deletebtn}
-                                whileTap={{ scale: 0.96 }}
-                                onClick={() => handleDelete(post.id)}
-                                disabled={deletingPostId === post.id}
-                              >
-                                {deletingPostId === post.id ? (
-                                  <div className={styles.loader}></div>
-                                ) : (
-                                  "Delete"
-                                )}
-                              </motion.button>
-                            )}
-                          </div>
-                        </div>
-                      }
-                    />
-                  ))}
-                </div>
-                {visiblePosts < user.posts.length && (
-                  <div className={styles.loadMoreContainer}>
-                    <button
-                      onClick={loadMorePosts}
-                      className={styles.loadMoreButton}
-                    >
-                      <Icon name="downarrow" size={22} fill="#fafafa" />
-                    </button>
-                  </div>
-                )}
-              </div>
-            </div>
+        <div className={styles.contentwraper}>
+          <UserBadge user={user} />
+          <div className={styles.componentwraper}>
+            <UserPosts
+              user={user}
+              posts={user.posts}
+              isCurrentUser={isCurrentUser}
+              onPostDelete={handlePostDelete}
+              onMessageSet={handleMessageSet}
+            />
           </div>
         </div>
       </section>
