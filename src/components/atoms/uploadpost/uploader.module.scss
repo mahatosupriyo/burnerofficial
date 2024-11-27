@@ -262,7 +262,7 @@
 
 .inputField {
     width: 100%;
-    max-width: 50rem;
+    // max-width: 50rem;
     background-color: none;
     background: none;
     padding: 1rem;
@@ -271,6 +271,10 @@
     margin-bottom: 1rem;
     color: #fff;
     font-size: 2rem;
+
+    @media only screen and (max-width: 660px){
+        font-size: 1.46rem;
+    }
 }
 
 .publishButton {
