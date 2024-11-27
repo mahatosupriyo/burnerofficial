@@ -3,10 +3,10 @@
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Drawer } from "vaul";
-import styles from "./test.module.scss";
+import styles from "./uploader.module.scss";
 import Icon from "@/components/atoms/icons";
 import SuccessPopup from "@/app/success/successpop";
-import PostCreationSteps from "./steps";
+import PostCreationSteps from "./uploadsteps";
 
 const UploadControls = () => {
   const [message, setMessage] = useState<string | null>(null);
@@ -31,16 +31,12 @@ const UploadControls = () => {
       <Drawer.Root open={isDrawerOpen} onOpenChange={setIsDrawerOpen} direction="bottom">
         <Drawer.Trigger asChild>
           <button className={styles.addPostButton}>
-            <Icon name="upload" size={30} fill="#666" />
+            <Icon name="upload" size={28} fill="#666" />
           </button>
         </Drawer.Trigger>
         <Drawer.Portal>
           <Drawer.Overlay className={styles.drawerOverlay} onClick={() => setIsDrawerOpen(false)} />
           <Drawer.Content className={styles.drawerContent}>
-            <div className={styles.drawerHeader}>
-              <div className={styles.drawerHandle} />
-              <Drawer.Title className={styles.drawerTitle}>Create New Post</Drawer.Title>
-            </div>
             <div className={styles.drawerBody}>
               <PostCreationSteps
                 onClose={(success) => {

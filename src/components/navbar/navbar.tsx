@@ -4,6 +4,7 @@ import Link from 'next/link';
 import SearchBox from '../atoms/searchbox/searchbox';
 import Icon from "../atoms/icons";
 import UserBtn from "../atoms/userbtn/userbtn";
+import UploadControls from '../atoms/uploadpost/uploadpost';
 
 export default function NavBar() {
 
@@ -14,12 +15,14 @@ export default function NavBar() {
                 <div className={styles.leftwraper}>
                     <Link draggable="false" href="/" className={styles.primarybutton}>
                         <div className={styles.iconwraper}>
-                            <Icon name="home" size={16.80} fill='#ffffff5c' />
+                            <Icon name="home" size={16} fill='#ffffff5c' />
                         </div>
                     </Link>
-                    <Link href="/series" className={styles.primarybutton}>
+                    {/* <Link href="/series" className={styles.primarybutton}>
                         <Icon name='series' size={26.80} fill='#ffffff5c' />
-                    </Link>
+                    </Link> */}
+
+                    <UploadControls/>
                 </div>
 
                 <div style={{ width: '100%' }}>

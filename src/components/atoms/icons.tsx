@@ -3,6 +3,7 @@ import React from 'react'
 type IconProps = {
     name: 'instagram' |
     'upload' |
+    'next' |
     'check' |
     'settings' |
     'link' |
@@ -48,7 +49,7 @@ export default function Icon({ name, size = 24, fill = 'currentColor' }: IconPro
         case 'check':
             return (
                 <svg xmlns="http://www.w3.org/2000/svg" height={size} viewBox="0 0 10 9" fill={fill}>
-                    <path d="M3.5 8.10541L0 4.60544L0.707 3.89844L3.5 6.69091L9.293 0.898438L10 1.60544L3.5 8.10541Z"/>
+                    <path d="M3.5 8.10541L0 4.60544L0.707 3.89844L3.5 6.69091L9.293 0.898438L10 1.60544L3.5 8.10541Z" />
                 </svg>
             )
 
@@ -120,6 +121,13 @@ export default function Icon({ name, size = 24, fill = 'currentColor' }: IconPro
                     <path d="M20 43.23C20 47.31 23.06 50.73 27.12 51.18C40 52.61 50.39 63 51.82 75.88C52.27 79.94 55.69 83 59.77 83H70C77.72 83 84 76.72 84 69V37C84 29.28 77.72 23 70 23H34C26.28 23 20 29.28 20 37V43.23ZM28 37C28 33.69 30.69 31 34 31H70C73.31 31 76 33.69 76 37V69C76 72.31 73.31 75 70 75H59.77C57.93 58.43 44.57 45.07 28 43.23V37Z" />
                     <path d="M24 67C30.62 67 36 72.38 36 79C36 81.21 37.79 83 40 83C42.21 83 44 81.21 44 79C44 67.97 35.03 59 24 59C21.79 59 20 60.79 20 63C20 65.21 21.79 67 24 67Z" />
                     <path d="M24 83C26.2091 83 28 81.2091 28 79C28 76.7909 26.2091 75 24 75C21.7909 75 20 76.7909 20 79C20 81.2091 21.7909 83 24 83Z" />
+                </svg>
+            )
+
+        case 'next':
+            return (
+                <svg xmlns="http://www.w3.org/2000/svg" height={size} viewBox="0 0 107 107" fill={fill}>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M42.8 36.2783L58.0534 52.2117L42.8972 68.2422L46.8805 72.2256L66.3115 52.3088L46.9777 32.1006L42.8 36.2783Z" />
                 </svg>
             )
 

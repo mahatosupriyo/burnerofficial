@@ -70,7 +70,6 @@ export default async function UserPage({ params }: { params: { username: string 
             <div className={styles.container}>
                 <div style={{ width: '100%', display: 'flex', alignItems: 'center', flexDirection: 'column' }}>
                     <UserProfile user={user} />
-                    <Controls />
                 </div>
             </div>
         </div>
