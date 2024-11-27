@@ -58,7 +58,9 @@ export default function Feed() {
           <Overlay
             key={post.id}
             triggerButton={
-              <div className={styles.gridItem}>
+              <motion.div
+                whileTap={{ opacity: 0.6 }}
+                className={styles.gridItem}>
                 <motion.img
                   whileTap={{ opacity: 0.6 }}
                   initial={{ opacity: 0.6, filter: 'blur(10px)' }}
@@ -79,7 +81,7 @@ export default function Feed() {
                     <Icon name="verified" size={10} />
                   </div>
                 </div>
-              </div>
+              </motion.div>
             }
             overlayContent={
               <>

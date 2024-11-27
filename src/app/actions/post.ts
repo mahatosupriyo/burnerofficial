@@ -1,6 +1,6 @@
 'use server'
 
-import { S3Client, PutObjectCommand, GetObjectCommand } from "@aws-sdk/client-s3";
+import { S3Client, PutObjectCommand, GetObjectCommand, DeleteObjectCommand } from "@aws-sdk/client-s3";
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 import { revalidatePath } from "next/cache";
 import prisma from "@/lib/prisma";
@@ -11,6 +11,7 @@ import crypto from 'crypto';
 import { rateLimit } from '@/lib/rate-limit';
 import { sanitizeString } from '@/lib/sanitize';
 import { FileTypeResult, fileTypeFromBuffer } from 'file-type';
+import { checkPermission } from "@/app/actions/permission";
 
 // Validate environment variables
 const envSchema = z.object({
@@ -63,6 +64,7 @@ type Post = z.infer<typeof PostSchema>;
 
 const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5 MB
 const ALLOWED_FILE_TYPES = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
+const MAX_POSTS_PER_USER = 100;
 
 export async function createPost(formData: FormData) {
   try {
@@ -73,6 +75,15 @@ export async function createPost(formData: FormData) {
 
     // Apply rate limiting
     await rateLimit(session.user.id);
+
+    // Check if the user has reached the maximum post limit
+    const userPostCount = await prisma.post.count({
+      where: { userId: session.user.id }
+    });
+
+    if (userPostCount >= MAX_POSTS_PER_USER) {
+      throw new Error(`You have reached the maximum limit of ${MAX_POSTS_PER_USER} posts`);
+    }
 
     const input = PostInputSchema.safeParse({
       file: formData.get('file'),
@@ -87,7 +98,7 @@ export async function createPost(formData: FormData) {
     const { file, caption, link } = input.data;
 
     if (file.size > MAX_FILE_SIZE) {
-      throw new Error("File size exceeds 5 mega byte limit");
+      throw new Error(`File size exceeds ${MAX_FILE_SIZE / (1024 * 1024)} MB limit`);
     }
 
     const fileBuffer = await file.arrayBuffer();
@@ -118,8 +129,8 @@ export async function createPost(formData: FormData) {
       data: {
         imageUrl: fileName,
         userId: session.user.id,
-        caption: caption ? sanitizeString(caption) : undefined,
-        link: link ? sanitizeString(link) : undefined,
+        caption: caption ? sanitizeString(caption) : null,
+        link: link ? sanitizeString(link) : null,
       },
       include: {
         user: true,
@@ -148,15 +159,6 @@ export async function getPostWithSignedUrl(postId: string) {
 
     // Apply rate limiting
     await rateLimit(session.user.id);
-
-    // Check if the user has reached the maximum post limit
-    const userPostCount = await prisma.post.count({
-      where: { userId: session.user.id }
-    });
-
-    if (userPostCount >= 100) {
-      throw new Error("You have reached the maximum limit of 100 posts");
-    }
 
     const post = await prisma.post.findUnique({
       where: { id: postId },
@@ -195,3 +197,48 @@ export async function getSignedImageUrl(key: string) {
     return '/placeholder-image.jpg';
   }
 }
+
+export async function deletePost(postId: string) {
+  try {
+    const session = await auth();
+    if (!session?.user?.id) {
+      throw new Error("You must be logged in to delete a post");
+    }
+
+    const post = await prisma.post.findUnique({
+      where: { id: postId },
+      select: { userId: true, imageUrl: true },
+    });
+
+    if (!post) {
+      throw new Error("Post not found");
+    }
+
+    const canDelete = await checkPermission(session.user.id, 'post', 'delete');
+
+    if (!canDelete && post.userId !== session.user.id) {
+      throw new Error("You don't have permission to delete this post");
+    }
+
+    // Delete the image from S3
+    const deleteCommand = new DeleteObjectCommand({
+      Bucket: env.SERVER_S3_BUCKET_NAME,
+      Key: post.imageUrl,
+    });
+
+    await s3Client.send(deleteCommand);
+
+    // Delete the post from the database
+    await prisma.post.delete({
+      where: { id: postId },
+    });
+
+    revalidatePath('/');
+
+    return { success: true, message: "Post deleted successfully" };
+  } catch (error) {
+    console.error("Error deleting post:", error);
+    throw error;
+  }
+}
+
