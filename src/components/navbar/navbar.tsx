@@ -5,6 +5,7 @@ import SearchBox from '../atoms/searchbox/searchbox';
 import Icon from "../atoms/icons";
 import UserBtn from "../atoms/userbtn/userbtn";
 import UploadControls from '../atoms/uploadpost/uploadpost';
+import ButtonWrapper from './buttonwraper';
 
 export default function NavBar() {
 
@@ -13,16 +14,16 @@ export default function NavBar() {
             <div className={styles.nav}>
 
                 <div className={styles.leftwraper}>
-                    <Link draggable="false" href="/" className={styles.primarybutton}>
-                        <div className={styles.iconwraper}>
-                            <Icon name="home" size={16} fill='#ffffff5c' />
-                        </div>
-                    </Link>
-                    {/* <Link href="/series" className={styles.primarybutton}>
-                        <Icon name='series' size={26.80} fill='#ffffff5c' />
-                    </Link> */}
 
-                    <UploadControls/>
+                    <ButtonWrapper>
+                        <Link draggable="false" href="/" className={styles.primarybutton}>
+                            <div className={styles.iconwraper}>
+                                <Icon name="home" size={16} fill='#ffffff5c' />
+                            </div>
+                        </Link>
+                    </ButtonWrapper>
+
+                    <UploadControls />
                 </div>
 
                 <div style={{ width: '100%' }}>
@@ -31,10 +32,16 @@ export default function NavBar() {
 
 
                 <div className={styles.rightwraper}>
-                    <Link href='/settings' className={styles.primarybutton}>
-                        <Icon name='settings' size={26.80} fill='#ffffff5c' />
-                    </Link>
-                    <UserBtn />
+                    <ButtonWrapper>
+                        <Link href='/settings' className={styles.primarybutton}>
+                            <Icon name='settings' size={26.80} fill='#ffffff5c' />
+                        </Link>
+                    </ButtonWrapper>
+
+                    <ButtonWrapper>
+                        <UserBtn />
+                    </ButtonWrapper>
+
                 </div>
 
 
