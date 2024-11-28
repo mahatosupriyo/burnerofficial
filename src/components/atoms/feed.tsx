@@ -8,6 +8,7 @@ import Icon from './icons'
 import Overlay from '../molecules/overlay/overlay'
 import styles from './feed.module.scss'
 import Avatar from './avatar'
+import InspoFilter from './filter/filter'
 
 interface Post {
   id: string
@@ -49,42 +50,6 @@ export default function Feed() {
 
   return (
     <div className={styles.feedwraper}>
-      <div
-        className={styles.cover}
-        style={{
-          width: '100%',
-          display: 'flex',
-          alignItems: 'center',
-          flexDirection: 'row',
-          cursor: 'pointer',
-          marginBottom: '2rem'
-        }}>
-        <h2 className={styles.chip}>
-          All
-        </h2>
-
-        <h2 className={styles.chip}>
-          UI
-        </h2>
-
-        <h2 className={styles.chip}>
-          Poster
-        </h2>
-
-        <h2 className={styles.chip}>
-          Fonts
-        </h2>
-
-
-        <h2 className={styles.chip}>
-          Editorial
-        </h2>
-
-        <h2 className={styles.chip}>
-          Research
-        </h2>
-
-      </div>
       <Masonry
         breakpointCols={breakpointColumnsObj}
         className={styles.masonryGrid}

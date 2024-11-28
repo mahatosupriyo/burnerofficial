@@ -6,6 +6,7 @@ import Icon from "../atoms/icons";
 import UserBtn from "../atoms/userbtn/userbtn";
 import UploadControls from '../atoms/uploadpost/uploadpost';
 import ButtonWrapper from './buttonwraper';
+import InspoFilter from '../atoms/filter/filter';
 
 export default function NavBar() {
 
@@ -46,6 +47,7 @@ export default function NavBar() {
 
 
             </div>
+            <InspoFilter/>
         </div>
     );
 }
