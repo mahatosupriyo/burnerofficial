@@ -4,7 +4,6 @@ import { getSignedImageUrl } from '@/app/actions/post';
 import UserProfile from '@/components/layouts/userprofile/userprofile';
 import NavBar from '@/components/navbar/navbar';
 import styles from './username.module.scss'
-import Controls from '@/components/molecules/controls/controls';
 import { getAvatarUrl } from '../actions/avatar';
 
 async function getUserData(username: string) {

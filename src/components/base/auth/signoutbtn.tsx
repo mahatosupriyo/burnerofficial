@@ -4,7 +4,7 @@ import { signOut } from "next-auth/react"
 
 export function SignOut() {
     return (
-        <button onClick={() => signOut()} className={styles.logoutbtn} style={{ margin: '1rem 0rem' }}>
+        <button onClick={() => signOut()} className={styles.logoutbtn}>
             <div className={styles.subwraper} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.8rem' }}>
                 Logout
             </div>

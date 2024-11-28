@@ -14,7 +14,7 @@ declare module "next-auth" {
 }
 
 export const { handlers, auth } = NextAuth({
-  // trustHost: process.env.NEXTAUTH_URL === "https://eduburner.org",
+  // trustHost: process.env.NEXTAUTH_URL,
   adapter: PrismaAdapter(prisma),
   providers: [
     GithubProvider({

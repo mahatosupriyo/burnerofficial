@@ -34,14 +34,32 @@ const s3Client = new S3Client({
 // Define schemas for various parts of the application
 const FileSchema = z.instanceof(File);
 
+
 const PostInputSchema = z.object({
-  file: FileSchema,
-  caption: z.string().max(500).optional().nullable().refine(
-    (val) => !val || val.trim().split(/\s+/).length <= 20,
-    { message: "Caption must not exceed 20 words" }
-  ),
+  file: z.any(),
+  caption: z
+    .string()
+    .max(500)
+    .optional()
+    .nullable()
+    .refine(
+      (val) => !val || val.trim().split(/\s+/).length <= 20,
+      { message: "Caption must not exceed 20 words" }
+    ),
   link: z.string().url().max(2000).optional().nullable(),
+  tags: z
+    .string()
+    .array()
+    .optional()
+    .default([])
+    .refine((tags) => tags.length <= 2, {
+      message: "You can select a maximum of 2 tags.",
+    })
+    .refine((tags) => tags.every((tag) => tag.length <= 50), {
+      message: "Each tag must be 50 characters or fewer.",
+    }),
 });
+
 
 const UserSchema = z.object({
   id: z.string(),
@@ -57,6 +75,7 @@ const PostSchema = z.object({
   createdAt: z.date(),
   userId: z.string(),
   user: UserSchema,
+  tags: z.string().array(),
 });
 
 type PostInput = z.infer<typeof PostInputSchema>;
@@ -85,17 +104,22 @@ export async function createPost(formData: FormData) {
       throw new Error(`You have reached the maximum limit of ${MAX_POSTS_PER_USER} posts`);
     }
 
+
+    const rawTags = formData.get("tags") as string;
+    const tagsArray = rawTags ? [rawTags] : []; // Wrap single tag in an array
+
     const input = PostInputSchema.safeParse({
-      file: formData.get('file'),
-      caption: formData.get('caption') || null,
-      link: formData.get('link') || null,
+      file: formData.get("file"),
+      caption: formData.get("caption") || null,
+      link: formData.get("link") || null,
+      tags: tagsArray,
     });
 
     if (!input.success) {
       throw new Error(input.error.errors[0].message || "Invalid input data");
     }
 
-    const { file, caption, link } = input.data;
+    const { file, caption, link, tags } = input.data as PostInput;
 
     if (file.size > MAX_FILE_SIZE) {
       throw new Error(`File size exceeds ${MAX_FILE_SIZE / (1024 * 1024)} MB limit`);
@@ -131,6 +155,7 @@ export async function createPost(formData: FormData) {
         userId: session.user.id,
         caption: caption ? sanitizeString(caption) : null,
         link: link ? sanitizeString(link) : null,
+        tags,
       },
       include: {
         user: true,

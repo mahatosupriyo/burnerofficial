@@ -4,6 +4,39 @@
     background: rgba(0, 0, 0, 0.4);
 }
 
+.tagSelector {
+    gap: 1rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.radioLabel {
+    text-transform: lowercase;
+    cursor: pointer;
+    display: flex;
+    font-size: 1.4rem;
+    font-weight: 500;
+    align-items: center;
+    gap: 0.4rem;
+    justify-content: center;
+    padding: 1.2rem 1.3rem;
+    border-radius: 10rem;
+    border: 0.2rem solid hsl(0, 0, 20%);
+
+    &:focus-within{
+        // outline-offset: 0.2rem;
+        outline: 0.2rem solid #0070f3;
+        border: solid transparent;
+    }
+
+    .radioInput{
+        // opacity: 0;
+        accent-color: #0070f3;
+    }
+}
+
 .drawerContent {
     background-color: hsl(0, 0, 4%);
 
@@ -21,6 +54,7 @@
     left: 0;
     right: 0;
     outline: none;
+    width: 100%;
 }
 
 .drawerHeader {
@@ -47,9 +81,17 @@
 }
 
 .drawerBody {
-    max-width: 28rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    max-width: 40rem;
+    width: 100%;
     /* Tailwind's max-w-md */
+    max-height: 100%;
+    overflow: auto;
     margin: 0 auto;
+    padding: 4rem 0rem;
 }
 
 .addPostButton {
@@ -110,7 +152,7 @@
 
 .previewImage {
     max-width: 100%;
-    max-height: 300px;
+    max-height: 10rem;
     aspect-ratio: 1/1;
     border-radius: 100rem;
     object-fit: cover;
@@ -272,7 +314,7 @@
     color: #fff;
     font-size: 2rem;
 
-    @media only screen and (max-width: 660px){
+    @media only screen and (max-width: 660px) {
         font-size: 1.46rem;
     }
 }
@@ -280,7 +322,7 @@
 .publishButton {
     background-color: #fff;
 
-    outline: 0.16rem solid #0060df;
+    outline: 0.16rem solid hsl(214, 100%, 44%);
     outline-offset: 0.6rem;
 
     &:hover {
