@@ -136,7 +136,8 @@ const PostCreationSteps: React.FC<PostCreationStepsProps> = ({ onClose }) => {
                     onChange={(e) => setSelectedTag(e.target.value)}
                     className={styles.radioInput}
                   />
-                  {tag}
+                  <p className={styles.tag}>{tag}</p>
+                  <p className={styles.hiddentag}>{tag}</p>
                 </label>
               ))}
             </div>

@@ -8,7 +8,6 @@ import Icon from './icons'
 import Overlay from '../molecules/overlay/overlay'
 import styles from './feed.module.scss'
 import Avatar from './avatar'
-import InspoFilter from './filter/filter'
 
 interface Post {
   id: string

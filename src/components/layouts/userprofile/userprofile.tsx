@@ -43,8 +43,6 @@ export default function UserProfile({ user: initialUser }: UserProfileProps) {
   const { data: session } = useSession();
 
   const [user, setUser] = useState<User>(initialUser);
-  const [visiblePosts, setVisiblePosts] = useState(10);
-  const [deletingPostId, setDeletingPostId] = useState<string | null>(null);
   const [message, setMessage] = useState<string | null>(null);
   const [showPopup, setShowPopup] = useState(false);
 
@@ -57,36 +55,6 @@ export default function UserProfile({ user: initialUser }: UserProfileProps) {
     }
   }, []);
 
-  const loadMorePosts = () => {
-    setVisiblePosts((prevVisible) => prevVisible + 10);
-  };
-
-  const handleDelete = async (postId: string) => {
-    setDeletingPostId(postId);
-    setMessage(null);
-    try {
-      const result = await deletePost(postId);
-      if (result.success) {
-        setUser((prevUser) => ({
-          ...prevUser,
-          posts: prevUser.posts.filter((post) => post.id !== postId),
-        }));
-        setMessage(result.message);
-        localStorage.setItem('userProfileMessage', result.message);
-        setShowPopup(true);
-      } else {
-        throw new Error(result.message);
-      }
-    } catch (error) {
-      console.error("Error deleting post:", error);
-      const errorMessage = error instanceof Error ? error.message : "An unknown error occurred";
-      setMessage(errorMessage);
-      localStorage.setItem('userProfileMessage', errorMessage);
-      setShowPopup(true);
-    } finally {
-      setDeletingPostId(null);
-    }
-  };
 
   const handlePostDelete = (postId: string) => {
     setUser((prevUser) => ({
