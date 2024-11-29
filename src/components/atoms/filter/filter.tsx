@@ -2,8 +2,12 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import styles from './filter.module.scss'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
 const InspoFilter = () => {
+    const pathname = usePathname()
+
     return (
         <motion.div
             className={styles.cover}
@@ -13,48 +17,41 @@ const InspoFilter = () => {
                 alignItems: 'center',
                 flexDirection: 'row',
                 cursor: 'pointer',
-                marginBottom: '2rem'
             }}>
 
-            <motion.button
-                whileTap={{ opacity: 0.6 }}
-                className={styles.chip}>
+            <Link
+                href="/"
+                className={`${styles.chip} ${pathname === '/' ? styles.activechip : ''}`}>
                 All
-            </motion.button>
+            </Link>
 
-            <motion.button
-                whileTap={{ opacity: 0.6 }}
-                className={styles.chip}>
+            <Link
+                href="/inspiration/ui"
+                className={`${styles.chip} ${pathname === '/inspiration/ui' ? styles.activechip : ''}`}>
                 UI
-            </motion.button>
+            </Link>
 
-            <motion.button
-                whileTap={{ opacity: 0.6 }}
-                className={styles.chip}>
-                Poster
-            </motion.button>
+            <Link
+                href="/inspiration/graphics"
+                className={`${styles.chip} ${pathname === '/inspiration/graphics' ? styles.activechip : ''}`}>
+                Graphics
+            </Link>
 
-            <motion.button
-                whileTap={{ opacity: 0.6 }}
-                className={styles.chip}>
-                Fonts
-            </motion.button>
+            <Link
+                href="/inspiration/resources"
+                className={`${styles.chip} ${pathname === '/inspiration/resources' ? styles.activechip : ''}`}>
+                Resources
+            </Link>
 
-
-            <motion.button
-                whileTap={{ opacity: 0.6 }}
-                className={styles.chip}>
+            <Link
+                href="/inspiration/editorial"
+                className={`${styles.chip} ${pathname === '/inspiration/editorial' ? styles.activechip : ''}`}>
                 Editorial
-            </motion.button>
-
-            <motion.button
-                whileTap={{ opacity: 0.6 }}
-                className={styles.chip}>
-                Research
-            </motion.button>
+            </Link>
 
         </motion.div>
     )
 }
 
 export default InspoFilter
+

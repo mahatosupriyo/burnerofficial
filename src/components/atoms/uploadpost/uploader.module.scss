@@ -10,10 +10,10 @@
     flex-direction: row;
     flex-wrap: wrap;
     width: 100%;
+    justify-content: center;
 }
 
 .radioLabel {
-    text-transform: lowercase;
     cursor: pointer;
     display: flex;
     font-size: 1.4rem;
@@ -21,16 +21,18 @@
     align-items: center;
     gap: 0.4rem;
     justify-content: center;
-    padding: 1.2rem 1.3rem;
+    padding: 1.2rem 1rem;
     border-radius: 10rem;
     border: 0.2rem solid hsl(0, 0, 20%);
     outline: 0.2rem solid transparent;
 
     overflow: hidden;
+
     &:focus-within {
         border: 0.2rem solid #0070f3;
     }
-    .hiddentag{
+
+    .hiddentag {
         opacity: 0;
     }
 
@@ -40,7 +42,7 @@
         accent-color: #0070f3;
     }
 
-    .tag{
+    .tag {
         display: flex;
         position: absolute;
     }
@@ -145,10 +147,11 @@
     width: 100%;
 }
 
-.captionstep {
+.captionStep {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
+    justify-content: center;
     gap: 1rem;
     width: 100%;
 }
@@ -331,11 +334,14 @@
 .publishButton {
     background-color: #fff;
 
-    outline: 0.16rem solid hsl(214, 100%, 44%);
-    outline-offset: 0.6rem;
 
     &:hover {
         opacity: 0.8;
+    }
+
+    &:focus-within {
+        outline: 0.16rem solid hsl(214, 100%, 44%);
+        outline-offset: 0.6rem;
     }
 }
 

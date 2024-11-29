@@ -19,7 +19,7 @@ const PostCreationSteps: React.FC<PostCreationStepsProps> = ({ onClose }) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  const tagOptions = ["NONE", "UI", "LOGO", "ILLUSTRATION", "FONT", "POSTER", "ADS", "RESEARCH", "EDITORIAL"];
+  const tagOptions = ["None", "Editorial", "Graphics", "Resources", "UI"];
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFile = e.target.files?.[0];
