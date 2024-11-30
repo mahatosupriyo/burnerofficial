@@ -4,13 +4,56 @@
 @import '../../../styles/essentials';
 @import '../../../styles/typography';
 
+
+// Variables For BG
+$d1: 320.54deg;
+$d2: 58.72deg;
+$d3: 121.28deg;
+$d4: 180deg;
+$d5: 52.23deg;
+$d6: 121.28deg;
+$d7: 50% 72.12% at 50% 50%;
+$d8: 72.37%;
+$p1: 0%;
+$p2: 100%;
+$p3: 0.5%;
+$blend-one: screen, color-dodge, color-burn, screen, overlay, difference, color-dodge;
+$blend-two: screen, color-dodge, color-burn, screen, overlay, difference;
+$no-blend: inherit;
+
+$c1: #81C102;
+$c2: #7379D6;
+$c3: #96A8C6;
+$c4: #5A443A;
+$c5: #EB7068;
+$c6: #2232E4;
+$c7: #1F0274;
+$c8: #8A023C;
+$c9: #1F5B8F;
+$c10: #A8386B;
+$c11: #4A0811;
+$c12: #523FF1;
+$c13: #BDC8E0;
+$c14: #D95CBB;
+$c15: #07995C;
+$c16: #E40E31;
+$c17: #AEEC96;
+$c18: #307EE6;
+$c19: #B61A7F;
+$c20: #B3A25A;
+
+// Variables for BG Ends
+
 .wraper {
     background-color: hsl(0, 0%, 0%);
     width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
+
+
+
 
     .container {
         width: 100%;
@@ -22,66 +65,58 @@
 
         .content {
             margin-top: 10rem;
-            padding: 4rem 8rem;
+            padding: 4rem 1.6rem;
             display: flex;
             width: 100%;
             align-items: flex-start;
             flex-direction: column;
             gap: 14rem;
 
-            .headercontent {
-                display: flex;
-                flex-direction: column;
-                gap: 2.6rem;
-
-                .heading {
-                    font-family: Involve Bold;
-                    font-size: 3.6rem;
-                    line-height: 120%;
-                    text-decoration: underline;
-                }
-
-                .description{
-                    font-size: 2rem;
-                    // text-transform: lowercase;
-                    // font-weight: 600;
-                    color: hsl(0, 0, 60%);
-                    font-family: Involve Bold;
-                }
-            }
         }
 
-        .navbar {
+        .hero {
             width: 100%;
+            min-height: 30rem;
+            height: 100%;
             flex-direction: row;
             align-items: center;
-            justify-content: space-between;
+            justify-content: center;
             display: flex;
+            padding: 4rem 0rem;
+            // border-radius: 1rem;
+            position: relative;
+            overflow: hidden;
+
+            &::after {
+                z-index: 200;
+                position: absolute;
+                height: 100%;
+                width: 100%;
+                scale: 102%;
+                content: '';
+                background:
+                    linear-gradient($d1, $c1 $p1, $c11 $d8),
+                    linear-gradient($d2, $c2 $p1, $c12 $p2),
+                    linear-gradient($d3, $c3 $p1, $c13 $p2),
+                    linear-gradient($d3, $c4 $p1, $c14 $p2),
+                    linear-gradient($d4, $c5 $p1, $c15 $p3, $c17 $p2),
+                    linear-gradient($d5, $c6 $p1, $c16 $p2),
+                    linear-gradient($d6, $c7 $p1, $c10 $p2),
+                    radial-gradient($d7, $c8 $p1, $c9 $p2);
+                background-blend-mode: $blend-one;
+                // height: 100vh;
+                background-position: center;
+                width: 100%;
+                backdrop-filter: none;
+            }
+
+
 
             .academylogo {
-                height: 5.6rem;
+                height: 5.4rem;
+                z-index: 250;
             }
 
-            .paybtn {
-                width: 100%;
-                max-width: 16rem;
-                padding: 2.4rem 2rem;
-                border-radius: 0.6rem;
-                background: hsl(0, 0%, 100%);
-                @include smooth;
-                border-radius: 1rem;
-                color: #111;
-                font-weight: 700;
-                cursor: pointer;
-
-                @media (max-width: 768px) {
-                    max-width: 100%;
-                }
-
-                &:hover {
-                    background: hsl(0, 0%, 76%);
-                }
-            }
         }
     }
 }

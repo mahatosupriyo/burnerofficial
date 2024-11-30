@@ -19,6 +19,12 @@ const InspoFilter = () => {
                 cursor: 'pointer',
             }}>
 
+            <Link href="/series" className={`${styles.chip} ${pathname === '/series' ? styles.activechip : ''}`}>
+                Academy
+            </Link>
+
+            <span className={styles.divider}></span>
+
             <Link
                 href="/"
                 className={`${styles.chip} ${pathname === '/' ? styles.activechip : ''}`}>

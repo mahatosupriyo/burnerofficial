@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect } from "react";
 import styles from "./userprofile.module.scss";
-import { deletePost } from "@/app/actions/post/delete-post";
 import { useSession } from "next-auth/react";
 import SuccessPopup from "@/app/success/successpop";
 import UserPosts from "./userposts/userposts";

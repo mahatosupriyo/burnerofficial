@@ -4,11 +4,21 @@
 .cover {
   display: flex;
   position: relative;
-  margin-left: 1rem;
+  padding-left: 2rem;
   width: 100%;
-  gap: 0.6rem;
+  max-width: 200rem;
+  gap: 2.4rem;
   overflow-x: auto;
+  align-items: flex-start;
+  flex-direction: row;
+  border-bottom: 0.2rem solid hsl(0, 0, 10%);
+}
 
+.divider {
+  // display: flex;
+  height: 1.4rem;
+  width: 0.2rem;
+  background-color: hsl(0, 0, 20%);
 }
 
 .chip {
@@ -23,9 +33,9 @@
   cursor: pointer;
   font-size: 1.56rem;
   line-height: 100%;
-  padding: 1.2rem 1.2rem 1.6rem 1.2rem;
-  font-weight: 600;
-  color: hsl(0, 0, 100%, 0.44);
+  padding: 1.2rem 0rem 1.6rem 0rem;
+  font-weight: 500;
+  color: hsl(0, 0, 100%, 0.4);
   @include smooth;
 
   &:hover {
@@ -34,16 +44,15 @@
 }
 
 
-.activechip{
+.activechip {
   color: hsl(0, 0, 86%);
 
   &::after {
     content: '';
     position: absolute;
     bottom: 0;
-    width: 30%;
+    width: 100%;
     height: 0.2rem;
-    border-radius: 10rem;
     background-color: #727272;
   }
 }
