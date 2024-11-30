@@ -87,13 +87,7 @@ $c20: #B3A25A;
             position: relative;
             overflow: hidden;
 
-            &::after {
-                z-index: 200;
-                position: absolute;
-                height: 100%;
-                width: 100%;
-                scale: 102%;
-                content: '';
+
                 background:
                     linear-gradient($d1, $c1 $p1, $c11 $d8),
                     linear-gradient($d2, $c2 $p1, $c12 $p2),
@@ -108,13 +102,12 @@ $c20: #B3A25A;
                 background-position: center;
                 width: 100%;
                 backdrop-filter: none;
-            }
+            
 
 
 
             .academylogo {
                 height: 5.4rem;
-                z-index: 250;
             }
 
         }

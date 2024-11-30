@@ -19,37 +19,44 @@ const InspoFilter = () => {
                 cursor: 'pointer',
             }}>
 
-            <Link href="/series" className={`${styles.chip} ${pathname === '/series' ? styles.activechip : ''}`}>
+            <Link
+                draggable="false"
+                href="/series" className={`${styles.chip} ${pathname === '/series' ? styles.activechip : ''}`}>
                 Academy
             </Link>
 
             <span className={styles.divider}></span>
 
             <Link
+                draggable="false"
                 href="/"
                 className={`${styles.chip} ${pathname === '/' ? styles.activechip : ''}`}>
                 All
             </Link>
 
             <Link
+                draggable="false"
                 href="/inspiration/ui"
                 className={`${styles.chip} ${pathname === '/inspiration/ui' ? styles.activechip : ''}`}>
-                UI
+                Interfaces
             </Link>
 
             <Link
+                draggable="false"
                 href="/inspiration/graphics"
                 className={`${styles.chip} ${pathname === '/inspiration/graphics' ? styles.activechip : ''}`}>
                 Graphics
             </Link>
 
             <Link
+                draggable="false"
                 href="/inspiration/resources"
                 className={`${styles.chip} ${pathname === '/inspiration/resources' ? styles.activechip : ''}`}>
                 Resources
             </Link>
 
             <Link
+                draggable="false"
                 href="/inspiration/editorial"
                 className={`${styles.chip} ${pathname === '/inspiration/editorial' ? styles.activechip : ''}`}>
                 Editorial
