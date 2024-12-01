@@ -21,7 +21,7 @@ const InspoFilter = () => {
 
             <Link
                 draggable="false"
-                href="/series" className={`${styles.chip} ${pathname === '/series' ? styles.activechip : ''}`}>
+                href="/academy" className={`${styles.chip} ${pathname === '/series' ? styles.activechip : ''}`}>
                 Academy
             </Link>
 

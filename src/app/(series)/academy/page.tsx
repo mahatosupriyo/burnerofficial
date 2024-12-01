@@ -17,12 +17,11 @@ const Home = () => {
 
 
                     <div className={styles.headercontent}>
-                        <h2 className={styles.heading}>Step Into <br />The Top 1%</h2>
+                        <h2 className={styles.heading}>Step Into <br />The Top One %</h2>
                         <p className={styles.description}>
                             Become Part of World’s Elite - 1% of Designers
                         </p>
                     </div>
-                    {/* <h1 className={styles.headingxxl}>Create your Success Story with India’s Top Design Program</h1> */}
                 </div>
             </div>
         </div>
