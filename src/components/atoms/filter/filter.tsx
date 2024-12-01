@@ -16,12 +16,11 @@ const InspoFilter = () => {
                 display: 'flex',
                 alignItems: 'center',
                 flexDirection: 'row',
-                cursor: 'pointer',
             }}>
 
             <Link
                 draggable="false"
-                href="/academy" className={`${styles.chip} ${pathname === '/series' ? styles.activechip : ''}`}>
+                href="/academy" className={`${styles.chip} ${pathname === '/academy' ? styles.activechip : ''}`}>
                 Academy
             </Link>
 

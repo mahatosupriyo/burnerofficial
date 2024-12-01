@@ -5,6 +5,7 @@
   display: flex;
   position: relative;
   padding-left: 2rem;
+  padding-right: 2rem;
   width: 100%;
   max-width: 200rem;
   gap: 2.2rem;
@@ -15,7 +16,6 @@
 }
 
 .divider {
-  // display: flex;
   height: 1.4rem;
   width: 0.2rem;
   background-color: hsl(0, 0, 20%);

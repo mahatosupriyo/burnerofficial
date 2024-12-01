@@ -7,9 +7,13 @@ import { getAvatarUrl } from '@/app/actions/avatar'
 
 import NavBar from '@/components/navbar/navbar'
 import EditProfileNav from '@/components/layouts/settings/editprofile/editprofilenav/editprofilenav'
-import EditProfileForm from '@/components/layouts/settings/editprofile/editdataform/editdataform'
 import UpdateAboutForm from '@/components/layouts/settings/editabout/editaboutform'
 import AvatarUpload from '@/components/atoms/uploadavatar/uploadavatar'
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Edit About',
+};
 
 export default async function EditAboutPage() {
 

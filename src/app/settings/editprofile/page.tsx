@@ -12,6 +12,11 @@ import VerificationRequestForm from '@/components/atoms/verification/resquestfor
 import Icon from '@/components/atoms/icons'
 
 import Link from 'next/link'
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Edit Account Data',
+};
 
 export default async function EditProfile() {
 

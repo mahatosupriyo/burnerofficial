@@ -6,6 +6,12 @@ import NavBar from '@/components/navbar/navbar';
 import styles from './username.module.scss'
 import { getAvatarUrl } from '../actions/avatar';
 
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Burner Creator',
+};
+
 async function getUserData(username: string) {
     const user = await prisma.user.findUnique({
         where: { username },

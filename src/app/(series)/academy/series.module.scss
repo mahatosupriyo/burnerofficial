@@ -70,7 +70,7 @@ $c20: #B3A25A;
             width: 100%;
             align-items: flex-start;
             flex-direction: column;
-            gap: 14rem;
+            gap: 4rem;
 
         }
 
@@ -88,27 +88,93 @@ $c20: #B3A25A;
             overflow: hidden;
 
 
-                background:
-                    linear-gradient($d1, $c1 $p1, $c11 $d8),
-                    linear-gradient($d2, $c2 $p1, $c12 $p2),
-                    linear-gradient($d3, $c3 $p1, $c13 $p2),
-                    linear-gradient($d3, $c4 $p1, $c14 $p2),
-                    linear-gradient($d4, $c5 $p1, $c15 $p3, $c17 $p2),
-                    linear-gradient($d5, $c6 $p1, $c16 $p2),
-                    linear-gradient($d6, $c7 $p1, $c10 $p2),
-                    radial-gradient($d7, $c8 $p1, $c9 $p2);
-                background-blend-mode: $blend-one;
-                // height: 100vh;
-                background-position: center;
-                width: 100%;
-                backdrop-filter: none;
-            
+            background:
+                linear-gradient($d1, $c1 $p1, $c11 $d8),
+                linear-gradient($d2, $c2 $p1, $c12 $p2),
+                linear-gradient($d3, $c3 $p1, $c13 $p2),
+                linear-gradient($d3, $c4 $p1, $c14 $p2),
+                linear-gradient($d4, $c5 $p1, $c15 $p3, $c17 $p2),
+                linear-gradient($d5, $c6 $p1, $c16 $p2),
+                linear-gradient($d6, $c7 $p1, $c10 $p2),
+                radial-gradient($d7, $c8 $p1, $c9 $p2);
+            background-blend-mode: $blend-one;
+            // height: 100vh;
+            background-position: center;
+            width: 100%;
+            backdrop-filter: none;
+
 
 
 
             .academylogo {
                 height: 5.4rem;
             }
+
+        }
+
+        .wraperbox {
+            display: flex;
+            width: 100%;
+            align-items: flex-start;
+            justify-content: space-between;
+            padding: 4rem 2rem;
+
+
+            .subheading {
+                width: 50%;
+                display: flex;
+                font-size: 1.46rem;
+            }
+
+
+
+            .componentboxwraper{
+                display: flex;
+                flex-direction: column;
+                gap: 10rem;
+                width: 100%;
+                max-width: 50%;
+
+                .componentbox {
+
+                    display: grid;
+                    gap: 2rem;
+                    grid-template-columns: repeat(2, 1fr);
+    
+                    .component {
+                        width: 100%;
+                        display: flex;
+                        flex-direction: column;
+                        gap: 0.6rem;
+    
+                        .featurelabel {
+                            font-size: 1.66rem;
+                            font-weight: 600;
+                        }
+    
+                        .description {
+                            font-size: 1.46rem;
+                            font-weight: 500;
+                            color: hsl(0, 0, 50%);
+                        }
+                    }
+                }
+
+                .subdesc{
+                    font-size: 1.72rem;
+                    font-weight: 400;
+                    max-width: 70%;
+                    color: hsl(0, 0, 60%);
+                }
+
+                .bigtxt{
+                    font-size: 3.8rem;
+                    font-weight: 700;
+                    max-width: 70%;
+                    color: hsl(0, 0, 90%);
+                }
+            }
+
 
         }
     }
