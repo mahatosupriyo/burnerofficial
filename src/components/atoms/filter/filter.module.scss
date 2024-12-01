@@ -10,6 +10,7 @@
 
   width: 100%;
   max-width: 200rem;
+  overflow-x: auto;
 }
 
 .cover {
@@ -19,7 +20,7 @@
   padding-right: 2rem;
 
   gap: 2.2rem;
-  overflow-x: auto;
+
   align-items: center;
   flex-direction: row;
   flex-wrap: nowrap;
