@@ -1,23 +1,35 @@
 @use '../../../styles/essentials';
 @import '../../../styles/essentials';
 
+
+.mainwrap {
+  display: flex;
+  width: 100%;
+  align-items: flex-start;
+  flex-direction: column;
+
+  width: 100%;
+  max-width: 200rem;
+}
+
 .cover {
   display: flex;
   position: relative;
-  padding-left: 2rem;
+  padding-left: 1.6rem;
   padding-right: 2rem;
-  width: 100%;
-  max-width: 200rem;
+
   gap: 2.2rem;
   overflow-x: auto;
-  align-items: flex-start;
+  align-items: center;
   flex-direction: row;
+  flex-wrap: nowrap;
   border-bottom: 0.2rem solid hsl(0, 0, 10%);
 }
 
 .divider {
+  display: flex;
   height: 1.4rem;
-  width: 0.2rem;
+  width: 0.16rem;
   background-color: hsl(0, 0, 20%);
 }
 
@@ -34,7 +46,7 @@
   font-size: 1.46rem;
   line-height: 100%;
   padding: 1.2rem 0rem 1.6rem 0rem;
-  font-weight: 600;
+  font-weight: 500;
   color: hsl(0, 0, 100%, 0.4);
   @include smooth;
   user-select: none;
@@ -49,7 +61,7 @@
   color: hsl(0, 0, 86%);
 
   &::after {
-    
+
     content: '';
     position: absolute;
     bottom: 0;

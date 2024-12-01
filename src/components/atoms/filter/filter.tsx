@@ -9,59 +9,55 @@ const InspoFilter = () => {
     const pathname = usePathname()
 
     return (
-        <motion.div
-            className={styles.cover}
-            style={{
-                width: '100%',
-                display: 'flex',
-                alignItems: 'center',
-                flexDirection: 'row',
-            }}>
+        <div className={styles.mainwrap}>
+            <motion.div className={styles.cover}>
 
-            <Link
-                draggable="false"
-                href="/academy" className={`${styles.chip} ${pathname === '/academy' ? styles.activechip : ''}`}>
-                Academy
-            </Link>
+                <Link
+                    draggable="false"
+                    href="/academy" className={`${styles.chip} ${pathname === '/academy' ? styles.activechip : ''}`}>
+                    Academy
+                </Link>
 
-            <span className={styles.divider}></span>
+                <div className={styles.divider}></div>
 
-            <Link
-                draggable="false"
-                href="/"
-                className={`${styles.chip} ${pathname === '/' ? styles.activechip : ''}`}>
-                All
-            </Link>
+                <Link
+                    draggable="false"
+                    href="/"
+                    className={`${styles.chip} ${pathname === '/' ? styles.activechip : ''}`}>
+                    All
+                </Link>
 
-            <Link
-                draggable="false"
-                href="/inspiration/ui"
-                className={`${styles.chip} ${pathname === '/inspiration/ui' ? styles.activechip : ''}`}>
-                Interfaces
-            </Link>
+                <Link
+                    draggable="false"
+                    href="/inspiration/ui"
+                    className={`${styles.chip} ${pathname === '/inspiration/ui' ? styles.activechip : ''}`}>
+                    Interfaces
+                </Link>
 
-            <Link
-                draggable="false"
-                href="/inspiration/graphics"
-                className={`${styles.chip} ${pathname === '/inspiration/graphics' ? styles.activechip : ''}`}>
-                Graphics
-            </Link>
+                <Link
+                    draggable="false"
+                    href="/inspiration/graphics"
+                    className={`${styles.chip} ${pathname === '/inspiration/graphics' ? styles.activechip : ''}`}>
+                    Graphics
+                </Link>
 
-            <Link
-                draggable="false"
-                href="/inspiration/resources"
-                className={`${styles.chip} ${pathname === '/inspiration/resources' ? styles.activechip : ''}`}>
-                Resources
-            </Link>
+                <Link
+                    draggable="false"
+                    href="/inspiration/resources"
+                    className={`${styles.chip} ${pathname === '/inspiration/resources' ? styles.activechip : ''}`}>
+                    Resources
+                </Link>
 
-            <Link
-                draggable="false"
-                href="/inspiration/editorial"
-                className={`${styles.chip} ${pathname === '/inspiration/editorial' ? styles.activechip : ''}`}>
-                Editorial
-            </Link>
+                <Link
+                    draggable="false"
+                    href="/inspiration/editorial"
+                    className={`${styles.chip} ${pathname === '/inspiration/editorial' ? styles.activechip : ''}`}>
+                    Editorial
+                </Link>
 
-        </motion.div>
+            </motion.div>
+        </div>
+
     )
 }
 
