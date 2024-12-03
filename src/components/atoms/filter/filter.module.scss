@@ -51,15 +51,24 @@
   color: hsl(0, 0, 100%, 0.4);
   @include smooth;
   user-select: none;
+  gap: 0.6rem;
 
   &:hover {
     color: hsl(0, 0, 86%);
+  }
+
+  .icon{
+    fill: hsl(0, 0, 100%, 0.4);
   }
 }
 
 
 .activechip {
   color: hsl(0, 0, 86%);
+
+  .icon{
+    fill: hsl(0, 0, 86%);
+  }
 
   &::after {
 
