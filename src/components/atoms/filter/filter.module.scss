@@ -18,7 +18,7 @@
   position: relative;
   padding-left: 1.6rem;
   padding-right: 2rem;
-
+  width: 100%;
   gap: 1.6rem;
 
   align-items: center;
@@ -47,7 +47,7 @@
   font-size: 1.46rem;
   line-height: 100%;
   padding: 1.2rem 0rem 1.6rem 0rem;
-  font-weight: 500;
+  font-weight: 600;
   color: hsl(0, 0, 100%, 0.4);
   @include smooth;
   user-select: none;
@@ -57,7 +57,7 @@
     color: hsl(0, 0, 86%);
   }
 
-  .icon{
+  .icon {
     fill: hsl(0, 0, 100%, 0.4);
   }
 }
@@ -66,7 +66,7 @@
 .activechip {
   color: hsl(0, 0, 86%);
 
-  .icon{
+  .icon {
     fill: hsl(0, 0, 86%);
   }
 
