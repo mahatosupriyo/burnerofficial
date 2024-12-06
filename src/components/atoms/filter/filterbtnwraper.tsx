@@ -6,10 +6,9 @@ type WrapperProps = {
     children: ReactNode;
 };
 
-const ButtonWrapper: React.FC<WrapperProps> = ({ children }) => {
+const FilterButtonWrapper: React.FC<WrapperProps> = ({ children }) => {
     return <motion.div
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 1 }}
+        whileTap={{ opacity: 0.5 }}
         style={{
             display: 'flex',
             alignItems: 'center',
@@ -20,4 +19,4 @@ const ButtonWrapper: React.FC<WrapperProps> = ({ children }) => {
     </motion.div>;
 };
 
-export default ButtonWrapper;
+export default FilterButtonWrapper;
