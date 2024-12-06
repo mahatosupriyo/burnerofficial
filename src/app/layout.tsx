@@ -74,18 +74,23 @@ export default function RootLayout({
         <SessionProvider>
           {children}
           <Toaster
-          position="bottom-center"
-          reverseOrder={false}
-          toastOptions={{
-            duration: 1000,
-            style: {
-              background: '#363636',
-              color: '#fff',
-              fontSize: '1.56rem',
-              borderRadius: '100rem'
-            },
-          }}
-        />
+            position="bottom-center"
+            reverseOrder={false}
+            toastOptions={{
+              duration: 2000,
+              style: {
+                background: '#363636',
+                color: '#fff',
+                height: '5.4rem',
+                paddingLeft: '1rem',
+                display:'flex',
+                alignItems: 'center',
+                fontWeight: 600,
+                fontSize: '1.56rem',
+                borderRadius: '10rem'
+              },
+            }}
+          />
         </SessionProvider>
         <script
           type="application/ld+json"
@@ -96,14 +101,12 @@ export default function RootLayout({
               "name": "Edu Burner",
               "description": "Learn, create, and inspire — this is your Stage.",
               "url": "https://eduburner.org",
-              // Add more specific details about your educational organization
               "address": {
                 "@type": "PostalAddress",
                 "addressCountry": "India",
                 "addressLocality": "Kolkata",
                 "addressRegion": "Newtown"
               },
-              // Add courses offered
               "hasCourse": [
                 {
                   "@type": "Burner Pro",
@@ -115,15 +118,12 @@ export default function RootLayout({
                     "sameAs": "https://eduburner.org"
                   }
                 }
-                // Add more courses as needed
               ],
-              // Add social media profiles
               "sameAs": [
                 "https://instagram.com/eduburner",
                 "https://twitter.com/edu_burner",
                 "https://linkedin.com/company/eduburner"
               ],
-              // Add contact points
               "contactPoint": {
                 "@type": "ContactPoint",
                 "contactType": "customer support",
