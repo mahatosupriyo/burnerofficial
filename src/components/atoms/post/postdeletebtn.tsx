@@ -2,17 +2,17 @@ import React from 'react'
 import styles from './postdelete.module.scss'
 
 interface DeletePostProps {
-    postId: string;
-  }
+  postId: string;
+}
 
-  export const DeletePost: React.FC<DeletePostProps> = ({ postId }) => {
+export const DeletePost: React.FC<DeletePostProps> = ({ postId }) => {
 
-    return (
+  return (
     <button
-    className={styles.morebtn}
-  >
-    Delete
-  </button>
+      className={styles.morebtn}
+    >
+      Delete
+    </button>
   )
 }
 

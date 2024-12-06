@@ -4,6 +4,7 @@ import { createPost } from "@/app/actions/post";
 import { motion } from "framer-motion";
 import styles from "./uploader.module.scss";
 import Icon from "../icons";
+import { toast } from 'react-hot-toast';
 
 interface PostCreationStepsProps {
   onClose: (success: boolean) => void;
@@ -34,7 +35,7 @@ const PostCreationSteps: React.FC<PostCreationStepsProps> = ({ onClose }) => {
 
   const handleSubmit = async () => {
     if (!file) {
-      console.error("File is required!");
+      toast.error("File is required!");
       return;
     }
 
@@ -48,12 +49,14 @@ const PostCreationSteps: React.FC<PostCreationStepsProps> = ({ onClose }) => {
     try {
       const result = await createPost(formData);
       if (result.success) {
+        toast.success("Post created successfully!");
         onClose(true);
       } else {
-        throw new Error(result.message);
+        toast.error(result.message || "An error occurred while creating the post.");
       }
     } catch (error) {
       console.error("Error creating post:", error);
+      toast.error("An unexpected error occurred. Please try again.");
       onClose(false);
     } finally {
       setIsSubmitting(false);
@@ -188,3 +191,4 @@ const PostCreationSteps: React.FC<PostCreationStepsProps> = ({ onClose }) => {
 };
 
 export default PostCreationSteps;
+

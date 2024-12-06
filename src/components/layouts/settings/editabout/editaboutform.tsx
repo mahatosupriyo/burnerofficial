@@ -6,6 +6,7 @@ import { z } from 'zod'
 import { updateAbout } from '@/app/actions/update-about'
 import { useState, useEffect } from 'react'
 import styles from './editaboutform.module.scss'
+import toast from 'react-hot-toast'
 
 const aboutSchema = z.object({
   about: z.string().max(150).optional(),
@@ -22,8 +23,6 @@ const aboutSchema = z.object({
 type AboutFormData = z.infer<typeof aboutSchema>
 
 export default function UpdateAboutForm({ userId, initialData }: { userId: string, initialData?: AboutFormData }) {
-  const [error, setError] = useState<string | null>(null)
-  const [success, setSuccess] = useState<boolean>(false)
   const [isFormChanged, setIsFormChanged] = useState<boolean>(false)
 
   const { register, handleSubmit, formState: { errors }, watch, setValue } = useForm<AboutFormData>({
@@ -44,11 +43,9 @@ export default function UpdateAboutForm({ userId, initialData }: { userId: strin
         about: data.about || '', // Provide a default empty string if about is undefined
       };
       await updateAbout(userId, dataToSubmit);
-      setSuccess(true);
-      setError(null);
+      toast.success('Profile updated successfully!');
     } catch (e) {
-      setError(e instanceof Error ? e.message : 'An error occurred');
-      setSuccess(false);
+      toast.error(e instanceof Error ? e.message : 'An error occurred');
     }
   };
 
@@ -67,13 +64,10 @@ export default function UpdateAboutForm({ userId, initialData }: { userId: strin
               placeholder='something about you'
               spellCheck="false"
             />
-
           </div>
         </div>
 
         <div className={styles.gridwraper}>
-
-
           <div className={styles.formsection}>
             <label htmlFor="location" className={styles.label}>Location</label>
             <input
@@ -97,7 +91,6 @@ export default function UpdateAboutForm({ userId, initialData }: { userId: strin
               className={styles.inputbox}
             />
           </div>
-
         </div>
 
         <div style={{ paddingTop: '4rem', paddingBottom: '2rem', display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
@@ -106,7 +99,6 @@ export default function UpdateAboutForm({ userId, initialData }: { userId: strin
         </div>
 
         <div className={styles.gridwraper}>
-
           <div className={styles.formsection}>
             <label htmlFor="instagram" className={styles.label}>Instagram</label>
             <input
@@ -178,24 +170,17 @@ export default function UpdateAboutForm({ userId, initialData }: { userId: strin
               className={styles.inputbox}
             />
           </div>
-
-
-          {error && <p>{error}</p>}
-          {success && <p>Profile updated successfully!</p>}
-
         </div>
       </div>
-
 
       <button
         type="submit"
         className={`${styles.updatebtn} ${!isFormChanged ? styles.disabledbtn : ''}`}
+        disabled={!isFormChanged}
       >
-
         Update
       </button>
-
-
     </form>
   )
 }
+

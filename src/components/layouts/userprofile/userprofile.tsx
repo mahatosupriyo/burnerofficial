@@ -3,9 +3,9 @@
 import React, { useState, useEffect } from "react";
 import styles from "./userprofile.module.scss";
 import { useSession } from "next-auth/react";
-import SuccessPopup from "@/app/success/successpop";
 import UserPosts from "./userposts/userposts";
 import UserBadge from "./userbadge/userbadge";
+import toast from 'react-hot-toast';
 
 interface Post {
   id: string;
@@ -42,18 +42,14 @@ export default function UserProfile({ user: initialUser }: UserProfileProps) {
   const { data: session } = useSession();
 
   const [user, setUser] = useState<User>(initialUser);
-  const [message, setMessage] = useState<string | null>(null);
-  const [showPopup, setShowPopup] = useState(false);
 
   useEffect(() => {
     const persistedMessage = localStorage.getItem('userProfileMessage');
     if (persistedMessage) {
-      setMessage(persistedMessage);
-      setShowPopup(true);
+      toast.success(persistedMessage);
       localStorage.removeItem('userProfileMessage');
     }
   }, []);
-
 
   const handlePostDelete = (postId: string) => {
     setUser((prevUser) => ({
@@ -63,15 +59,8 @@ export default function UserProfile({ user: initialUser }: UserProfileProps) {
   };
 
   const handleMessageSet = (newMessage: string) => {
-    setMessage(newMessage);
+    toast.success(newMessage);
     localStorage.setItem('userProfileMessage', newMessage);
-    setShowPopup(true);
-  };
-
-  const handleClosePopup = () => {
-    setShowPopup(false);
-    setMessage(null);
-    localStorage.removeItem('userProfileMessage');
   };
 
   const isCurrentUser = session?.user?.email === user.email;
@@ -79,11 +68,6 @@ export default function UserProfile({ user: initialUser }: UserProfileProps) {
   return (
     <div className={styles.displaycontainer}>
       <section className={styles.displaywraper}>
-        <SuccessPopup
-          message={message}
-          isVisible={showPopup}
-          onClose={handleClosePopup}
-        />
         <div className={styles.contentwraper}>
           <UserBadge user={user} />
           <div className={styles.componentwraper}>
@@ -100,3 +84,4 @@ export default function UserProfile({ user: initialUser }: UserProfileProps) {
     </div>
   );
 }
+

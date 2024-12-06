@@ -55,10 +55,15 @@
 
   &:hover {
     color: hsl(0, 0, 86%);
+
+    .icon {
+      fill: hsl(0, 0, 86%);
+    }
   }
 
   .icon {
     fill: hsl(0, 0, 100%, 0.4);
+    @include smooth;
   }
 }
 
