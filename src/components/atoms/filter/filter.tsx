@@ -31,9 +31,6 @@ const InspoFilter = () => {
                     </Link>
                 </FilterButtonWrapper>
 
-
-                <div className={styles.divider}></div>
-
                 <FilterButtonWrapper>
                     <Link
                         draggable="false"

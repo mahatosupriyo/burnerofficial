@@ -8,11 +8,13 @@ type WrapperProps = {
 
 const FilterButtonWrapper: React.FC<WrapperProps> = ({ children }) => {
     return <motion.div
+        draggable="false"
         whileTap={{ opacity: 0.5 }}
         style={{
             display: 'flex',
             alignItems: 'center',
-            justifyContent: 'center'
+            justifyContent: 'center',
+            userSelect: 'none',
         }}
     >
         {children}
