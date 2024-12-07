@@ -66,6 +66,19 @@ const InspoFilter = () => {
                 <FilterButtonWrapper>
                     <Link
                         draggable="false"
+                        href="/inspiration/resources"
+                        className={`${styles.chip} ${pathname === '/inspiration/resources' ? styles.activechip : ''}`}>
+                        <svg
+                            className={styles.icon} xmlns="http://www.w3.org/2000/svg" width="20" viewBox="0 0 105 105" >
+                            <path d="M30.26 81C30.42 81 30.57 81 30.73 81C30.82 81 30.91 81 31.01 81H70.84C76.51 81 81.32 77.14 82.55 71.6L86.81 52.43C87.32 50.12 86.77 47.74 85.29 45.9C83.81 44.06 81.61 43 79.24 43H77V37C77 30.38 71.62 25 65 25H55.56C54.58 25 53.63 24.64 52.9 23.99L47.31 19.02C45.84 17.72 43.96 17 42 17H31C24.38 17 19 22.38 19 29V69.74C19 75.95 24.05 81 30.26 81ZM78.93 51L74.74 69.87C74.33 71.71 72.72 73 70.83 73H41.03C41.11 72.73 41.18 72.46 41.24 72.18L45.95 51H78.93ZM27 29C27 26.79 28.79 25 31 25H42L47.59 29.97C49.79 31.93 52.62 33 55.56 33H65C67.21 33 69 34.79 69 37V43H45.96C42.18 43 38.97 45.58 38.15 49.26L33.44 70.44C33.11 71.94 31.8 72.99 30.26 72.99C28.46 72.99 27 71.53 27 69.73V29Z" />
+                        </svg>
+                        Resources
+                    </Link>
+                </FilterButtonWrapper>
+
+                <FilterButtonWrapper>
+                    <Link
+                        draggable="false"
                         href="/inspiration/graphics"
                         className={`${styles.chip} ${pathname === '/inspiration/graphics' ? styles.activechip : ''}`}>
                         <svg
@@ -77,18 +90,7 @@ const InspoFilter = () => {
                 </FilterButtonWrapper>
 
 
-                <FilterButtonWrapper>
-                    <Link
-                        draggable="false"
-                        href="/inspiration/resources"
-                        className={`${styles.chip} ${pathname === '/inspiration/resources' ? styles.activechip : ''}`}>
-                        <svg
-                            className={styles.icon} xmlns="http://www.w3.org/2000/svg" width="20" viewBox="0 0 105 105" >
-                            <path d="M30.26 81C30.42 81 30.57 81 30.73 81C30.82 81 30.91 81 31.01 81H70.84C76.51 81 81.32 77.14 82.55 71.6L86.81 52.43C87.32 50.12 86.77 47.74 85.29 45.9C83.81 44.06 81.61 43 79.24 43H77V37C77 30.38 71.62 25 65 25H55.56C54.58 25 53.63 24.64 52.9 23.99L47.31 19.02C45.84 17.72 43.96 17 42 17H31C24.38 17 19 22.38 19 29V69.74C19 75.95 24.05 81 30.26 81ZM78.93 51L74.74 69.87C74.33 71.71 72.72 73 70.83 73H41.03C41.11 72.73 41.18 72.46 41.24 72.18L45.95 51H78.93ZM27 29C27 26.79 28.79 25 31 25H42L47.59 29.97C49.79 31.93 52.62 33 55.56 33H65C67.21 33 69 34.79 69 37V43H45.96C42.18 43 38.97 45.58 38.15 49.26L33.44 70.44C33.11 71.94 31.8 72.99 30.26 72.99C28.46 72.99 27 71.53 27 69.73V29Z" />
-                        </svg>
-                        Resources
-                    </Link>
-                </FilterButtonWrapper>
+
 
                 <FilterButtonWrapper>
                     <Link

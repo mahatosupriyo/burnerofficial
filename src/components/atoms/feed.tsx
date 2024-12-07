@@ -110,7 +110,7 @@ export default function Feed() {
                   </div>
                   {post.link &&
                     <a href={post.link} target='_blank' className={styles.link}>
-                      <Icon name='link' fill='#fff' size={26} />
+                      <Icon name='link' fill='#fff' size={12} />
                     </a>
                   }
                 </div>
