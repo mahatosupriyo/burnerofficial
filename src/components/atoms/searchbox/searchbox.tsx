@@ -10,6 +10,8 @@ import Link from 'next/link'
 import SearchItemSkeleton from './searchitemskeleton/searchitemskeleton'
 import Icon from '../icons'
 import { usePathname } from 'next/navigation'
+import FilterButtonWrapper from '../filter/filterbtnwraper'
+import InspoFilter from '../filter/filter'
 
 interface SitemapItem {
     id: string
@@ -180,10 +182,10 @@ const SearchBox: React.FC = () => {
                                             <div className={styles.empty} style={{ fontSize: '1.46rem', fontWeight: 600 }}>
                                                 Popular
                                                 <div className={styles.quicklinkscontainer}>
-                                                    <div className={styles.quicklink}>
+                                                    <Link href="/inspiration/resources" className={styles.quicklink}>
                                                         <Icon name='freebies' fill='#808080' size={24} />
                                                         Resources
-                                                    </div>
+                                                    </Link>
                                                     <div className={styles.quicklink}>
                                                         <Icon name='job' fill='#808080' size={24} />
                                                         Career
@@ -194,10 +196,10 @@ const SearchBox: React.FC = () => {
                                                             Campus ambassador <span className={styles.new}>NEW</span>
                                                         </div>
                                                     </div>
-                                                    <div className={styles.quicklink}>
+                                                    <Link href="/academy" className={styles.quicklink}>
                                                         <Icon name='store' fill='#808080' size={24} />
-                                                        Store
-                                                    </div>
+                                                        Academy
+                                                    </Link>
                                                 </div>
                                             </div>
                                         )}
@@ -227,6 +229,7 @@ const SearchBox: React.FC = () => {
                                         )}
                                     </div>
                                 </div>
+
                             </div>
                         </motion.div>
                     </div>
