@@ -38,7 +38,7 @@ $corner: 0rem;
     }
 }
 
-@mixin btn($bg: #fff, $color: '#222'){
+@mixin btn($bg: #fff, $color: '#222') {
     padding: 1.8rem 2rem;
     font-size: 1.56rem;
     font-weight: 600;
@@ -55,6 +55,8 @@ $corner: 0rem;
 
     }
 }
+
+
 
 
 // Skeleton Starts

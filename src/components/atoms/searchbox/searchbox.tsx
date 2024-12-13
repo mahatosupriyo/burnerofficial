@@ -10,8 +10,7 @@ import Link from 'next/link'
 import SearchItemSkeleton from './searchitemskeleton/searchitemskeleton'
 import Icon from '../icons'
 import { usePathname } from 'next/navigation'
-import FilterButtonWrapper from '../filter/filterbtnwraper'
-import InspoFilter from '../filter/filter'
+
 
 interface SitemapItem {
     id: string

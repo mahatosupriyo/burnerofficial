@@ -33,3 +33,74 @@
     }
 }
 
+.lockedcontent {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    gap: 1.6rem;
+
+    .subwraper {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        justify-content: center;
+        align-items: center;
+
+        .description {
+            font-size: 1.46rem;
+            font-weight: 500;
+            color: hsl(0, 0, 60%);
+        }
+
+
+
+    }
+}
+
+.Link {
+    text-decoration: none;
+    color: hsl(0, 0%, 90%);
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding-bottom: 1rem;
+    font-size: 1.6rem;
+    font-weight: 700;
+
+    &:hover {
+        &::before {
+            transform: translateX(0%);
+        }
+    }
+
+    &::after {
+        content: '';
+        z-index: 14;
+        // transform: translateX();
+        position: absolute;
+        bottom: 0;
+        height: 0.2rem;
+        width: 100%;
+        background-color: hsl(0, 0%, 16%);
+    }
+
+
+    &::before {
+        content: '';
+        @include smooth;
+        z-index: 20;
+        transform: translateX(-100%);
+        position: absolute;
+        bottom: 0;
+        // left: 0;
+        height: 0.2rem;
+        width: 100%;
+        background-color: hsl(0, 0%, 86%);
+    }
+
+}
