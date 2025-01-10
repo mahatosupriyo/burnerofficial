@@ -47,7 +47,6 @@ export default function NavBar() {
 
 
             </div>
-            {/* <InspoFilter/> */}
         </div>
     );
 }

@@ -1,64 +1,55 @@
-"use client";
+"use client"
+import React from 'react'
+import styles from './test.module.scss'
+import NavBar from '@/components/navbar/navbar'
+import ButtonWrapper from '@/components/navbar/buttonwraper'
+import Link from 'next/link'
+import Icon from '@/components/atoms/icons'
+import SearchBox from '@/components/atoms/searchbox/searchbox'
+import UploadControls from '@/components/atoms/uploadpost/uploadpost'
 
-import React, { useState } from "react";
-import { useRouter } from "next/navigation";
-import { Drawer } from "vaul";
-import styles from "./test.module.scss";
-import Icon from "@/components/atoms/icons";
-import SuccessPopup from "@/app/success/successpop";
-import PostCreationSteps from "./steps";
-
-const UploadControls = () => {
-  const [message, setMessage] = useState<string | null>(null);
-  const [showPopup, setShowPopup] = useState(false);
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const router = useRouter();
-
-  const handlePostSuccess = (successMessage: string) => {
-    setMessage(successMessage);
-    setShowPopup(true);
-    setIsDrawerOpen(false); // Close the drawer after success
-    router.refresh();
-  };
-
-  const handleClosePopup = () => {
-    setShowPopup(false);
-    setMessage(null);
-  };
-
+const Test = () => {
   return (
-    <div className={styles.controlswraper}>
-      <Drawer.Root open={isDrawerOpen} onOpenChange={setIsDrawerOpen} direction="bottom">
-        <Drawer.Trigger asChild>
-          <button className={styles.addPostButton}>
-            <Icon name="upload" size={30} fill="#666" />
-          </button>
-        </Drawer.Trigger>
-        <Drawer.Portal>
-          <Drawer.Overlay className={styles.drawerOverlay} onClick={() => setIsDrawerOpen(false)} />
-          <Drawer.Content className={styles.drawerContent}>
-            <div className={styles.drawerHeader}>
-              <div className={styles.drawerHandle} />
-              <Drawer.Title className={styles.drawerTitle}>Create New Post</Drawer.Title>
-            </div>
-            <div className={styles.drawerBody}>
-              <PostCreationSteps
-                onClose={(success) => {
-                  if (success) handlePostSuccess("Post created successfully");
-                }}
-              />
-            </div>
-          </Drawer.Content>
-        </Drawer.Portal>
-      </Drawer.Root>
+    <div className={styles.wraper}>
+        <div className={styles.navwraper}>
+            <div className={styles.nav}>
 
-      <SuccessPopup
-        message={message}
-        isVisible={showPopup}
-        onClose={handleClosePopup}
-      />
+                <div className={styles.leftwraper}>
+
+                    <ButtonWrapper>
+                        <Link draggable="false" href="/" className={styles.primarybutton}>
+                            <div className={styles.iconwraper}>
+                                <Icon name="home" size={16} fill='#ffffff5c' />
+                            </div>
+                        </Link>
+                    </ButtonWrapper>
+
+                    <UploadControls />
+                </div>
+
+                <div style={{ width: '100%' }}>
+                    <SearchBox />
+                </div>
+
+
+                <div className={styles.rightwraper}>
+                    <ButtonWrapper>
+                        <Link href='/settings' className={styles.primarybutton}>
+                            <Icon name='settings' size={26.80} fill='#ffffff5c' />
+                        </Link>
+                    </ButtonWrapper>
+
+                    <div>
+                        {/* <UserBtn /> */}
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
     </div>
-  );
-};
+  )
+}
 
-export default UploadControls;
+export default Test

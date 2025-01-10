@@ -5,44 +5,6 @@
 @import '../../../styles/typography';
 
 
-// Variables For BG
-$d1: 320.54deg;
-$d2: 58.72deg;
-$d3: 121.28deg;
-$d4: 180deg;
-$d5: 52.23deg;
-$d6: 121.28deg;
-$d7: 50% 72.12% at 50% 50%;
-$d8: 72.37%;
-$p1: 0%;
-$p2: 100%;
-$p3: 0.5%;
-$blend-one: screen, color-dodge, color-burn, screen, overlay, difference, color-dodge;
-$blend-two: screen, color-dodge, color-burn, screen, overlay, difference;
-$no-blend: inherit;
-
-$c1: #81C102;
-$c2: #7379D6;
-$c3: #96A8C6;
-$c4: #5A443A;
-$c5: #EB7068;
-$c6: #2232E4;
-$c7: #1F0274;
-$c8: #8A023C;
-$c9: #1F5B8F;
-$c10: #A8386B;
-$c11: #4A0811;
-$c12: #523FF1;
-$c13: #BDC8E0;
-$c14: #D95CBB;
-$c15: #07995C;
-$c16: #E40E31;
-$c17: #AEEC96;
-$c18: #307EE6;
-$c19: #B61A7F;
-$c20: #B3A25A;
-
-// Variables for BG Ends
 
 .wraper {
     background-color: hsl(0, 0%, 0%);
@@ -51,8 +13,6 @@ $c20: #B3A25A;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
-
 
 
     .container {
@@ -64,7 +24,7 @@ $c20: #B3A25A;
         gap: 0.9rem;
 
         .content {
-            margin-top: 10rem;
+            margin-top: 4rem;
             padding: 4rem 1.6rem;
             display: flex;
             width: 100%;
@@ -76,7 +36,7 @@ $c20: #B3A25A;
 
         .hero {
             width: 100%;
-            min-height: 30rem;
+            min-height: 60rem;
             height: 100%;
             flex-direction: row;
             align-items: center;
@@ -88,22 +48,12 @@ $c20: #B3A25A;
             overflow: hidden;
 
 
-            background:
-                linear-gradient($d1, $c1 $p1, $c11 $d8),
-                linear-gradient($d2, $c2 $p1, $c12 $p2),
-                linear-gradient($d3, $c3 $p1, $c13 $p2),
-                linear-gradient($d3, $c4 $p1, $c14 $p2),
-                linear-gradient($d4, $c5 $p1, $c15 $p3, $c17 $p2),
-                linear-gradient($d5, $c6 $p1, $c16 $p2),
-                linear-gradient($d6, $c7 $p1, $c10 $p2),
-                radial-gradient($d7, $c8 $p1, $c9 $p2);
-            background-blend-mode: $blend-one;
+            background-image: url(https://ik.imagekit.io/localstore/win.jpg?updatedAt=1734433802309);
             // height: 100vh;
-            background-position: center;
+            background-position: bottom;
+            background-size: cover;
             width: 100%;
             backdrop-filter: none;
-
-
 
 
             .academylogo {
@@ -128,7 +78,7 @@ $c20: #B3A25A;
 
 
 
-            .componentboxwraper{
+            .componentboxwraper {
                 display: flex;
                 flex-direction: column;
                 gap: 10rem;
@@ -140,34 +90,34 @@ $c20: #B3A25A;
                     display: grid;
                     gap: 2rem;
                     grid-template-columns: repeat(2, 1fr);
-    
+
                     .component {
                         width: 100%;
                         display: flex;
                         flex-direction: column;
                         gap: 0.6rem;
-    
+
                         .featurelabel {
                             font-size: 1.66rem;
                             font-weight: 600;
                         }
-    
+
                         .description {
-                            font-size: 1.4rem;
+                            font-size: 1.56rem;
                             font-weight: 500;
                             color: hsl(0, 0, 50%);
                         }
                     }
                 }
 
-                .subdesc{
+                .subdesc {
                     font-size: 1.72rem;
                     font-weight: 400;
                     max-width: 70%;
                     color: hsl(0, 0, 60%);
                 }
 
-                .bigtxt{
+                .bigtxt {
                     font-size: 3.8rem;
                     font-weight: 700;
                     max-width: 70%;
@@ -179,4 +129,49 @@ $c20: #B3A25A;
 
         }
     }
+}
+
+.gridsection {
+    display: flex;
+    width: 100%;
+    min-height: 100dvh;
+    align-items: center;
+    justify-content: center;
+
+    .bento {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        aspect-ratio: 1/1;
+        width: 100%;
+        max-width: 40rem;
+        position: relative;
+
+        .grid {
+            display: flex;
+            height: 100%;
+            width: 100%;
+            aspect-ratio: 1/1;
+
+            object-fit: contain;
+            background-color: #000;
+        }
+
+        .downloadicon {
+            display: flex;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            margin: 1.6rem;
+            height: 4rem;
+            @include smooth;
+            cursor: pointer;
+
+            &:hover {
+                scale: 96%;
+            }
+        }
+    }
+
+
 }
