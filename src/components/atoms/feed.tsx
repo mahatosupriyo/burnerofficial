@@ -41,14 +41,20 @@ export default function Feed() {
   }, [])
 
   const breakpointColumnsObj = {
-    default: 4,
+    default: 3,
     1100: 2,
-    700: 1,
-    500: 1,
+    700: 2,
+    500: 2,
   }
 
   return (
     <div className={styles.feedwraper}>
+
+      <div className={styles.header}>
+        <h5 className={styles.heading}>Latest Release</h5>
+        <h1 className={styles.description}>DROPs</h1>
+      </div>
+
       <Masonry
         breakpointCols={breakpointColumnsObj}
         className={styles.masonryGrid}
@@ -69,6 +75,7 @@ export default function Feed() {
                   src={post.imageUrl}
                   alt={`Image by ${post.user.username}`}
                   draggable="false"
+                  className={styles.postimg}
                 />
 
                 <div className={styles.creator}>
