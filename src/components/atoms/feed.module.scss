@@ -1,7 +1,7 @@
 @use '../../styles/essentials';
 @import '../../styles/essentials';
 
-$gap: 1.6rem;
+$gap: 2rem;
 
 .feedwraper {
   width: 100%;
@@ -11,23 +11,25 @@ $gap: 1.6rem;
   flex-direction: column;
   margin-top: 8rem;
 
-  .header{
+  .header {
     display: flex;
     align-items: center;
     flex-direction: column;
     gap: 1rem;
     padding: 4rem 0rem;
-    .heading{
+
+    .heading {
       font-size: 1.66rem;
-      font-weight: 600;
+      font-weight: 400;
+      color: hsl(0, 0, 60%);
     }
 
-    .description{
+    .description {
       font-size: 14rem;
       line-height: 100%;
       color: hsl(0, 0, 80%);
 
-      @media only screen and (max-width: 70rem){
+      @media only screen and (max-width: 70rem) {
         font-size: 7rem;
       }
     }
@@ -58,6 +60,10 @@ $gap: 1.6rem;
   position: relative;
   overflow: hidden;
   aspect-ratio: 1/1;
+  border-radius: 1.6rem;
+  overflow: hidden;
+  // outline: 0.016rem solid hsl(0, 0, 10%);
+  // outline-offset: 0.2rem;
 
   cursor: pointer;
 
@@ -81,19 +87,16 @@ $gap: 1.6rem;
     position: absolute;
 
     bottom: 0;
-    left: 0;
-    border-radius: 1.6rem;
 
-    background: linear-gradient(180deg, rgba(13, 13, 13, 0.00) 0%, hsl(0, 0%, 10%, 0.4) 90.49%, hsl(0, 0%, 10%, 0.4) 100%);
+    background: linear-gradient(180deg, rgba(13, 13, 13, 0.00) 0%, hsl(0, 0%, 10%, 0.8) 90.49%, hsl(0, 0%, 10%, 10) 100%);
   }
 
   .postimg {
     z-index: 90;
     // height: auto;
-    display: block;
+    // display: block;
     user-select: none;
     pointer-events: none;
-    border-radius: 1.6rem;
     height: 100%;
     width: 100%;
     object-fit: cover;
@@ -124,14 +127,14 @@ $gap: 1.6rem;
       flex-direction: row;
       gap: 0.4rem;
       line-height: 100%;
-      font-size: 1.66rem;
+      font-size: 1.8rem;
       font-weight: 600;
       color: hsl(0, 0, 90%);
     }
 
     .avatar {
-      height: 3.4rem;
-      width: 3.4rem;
+      height: 4.2rem;
+      width: 4.2rem;
       aspect-ratio: 1/1;
       object-fit: cover;
       object-position: center;
